@@ -191,67 +191,10 @@
 		
 		
 		<div class="page-container row-fluid">
+	  		
 	  		<!-- BEGIN SIDEBAR -->
-			<div class="page-sidebar" id="main-menu">
-<!-- 	 			BEGIN MINI-PROFILE -->
-	    		<div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: auto;">
-	    			<div class="page-sidebar-wrapper" id="main-menu-wrapper" style="overflow: hidden; width: auto; height: auto;">
-						<div class="user-info-wrapper">
-        					<div class="profile-wrapper"><p:graphicImage width="69" height="69" value="#{sessionController.loggedBean.picture}"/></div>
-        					<div class="user-info">
-						       	<div class="greeting">Bem vindo,</div>
-						       	<div class="username"><span class="semi-bold">#{sessionController.loggedBean.firstName}</span></div>
-						      	<div class="status" style="margin-bottom: 40px;"><div class="green"></div></div>
-						    </div>
-				      	</div>
-<!-- 	     	 			END MINI-PROFILE -->
-<!-- 	      				BEGIN SIDEBAR MENU -->
-<!-- 	      				<p class="menu-title">BROWSE <span class="pull-right"><a href="javascript:;"><i class="fa fa-refresh"></i></a></span></p> -->
-	      				
-	      				<ul>
-	      					<li class="">
-	      						<a href="dashboard" title="#{message.general_dashboard}"><i class="fa fa-dashboard"></i> <span class="title">#{message.general_dashboard}</span></a>
-	      					</li>
-	      					<li class="active">
-	      						<a href="javascript:;" title="#{message.module_financial}"><i class="fa fa-dollar"></i><span class="title">#{message.module_financial}</span></a>
-					        	<ul class="sub-menu" style="overflow: hidden; display: none;">
-					            	<li class=""> 		<a href="financial">	<i class="fa fa-dashboard"></i> 	<span class="title">#{message.general_dashboard}</span></a></li>
-					            	<li class=""> 		<a href="banking"> 		<i class="fa fa-credit-card"></i> 	<span class="title">#{message.module_banking_menu}</span></a></li>
-					            	<li class="active"> <a href="budget">		<i class="fa fa-exchange"></i> 		<span class="title">#{message.module_budget_menu}</span></a></li>
-					            </ul>
-					        </li>
-					        <li class="">
-					        	<a href="sales" title="#{message.module_sales}"> <i class="fa fa-shopping-cart"></i> <span class="title">#{message.module_sales}</span></a>
-					        </li>
-					        <li class="">
-					        	<a href="contacts" title="#{message.module_contacts}"><i class="fa fa-group"></i> <span class="title">#{message.module_contacts}</span></a>
-					        </li>
-					         <li class="">
-					         	<a href="profile" title="#{message.module_profile}"><i class="fa fa-cog"></i> <span class="title">#{message.module_profile}</span></a>
-					        	<!-- <h:commandLink value="#{message.module_profile}" actionListener="#{applicationMenuController.loadModule('PROFILE-WRAPPER')}" action="#{userController.clean()}" style="border: 0 !important;"/> -->
-					        </li>
-	      				</ul>
-	      				
-	      				<div class="clearfix"></div>
-<!-- 	      				END SIDEBAR MENU -->
-	    			</div>
-	    
-					<div class="slimScrollBar" style="width: 4px; position: absolute; top: -24px; opacity: 0.4; display: block; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; right: 1px; height: 54.42304147465438px; background: rgb(161, 178, 189);"></div>
-					<div class="slimScrollRail" style="width: 4px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div>
-				</div>
-			</div>
-
-			<!--
-			<div class="footer-widget">
-				<div class="progress transparent progress-small no-radius no-margin">
-			    	<div data-percentage="79%" class="progress-bar progress-bar-success animate-progress-bar" style="width: 79%;"></div>
-			    </div>
-			    <div class="pull-right">
-			    	<div class="details-status"> <span data-animation-duration="560" data-value="86" class="animate-number">86</span>% </div>
-				<a href="lockscreen.html"><i class="fa fa-power-off"></i></a></div>
-			</div>
-			-->
- 			 <!-- END SIDEBAR -->
+				<ui:include src="../../../../layout/content/menu.xhtml"/>
+ 			<!-- END SIDEBAR -->
   
 	 		<!-- BEGIN PAGE CONTAINER-->
 			<div class="page-content">
