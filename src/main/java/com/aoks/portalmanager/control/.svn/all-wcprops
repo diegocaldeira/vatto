@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/kallxit/!svn/ver/426/kx-portalManager/trunk/src/java/net/kallx/portalmanager/control
+END
+TemplateResolver.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/kallxit/!svn/ver/426/kx-portalManager/trunk/src/java/net/kallx/portalmanager/control/TemplateResolver.java
+END
+StyleController.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/kallxit/!svn/ver/310/kx-portalManager/trunk/src/java/net/kallx/portalmanager/control/StyleController.java
+END
+PortalManagerMain.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/kallxit/!svn/ver/426/kx-portalManager/trunk/src/java/net/kallx/portalmanager/control/PortalManagerMain.java
+END
+PortalResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/kallxit/!svn/ver/426/kx-portalManager/trunk/src/java/net/kallx/portalmanager/control/PortalResource.java
+END
+DockManagerController.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/kallxit/!svn/ver/381/kx-portalManager/trunk/src/java/net/kallx/portalmanager/control/DockManagerController.java
+END

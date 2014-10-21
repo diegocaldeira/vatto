@@ -1,0 +1,7 @@
+package net.kallx.banking.operation.model;
+
+public enum CreditCardFlag {
+
+	NONE, VISA, MASTERCARD, DINERS, AMERICANEXPRESS;
+	
+}

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<!-- 				<h:panelGroup layout="block" styleClass="form-group"> -->
+<!-- 					<h:outputLabel value="#{message.general_photo}" styleClass="col-lg-3 control-label" /> -->
+<!-- 					<h:panelGroup layout="block" styleClass="col-lg-9 media"> -->
+<!-- 						<h:panelGroup layout="block" styleClass="bg-light pull-left text-center media-large thumb-large"> -->
+<!-- 							<i class="icon-user inline icon-light icon-3x m-t-large m-b-large" style="margin: 20px !important; float: left !important;"></i> -->
+<!-- 						</h:panelGroup> -->
+<!-- 						<h:panelGroup layout="block" styleClass="media-body"> -->
+<!-- 							<p:commandLink value="#{message.action_change}"		styleClass="file-input-wrapper btn btn btn-sm btn-info m-b-small" /> -->
+<!-- 							<br/> -->
+<!-- 							<p:commandButton value="#{message.action_remove}"	styleClass="btn btn-sm btn-default" /> -->
+<!-- 						</h:panelGroup> -->
+<!-- 					</h:panelGroup> -->
+<!-- 				</h:panelGroup> -->
+	
+	
+	<div class="col-md-12"> 
+		<div class="grid simple"> 
+			<div class="grid-body no-border">
+		
+				<div class="row">
+					<div class="col-md-12">
+						<h4>#{message.general_data}</h4>
+			
+						<div class="row form-row">
+							<div class="col-md-6">
+								<p:inputText id="#{form}-name" label="#{message.model_insert_name}" value="#{controller.bean.register.firstName}" size="30" maxlength="30" styleClass="form-control parsley-validated" required="true" placeholder="#{message.model_name}" />
+							</div>
+							<div class="col-md-6">
+								<p:inputText id="#{form}-lastname" label="#{message.model_insert_lastname}" value="#{controller.bean.register.lastName}" size="30" maxlength="30" styleClass="form-control parsley-validated" placeholder="#{message.model_lastname}"/>
+							</div>
+						</div>
+						
+						<div class="row form-row">
+							<div class="col-md-6">
+								<p:calendar value="#{controller.bean.register.birth}" converter="#{dateCalendarConverter}" pattern="dd/MM/yyyy" placeholder="#{message.model_birth}" style="width: 100%;"/>
+			               	</div>	
+			               	<div class="col-md-3">
+			                 	<p:selectOneMenu styleClass="select2-drop-mask" value="#{controller.bean.register.genre}" style="width: 100%;">
+						            <f:selectItem itemLabel="#{message.model_genre_male}" 				itemValue="model_genre_male" 	/>  
+						            <f:selectItem itemLabel="#{message.model_genre_female}" 			itemValue="model_genre_female"  />  
+								</p:selectOneMenu>
+			               	</div>
+			               	<div class="col-md-3">
+								<p:selectOneMenu styleClass="select2-drop-mask" value="#{controller.bean.register.maritalStatus}" style="width: 100%;">
+						            <f:selectItem itemLabel="#{message.model_marital_status_single}" 	itemValue="model_marital_status_single" 		/>  
+						            <f:selectItem itemLabel="#{message.model_marital_status_married}" 	itemValue="model_marital_status_married"		/>  
+						            <f:selectItem itemLabel="#{message.model_marital_status_divorced}" 	itemValue="model_marital_status_divorced"		/>
+						            <f:selectItem itemLabel="#{message.model_marital_status_widower}" 	itemValue="model_marital_status_widower"		/>
+				   				</p:selectOneMenu>
+							</div>
+			             </div>
+						
+						<div class="row form-row">
+							<div class="col-md-6">
+								<p:inputMask id="#{form}-cpf" label="#{message.model_insert_cpf}" value="#{controller.bean.register.cpf}" size="11" mask="999.999.999-99" styleClass="form-control parsley-validated" placeholder="#{message.model_cpf}"/>
+							</div>
+							<div class="col-md-6">
+								<p:inputMask id="#{form}-rg" label="#{message.model_insert_rg}" value="#{controller.bean.register.rg}" size="10" mask="999.999.99-99" styleClass="form-control parsley-validated" placeholder="#{message.model_rg}"/>
+							</div>
+						</div>
+						
+						<div class="row form-row">
+							<div class="col-md-6">
+								<p:inputText id="#{form}-nationality" label="#{message.model_insert_nationality}" value="#{controller.bean.register.nationality}" size="30" maxlength="30" styleClass="form-control parsley-validated" placeholder="#{message.model_nationality}"/>
+							</div>
+							<div class="col-md-6">
+								<p:inputText id="#{form}-naturality" label="#{message.model_insert_naturality}" value="#{controller.bean.register.naturality}" size="30" maxlength="30" styleClass="form-control parsley-validated" placeholder="#{message.model_naturality}"/>
+							</div>
+						</div>
+						
+						<div class="row form-row">
+							<div class="col-md-6">
+								<p:inputMask id="#{form}-phonenumber" label="#{message.model_insert_phone_number}" value="#{controller.bean.register.phone.phoneNumber}" size="14" maxlength="14" mask="(99) 9999-9999" styleClass="form-control parsley-validated" placeholder="#{message.model_phone_number}"/>
+							</div>
+							<div class="col-md-6">
+								<p:inputText id="#{form}-email" label="#{message.model_insert_email}" value="#{controller.bean.register.email}" size="50" styleClass="form-control parsley-validated" placeholder="#{message.model_email}"/>
+							</div>
+						</div>
+						
+						
+						<div class="row form-row">
+							<div class="col-md-6">
+								<p:inputText id="#{form}-facebook" label="#{message.model_insert_facebook}" value="#{controller.bean.register.facebook}" size="70" styleClass="form-control parsley-validated" placeholder="#{message.model_facebook}"/>
+							</div>
+							<div class="col-md-6">
+								<p:inputText id="#{form}-twitter" label="#{message.model_insert_twitter}" value="#{controller.bean.register.twitter}" size="50" styleClass="form-control parsley-validated" placeholder="#{message.model_twitter}"/>
+							</div>
+						</div>
+
+						<ui:insert name="family" />
+						<ui:insert name="address" />
+					</div>
+					
+				</div>
+				
+				<div class="form-actions">
+					<div class="pull-right">
+						<p:commandButton value="#{message.action_save}"   actionListener="#{controller.save()}" 	styleClass="btn btn-primary btn-cons" ajax="false" action="#{registerController.setCreate(false)}" style="margin-left: 5px;" type="push"/>
+						<p:commandButton value="#{message.action_cancel}" actionListener="#{controller.clean()}" 	styleClass="btn btn-white btn-cons"   ajax="false" action="#{registerController.setCreate(false)}" style="margin-left: 5px;" immediate="true" />
+					</div>
+			  	</div>
+				
+			</div>
+		</div>
+	</div>
+
+</ui:composition>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+	<h:panelGroup layout="block" styleClass="padder clearfix"><h4 class="m-b m-t"><span class="semi-bold"><i class="icon-th-list"></i><h:outputText value=" #{message.financial_banking_cash_account_title}"/></span></h4> </h:panelGroup>      
+		
+	<ui:decorate template="/sections/layout/templates/partner/model/list.xhtml">
+		<ui:param name="controller" 	value="#{cashAccountController}" />
+		<ui:param name="table" 			value="cash-account" />
+		<ui:param name="registerType" 	value="#{message.module_menu_banking_cash_account}" />
+		<ui:param name="type" 			value="CashAccount"/>
+		
+		<p:ajax event="rowSelect" 	listener="#{cashAccountController.onRowSelect}"   update="@form"/>  
+	    <p:ajax event="rowUnselect" listener="#{cashAccountController.onRowUnselect}" update="@form"/>
+		
+		<p:column filterBy="#{att.description}"  filterMatchMode="contains" headerText="#{message.model_description}"							style="width: 45%;"><h:outputText value="#{att.description}"/>									</p:column>
+		<p:column filterBy="#{att.start}" converter="#{dateCalendarConverter}" filterMatchMode="contains" headerText="#{message.model_start}"	style="width: 20%;"><h:outputText value="#{att.start}" converter="#{dateCalendarConverter}" /> 	</p:column>
+		<p:column filterBy="#{att.startBalance}" filterMatchMode="contains" headerText="#{message.model_start_balance}"							style="width: 25%;"><h:outputText value="#{att.startBalance}"/> 								</p:column>
+	</ui:decorate>
+	
+</ui:composition>

@@ -1,0 +1,7 @@
+package net.kallx.security.model;
+
+public enum PhoneType {
+
+	CELLULAR, HOME, OFFICE;
+	
+}

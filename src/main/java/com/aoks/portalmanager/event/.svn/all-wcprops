@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/kallxit/!svn/ver/381/kx-portalManager/trunk/src/java/net/kallx/portalmanager/event
+END
+ApplicationLoadingHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/kallxit/!svn/ver/381/kx-portalManager/trunk/src/java/net/kallx/portalmanager/event/ApplicationLoadingHandler.java
+END
+ApplicationLoadingHandlerImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/kallxit/!svn/ver/381/kx-portalManager/trunk/src/java/net/kallx/portalmanager/event/ApplicationLoadingHandlerImpl.java
+END
+ModuleLoadedHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/kallxit/!svn/ver/381/kx-portalManager/trunk/src/java/net/kallx/portalmanager/event/ModuleLoadedHandler.java
+END
+ModuleLoadedHandlerImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/kallxit/!svn/ver/381/kx-portalManager/trunk/src/java/net/kallx/portalmanager/event/ModuleLoadedHandlerImpl.java
+END
+AggregateLoadedHandlerImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/kallxit/!svn/ver/381/kx-portalManager/trunk/src/java/net/kallx/portalmanager/event/AggregateLoadedHandlerImpl.java
+END
+AggregateLoadedHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/kallxit/!svn/ver/381/kx-portalManager/trunk/src/java/net/kallx/portalmanager/event/AggregateLoadedHandler.java
+END
+ApplicationLoaded.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/kallxit/!svn/ver/381/kx-portalManager/trunk/src/java/net/kallx/portalmanager/event/ApplicationLoaded.java
+END
+AggregateLoaded.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/kallxit/!svn/ver/381/kx-portalManager/trunk/src/java/net/kallx/portalmanager/event/AggregateLoaded.java
+END
+ModuleLoaded.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/kallxit/!svn/ver/381/kx-portalManager/trunk/src/java/net/kallx/portalmanager/event/ModuleLoaded.java
+END

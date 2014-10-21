@@ -1,0 +1,12 @@
+package net.kallx.utils.temporal;
+
+import java.util.Calendar;
+
+public interface Effectivity {
+
+    void create(Calendar start);
+
+    void end(Calendar end);
+
+    boolean isEffectiveOnDate(Calendar calendar);
+}

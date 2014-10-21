@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+		
+		<f:event listener="#{categoryDashboardController.buildDashboard('Contatos')}" type="preRenderComponent"/>
+		
+		<aside class="sidebar bg-lighter sidebar-small" style="float: left;"> 
+			<h:panelGroup layout="block" styleClass="list-group list-normal m-b-none"> 
+				f
+			</h:panelGroup>
+		</aside>
+		
+		<section class="main">
+			<h:panelGroup layout="block" id="contact-category-menuBody" styleClass="col-lg-10 main">
+				<p:dashboard id="dynamic_dashboard" binding="#{categoryDashboardController.dashboard}"/>				
+			</h:panelGroup>
+		</section>
+	
+</ui:composition>

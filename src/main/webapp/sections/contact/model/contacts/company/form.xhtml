@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+		
+	<h:panelGroup layout="block" rendered="#{companyController.has()}">
+	
+		<h:panelGroup layout="block" styleClass="action-datatable" style="width: 100%; float: right;">
+			<p:commandButton value="#{message.action_save}"   actionListener="#{companyController.save()}"  update="contact-mycontacts" type="push"/>
+			<p:commandButton value="#{message.action_cancel}" actionListener="#{companyController.clean()}" update="contact-mycontacts" action="#{registerController.setCreateOrEdit(false)}" immediate="true"/>
+		</h:panelGroup>
+		
+		<p:panel id="company-model" header="#{message.general_data}" styleClass="model-style"> 
+			
+			<h:panelGrid columns="2">
+			
+				<h:outputLabel value="#{message.model_area_actuation}: " />  
+		        <p:selectOneMenu value="#{companyController.bean.register.areaActuation}" style="width: 155px;" required="true">  
+		            <f:selectItem itemLabel="Selecione" itemValue="" />  
+		            <f:selectItems value="#{companyController.bean.register.areaActuationList()}" var="areaActuation" itemLabel="#{areaActuation.areaActuation}" itemValue="#{areaActuation}"/>  
+		        </p:selectOneMenu>  
+			
+				<h:outputLabel value="#{message.model_company_name}: "/>
+				<p:inputText label="#{message.model_company_name}" value="#{companyController.bean.register.companyName}" size="50" maxlength="50"/>
+				
+				<h:outputLabel value="#{message.model_fancy_name}: "/>
+				<p:inputText label="#{message.model_fancy_name}" value="#{companyController.bean.register.fancyName}" size="50" maxlength="50"/>
+
+				<h:outputLabel value="#{message.model_cnpj}: "/>
+				<p:inputMask value="#{companyController.bean.register.cnpj}" required="true" mask="99.999.999/9999-99" size="20" maxlength="20" style="width: 170px;"/>
+										
+				<h:outputLabel value="#{message.model_inscr_estadual}: "/>
+				<p:inputMask label="#{message.model_inscr_estadual}" value="#{companyController.bean.register.inscrEstadual}" mask="99.99.999999-9" size="11" maxlength="11" style="width: 170px;"/>
+				
+				<h:outputLabel value="#{message.model_inscr_municipal}: "/>
+				<p:inputMask label="#{message.model_inscr_municipal}" value="#{companyController.bean.register.inscrMunicipal}" mask="9?99999999999999" size="15" maxlength="15" style="width: 170px;"/>
+
+				<h:outputLabel value="#{message.model_phone_number}"/>
+				<p:inputMask value="#{companyController.bean.register.phone.phoneNumber}" required="true" mask="(99) 9999-9999" size="15" maxlength="15" style="width: 170px;"/>
+				
+				<h:outputLabel value="#{message.model_site}: "/>
+				<p:inputText label="#{message.model_site}" value="#{companyController.bean.register.site}" size="50" maxlength="50" style="width: 170px;"/>
+				
+				<h:outputLabel value="#{message.model_facebook}: "/>
+				<p:inputText label="#{message.model_facebook}" value="#{companyController.bean.register.facebook}" size="70" style="width: 170px;"/>
+				
+				<h:outputLabel value="#{message.model_twitter}: "/>
+				<p:inputText label="#{message.model_twitter}" value="#{companyController.bean.register.twitter}" size="50" style="width: 170px;"/>
+			
+			</h:panelGrid>
+			
+		</p:panel>
+		
+		<ui:decorate template="/sections/layout/templates/partner/address/list.xhtml">
+			<ui:param name="table" 				value="company" />
+			<ui:param name="registerBean" 		value="#{companyController.bean.register}" />
+			<ui:param name="controller" 		value="#{companyController}" />
+			<ui:param name="addressController"  value="#{legalAddressController}" />
+			
+			<p:ajax event="rowSelect" 	listener="#{legalAddressController.onRowSelect}"   update="@form"/>  
+	        <p:ajax event="rowUnselect" listener="#{legalAddressController.onRowUnselect}" update="@form"/>
+		</ui:decorate>
+		
+		<ui:decorate template="/sections/layout/templates/partner/address/form.xhtml">
+			<ui:param name="form" 				value="company" />
+			<ui:param name="addressController"  value="#{legalAddressController}" />
+		</ui:decorate>
+		
+		<ui:decorate template="/sections/layout/templates/partner/contact/list.xhtml">
+			<ui:param name="table" 				value="company" />
+			<ui:param name="legalRegisterBean" 	value="#{companyController.bean.register}" />
+		
+			<p:ajax event="rowSelect" 	listener="#{contactController.onRowSelect}"   update="@form"/>  
+	        <p:ajax event="rowUnselect" listener="#{contactController.onRowUnselect}" update="@form"/>
+		</ui:decorate>
+		
+		<ui:decorate template="/sections/layout/templates/partner/contact/form.xhtml">
+			<ui:param name="form" value="company" />
+		</ui:decorate>
+		
+	</h:panelGroup>	
+</ui:composition>

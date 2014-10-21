@@ -1,0 +1,7 @@
+package net.kallx.budget.model;
+
+public enum FlowStatus {
+
+	OPEN, CLOSED, CANCELED;
+	
+}

@@ -1,0 +1,72 @@
+package com.aoks.portalmanager.control;
+
+import java.io.File;
+import java.io.InputStream;
+import java.io.Serializable;
+import java.net.URL;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.ejb.Singleton;
+import javax.ejb.Startup;
+import javax.enterprise.inject.Produces;
+import javax.inject.Named;
+import javax.xml.bind.JAXBException;
+
+import com.aoks.portalmanager.model.PortalApplication;
+import com.aoks.portalmanager.model.PortalApplications;
+import com.aoks.utils.xml.XmlUtils;
+
+
+//@Startup
+//@Singleton
+//@Named("PortalManagerMain")
+public class PortalManagerMain implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	
+	private static final Set<PortalApplication> applications = new HashSet<PortalApplication>();
+	
+	public void loadAppFile(URL file){
+		
+		if (file == null)
+			return;
+		
+		if (file != null)
+			return;
+		
+		extracted(file);
+		
+	}
+
+	private void extracted(URL file) {
+		try {
+			PortalApplication fromXml = XmlUtils.fromXml(new File(file.getFile()), PortalApplication.class);
+			applications.add(fromXml);
+		} catch (JAXBException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void loadAppStream(InputStream stream){
+		
+		if (stream == null)
+			return;
+		
+		try {
+			PortalApplication fromXml = XmlUtils.fromXml(stream, PortalApplication.class);
+			applications.add(fromXml);
+		} catch (JAXBException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+//	@Produces
+//	@PortalApplications
+	public Set<PortalApplication> getApplications(){
+		return applications;
+	}
+	
+}

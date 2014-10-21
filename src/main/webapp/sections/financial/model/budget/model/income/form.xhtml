@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+	<!-- HEADER_TITLE -->
+	<h:panelGroup layout="block" styleClass="padder clearfix b-b"> 
+		<h4><span class="semi-bold"> <i class="icon-edit"> </i> <h:outputText value="#{message.model_title_bugdget_income}"/></span></h4>
+	</h:panelGroup>
+	<!-- / HEADER_TITLE -->
+	
+	<!-- CONTENT_BODY -->
+	<h:panelGroup id="income" layout="block" style="margin-top: 30px;" rendered="#{flowController.hasCredit()}" >
+		<f:event listener="#{partyController.create()}" type="preRenderComponent"/>
+		
+		<div class="col-md-12"> 
+			<div class="grid simple"> 
+				<div class="grid-body no-border">
+			
+					<div class="row column-seperation">
+						<div class="col-md-6">
+							<h4>#{message.general_data}</h4>
+				
+							<div class="row form-row">
+								<div class="col-md-5">
+									<p:inputText id="income-amount" label="#{message.model_value}" value="#{flowController.bean.amount}" size="30" maxlength="30" styleClass="form-control parsley-validated" />
+									<p:watermark for="income-amount" value="#{message.watermark_model_money_signal}" />
+								</div>
+								<div class="col-md-7">
+									<p:autoComplete id="income-origin" value="#{flowController.bean.origin}"
+									        completeMethod="#{accountController.getAccountsAC}" var="account" itemLabel="#{account.description}"   
+									        itemValue="#{account}" converter="accountConverter" style="width: 100%;"/>
+				        			<p:watermark for="income-origin" value="#{message.model_banking_account}" />
+								</div>
+							</div>
+							
+							<div class="row form-row">
+								<div class="col-md-12">
+									<p:inputText id="income-name" label="#{message.model_name}" value="#{flowController.bean.name}" size="30" maxlength="30" styleClass="form-control"/>
+									<p:watermark for="income-name" value="#{message.watermark_model_income_name}" />
+								</div>
+							</div>
+							
+							<div class="row form-row">
+								<div class="col-md-6">
+									<p:selectOneMenu value="#{flowController.bean.category}" converter="categoryConverter" style="max-width: 100%;">
+										<f:selectItem itemValue="" itemLabel="#{message.model_category}"/>
+										<f:selectItems value="#{categoryDimensionController.getCategoriesFromDimension('Conta')}" var="cat" itemValue="#{cat}" itemLabel="#{cat.name}"/>
+										<p:ajax update="sub-category-income" />
+									</p:selectOneMenu>
+								</div>
+								<div class="col-md-6">
+									<p:selectOneMenu value="#{flowController.bean.subCategory}" id="sub-category-income" converter="categoryConverter" style="max-width: 100%;">
+										<f:selectItem itemValue="" itemLabel="#{message.model_sub_category}"/>
+										<f:selectItems value="#{flowController.subCategories}" var="cat" itemValue="#{cat}" itemLabel="#{cat.name}"/>
+									</p:selectOneMenu>
+								</div>
+							</div>
+							
+							<div class="row form-row">
+								<div class="col-md-10">
+									<p:autoComplete id="income-payee" value="#{flowController.bean.payee}" completeMethod="#{partyController.getPartiesAC}" 
+						 				var="p" itemLabel="#{p.name}" itemValue="#{p}" converter="partyConverter" style="margin-top: 10px; width: 100%;"/>
+						 			<p:watermark for="income-payee" value="#{message.watermark_model_payee}" />
+						 		</div>
+						 		<div class="col-md-2">	
+						 			<p:commandButton id="income-payee-btn" value="" styleClass="btn btn-white icon-plus-sign icon-large-form" style="margin-top: 10px; padding: 5px;"/>
+						 			<p:overlayPanel id="income-payee-panel" style="background: white;" for="income-payee-btn" hideEffect="fade" dynamic="true">
+										<h:panelGroup layout="block" rendered="#{partyController.has()}">
+											<p:inputText id="income-payee-add" value="#{partyController.bean.name}" size="20" style="width: 265px;" styleClass="form-control"/>
+											<p:watermark for="income-payee-add" value="#{message.watermark_model_payee}" />
+											<p:commandLink id="income-add-payee" value="#{message.action_add} #{message.model_payee}" title="#{message.action_add} #{message.model_payee}" update="income-payee-panel"
+												styleClass="btn btn-small btn-success pull-right" style="margin-bottom: 10px;" actionListener="#{partyController.save()}"/>
+										</h:panelGroup>
+						 			</p:overlayPanel>
+					 			</div>
+					 		</div>
+							
+							<div class="row form-row">
+								<div class="col-md-12">
+									<p:inputTextarea id="income-description" label="#{message.model_description}" value="#{flowController.bean.description}" size="300" maxlength="300" styleClass="form-control"/>
+									<p:watermark for="income-description" value="#{message.watermark_model_income_observations}" />
+								</div>
+							</div>
+						
+						</div>
+							
+						<div class="col-md-6">
+							<h4>#{message.model_type}</h4>
+							
+							<div class="row form-row">
+								<div class="col-md-6">
+									<p:selectOneMenu id="income-type" value="#{flowController.bean.type}" required="true" style="max-width: 150px;">
+							            <f:selectItem itemValue="" itemLabel="#{message.model_select_an_type}"/>  
+							            <f:selectItem itemLabel="#{message.model_recurrent}" itemValue="RECURRENT"/>
+							            <f:selectItem itemLabel="#{message.model_instalments}" itemValue="INSTALMENTS" />
+							            <p:ajax process="@form" update="@all" />
+							        </p:selectOneMenu>
+								</div>
+							</div>
+							
+							<div id="income" class="row form-row" style="margin-top: 10px;">
+								<div class="col-md-6">
+									<p:calendar id="income-start" value="#{flowController.bean.start}" converter="#{dateCalendarConverter}" pattern="dd/MM/yyyy"/>
+									<p:watermark for="income-start" value="#{message.watermark_model_income_date_start}" />
+								</div>
+								
+								<div class="col-md-6">
+									<h:panelGroup rendered="#{flowController.bean.isRecurrentType()}" >
+										<p:calendar id="income-date-end" value="#{flowController.bean.end}" rendered="#{flowController.bean.isRecurrentType()}" pattern="dd/MM/yyyy" converter="#{dateCalendarConverter}" style="max-width: 100%;" />
+										<p:watermark for="income-date-end" value="#{message.watermark_model_income_date_end}" />
+									</h:panelGroup>
+									<h:panelGroup rendered="#{flowController.bean.isInstalmentsType()}" >
+										<p:inputText id="income-instalments" value="#{flowController.bean.instalments}" style="max-width: 100%;" size="20" maxlength="20"/>
+										<p:watermark for="income-instalments" value="#{message.watermark_model_instalments}" />
+									</h:panelGroup>
+								</div>
+							</div>
+							
+							<div class="row form-row">
+								<div class="col-md-6">
+									<p:inputText id="income-maturity-day" value="#{flowController.bean.maturityDay}" size="2" maxlength="2" styleClass="form-control"/>
+									<p:watermark for="income-maturity-day" value="#{message.model_maturity_day}" />
+								</div>
+								<div class="col-md-6">
+									<p:selectOneMenu value="#{flowController.bean.periodicity}" style="max-width: 100%;">
+										<f:selectItem itemValue="NONE" itemLabel="#{message.model_select_an_period}"/>  
+										<f:selectItem itemValue="DAY" itemLabel="#{message.model_daily}" />
+										<f:selectItem itemValue="WEEK" itemLabel="#{message.model_weekly}" />
+										<f:selectItem itemValue="MONTH" itemLabel="#{message.model_monthly}" />
+										<f:selectItem itemValue="BIMESTER" itemLabel="#{message.model_bimonthly}" />
+										<f:selectItem itemValue="TRIMESTER" itemLabel="#{message.model_quarterly}" />
+										<f:selectItem itemValue="SEMESTER" itemLabel="#{message.model_semiannually}" />
+										<f:selectItem itemValue="YEAR" itemLabel="#{message.model_annually}" />
+									</p:selectOneMenu>
+								</div>
+							</div>
+							
+							
+							
+						</div>
+					</div>
+					
+					<div class="form-actions">
+						<div class="pull-right">
+							<p:commandButton value="#{message.action_save}"   actionListener="#{flowController.save()}"  styleClass="btn btn-primary btn-cons" action="#{registerController.setCreate(false)}" style="margin-left: 5px;" type="push"		 update="@form"/>
+							<p:commandButton value="#{message.action_cancel}" actionListener="#{flowController.clean()}" styleClass="btn btn-white btn-cons"   action="#{registerController.setCreate(false)}" style="margin-left: 5px;" immediate="true" update="@form"/>
+						</div>
+				  	</div>
+				  	
+				</div>
+			</div>
+		</div>
+	</h:panelGroup>
+	<!-- / CONTENT_BODY -->
+	
+</ui:composition>

@@ -1,0 +1,18 @@
+package net.kallx.portalmanager.service;
+
+import javax.enterprise.context.RequestScoped;
+
+import net.kallx.portalmanager.model.security.ApplicationPermission;
+import net.kallx.utils.webmvc.AbstractManager;
+
+@RequestScoped
+public class ApplicationPermissionManager extends AbstractManager<ApplicationPermission> {
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	public Class<ApplicationPermission> getModelClazz() {
+		return ApplicationPermission.class;
+	}
+
+}

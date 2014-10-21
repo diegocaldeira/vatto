@@ -1,0 +1,71 @@
+10
+
+dir
+319
+https://kallxtechnology.net/svn/kallxit/kx-security/trunk/src/java/net/kallx/security
+https://kallxtechnology.net/svn/kallxit
+
+
+
+2011-06-24T12:03:21.312500Z
+315
+marcos
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+4a8dfb25-51b6-ef4a-83d9-a4bc498b3bdf
+
+SecurityMain.java
+file
+426
+
+
+
+2011-08-15T17:11:53.000000Z
+73819decce10545d724842ee1eb6eb79
+2011-08-11T18:19:09.859375Z
+426
+marcos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+510
+
+control
+dir
+
+model
+dir
+
+service
+dir
+

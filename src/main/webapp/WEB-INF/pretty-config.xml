@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pretty-config xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
+                      http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+
+	<url-mapping id="home">
+		<pattern value="/home" />
+		<view-id value="/index.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="financial">
+		<pattern value="/financial" />
+		<view-id value="/sections/financial/model/dashboard/layout/dashboard-wrapper.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="banking">
+		<pattern value="/banking" />
+		<view-id value="/sections/financial/model/banking/layout/banking-wrapper.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="budget">
+		<pattern value="/budget" />
+		<view-id value="/sections/financial/model/budget/layout/budget-wrapper.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="sales">
+		<pattern value="/sales" />
+		<view-id value="/sections/sales/layout/sale-wrapper.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="contacts">
+		<pattern value="/contacts" />
+		<view-id value="/sections/contact/model/contacts/layout/contact-wrapper.xhtml" />
+	</url-mapping>		
+		
+	<url-mapping id="profile">
+		<pattern value="/profile" />
+		<view-id value="/sections/security/layout/profile-wrapper.xhtml" />
+	</url-mapping>
+	
+</pretty-config>

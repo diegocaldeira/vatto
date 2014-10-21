@@ -1,0 +1,9 @@
+package net.kallx.portalmanager.event;
+
+import net.kallx.portalmanager.model.PortalApplication;
+
+public interface ApplicationLoadingHandler {
+
+	void handleApplicationLoading(PortalApplication application);
+	
+}

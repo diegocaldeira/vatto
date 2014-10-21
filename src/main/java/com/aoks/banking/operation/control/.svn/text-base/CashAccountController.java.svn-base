@@ -1,0 +1,47 @@
+package net.kallx.banking.operation.control;
+
+import javax.enterprise.context.SessionScoped;
+import javax.enterprise.event.Observes;
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import net.kallx.banking.operation.control.bean.CashAccountBean;
+import net.kallx.banking.operation.model.CashAccount;
+import net.kallx.banking.operation.service.CashAccountManager;
+import net.kallx.portalmanager.model.PortalApplication;
+import net.kallx.utils.webmvc.AbstractController;
+import net.kallx.utils.webmvc.AbstractManager;
+import net.kallx.utils.webmvc.GenericFactory;
+
+@Named("cashAccountController")
+@SessionScoped
+public class CashAccountController extends AbstractController<CashAccount, CashAccountBean> {
+
+	private static final long serialVersionUID = 1L;
+
+	@Inject
+	private CashAccountManager manager;
+
+	@Override
+	public AbstractManager<CashAccount> getManager() {
+		return manager;
+	}
+
+	public void listApplicationLoading(@Observes PortalApplication application){
+		if (application.getName().equals("zebra") || application.getName().equals("budget"))
+			beans = updateBeans();
+	}
+	
+	@Override
+	public Class<CashAccountBean> getBeanClazz() {
+		return CashAccountBean.class;
+	}
+
+	@Override
+	public GenericFactory<CashAccount> getFactory() {
+		return null;
+	}
+	
+	
+
+}

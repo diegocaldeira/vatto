@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kallxit/!svn/ver/388/kx-banking/trunk/src/java/net/kallx/banking/operation/control/bean
+END
+OperationEntryBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/kallxit/!svn/ver/396/kx-banking/trunk/src/java/net/kallx/banking/operation/control/bean/OperationEntryBean.java
+END
+InvestmentAccountBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/kallxit/!svn/ver/383/kx-banking/trunk/src/java/net/kallx/banking/operation/control/bean/InvestmentAccountBean.java
+END
+CashAccountBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/kallxit/!svn/ver/401/kx-banking/trunk/src/java/net/kallx/banking/operation/control/bean/CashAccountBean.java
+END
+OperationAccountBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/kallxit/!svn/ver/401/kx-banking/trunk/src/java/net/kallx/banking/operation/control/bean/OperationAccountBean.java
+END
+CreditCardAccountBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/kallxit/!svn/ver/401/kx-banking/trunk/src/java/net/kallx/banking/operation/control/bean/CreditCardAccountBean.java
+END
+SavingsAccountBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/kallxit/!svn/ver/401/kx-banking/trunk/src/java/net/kallx/banking/operation/control/bean/SavingsAccountBean.java
+END
+CheckingAccountBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/kallxit/!svn/ver/401/kx-banking/trunk/src/java/net/kallx/banking/operation/control/bean/CheckingAccountBean.java
+END
+BankAccountBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/kallxit/!svn/ver/394/kx-banking/trunk/src/java/net/kallx/banking/operation/control/bean/BankAccountBean.java
+END

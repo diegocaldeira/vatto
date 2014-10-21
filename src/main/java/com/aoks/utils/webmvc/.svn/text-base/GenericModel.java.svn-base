@@ -1,0 +1,15 @@
+package net.kallx.utils.webmvc;
+
+import java.io.Serializable;
+
+/**
+ * 
+ * @author Marcos Vinicius
+ *
+ */
+public interface GenericModel extends Serializable {
+	
+	long getId();
+	void setId(long id);
+
+}

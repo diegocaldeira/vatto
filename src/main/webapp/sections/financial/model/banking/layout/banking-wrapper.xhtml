@@ -1,0 +1,475 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<h:head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+		
+		<h:outputStylesheet library="css" name="plugins/jquery-polymaps/style.css"/>
+		<h:outputStylesheet library="css" name="plugins/jquery-metrojs/MetroJs.css"/>
+		<h:outputStylesheet library="css" name="plugins/shape-hover/css/demo.css"/>
+		<h:outputStylesheet library="css" name="plugins/shape-hover/css/component.css"/>
+		<h:outputStylesheet library="css" name="plugins/owl-carousel/owl.carousel.css"/>
+		<h:outputStylesheet library="css" name="plugins/owl-carousel/owl.theme.css"/>
+		<h:outputStylesheet library="css" name="plugins/pace/pace-theme-flash.css"/>
+		<h:outputStylesheet library="css" name="plugins/jquery-slider/css/jquery.sidr.light.css"/>
+		<h:outputStylesheet library="css" name="plugins/jquery-ricksaw-chart/css/rickshaw.css"/>
+		<h:outputStylesheet library="css" name="plugins/jquery-isotope/isotope.css"/>
+		<h:outputStylesheet library="css" name="jquery.nestable.css"/>
+		
+		<!-- BEGIN CORE CSS FRAMEWORK -->
+		<h:outputStylesheet library="css" name="plugins/bootstrapv3/css/bootstrap.min.css"/>
+		<h:outputStylesheet library="css" name="plugins/bootstrapv3/css/bootstrap-theme.min.css"/>
+		<h:outputStylesheet library="css" name="plugins/animate.min.css"/>
+		<!-- END CORE CSS FRAMEWORK -->
+
+		<!-- BEGIN CSS TEMPLATE -->
+		<h:outputStylesheet library="css" name="plugins/style.css"/>
+		<h:outputStylesheet library="css" name="plugins/responsive.css"/>
+		<h:outputStylesheet library="css" name="plugins/custom-icon-set.css"/>
+		<h:outputStylesheet library="css" name="plugins/magic_space.css"/>
+		<h:outputStylesheet library="css" name="plugins/tiles_responsive.css"/>
+		
+		<!-- END CSS TEMPLATE -->
+		
+		<h:outputStylesheet library="css" name="select2.css"/>
+		<h:outputStylesheet library="css" name="font.css"/>
+		<h:outputStylesheet library="css" name="css.css"/>
+		<h:outputStylesheet library="css" name="application.css"/>
+		
+		<link rel="stylesheet" href="resources/font-awesome-4.2.0/css/font-awesome.min.css"></link>
+		
+	</h:head>
+	<h:body class="inner-menu-always-close breakpoint-1024 pace-done" rendered="#{sessionController.isLogged()}">
+		<f:event type="javax.faces.event.PreRenderViewEvent" listener="#{applicationScopeBean.preRenderView}"/>
+		
+		<h:form prependId="false">
+			<h:panelGroup layout="block" class="pace  pace-inactive"><h:panelGroup layout="block" class="pace-progress" data-progress-text="100%" data-progress="99" style="width: 100%;">
+			  <h:panelGroup layout="block" class="pace-progress-inner"></h:panelGroup>
+			</h:panelGroup>
+			<h:panelGroup layout="block" class="pace-activity"></h:panelGroup></h:panelGroup>
+			
+			<h:panelGroup layout="block" class="header navbar navbar-inverse ">
+			<!-- header -->
+				<h:panelGroup layout="block" class="navbar-inner">
+				    <h:panelGroup layout="block" class="header-seperation">
+				      <ul class="nav pull-left notifcation-center" id="main-menu-toggle-wrapper" style="display:none">
+				        <li class="dropdown">
+							<a id="main-menu-toggle" href="#main-menu" class="">
+				          		<h:panelGroup layout="block" class="iconset top-menu-toggle-white"></h:panelGroup>
+				          	</a>
+				         </li>
+				      </ul>
+				      <!-- BEGIN LOGO -->
+<!-- 				      <a href="index.html"><img src="resources/img/profiles/logo.png" class="logo" alt="" data-src="resources/img/logo.png" data-src-retina="resources/img/logo2x.png" width="106" height="21"></img></a> -->
+				      <!-- END LOGO -->
+				      <ul class="nav pull-right notifcation-center">
+				        <li class="dropdown" id="header_task_bar">
+				        	<a href="http://www.diegopereira.com.br" class="dropdown-toggle active" data-toggle="">
+				          		<h:panelGroup layout="block" class="iconset top-home"></h:panelGroup>
+				          	</a>
+				        </li>
+				        <!--<li class="dropdown" id="header_inbox_bar">
+				        	<a href="email.html" class="dropdown-toggle">
+				          		<h:panelGroup layout="block" class="iconset top-messages"></h:panelGroup>
+				          		<span class="badge animated bounceIn" id="msgs-badge">2</span>
+				          	</a>
+				        </li>-->
+				        <li class="dropdown" id="portrait-chat-toggler" style="display:none"> <a href="#sidr" class="chat-menu-toggle">
+				          <h:panelGroup layout="block" class="iconset top-chat-white "></h:panelGroup>
+				          </a> </li>
+				      </ul>
+				    </h:panelGroup>
+				    <!-- END RESPONSIVE MENU TOGGLER -->
+				    <h:panelGroup layout="block" class="header-quick-nav">
+						
+						<!-- BEGIN TOP NAVIGATION MENU -->
+						<h:panelGroup layout="block" class="pull-left">
+					        <ul class="nav quick-section">
+					        	<li class="quicklinks">
+					        		<a href="#" class="" id="layout-condensed-toggle">
+					            		<h:panelGroup layout="block" class="iconset top-menu-toggle-dark"></h:panelGroup>
+					            	</a>
+					           </li>
+					        </ul>
+					        <ul class="nav quick-section">
+					        	<li class="quicklinks"><a href="/erp" class=""><h:panelGroup layout="block" class="iconset top-reload"></h:panelGroup></a></li>
+					          	<li class="quicklinks"><span class="h-seperate"></span></li>
+					          	<li class="m-r-10 input-prepend inside search-form no-boarder">
+					          		<span class="add-on"> <span class="iconset top-search"></span></span>
+					            	<input name="" type="text" class="no-boarder " placeholder="Search Dashboard" style="width:250px;"/>
+					          	</li>
+					        </ul>
+				      	</h:panelGroup>
+				      	<!-- END TOP NAVIGATION MENU -->
+				      	
+				     	 <!-- BEGIN CHAT TOGGLER -->
+							<h:panelGroup layout="block" class="pull-right">
+					      		<h:panelGroup layout="block" class="chat-toggler">
+						      		<a href="#" class="dropdown-toggle" id="my-task-list" data-placement="bottom" data-content="" data-toggle="dropdown" data-original-title="Notifications">
+						        		<h:panelGroup layout="block" class="user-details">
+							            	<h:panelGroup layout="block" class="username">  #{sessionController.loggedBean.firstName} <span class="bold">#{sessionController.loggedBean.lastName}</span> </h:panelGroup>
+								        </h:panelGroup>
+<!-- 						    			<h:panelGroup layout="block" class="iconset top-down-arrow"></h:panelGroup> -->
+						          	</a>
+<!-- 						          	<h:panelGroup layout="block" id="notification-list" style="display:none"> -->
+<!-- 						            <h:panelGroup layout="block" style="width:300px"> -->
+<!-- 						            	<h:panelGroup layout="block" class="notification-messages info"> -->
+<!-- 						                	<h:panelGroup layout="block" class="user-profile"> <img src="resources/img/profiles/d.jpg" alt="" data-src="resources/img/profiles/d.jpg" data-src-retina="resources/img/profiles/d2x.jpg" width="35" height="35"> </img></h:panelGroup> -->
+<!-- 						                	<h:panelGroup layout="block" class="message-wrapper"> -->
+<!-- 						                  		<h:panelGroup layout="block" class="heading"> David Nester - Commented on your wall </h:panelGroup> -->
+<!-- 						                  		<h:panelGroup layout="block" class="description"> Meeting postponed to tomorrow </h:panelGroup> -->
+<!-- 						                  		<h:panelGroup layout="block" class="date pull-left"> A min ago </h:panelGroup> -->
+<!-- 						                	</h:panelGroup> -->
+<!-- 						                	<h:panelGroup layout="block" class="clearfix"></h:panelGroup> -->
+<!-- 						              	</h:panelGroup> -->
+						              	
+<!-- 						             	<h:panelGroup layout="block" class="notification-messages danger"> -->
+<!-- 						                	<h:panelGroup layout="block" class="iconholder"> <i class="icon-warning-sign"></i> </h:panelGroup> -->
+<!-- 						                	<h:panelGroup layout="block" class="message-wrapper"> -->
+<!-- 						                  		<h:panelGroup layout="block" class="heading"> Server load limited </h:panelGroup> -->
+<!-- 						                  		<h:panelGroup layout="block" class="description"> Database server has reached its daily capicity </h:panelGroup> -->
+<!-- 						                  		<h:panelGroup layout="block" class="date pull-left"> 2 mins ago </h:panelGroup> -->
+<!-- 						                	</h:panelGroup> -->
+<!-- 						                	<h:panelGroup layout="block" class="clearfix"></h:panelGroup> -->
+<!-- 						              	</h:panelGroup> -->
+						              	
+<!-- 						              	<h:panelGroup layout="block" class="notification-messages success"> -->
+<!-- 						                	<h:panelGroup layout="block" class="user-profile"> <img src="resources/img/profiles/h.jpg" alt="" data-src="resources/img/profiles/h.jpg" data-src-retina="resources/img/profiles/h2x.jpg" width="35" height="35"> </img></h:panelGroup> -->
+<!-- 						                	<h:panelGroup layout="block" class="message-wrapper"> -->
+<!-- 						                  		<h:panelGroup layout="block" class="heading"> You haveve got 150 messages </h:panelGroup> -->
+<!-- 						                  		<h:panelGroup layout="block" class="description"> 150 newly unread messages in your inbox </h:panelGroup> -->
+<!-- 						                  		<h:panelGroup layout="block" class="date pull-left"> An hour ago </h:panelGroup> -->
+<!-- 						                	</h:panelGroup> -->
+<!-- 						                	<h:panelGroup layout="block" class="clearfix"></h:panelGroup> -->
+<!-- 						              	</h:panelGroup> -->
+<!-- 						            </h:panelGroup> -->
+<!-- 						       	</h:panelGroup> -->
+					        
+<!-- 					        	<h:panelGroup layout="block" class="profile-pic"> <img src="resources/img/profiles/avatar.jpg" alt="" data-src="resources/img/profiles/avatar.jpg" data-src-retina="resources/img/profiles/avatar2x.jpg" width="35" height="35"> </img></h:panelGroup> -->
+					        	
+					        </h:panelGroup>
+					     
+						     <ul class="nav quick-section ">
+						     	<li class="quicklinks">
+						     		<a data-toggle="dropdown" class="dropdown-toggle  pull-right " href="#" id="user-options">
+						        		<h:panelGroup layout="block" class="iconset top-settings-dark "></h:panelGroup>
+						            </a>
+						            <ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="user-options">
+						            	<li><p:commandLink value="#{message.module_profile}" update="@all" actionListener="#{appMenu.load('PROFILE-WRAPPER')}"  style="border: 0 !important;"/></li>
+						            	<li class="divider"></li>
+						            	<li><h:commandLink value="#{message.general_logout}" styleClass="btn btn-sm" update="@all" action="#{sessionController.attemptLogout}"/></li>
+						            </ul>
+						       	</li>
+						        <li class="quicklinks"> <span class="h-seperate"></span></li>
+						        <li class="quicklinks">
+						        	<a id="chat-menu-toggle" href="#sidr" class="chat-menu-toggle">
+							        	<h:panelGroup layout="block" class="iconset top-chat-dark "><span class="badge badge-important animated bounceIn" id="chat-message-count">1</span></h:panelGroup>
+						            </a>
+						            <h:panelGroup layout="block" class="simple-chat-popup chat-menu-toggle hide animated fadeOut">
+						            	<h:panelGroup layout="block" class="simple-chat-popup-arrow"></h:panelGroup>
+						              	<h:panelGroup layout="block" class="simple-chat-popup-inner">
+							                <h:panelGroup layout="block" style="width:100px">
+						                		<h:panelGroup layout="block" class="semi-bold"></h:panelGroup>
+						                  		<h:panelGroup layout="block" class="message"></h:panelGroup>
+						                	</h:panelGroup>
+						              	</h:panelGroup>
+						            </h:panelGroup>
+						        </li>
+							</ul>
+						</h:panelGroup>
+					<!-- END CHAT TOGGLER -->
+					</h:panelGroup>
+				<!-- END TOP NAVIGATION MENU -->
+			</h:panelGroup>
+		</h:panelGroup>
+		<!-- / header -->
+		
+		
+		<h:panelGroup layout="block" class="page-container row-fluid">
+	  		<!-- BEGIN SIDEBAR -->
+			<h:panelGroup layout="block" class="page-sidebar" id="main-menu">
+<!-- 	 			BEGIN MINI-PROFILE -->
+	    		<h:panelGroup layout="block" class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: auto;">
+	    			<h:panelGroup layout="block" class="page-sidebar-wrapper" id="main-menu-wrapper" style="overflow: hidden; width: auto; height: auto;">
+						<h:panelGroup layout="block" class="user-info-wrapper">
+        					<h:panelGroup layout="block" class="profile-wrapper"><p:graphicImage width="69" height="69" value="#{sessionController.loggedBean.picture}"/></h:panelGroup>
+        					<h:panelGroup layout="block" class="user-info">
+						       	<h:panelGroup layout="block" class="greeting">Bem vindo,</h:panelGroup>
+						       	<h:panelGroup layout="block" class="username"><span class="semi-bold">#{sessionController.loggedBean.firstName}</span></h:panelGroup>
+						      	<h:panelGroup layout="block" class="status" style="margin-bottom: 40px;"><h:panelGroup layout="block" class="green"></h:panelGroup></h:panelGroup>
+						    </h:panelGroup>
+				      	</h:panelGroup>
+<!-- 	     	 			END MINI-PROFILE -->
+<!-- 	      				BEGIN SIDEBAR MENU -->
+<!-- 	      				<p class="menu-title">BROWSE <span class="pull-right"><a href="javascript:;"><i class="fa fa-refresh"></i></a></span></p> -->
+	      				
+	      				<ul>
+	      					<li>
+	      						<a href="dashboard" title="#{message.general_dashboard}"><i class="fa fa-dashboard"></i> <span class="title">#{message.general_dashboard}</span></a>
+	      					</li>
+	      					<li class="active open">
+	      						<a href="javascript:;" title="#{message.module_financial}"><i class="fa fa-dollar"></i><span class="title">#{message.module_financial}</span></a>
+					        	<ul class="sub-menu" style="overflow: hidden; display: none;">
+					            	<li class=""> 		<a href="financial">	<i class="fa fa-dashboard"></i> 	<span class="title">#{message.general_dashboard}</span></a></li>
+					            	<li class="active"> <a href="banking"> 		<i class="fa fa-credit-card"></i> 	<span class="title">#{message.module_banking_menu}</span></a></li>
+					            	<li class=""> 		<a href="budget">		<i class="fa fa-exchange"></i> 		<span class="title">#{message.module_budget_menu}</span></a></li>
+					            </ul>
+					        </li>
+					        <li class="">
+					        	<a href="sales" title="#{message.module_sales}"> <i class="fa fa-shopping-cart"></i> <span class="title">#{message.module_sales}</span></a>
+					        </li>
+					        <li class="">
+					        	<a href="contacts" title="#{message.module_contacts}"><i class="fa fa-group"></i> <span class="title">#{message.module_contacts}</span></a>
+					        </li>
+					         <li class="">
+					         	<a href="profile" title="#{message.module_profile}"><i class="fa fa-cog"></i> <span class="title">#{message.module_profile}</span></a>
+					        	<!-- <h:commandLink value="#{message.module_profile}" actionListener="#{applicationMenuController.loadModule('PROFILE-WRAPPER')}" action="#{userController.clean()}" style="border: 0 !important;"/> -->
+					        </li>
+	      				</ul>
+	      				
+	      				<h:panelGroup layout="block" class="clearfix"></h:panelGroup>
+<!-- 	      				END SIDEBAR MENU -->
+	    			</h:panelGroup>
+	    
+					<h:panelGroup layout="block" class="slimScrollBar" style="width: 4px; position: absolute; top: -24px; opacity: 0.4; display: block; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; right: 1px; height: 54.42304147465438px; background: rgb(161, 178, 189);"></h:panelGroup>
+					<h:panelGroup layout="block" class="slimScrollRail" style="width: 4px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></h:panelGroup>
+				</h:panelGroup>
+			</h:panelGroup>
+
+			<!--
+			<h:panelGroup layout="block" class="footer-widget">
+				<h:panelGroup layout="block" class="progress transparent progress-small no-radius no-margin">
+			    	<h:panelGroup layout="block" data-percentage="79%" class="progress-bar progress-bar-success animate-progress-bar" style="width: 79%;"></h:panelGroup>
+			    </h:panelGroup>
+			    <h:panelGroup layout="block" class="pull-right">
+			    	<h:panelGroup layout="block" class="details-status"> <span data-animation-duration="560" data-value="86" class="animate-number">86</span>% </h:panelGroup>
+				<a href="lockscreen.html"><i class="fa fa-power-off"></i></a></h:panelGroup>
+			</h:panelGroup>
+			-->
+ 			 <!-- END SIDEBAR -->
+  
+	 		<!-- BEGIN PAGE CONTAINER-->
+			<h:panelGroup layout="block" class="page-content">
+			    
+				<!--
+				<h:panelGroup layout="block" id="portlet-config" class="modal hide">
+			    	<h:panelGroup layout="block" class="modal-header">
+			        	<button data-dismiss="modal" class="close" type="button"></button>
+			        	<h3>Widget Settings</h3>
+			      	</h:panelGroup>
+			      	<h:panelGroup layout="block" class="modal-body"> Widget settings form goes here </h:panelGroup>
+			    </h:panelGroup>
+		    	-->
+		    	<h:panelGroup layout="block" class="clearfix"></h:panelGroup>
+		    	
+		    		<!-- body -->
+					<section id="content" class="content main bg-white">
+						<ul class="breadcrumb" style="position: fixed; width: 100%; z-index: 999;">
+							<li><p>#{message.module_banking_menu}</p></li>
+						   	<li>
+						   		<p:commandLink value="#{message.module_menu_banking_and_unit}" 			actionListener="#{bankingMenuController.load('BANK-UNIT')}" 		rendered="#{bankingMenuController.isLoaded('BANK-UNIT')}" 			styleClass="active" update="@form" style="border-radius: 0 !important;"/>
+								<p:commandLink value="#{message.module_menu_banking_checking_account}" 	actionListener="#{bankingMenuController.load('CHECKING-ACCOUNT')}"  rendered="#{bankingMenuController.isLoaded('CHECKING-ACCOUNT')}"  	styleClass="active" update="@form" style="border-radius: 0 !important;"/>
+								<p:commandLink value="#{message.module_menu_banking_credit_account}"	actionListener="#{bankingMenuController.load('CREDIT-ACCOUNT')}" 	rendered="#{bankingMenuController.isLoaded('CREDIT-ACCOUNT')}" 		styleClass="active" update="@form" style="border-radius: 0 !important;"/>
+								<p:commandLink value="#{message.module_menu_banking_savings_account}" 	actionListener="#{bankingMenuController.load('SAVINGS-ACCOUNT')}"  	rendered="#{bankingMenuController.isLoaded('SAVINGS-ACCOUNT')}" 	styleClass="active" update="@form" style="border-radius: 0 !important;"/>
+								<p:commandLink value="#{message.module_menu_banking_cash_account}" 		actionListener="#{bankingMenuController.load('CASH-ACCOUNT')}" 		rendered="#{bankingMenuController.isLoaded('CASH-ACCOUNT')}" 		styleClass="active" update="@form" style="border-radius: 0 !important;"/>
+								<p:commandLink value="#{message.module_menu_banking_payee}" 			actionListener="#{bankingMenuController.load('PAYEE')}" 			rendered="#{bankingMenuController.isLoaded('PAYEE')}" 				styleClass="active" update="@form" style="border-radius: 0 !important;"/>
+							</li>
+						</ul>
+						
+						<h:panelGroup layout="block" id="banking-menu-wrapper" class="row-fluid">
+					     	
+							<h:panelGroup layout="block" style="width: 13.666667%; padding-left: 0 !important; position: fixed; z-index: 999; margin-top: 40px;">
+								<h:panelGroup layout="block" styleClass="list-group list-normal m-b-none"> 
+									<p:commandLink value="#{message.module_menu_banking_and_unit}" 			actionListener="#{bankingMenuController.load('BANK-UNIT')}"  		disabled="#{bankingMenuController.create}" styleClass="list-group-item #{bankingMenuController.isLoaded('BANK-UNIT')  		? 'menu-active' : ''}" update="@form" />
+									<p:commandLink value="#{message.module_menu_banking_checking_account}" 	actionListener="#{bankingMenuController.load('CHECKING-ACCOUNT')}"  disabled="#{bankingMenuController.create}" styleClass="list-group-item #{bankingMenuController.isLoaded('CHECKING-ACCOUNT') ? 'menu-active' : ''}" update="@form" />
+									<p:commandLink value="#{message.module_menu_banking_credit_account}"	actionListener="#{bankingMenuController.load('CREDIT-ACCOUNT')}" 	disabled="#{bankingMenuController.create}" styleClass="list-group-item #{bankingMenuController.isLoaded('CREDIT-ACCOUNT') 	? 'menu-active' : ''}" update="@form" />
+									<p:commandLink value="#{message.module_menu_banking_savings_account}" 	actionListener="#{bankingMenuController.load('SAVINGS-ACCOUNT')}" 	disabled="#{bankingMenuController.create}" styleClass="list-group-item #{bankingMenuController.isLoaded('SAVINGS-ACCOUNT') 	? 'menu-active' : ''}" update="@form" />
+									<p:commandLink value="#{message.module_menu_banking_cash_account}" 		actionListener="#{bankingMenuController.load('CASH-ACCOUNT')}"  	disabled="#{bankingMenuController.create}" styleClass="list-group-item #{bankingMenuController.isLoaded('CASH-ACCOUNT')		? 'menu-active' : ''}" update="@form" />
+									<p:commandLink value="#{message.module_menu_banking_payee}" 			actionListener="#{bankingMenuController.load('PAYEE')}" 			disabled="#{bankingMenuController.create}" styleClass="list-group-item #{bankingMenuController.isLoaded('PAYEE-ACCOUNT') 	? 'menu-active' : ''}" update="@form" />
+								</h:panelGroup>
+							</h:panelGroup>
+							
+							<h:panelGroup layout="block" class="col-lg-10" style="margin-left: 18.666667%;">
+								<h:panelGroup layout="block" id="banking-menuBody" styleClass="col-lg-12 b-a b-grey" style="background: #FFF; margin-top: 40px; max-height: auto; min-height: 70%; border-radius: 4px;">
+									
+									<h:panelGroup layout="block">
+										
+										<h:panelGroup layout="block" rendered="#{bankingMenuController.isLoaded('BANK-UNIT') || contactMenuController.isNull()}">
+								        	<ui:fragment rendered="#{!bankController.has()}"><ui:include src="../model/bank/list.xhtml"/></ui:fragment>
+								        	<ui:fragment rendered="#{bankController.has()}"><ui:include src="../model/bank/form.xhtml"/></ui:fragment>
+						       			</h:panelGroup>
+									
+										<h:panelGroup layout="block" rendered="#{bankingMenuController.isLoaded('CHECKING-ACCOUNT')}">
+								        	<ui:fragment rendered="#{!checkingAccountController.has()}"><ui:include src="../model/checking-account/list.xhtml"/></ui:fragment>
+								        	<ui:fragment rendered="#{checkingAccountController.has()}"><ui:include src="../model/checking-account/form.xhtml"/></ui:fragment>
+						       			</h:panelGroup>
+						       			
+						       			<h:panelGroup layout="block" rendered="#{bankingMenuController.isLoaded('CREDIT-ACCOUNT')}">
+								        	<ui:fragment rendered="#{!creditCardAccountController.has()}"><ui:include src="../model/credit-account/list.xhtml"/></ui:fragment>
+								        	<ui:fragment rendered="#{creditCardAccountController.has()}"><ui:include src="../model/credit-account/form.xhtml"/></ui:fragment>
+						       			</h:panelGroup>
+						       			
+						       			<h:panelGroup layout="block" rendered="#{bankingMenuController.isLoaded('SAVINGS-ACCOUNT')}">
+								        	<ui:fragment rendered="#{!savingsAccountController.has()}"><ui:include src="../model/savings-account/list.xhtml"/></ui:fragment>
+								        	<ui:fragment rendered="#{savingsAccountController.has()}"><ui:include src="../model/savings-account/form.xhtml"/></ui:fragment>
+						       			</h:panelGroup>
+						       			
+						       			<h:panelGroup layout="block" rendered="#{bankingMenuController.isLoaded('CASH-ACCOUNT')}">
+								        	<ui:fragment rendered="#{!cashAccountController.has()}"><ui:include src="../model/cash-account/list.xhtml"/></ui:fragment>
+								        	<ui:fragment rendered="#{cashAccountController.has()}"><ui:include src="../model/cash-account/form.xhtml"/></ui:fragment>
+						       			</h:panelGroup>
+						       			
+						       			<h:panelGroup layout="block" rendered="#{bankingMenuController.isLoaded('PAYEE')}">
+								        	<ui:fragment rendered="#{!partyController.has()}"><ui:include src="../../../../enterprise/enterprise/model/payee/list.xhtml"/></ui:fragment>
+								        	<ui:fragment rendered="#{partyController.has()}"><ui:include src="../../../../enterprise/enterprise/model/payee/form.xhtml"/></ui:fragment>
+						       			</h:panelGroup>
+						       			
+					       			</h:panelGroup>
+								</h:panelGroup>
+							</h:panelGroup>
+						</h:panelGroup>
+		
+					</section>
+					<!-- / body -->
+			
+				</h:panelGroup>
+		  
+		</h:panelGroup>
+		
+
+			<!-- footer <footer id="footer"><h:panelGroup layout="block" class="text-center padder clearfix"></h:panelGroup></footer> / footer -->
+		</h:form>
+		
+			
+	
+	<!-- BEGIN CORE JS FRAMEWORK-->
+    
+	<!-- [if lt IE 9]> -->
+	<!-- <script src="assets/plugins/respond.js"></script> -->
+	<!-- <![endif]-->
+	<h:outputScript library="script" name="plugins/bootstrap/js/bootstrap.min.js"/>
+	<h:outputScript library="script" name="plugins/breakpoints.js"/>
+	<h:outputScript library="script" name="plugins/jquery-unveil/jquery.unveil.min.js"/>
+	<h:outputScript library="script" name="plugins/jquery-block-ui/jqueryblockui.js"/>
+	<h:outputScript library="script" name="plugins/jquery-lazyload/jquery.lazyload.min.js"/>
+	<!-- END CORE JS FRAMEWORK -->
+	
+	<!-- BEGIN PAGE LEVEL JS -->
+	<h:outputScript library="script" name="plugins/jquery-slider/jquery.sidr.min.js"/>
+	<h:outputScript library="script" name="plugins/jquery-slimscroll/jquery.slimscroll.min.js"/>
+	<h:outputScript library="script" name="plugins/webarchScroll.js"/>
+	
+	<h:outputScript library="script" name="plugins/pace/pace.min.js"/>
+	<h:outputScript library="script" name="plugins/jquery-numberAnimate/jquery.animateNumbers.js"/>
+	<h:outputScript library="script" name="plugins/jquery-ricksaw-chart/js/raphael-min.js"/>
+	<h:outputScript library="script" name="plugins/jquery-ricksaw-chart/js/d3.v2.js"/>
+<!-- 	<h:outputScript library="script" name="plugins/jquery-ricksaw-chart/js/rickshaw.min.js"/> -->
+	<h:outputScript library="script" name="plugins/jquery-sparkline/jquery-sparkline.js"/>
+	<h:outputScript library="script" name="plugins/skycons/skycons.js"/>
+	<h:outputScript library="script" name="plugins/owl-carousel/owl.carousel.min.js"/>
+	<h:outputScript library="script" name="plugins/jquery-polymaps/polymaps.min.js"/>
+<!-- 	<h:outputScript library="script" name="plugins/jquery-flot/jquery.flot.js"/> -->
+<!-- 	<h:outputScript library="script" name="plugins/jquery-flot/jquery.flot.resize.min.js"/> -->
+	<h:outputScript library="script" name="plugins/jquery-metrojs/MetroJs.min.js"/>
+	<!-- END PAGE LEVEL PLUGINS -->
+	
+	<!-- BEGIN CORE TEMPLATE JS -->
+	<h:outputScript library="script" name="core.js"/>
+<!-- 	<h:outputScript library="script" name="chat.js"/> -->
+	<h:outputScript library="script" name="demo.js"/>
+<!-- 	<h:outputScript library="script" name="dashboard_v2.js"/> -->
+	
+	<script type="text/javascript">
+	        $(document).ready(function () {
+	            $(".live-tile,.flip-list").liveTile();
+	        });
+	</script>
+	<!-- END CORE TEMPLATE JS -->
+			
+	</h:body>
+	
+	<h:body class="error-body no-top lazy" data-original="resources/img/login/bg-7.png" rendered="#{not sessionController.isLogged()}" style="background-image: url('resources/img/login/bg-7.png')">
+		
+		<h:panelGroup layout="block" class="container">
+			<h:panelGroup layout="block" class="row login-container animated fadeInUp">
+				<h:panelGroup layout="block" class="col-md-7 col-md-offset-2 tiles white no-padding">
+					<h:panelGroup layout="block" class="p-t-30 p-l-40 p-b-20 xs-p-t-10 xs-p-l-10 xs-p-b-10">
+						<h2 class="normal">XINGLING</h2>
+						<p class="p-b-20">Cadastre-se! <br/>Tenha controle sobre suas financas, e gratis e sempre sera..</p>
+						<button class="btn btn-primary btn-cons" id="login_toggle">#{message.general_login}</button> ou  <button class="btn btn-info btn-cons" id="register_toggle">#{message.general_create_an_account}</button>
+					</h:panelGroup>
+					<h:panelGroup layout="block" class="tiles grey p-t-20 p-b-20 text-black">
+						
+						<h:form id="banking_login" class="animated fadeIn" method="post" action="/app">
+							<h:panelGroup layout="block" class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
+								<p:messages severity="warn" />
+								<h:panelGroup layout="block" class="col-md-5 col-sm-5 ">
+									<p:inputText id="login_username" value="#{sessionController.credentials.username}" styleClass="form-control" size="50" maxlength="50" required="true" placeholder="#{message.model_username}"/>
+								</h:panelGroup>
+								<h:panelGroup layout="block" class="col-md-5 col-sm-5">
+									<p:password id="login_pass" value="#{sessionController.credentials.password}" styleClass="form-control" feedback="false" required="true" placeholder="#{message.model_password}"/>
+								</h:panelGroup>
+								<h:panelGroup layout="block" class="col-md-2 col-sm-2">
+									<h:commandButton value="#{message.general_login}" styleClass="btn btn-sm btn-primary" update="@all" style="padding: 4px 17px;" action="#{sessionController.attemptLogin}"/>
+								</h:panelGroup>
+							</h:panelGroup>
+							<h:panelGroup layout="block" class="row p-t-10 m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
+								<h:panelGroup layout="block" class="control-group  col-md-10">
+									<h:panelGroup layout="block" class="checkbox checkbox check-success"> <a href="#">Problemas para acessar?</a>
+										<input type="checkbox" id="checkbox1" value="1"/>
+										<label for="checkbox1">Manter logado </label>
+									</h:panelGroup>
+								</h:panelGroup>
+							</h:panelGroup>
+						</h:form>
+						<h:form id="banking_register" styleClass="animated fadeIn" style="display:none">
+							<f:event type="javax.faces.event.PreRenderComponentEvent" listener="#{userController.create}"/>
+							
+							<h:panelGroup layout="block" rendered="#{userController.has()}">
+								<h:panelGroup layout="block" class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
+									<h:panelGroup layout="block" class="col-md-6 col-sm-6">
+										<p:inputText id="reg_username" value="#{userController.bean.username}" styleClass="form-control" size="50" maxlength="50" placeholder="#{message.model_username}"/>
+									</h:panelGroup>
+									<h:panelGroup layout="block" class="col-md-6 col-sm-6">
+										<p:password id="reg_pass" value="#{userController.bean.password}" styleClass="form-control" feedback="false" placeholder="#{message.model_password}"/>
+									</h:panelGroup>
+								</h:panelGroup>
+								<h:panelGroup layout="block" class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
+									<h:panelGroup layout="block" class="col-md-12">
+										<p:inputText id="reg_email" value="#{userController.bean.email.address}" size="50" maxlength="50" styleClass="form-control" converter="#{emailInfoConverter}" placeholder="#{message.model_email}"/>
+									</h:panelGroup>
+								</h:panelGroup>
+								<h:panelGroup layout="block" class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
+									<h:panelGroup layout="block" class="col-md-6 col-sm-6">
+										<p:inputText id="reg_first_Name" value="#{userController.bean.firstName}" size="50" maxlength="50" styleClass="form-control" placeholder="#{message.model_name}"/>
+									</h:panelGroup>
+									<h:panelGroup layout="block" class="col-md-6 col-sm-6">
+										<p:inputText id="reg_last_Name" value="#{userController.bean.lastName}" size="50" maxlength="50" styleClass="form-control" placeholder="#{message.model_lastname}"/>
+									</h:panelGroup>
+								</h:panelGroup>
+								<h:panelGroup layout="block" class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
+									<h:panelGroup layout="block" class="col-md-12 ">
+										<p:inputText id="reg_confirm_email" value="#{userController.bean.email.address}" size="50" maxlength="50" styleClass="form-control" placeholder="#{message.general_email_confirmation}"/>
+									</h:panelGroup>
+								</h:panelGroup>
+							</h:panelGroup>
+							
+							<h:commandButton type="push" value="Salvar" actionListener="#{userController.save}" update="@all" styleClass="btn btn-primary btn-cons pull-right" style="margin-right: 5%;"/>
+						</h:form>
+					</h:panelGroup>
+				</h:panelGroup>
+			</h:panelGroup>
+		</h:panelGroup>
+			 
+		<h:outputScript library="script" name="plugins/bootstrap/js/bootstrap.min.js"/>
+		<h:outputScript library="script" name="plugins/pace/pace.min.js"/>
+		<h:outputScript library="script" name="plugins/jquery-lazyload/jquery.lazyload.min.js"/>
+		<h:outputScript library="script" name="login_v2.js"/>
+		<h:outputScript library="script" name="jquery.validate.min.js"/>
+	</h:body>
+	
+</h:html>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<h:panelGroup layout="block" rendered="#{costumerController.has()}" style="width: 100%; float: left;">
+		<h:panelGroup layout="block" styleClass="action-datatable" style="width: 100%; float: right;">
+			<p:commandButton value="Salvar"   type="push" actionListener="#{costumerController.save}"  			update="tab-view-body"/>
+			<p:commandButton value="Cancelar" action="#{registerController.setCreateOrEdit(true)}"  actionListener="#{costumerController.clean}" update=":container-form" immediate="true"/>
+		</h:panelGroup>
+		
+		<p:panel id="costumer-form-base" style="width: 100%; float: left;">  
+            <p:panel header="Dados Gerais" style="width: 450px; float: left;">  
+				<h:panelGrid columns="2" cellpading="8" styleClass="content-menuBody-form-grid">
+				
+					<h:outputLabel value="Area de Atuação: " />  
+			        <p:selectOneMenu value="#{costumerController.bean.register.areaActuation}" style="width: 155px;">  
+			            <f:selectItem itemLabel="Selecione" itemValue="" />  
+			            <f:selectItems value="#{costumerController.bean.register.areaActuationList()}" var="areaActuation" itemLabel="#{areaActuation.areaActuation}" itemValue="#{areaActuation}"/>  
+			        </p:selectOneMenu>  
+				
+					<h:outputLabel value="Nome: "/>
+					<p:inputText value="#{costumerController.bean.name}" required="true" size="50" maxlength="50"/>
+					
+					<h:outputLabel value="CNPJ: "/>
+					<p:inputMask value="#{costumerController.bean.register.cnpj}" required="true" mask="99.999.999/9999-99" size="20" maxlength="20" style="width: 170px;"/>
+											
+					<h:outputLabel value="Inscrição Estadual: "/>
+					<p:inputText value="#{costumerController.bean.register.inscrEstadual}" size="20" maxlength="20" style="width: 170px;"/>
+					
+					<h:outputLabel value="Inscrição Municipal: "/>
+					<p:inputText value="#{costumerController.bean.register.inscrMunicipal}" size="20" maxlength="20" style="width: 170px;"/>
+
+					<h:outputLabel value="Telefone"/>
+					<p:inputMask value="#{costumerController.bean.register.phone.phoneNumber}" required="true" mask="(99) 9999-9999" size="15" maxlength="15" style="width: 170px;"/>
+					
+					<h:outputLabel value="Site: "/>
+					<p:inputText value="#{costumerController.bean.register.site}" size="50" maxlength="50" style="width: 170px;"/>
+					
+				</h:panelGrid>
+			</p:panel>
+			
+			<p:panel id="costumer-address-table-base" header="Endereços" style="width: 520px; margin-left: 15px; float: left;" rendered="#{!legalAddressController.has()}">	
+				<p:dataTable value="#{costumerController.bean.register.addresses}" var="dtt" style="float: right;">
+					<p:column headerText="Cidade" 	 style="width:140px"><h:outputText value="#{dtt.city}"/></p:column>
+					<p:column headerText="Rua"		 style="width:190px"><h:outputText value="#{dtt.street}"/></p:column>
+					<p:column headerText="Categoria" style="width:110px"><h:outputText value="#{dtt.categoriesResume}"/></p:column>
+					
+					<p:column style="width:15px">
+						<p:commandLink update="@form">
+							<p:graphicImage value="resources/img/edit.png" height="12" width="12" />
+							<f:setPropertyActionListener value="#{dtt}" target="#{legalAddressController.bean}" />
+						</p:commandLink>
+					</p:column>
+					<p:column style="width:15px">
+						<p:commandLink oncomplete="confirmationAddress.show();">
+							<p:graphicImage value="resources/img/remove.png" height="12" width="12" />
+							<f:setPropertyActionListener value="#{dtt}" target="#{legalAddressController.bean}" />
+						</p:commandLink>
+					</p:column>
+				</p:dataTable>
+				
+				<p:confirmDialog message="Você tem certeza que deseja desativar este endereço?" header="Confirmação de exclusão" severity="alert" widgetVar="confirmationAddress">  
+			        <p:commandButton value="Sim, tenho certeza" update="costumer-address-table-base" oncomplete="confirmationAddress.hide()" actionListener="#{legalAddressController.delete}"/>  
+			        <p:commandButton value="Não" onclick="confirmationAddress.hide()" type="button"/>   
+			    </p:confirmDialog>
+				
+				<p:commandLink style="margin: 3px; background: white;" action="#{legalAddressController.create}" immediate="true" update="costumer-form-base">
+					<p:graphicImage value="resources/img/new.png" height="15" width="15" />
+					<f:setPropertyActionListener value="#{costumerController.bean.register}" target="#{legalAddressController.register}"/>
+				</p:commandLink>
+				
+			</p:panel>
+			
+			<p:panel layout="block" id="costumer-address-form-base" header="Cadastro de Endereço" style="width: 520px; margin-left: 15px; float: left;" rendered="#{legalAddressController.has()}"> 	
+				<h:panelGrid columns="2" rendered="#{legalAddressController.has()}">
+					<h:outputLabel value="Categoria: "/>
+					<p:selectManyCheckbox value="#{legalAddressController.bean.categories}" converter="categoryConverter" style="width: auto;">
+						<f:selectItems value="#{categoryDimensionController.getCategoriesFromDimension('Endereços')}" var="cat" itemValue="#{cat}" itemLabel="#{cat.name}"/>
+					</p:selectManyCheckbox>
+				
+					<h:outputLabel value="CEP: "/>
+					<p:inputMask value="#{legalAddressController.bean.zipCode}" required="true" mask="99999-999" size="10" maxlength="10"/>
+					
+					<h:outputLabel value="Logradouro: "/>
+					<p:inputText value="#{legalAddressController.bean.street}" required="true" size="60" maxlength="60"/>
+					
+					<h:outputLabel value="Número: "/>
+					<p:inputText value="#{legalAddressController.bean.number}" required="true" size="25" maxlength="25"/>
+					
+					<h:outputLabel value="Complemento: "/>
+					<p:inputText value="#{legalAddressController.bean.completion}" size="25" maxlength="25"/>
+					
+					<h:outputLabel value="Bairro: "/>
+					<p:inputText value="#{legalAddressController.bean.neighborhood}" size="60" maxlength="60"/>
+					
+					<h:outputLabel value="Cidade: "/>
+					<p:inputText value="#{legalAddressController.bean.city}" size="60" required="true" maxlength="60"/>
+					
+					<h:outputLabel value="Estado: "/>
+					<p:inputText value="#{legalAddressController.bean.state}" size="60" required="true" maxlength="60"/>
+				</h:panelGrid>
+				<h:panelGroup layout="block" styleClass="action-datatable" style="width: 70%; margin-top: 40px; margin-left: 31%; float: left;">
+					<p:commandLink style="margin: 3px; background: white; border: 1px solid #ddd; padding: 5px 10px;" actionListener="#{legalAddressController.addRegister}" update="costumer-form-base">
+						<h:outputText value="Adicionar"/>
+					</p:commandLink>
+					<p:commandLink style="margin: 3px; background: white; border: 1px solid #ddd; padding: 5px 10px;" actionListener="#{legalAddressController.clean}" immediate="true" update="costumer-form-base">
+						<h:outputText value="Cancelar"/>
+					</p:commandLink>
+				</h:panelGroup>
+			</p:panel>
+			
+			<p:panel header="Contatos" style="width: 520px; margin-left: 15px; float: left;" rendered="#{costumerController.has()}">
+				
+				<p:dataTable var="cts" value="#{costumerController.bean.register.contacts}">
+				  	<p:column headerText="Nome"><h:outputText value="#{cts.firstName}"/></p:column>
+				  	<p:column headerText="Sobrenome"><h:outputText value="#{cts.lastName}"/></p:column>
+				  	<p:column headerText="Categoria"><h:outputText value="#{cts.categoriesResume}"/></p:column>
+					<p:column style="width:15px">
+						<p:commandLink update="tab-view-body">
+							<p:graphicImage value="resources/img/edit.png" height="12" width="12" />
+							<f:setPropertyActionListener value="#{costumerController.bean.register}" target="#{contactController.register}"/>
+							<f:setPropertyActionListener value="#{cts}" target="#{contactController.bean}" />
+						</p:commandLink>
+					</p:column>
+					<p:column style="width:15px">
+						<p:commandLink oncomplete="confirmationContact.show();">
+							<p:graphicImage value="resources/img/remove.png" height="12" width="12" />
+							<f:setPropertyActionListener value="#{cts}" target="#{contactController.bean}" />
+						</p:commandLink>
+					</p:column>
+				</p:dataTable>
+										
+				<p:confirmDialog message="Você tem certeza que deseja desativar este contato?" header="Confirmação de exclusão" severity="alert" widgetVar="confirmationContact">  
+			        <p:commandButton value="Sim, tenho certeza" update="content-wrapper" oncomplete="confirmationContact.hide()" actionListener="#{contactController.delete}"/>  
+			        <p:commandButton value="Não" onclick="confirmationContact.hide()" type="button"/>   
+			    </p:confirmDialog>
+				
+				<p:commandLink onclick="contactDialog.show();">
+					<p:graphicImage value="resources/img/new.png" height="12" width="12" />
+				</p:commandLink>
+			
+			</p:panel>
+			
+		</p:panel>
+	</h:panelGroup>
+</ui:composition>

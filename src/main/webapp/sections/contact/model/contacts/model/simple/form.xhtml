@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+    <!-- HEADER_TITLE -->
+	<h:panelGroup layout="block" styleClass="padder clearfix m-b-small b-b"> 
+		<h4 class="m-b m-t m-l"><span class="semi-bold"> <i class="icon-edit"> </i> <h:outputText value="#{message.model_title_simple}"/></span></h4>
+	</h:panelGroup>
+	<!-- / HEADER_TITLE -->
+	
+	<!-- CONTENT_BODY -->
+	<h:panelGroup styleClass="m-t" layout="block" rendered="#{individualPartnerController.has()}" >
+
+		<ui:decorate template="/sections/layout/templates/partner/model/form.xhtml">
+			<ui:param name="form" 		value="simples" />
+			<ui:param name="controller" value="#{individualPartnerController}" />
+			
+			<ui:define name="address">
+				<h:panelGroup layout="block" id="simples-address-wrapper">
+					<ui:decorate template="/sections/layout/templates/partner/address/list.xhtml">
+						<ui:param name="table" 				value="simples" />
+						<ui:param name="registerBean" 		value="#{individualPartnerController.bean.register}" />
+						<ui:param name="controller" 		value="#{individualPartnerController}" />
+						<ui:param name="addressController"  value="#{individualAddressController}" />
+						
+						<p:ajax event="rowSelect" 	listener="#{individualAddressController.onRowSelect}"   update="@form"/>  
+				        <p:ajax event="rowUnselect" listener="#{individualAddressController.onRowUnselect}" update="@form"/>
+					</ui:decorate>
+					
+					<ui:decorate template="/sections/layout/templates/partner/address/form.xhtml">
+						<ui:param name="form" 				value="simples" />
+						<ui:param name="addressController"  value="#{individualAddressController}" />
+					</ui:decorate>
+				</h:panelGroup>	
+			</ui:define>
+			
+		</ui:decorate>
+	</h:panelGroup>
+	<!-- / CONTENT_BODY -->
+							
+</ui:composition>

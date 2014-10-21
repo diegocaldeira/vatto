@@ -1,0 +1,63 @@
+package net.kallx.banking.operation.control;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import net.kallx.banking.operation.control.bean.CheckingAccountBean;
+import net.kallx.banking.operation.control.bean.CreditCardAccountBean;
+import net.kallx.banking.operation.control.bean.OperationAccountBean;
+
+@Named("accountController")
+@SessionScoped
+public class AccountController implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	@Inject
+	private CheckingAccountController caController;
+	
+	@Inject
+	private CreditCardAccountController ccControler;
+
+	private List<OperationAccountBean<?>> accounts;
+	
+	private void loadAccounts(){
+		accounts = new ArrayList<OperationAccountBean<?>>();
+		List<CheckingAccountBean> beans = caController.getBeans();
+		for (CheckingAccountBean cab : beans) {
+			accounts.add(cab);
+		}
+		List<CreditCardAccountBean> beans2 = ccControler.getBeans();
+		for (CreditCardAccountBean ccb : beans2) {
+			accounts.add(ccb);
+		}
+	}
+	
+	public List<OperationAccountBean<?>> getAccounts() {
+		if (accounts == null)
+			loadAccounts();
+		return accounts;
+	}
+	
+	
+	public List<OperationAccountBean<?>> getAccountsAC(String query){
+		
+		if (accounts == null)
+			loadAccounts();
+		
+		List<OperationAccountBean<?>> suggestions = new ArrayList<OperationAccountBean<?>>();  
+        for(OperationAccountBean<?> b : accounts) {  
+            if(b.getDescription().startsWith(query))  
+                suggestions.add(b);  
+        }  
+          
+        return suggestions;  
+		
+	}
+	
+}

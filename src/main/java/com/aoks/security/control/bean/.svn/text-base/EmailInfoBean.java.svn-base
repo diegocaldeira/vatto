@@ -1,0 +1,51 @@
+package net.kallx.security.control.bean;
+
+import net.kallx.security.model.EmailInfo;
+import net.kallx.utils.webmvc.GenericBean;
+import net.kallx.utils.webmvc.GenericFactory;
+
+public class EmailInfoBean implements GenericBean<EmailInfo> {
+
+	private static final long serialVersionUID = 1L;
+	
+	private long id;
+	private String address;
+	private boolean main;
+	
+	
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
+	
+	public boolean isMain() {
+		return main;
+	}
+	public void setMain(boolean main) {
+		this.main = main;
+	}
+	
+	
+	@Override
+	public long getId() {
+		return id;
+	}
+	@Override
+	public EmailInfo build(GenericFactory<EmailInfo> factory) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public EmailInfo getModel() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public GenericBean<EmailInfo> load(EmailInfo model) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

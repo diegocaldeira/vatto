@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+    <!-- HEADER_TITLE -->
+	<h:panelGroup layout="block" styleClass="padder clearfix m-b-small b-b"> 
+		<h4 class="m-b m-t m-l"><span class="semi-bold"> <i class="icon-edit"> </i> <h:outputText value="#{message.model_title_provider}"/></span></h4>
+	</h:panelGroup>
+	<!-- / HEADER_TITLE -->
+
+	<!-- CONTENT_BODY -->
+	<h:panelGroup layout="block" rendered="#{legalPartnerController.has()}" styleClass="col-md-12">
+		<div class="grid simple"> 
+			<div class="grid-body no-border">
+		
+				<div class="row">
+					<div class="col-md-12">
+						<h4>#{message.general_data}</h4>
+						
+						<div class="row form-row">
+							<div class="col-md-6">
+								<p:selectOneMenu value="#{legalPartnerController.bean.register.areaActuation}" required="true">  
+						            <f:selectItems value="#{legalPartnerController.bean.register.areaActuationList()}" var="areaActuation" itemLabel="#{areaActuation.areaActuation}" itemValue="#{areaActuation}"/>  
+						        </p:selectOneMenu> 
+							</div>
+							<div class="col-md-6">
+								<p:inputText label="#{message.model_company_name}" value="#{legalPartnerController.bean.register.companyName}" size="50" maxlength="50" styleClass="form-control parsley-validated" placeholder="#{message.model_company_name}" />
+							</div>
+						</div>
+						
+						<div class="row form-row">
+							<div class="col-md-6">
+								<p:inputMask value="#{legalPartnerController.bean.register.cnpj}" required="true" mask="99.999.999/9999-99" size="20" maxlength="20" styleClass="form-control parsley-validated" placeholder="#{message.model_cnpj}"/>
+							</div>
+							<div class="col-md-6">
+								<p:inputText label="#{message.model_fancy_name}" value="#{legalPartnerController.bean.register.fancyName}" size="50" maxlength="50" styleClass="form-control parsley-validated" placeholder="#{message.model_fancy_name}"/>
+							</div>
+						</div>
+						
+						<div class="row form-row">
+							<div class="col-md-6">
+								<p:inputText placeholder="#{message.model_inscr_estadual}" label="#{message.model_inscr_estadual}" value="#{legalPartnerController.bean.register.inscrEstadual}"  size="11" maxlength="18" styleClass="form-control parsley-validated"/>
+							</div>
+							<div class="col-md-6">
+								<p:inputText placeholder="#{message.model_inscr_municipal}" label="#{message.model_inscr_municipal}" value="#{legalPartnerController.bean.register.inscrMunicipal}" size="15" maxlength="20" styleClass="form-control parsley-validated"/>
+							</div>
+						</div>
+						
+						<div class="row form-row">
+							<div class="col-md-6">
+								<p:inputMask placeholder="#{message.model_phone_number}" value="#{legalPartnerController.bean.register.phone.phoneNumber}" required="true" mask="(99) 9999-9999" size="15" maxlength="15" styleClass="form-control parsley-validated"/>
+							</div>
+							<div class="col-md-6">	
+								<p:inputText placeholder="#{message.model_site}" label="#{message.model_site}" value="#{legalPartnerController.bean.register.site}" size="50" maxlength="50" styleClass="form-control parsley-validated"/>
+							</div>
+						</div>
+						
+						<div class="row form-row">
+							<div class="col-md-6">
+								<p:inputText placeholder="#{message.model_facebook}" label="#{message.model_facebook}" value="#{legalPartnerController.bean.register.facebook}" size="70" styleClass="form-control parsley-validated"/>
+							</div>
+							<div class="col-md-6">	
+								<p:inputText placeholder="#{message.model_twitter}" label="#{message.model_twitter}" value="#{legalPartnerController.bean.register.twitter}" size="50" styleClass="form-control parsley-validated"/>
+							</div>
+						</div>
+						
+						<h:panelGroup layout="block" id="provider-address-wrapper">	
+							<ui:decorate template="/sections/layout/templates/partner/address/list.xhtml">
+								<ui:param name="table" 				value="provider" />
+								<ui:param name="registerBean" 		value="#{legalPartnerController.bean.register}" />
+								<ui:param name="controller" 		value="#{legalPartnerController}" />
+								<ui:param name="addressController"  value="#{legalAddressController}" />
+								
+								<p:ajax event="rowSelect" 	listener="#{legalAddressController.onRowSelect}"   update="@form"/>  
+						        <p:ajax event="rowUnselect" listener="#{legalAddressController.onRowUnselect}" update="@form"/>
+							</ui:decorate>
+							
+							<ui:decorate template="/sections/layout/templates/partner/address/form.xhtml">
+								<ui:param name="form" 				value="provider" />
+								<ui:param name="addressController"  value="#{legalAddressController}" />
+							</ui:decorate>
+						</h:panelGroup>
+						
+						<h:panelGroup layout="block" id="provider-contact-wrapper">
+							<ui:decorate template="/sections/layout/templates/partner/contact/list.xhtml">
+								<ui:param name="table" 				value="provider" />
+								<ui:param name="legalRegisterBean" 	value="#{legalPartnerController.bean.register}" />
+							
+								<p:ajax event="rowSelect" 	listener="#{contactController.onRowSelect}"   update="@form"/>  
+						        <p:ajax event="rowUnselect" listener="#{contactController.onRowUnselect}" update="@form"/>
+							</ui:decorate>
+						
+							<ui:decorate template="/sections/layout/templates/partner/contact/form.xhtml">
+								<ui:param name="form" value="provider" />
+							</ui:decorate>
+						</h:panelGroup>
+					</div>
+				</div>
+						
+				<div class="form-actions">
+					<div class="pull-right">
+						<p:commandButton value="#{message.action_save}"   actionListener="#{legalPartnerController.save()}" 	styleClass="btn btn-primary btn-cons" ajax="false" action="#{registerController.setCreate(false)}" style="margin-left: 5px;" type="push"/>
+						<p:commandButton value="#{message.action_cancel}" actionListener="#{legalPartnerController.clean()}" 	styleClass="btn btn-white btn-cons"   ajax="false" action="#{registerController.setCreate(false)}" style="margin-left: 5px;" immediate="true" />
+					</div>
+			  	</div>
+	  	
+			</div>
+		</div>
+	</h:panelGroup>
+	<!-- / CONTENT_BODY -->
+</ui:composition>

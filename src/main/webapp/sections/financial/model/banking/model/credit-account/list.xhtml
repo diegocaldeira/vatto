@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+	<h:panelGroup layout="block" styleClass="padder clearfix"><h4 class="m-b m-t"><span class="semi-bold"><i class="icon-th-list"></i><h:outputText value=" #{message.financial_banking_credit_account_title}"/></span></h4> </h:panelGroup>      
+	
+	<ui:decorate template="/sections/layout/templates/partner/model/list.xhtml">
+		<ui:param name="controller" 	value="#{creditCardAccountController}" />
+		<ui:param name="table" 			value="credit-account" />
+		<ui:param name="registerType" 	value="#{message.module_menu_banking_credit_account}" />
+		<ui:param name="type" 			value="CreditAccount"/>
+		
+		<p:ajax event="rowSelect" 	listener="#{creditCardAccountController.onRowSelect}"   update="@form"/>  
+	    <p:ajax event="rowUnselect" listener="#{creditCardAccountController.onRowUnselect}" update="@form"/>
+		
+		<p:column filterBy="#{att.flag}"		filterMatchMode="contains" headerText="#{message.model_flag}"										style="width: 15%;"> <h:outputText value="#{att.flag}"/>										</p:column>
+		<p:column filterBy="#{att.cardNumber}"	filterMatchMode="contains" headerText="#{message.model_card_number}"								style="width: 35%;"> <h:outputText value="#{att.cardNumber}"/>									</p:column>
+		<p:column filterBy="#{att.start}" 		filterMatchMode="contains" headerText="#{message.model_start}" converter="#{dateCalendarConverter}"	style="width: 20%;"> <h:outputText value="#{att.start}" converter="#{dateCalendarConverter}" /> </p:column>
+		<p:column filterBy="#{att.maturityDay}" filterMatchMode="contains" headerText="#{message.model_maturity_day}"								style="width: 20%;"> <h:outputText value="#{att.maturityDay}"/>									</p:column>
+<!-- 		<p:column filterBy="#{att.description}"	filterMatchMode="contains" headerText="#{message.model_description}">								 <h:outputText value="#{att.description}"/>									</p:column> -->
+	</ui:decorate>
+	
+</ui:composition>

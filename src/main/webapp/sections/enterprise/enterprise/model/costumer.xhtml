@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+	<h:panelGroup layout="block" styleClass="content-menuBody-wrapper">
+	     
+	     <h:panelGroup style="background: white; height: 30px;" layout="block">  
+	    	<h:panelGroup styleClass="search-datatable" layout="block">
+	            <h:panelGroup layout="block" styleClass="search-datatable-title">
+	 				<h:outputText value="Pesquisar: " rendered="#{!costumerController.has()}"/>
+	 				<h:outputText value="Clientes " rendered="#{costumerController.has()}"/>
+				</h:panelGroup>
+	 			<h:panelGroup layout="block" id="contact-customer-search-actions" styleClass="search-action" rendered="#{!costumerController.has()}">
+	                <p:inputText id="costumer-search" onkeyup="{costumerController.getContactsAC}" />  
+					<p:watermark for="costumer-search" value="Pesquisar em todos os campos" /> 
+	 			</h:panelGroup>
+			</h:panelGroup>
+			
+			<h:panelGroup styleClass="action-datatable" layout="block">
+	 			<h:panelGroup styleClass="toolbar-action" layout="block">
+					<p:commandButton value="Voltar" immediate="true" action="#{registerController.setName(null)}" actionListener="#{appmenu.load('CONTACT')}" update="content-wrapper" rendered="#{!costumerController.has()}"/>
+	               	<p:commandButton value="Novo Cliente" title="Novo Cliente" actionListener="#{costumerController.create}" update="content-wrapper" rendered="#{!costumerController.has()}"/>
+					<p:commandButton value="Cancelar" type="push" image="ui-icon-note" actionListener="#{costumerController.clean}" update="content-wrapper" rendered="#{costumerController.has()}"/>
+	               	<p:commandButton value="Salvar" type="push" image="ui-icon-disk" actionListener="#{costumerController.save}" update="content-wrapper" rendered="#{costumerController.has()}"/>
+	 			</h:panelGroup>
+			</h:panelGroup>
+       </h:panelGroup>
+		
+		<h:panelGroup styleClass="content-menuBody" layout="block" rendered="#{!costumerController.has()}">
+			<p:dataTable var="att" value="#{costumerController.beans}">
+				<f:facet name="header">Clientes</f:facet>
+			  	<p:column headerText="Nome"><h:outputText value="#{att.name}"/></p:column>
+			  	<p:column headerText="Razão Social"><h:outputText value="#{att.register.companyName}"/></p:column>
+			  	<p:column headerText="CNPJ"><h:outputText value="#{att.register.getRegistration('cnpj').value}"/></p:column>
+			</p:dataTable>
+		</h:panelGroup>
+		
+		<h:panelGroup layout="block" rendered="#{costumerController.has()}">
+		 	<h:outputStylesheet>
+		 		.label {
+		 			width: 100px;
+		 		}
+		 	</h:outputStylesheet>
+		 	
+			<p:panel header="Cadastro de Clientes" style="width: 100%; float: left; text-align: center;"> 
+				<h:panelGrid columns="2" cellpading="5" style="margin-left: 300px; float: left;">
+					<h:outputLabel value="Nome"/>
+					<p:inputText label="Nome" value="#{costumerController.bean.name}" size="50" maxlength="50"/>
+					
+					<h:outputLabel value="Razão Social"/>
+					<p:inputText label="Razão Social" value="#{costumerController.bean.register.companyName}" size="50" maxlength="50"/>
+					
+					<h:outputLabel value="CNPJ"/>
+					<p:inputMask value="#{costumerController.bean.register.getRegistration('cnpj').value}" required="true" mask="99.999.999/9999-99" size="20" maxlength="20"/>
+					
+					<h:outputLabel value="Inscrição Estadual"/>
+					<p:inputText label="Inscrição Estadual" value="#{costumerController.bean.register.getRegistration('inscrest').value}" size="20" maxlength="20"/>
+					
+					<h:outputLabel value="Inscrição Municipal"/>
+					<p:inputText label="Inscrição Municipal" value="#{costumerController.bean.register.getRegistration('inscrmun').value}" size="20" maxlength="20"/>
+					
+					<h:outputLabel value="Nome Fantasia"/>
+					<p:inputText label="Nome Fantasia" value="#{costumerController.bean.register.fancyName}" size="50" maxlength="50"/>
+					
+				</h:panelGrid>
+				
+				<p:panel header="Endereços" style="width: 100%; float: left; text-align: center;" rendered="#{addressController.has()}">
+					<p:dataTable var="dtc" value="#{costumerController.bean.register.addresses}">
+						<f:facet name="header">Clientes</f:facet>
+					  	<p:column headerText="Cidade"><h:outputText value="#{dtc.city}"/></p:column>
+					  	<p:column headerText="Rua"><h:outputText value="#{dtc.street}"/></p:column>
+					  	<p:column headerText="Categoria"><h:outputText value="#{dtc.categoriesResume}"/></p:column>
+						<p:column style="width:15px">
+							<p:commandLink update="@form:costumerAddressFormBase" oncomplete="addressDialog.show();">
+								<p:graphicImage value="/images/edit.png" height="12" width="12" />
+								<f:setPropertyActionListener value="#{costumerController.bean.register}" target="#{addressController.register}"/>
+								<f:setPropertyActionListener value="#{dtc}" target="#{addressController.bean}" />
+							</p:commandLink>
+						</p:column>
+						<p:column style="width:15px">
+							<p:commandLink oncomplete="confirmationAddress.show();">
+								<p:graphicImage value="/images/delete.png" height="12" width="12" />
+								<f:setPropertyActionListener value="#{dtc}" target="#{addressController.bean}" />
+							</p:commandLink>
+						</p:column>
+					</p:dataTable>
+					<p:confirmDialog message="Você tem certeza que deseja desativar este endereço?" header="Confirmação de exclusão" severity="alert" widgetVar="confirmationAddress">  
+				        <p:commandButton value="Sim, tenho certeza" update="content-wrapper" oncomplete="confirmationAddress.hide()" actionListener="#{addressController.delete}"/>  
+				        <p:commandButton value="Não" onclick="confirmationAddress.hide()" type="button"/>   
+				    </p:confirmDialog>
+					
+					<p:commandLink onclick="addressDialog.show();">
+						<p:graphicImage value="/images/add.png" height="12" width="12" />
+					</p:commandLink>
+				</p:panel>
+				
+				<p:panel header="Contatos" style="width: 100%; float: left; text-align: center;" rendered="#{costumerController.has()}">
+				
+					<p:dataTable var="cts" value="#{costumerController.bean.register.contacts}">
+						<f:facet name="header">Clientes</f:facet>
+					  	<p:column headerText="Nome"><h:outputText value="#{cts.firstName}"/></p:column>
+					  	<p:column headerText="Sobrenome"><h:outputText value="#{cts.lastName}"/></p:column>
+					  	<p:column headerText="Categoria"><h:outputText value="#{cts.categoriesResume}"/></p:column>
+						<p:column style="width:15px">
+							<p:commandLink update="contactFormBase @form:contactFormBase" oncomplete="contactDialog.show();">
+								<p:graphicImage value="/images/edit.png" height="12" width="12" />
+								<f:setPropertyActionListener value="#{costumerController.bean.register}" target="#{contactController.register}"/>
+								<f:setPropertyActionListener value="#{cts}" target="#{contactController.bean}" />
+							</p:commandLink>
+						</p:column>
+						<p:column style="width:15px">
+							<p:commandLink oncomplete="confirmationContact.show();">
+								<p:graphicImage value="/images/delete.png" height="12" width="12" />
+								<f:setPropertyActionListener value="#{cts}" target="#{contactController.bean}" />
+							</p:commandLink>
+						</p:column>
+					</p:dataTable>
+											
+					<p:confirmDialog message="Você tem certeza que deseja desativar este contato?" header="Confirmação de exclusão" severity="alert" widgetVar="confirmationContact">  
+				        <p:commandButton value="Sim, tenho certeza" update="content-wrapper" oncomplete="confirmationContact.hide()" actionListener="#{contactController.delete}"/>  
+				        <p:commandButton value="Não" onclick="confirmationContact.hide()" type="button"/>   
+				    </p:confirmDialog>
+					
+					<p:commandLink onclick="contactDialog.show();">
+						<p:graphicImage value="/images/add.png" height="12" width="12" />
+					</p:commandLink>
+				
+				</p:panel>
+				
+			</p:panel>
+			
+		</h:panelGroup>
+		
+<!-- 		<p:dialog header="Editor Endereço" widgetVar="addressDialog" minHeight="350" minWidth="550" modal="true" zindex="1050">  -->
+		
+<!-- 			<h:panelGroup layout="block"> -->
+			    	
+<!-- 				<p:toolbar> -->
+<!-- 					<p:toolbarGroup align="left"> -->
+<!-- 						<p:commandButton type="push" value="Novo" image="ui-icon-document" actionListener="{addressController.create}" update="costumerAddressFormBase"> -->
+<!-- 							<f:setPropertyActionListener value="#{costumerController.bean.register}" target="#{addressController.register}"/> -->
+<!-- 						</p:commandButton> -->
+<!-- 						<p:commandButton type="push" value="Salvar" image="ui-icon-disk" actionListener="#{addressController.save}" update="content-wrapper"/> -->
+<!-- 						<p:commandButton type="push" value="Limpar" image="ui-icon-note" actionListener="#{addressController.clean}" update="costumerAddressFormBase" /> -->
+<!-- 					</p:toolbarGroup> -->
+<!-- 				</p:toolbar> -->
+				
+<!-- 				<p:fieldset id="costumerAddressFormBase" legend="Cadastro de Endereço"> -->
+				           
+<!-- 					<h:panelGroup rendered="#{addressController.has()}"> -->
+				           	
+<!-- 						<h:panelGrid columns="2" style="float: left;" cellpadding="5"> -->
+						
+<!-- 							<h:outputLabel value="Categoria"/> -->
+<!-- 							<p:selectManyCheckbox value="#{addressController.bean.categories}" converter="categoryConverter"> -->
+<!-- 								<f:selectItems value="#{categoryDimensionController.getCategoriesFromDimension('Endereços')}" var="cat" itemValue="#{cat}" itemLabel="#{cat.name}"/> -->
+<!-- 							</p:selectManyCheckbox> -->
+						
+<!-- 							<h:outputLabel value="CEP"/> -->
+<!-- 							<p:inputMask value="#{addressController.bean.zipCode}" required="true" mask="99999-999" size="10" maxlength="10"/> -->
+							
+<!-- 							<h:outputLabel value="Logradouro"/> -->
+<!-- 							<p:inputText label="Logradouro" value="#{addressController.bean.street}" size="50" maxlength="50"/> -->
+							
+<!-- 							<h:outputLabel value="Número"/> -->
+<!-- 							<p:inputText label="Número" value="#{addressController.bean.number}" size="25" maxlength="20"/> -->
+							
+<!-- 							<h:outputLabel value="Complemento"/> -->
+<!-- 							<p:inputText label="Complemento" value="#{addressController.bean.completion}" size="25" maxlength="20"/> -->
+							
+<!-- 							<h:outputLabel value="Bairro"/> -->
+<!-- 							<p:inputText label="Bairro" value="#{addressController.bean.neighborhood}" size="50" maxlength="50"/> -->
+							
+<!-- 							<h:outputLabel value="Cidade"/> -->
+<!-- 							<p:inputText label="Cidade" value="#{addressController.bean.city}" size="50" maxlength="50"/> -->
+							
+<!-- 							<h:outputLabel value="Estado"/> -->
+<!-- 							<p:inputText label="Estado" value="#{addressController.bean.state}" size="15" maxlength="10"/> -->
+							
+<!-- 						</h:panelGrid> -->
+						
+<!-- 					</h:panelGroup> -->
+					
+<!-- 				</p:fieldset> -->
+					
+<!-- 			</h:panelGroup> -->
+		
+<!-- 		</p:dialog> -->
+<!-- 		<p:dialog header="Editor de Contatos" widgetVar="contactDialog" minHeight="230" minWidth="550" modal="true" zindex="1050">  -->
+		
+<!-- 			<h:panelGroup layout="block"> -->
+			
+<!-- 		    	<p:toolbar> -->
+<!-- 					<p:toolbarGroup align="left"> -->
+<!-- 						<p:commandButton type="push" value="Novo" image="ui-icon-document" actionListener="{contactController.create}" update="contactFormBase"> -->
+<!-- 							<f:setPropertyActionListener value="#{costumerController.bean.register}" target="#{contactController.register}"/> -->
+<!-- 						</p:commandButton> -->
+<!-- 						<p:commandButton type="push" value="Salvar" image="ui-icon-disk" actionListener="#{contactController.save}" update="contactFormBase contactTableBase"/> -->
+<!-- 						<p:commandButton type="push" value="Limpar" image="ui-icon-note" actionListener="#{contactController.clean}" update="contactFormBase" /> -->
+<!-- 					</p:toolbarGroup> -->
+<!-- 				</p:toolbar> -->
+				
+<!-- 				<p:fieldset id="contactFormBase" legend="Cadastro de Contatos"> -->
+		             
+<!-- 		             <h:panelGroup rendered="#{contactController.has()}"> -->
+		             	
+<!-- 						<h:panelGrid columns="2" style="float: left;" cellpadding="5"> -->
+						
+<!-- 							<h:outputLabel value="Categoria"/> -->
+<!-- 							<p:selectManyCheckbox value="#{contactController.bean.categories}" converter="categoryConverter"> -->
+<!-- 								<f:selectItems value="#{categoryDimensionController.getCategoriesFromDimension('Contatos')}" var="cat" itemValue="#{cat}" itemLabel="#{cat.name}"/> -->
+<!-- 							</p:selectManyCheckbox> -->
+						
+<!-- 							<h:outputLabel value="Nome"/> -->
+<!-- 							<p:inputText label="Nome" value="#{contactController.bean.firstName}" size="25" maxlength="25"/> -->
+							
+<!-- 							<h:outputLabel value="SobreNome"/> -->
+<!-- 							<p:inputText label="Sobrenome" value="#{contactController.bean.lastName}" size="25" maxlength="25"/> -->
+									
+<!-- 							<h:outputLabel value="Telefone"/> -->
+<!-- 							<h:panelGroup> -->
+<!-- 								<p:inputMask style="float: left;" value="#{contactController.bean.firstPhone.phoneNumber}" required="true" mask="(99) 9999-9999" size="15" maxlength="15"/> -->
+<!-- 								<p:inputText style="float: left;" label="telefone" value="#{contactController.bean.firstPhone.extension}" size="4" maxlength="4"/> -->
+<!-- 							</h:panelGroup> -->
+							
+<!-- 							<h:outputLabel value="Email"/> -->
+<!-- 							<p:inputText label="email" value="#{contactController.bean.firstEmail.email}" size="50" maxlength="50"/> -->
+							
+<!-- 						</h:panelGrid> -->
+						
+<!-- 					</h:panelGroup> -->
+					
+<!-- 				</p:fieldset> -->
+					
+<!-- 			</h:panelGroup> -->
+		
+<!-- 		</p:dialog> -->
+
+	</h:panelGroup>
+	
+	<h:panelGroup layout="block" id="customer-right" styleClass="content-right">
+ 		<h:panelGroup layout="block" id="customer-action-base" styleClass="action-base">
+ 			<h:panelGroup layout="block" id="customer-action-title" styleClass="contact-right-title">
+ 				<h:outputText value="Ações: "/>
+ 			</h:panelGroup>
+ 			<h:panelGroup layout="block" id="customer-actions">
+				<h:panelGroup layout="block" style="margin-top: 20%;">
+					<p:commandButton value="Importar Contatos" title="Importar Contato" style="margin-left: 8%;"/>
+					<p:commandButton value="Exportar Contatos" title="Exportar Contato" style="margin-left: 5px;"/>
+				</h:panelGroup>
+ 			</h:panelGroup>
+ 		</h:panelGroup>
+	</h:panelGroup>
+	
+</ui:composition>

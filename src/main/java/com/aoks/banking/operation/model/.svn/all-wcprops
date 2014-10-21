@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/kallxit/!svn/ver/388/kx-banking/trunk/src/java/net/kallx/banking/operation/model
+END
+OperationAccountType.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/kallxit/!svn/ver/388/kx-banking/trunk/src/java/net/kallx/banking/operation/model/OperationAccountType.java
+END
+OperationEntry.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/kallxit/!svn/ver/314/kx-banking/trunk/src/java/net/kallx/banking/operation/model/OperationEntry.java
+END
+InvestmentAccount.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/kallxit/!svn/ver/287/kx-banking/trunk/src/java/net/kallx/banking/operation/model/InvestmentAccount.java
+END
+CashAccount.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/kallxit/!svn/ver/287/kx-banking/trunk/src/java/net/kallx/banking/operation/model/CashAccount.java
+END
+OperationAccount.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/kallxit/!svn/ver/314/kx-banking/trunk/src/java/net/kallx/banking/operation/model/OperationAccount.java
+END
+CreditCardFlag.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/kallxit/!svn/ver/287/kx-banking/trunk/src/java/net/kallx/banking/operation/model/CreditCardFlag.java
+END
+CreditCardAccount.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/kallxit/!svn/ver/287/kx-banking/trunk/src/java/net/kallx/banking/operation/model/CreditCardAccount.java
+END
+SavingsAccount.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/kallxit/!svn/ver/287/kx-banking/trunk/src/java/net/kallx/banking/operation/model/SavingsAccount.java
+END
+CheckingAccount.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/kallxit/!svn/ver/287/kx-banking/trunk/src/java/net/kallx/banking/operation/model/CheckingAccount.java
+END
+BankAccount.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/kallxit/!svn/ver/287/kx-banking/trunk/src/java/net/kallx/banking/operation/model/BankAccount.java
+END

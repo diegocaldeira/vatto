@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<div class="col-lg-12">
+		<div class=" tiles white col-md-12 no-padding">
+			<div class="tiles green cover-pic-wrapper">
+				<div class="overlayer bottom-right">
+					<div class="overlayer-wrapper">
+						<div class="padding-10 hidden-xs">
+							<h:form method="post">
+								<h:commandButton value="#{message.action_change}" actionListener="#{userController.edit(sessionController.loggedBean)}" styleClass="btn btn-primary"/>
+								<button class="btn btn-success" data-toggle="modal" data-target="#changePwd"> <i class="fa fa-lock icon"></i> #{message.action_change} #{message.model_password}</button>
+						   	</h:form>
+						</div>
+					</div>
+				</div>
+				<img src="resources/img/profiles/bg-profile-2.png" alt=""/>
+			</div>
+			<div class="tiles white">
+				<div class="row">
+					<div class="col-md-3 col-sm-3">
+						<div class="user-profile-pic">
+							<p:graphicImage width="69" height="69" value="#{sessionController.loggedBean.picture}"/>
+<!-- 							<img width="69" height="69" src="resources/img/blue-user-icon.png" alt=""/> -->
+						</div>
+						<div class="user-mini-description">
+<!-- 							<h3 class="text-success semi-bold">2548</h3> -->
+<!-- 							<h5>Followers</h5> -->
+<!-- 							<h3 class="text-success semi-bold">457</h3> -->
+<!-- 							<h5>Following</h5> -->
+						</div>
+					</div>
+					<div class="user-description-box col-sm-8" style="width: 70.666667%; word-wrap: break-word;">
+						<div class="pull-left">
+							<h4 class="semi-bold no-margin">#{sessionController.loggedBean.firstName} #{sessionController.loggedBean.lastName}</h4>
+							<h6 class="no-margin">#{sessionController.loggedBean.profession}</h6>
+							<br/>
+							<p><i class="fa fa-envelope"></i> #{sessionController.loggedBean.email.address}</p>
+							<p>
+								<i class="fa fa-phone"></i>
+								<h:panelGroup rendered="#{sessionController.loggedBean.phone.phoneNumber != null}">#{sessionController.loggedBean.phone.phoneNumber}</h:panelGroup>
+								<h:panelGroup rendered="#{sessionController.loggedBean.phone.phoneNumber == null}">#{message.general_uninformed}</h:panelGroup>
+							</p>
+						</div>
+						<div class="pull-right" style="margin-top: 7.5%;">
+							<p>
+								<i class="fa fa-linkedin"></i>
+								<h:panelGroup rendered="#{sessionController.loggedBean.getSocial('linkedin').value != null}">#{sessionController.loggedBean.getSocial('linkedin').value}</h:panelGroup>
+								<h:panelGroup rendered="#{sessionController.loggedBean.getSocial('linkedin').value == null or sessionController.loggedBean.getSocial('linkedin').value == ''}">#{message.general_uninformed}</h:panelGroup>
+							</p>
+							<p>
+								<i class="fa fa-facebook"></i> 
+								<h:panelGroup rendered="#{sessionController.loggedBean.getSocial('facebook').value != null}">#{sessionController.loggedBean.getSocial('facebook').value}</h:panelGroup>
+								<h:panelGroup rendered="#{sessionController.loggedBean.getSocial('facebook').value == null or sessionController.loggedBean.getSocial('facebook').value == ''}">#{message.general_uninformed}</h:panelGroup>
+							</p>
+							<p>
+								<i class="fa fa-twitter"></i>  
+								<h:panelGroup rendered="#{sessionController.loggedBean.getSocial('twitter').value != null}">#{sessionController.loggedBean.getSocial('twitter').value}</h:panelGroup>
+								<h:panelGroup rendered="#{sessionController.loggedBean.getSocial('twitter').value == null or sessionController.loggedBean.getSocial('twitter').value == ''}">#{message.general_uninformed}</h:panelGroup>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal fade in" id="changePwd" tabindex="-1" role="dialog" aria-labelledby="changePwdLabel" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<br/>
+					<i class="fa fa-lock fa-7x"></i>
+					<h4 id="passwdLabel" class="semi-bold">#{message.action_change} #{message.model_password}</h4>
+					<p class="no-margin"></p>
+					<br/>
+				</div>
+				<div class="modal-body">
+				
+				</div>
+			</div>
+		</div>
+	</div>
+
+</ui:composition>

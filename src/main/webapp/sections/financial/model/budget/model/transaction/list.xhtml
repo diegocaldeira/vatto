@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+	<h:panelGroup layout="block" styleClass="padder clearfix"> <h4 class="m-b m-t"><span class="semi-bold"><i class="icon-th-list"></i><h:outputText value=" #{message.list_title_budget_transaction}"/></span></h4> </h:panelGroup>
+	
+	<ui:decorate template="/sections/layout/templates/partner/model/list.xhtml">
+		<ui:param name="controller" 	value="#{flowTransactionController}" />
+		<ui:param name="table" 			value="transaction" />
+		<ui:param name="registerType" 	value="#{message.module_menu_budget_transaction}" />
+		<ui:param name="type" 			value="TRANSACTION"/>
+		
+		<p:column style="width:3%">	<p:rowToggler /> </p:column> 
+		
+		<p:ajax event="rowSelect" 	listener="#{flowTransactionController.onRowSelect}"   update="@form"/>  
+	    <p:ajax event="rowUnselect" listener="#{flowTransactionController.onRowUnselect}" update="@form"/>
+		<p:ajax event="rowToggle"	listener="#{flowTransactionController.onRowToggle}"/>
+		
+		<p:column filterBy="#{att.categoryDescription}"		filterMatchMode="contains" headerText="#{message.model_category}">										<h:outputText value="#{att.categoryDescription}"/>								</p:column>
+		<p:column filterBy="#{att.payeeDescription}" 		filterMatchMode="contains" headerText="#{message.model_payee}">											<h:outputText value="#{att.payeeDescription}"/> 								</p:column>
+		<p:column filterBy="#{att.ocurrence}"				filterMatchMode="contains" headerText="#{message.model_ocurrence}" converter="dateCalendarConverter">	<h:outputText value="#{att.ocurrence}" converter="dateCalendarConverter"/>		</p:column>
+		<p:column filterBy="#{att.description}"				filterMatchMode="contains" headerText="#{message.model_description}">									<h:outputText value="#{att.description}"/>										</p:column>
+		<p:column filterBy="#{att.amount}"					filterMatchMode="contains" headerText="#{message.model_value}">											<h:outputText value="#{message.watermark_model_money_signal}: #{att.amount}"/>	</p:column>
+		<p:column filterBy="#{att.accountDescription}"		filterMatchMode="contains" headerText="#{message.model_account}">										<h:outputText value="#{att.accountDescription}"/>								</p:column>
+		<p:column filterBy="#{att.operationDescription}"	filterMatchMode="contains" headerText="#{message.model_operation}">										<h:outputText value="#{att.operationDescription}"/>								</p:column>
+		<p:column filterBy="#{att.statusDescription}"		filterMatchMode="contains" headerText="#{message.model_status}">										<h:outputText value="#{att.statusDescription}"/>								</p:column>
+		
+		<p:rowExpansion>
+			<p:dataTable id="transactions-list" var="att" widgetVar="transactionsList"
+											paginator="true" rows="14" paginatorPosition="bottom" 
+											currentPageReportTemplate="#{message.general_you_have} {totalRecords} #{message.general_contacts_lower_case}."
+			 								paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"  
+											value="#{flowTransactionController.entries}"
+											emptyMessage="#{message.general_no_results}"  styleClass="content-menuBody-datatable">
+				<p:column headerText="#{message.model_date}" 		style="width: 150px; background: whitesmoke;" converter="#{dateCalendarConverter}">	<h:outputText value="#{att.ocurrence}" converter="#{dateCalendarConverter}" />	</p:column>
+	            <p:column headerText="#{message.model_description}" style="width: 200px; background: whitesmoke;">										<h:outputText value="#{att.description}" /> 									</p:column>
+	            <p:column headerText="#{message.model_value}"		style="width: 100px; background: whitesmoke;">										<h:outputText value="#{att.amount}" /> 											</p:column>
+	       		<p:column headerText="#{message.model_account}"		style="width: 100px; background: whitesmoke;">										<h:outputText value="#{att.accountDescription}" /> 								</p:column>
+			</p:dataTable>
+		</p:rowExpansion>			
+	</ui:decorate>
+</ui:composition>

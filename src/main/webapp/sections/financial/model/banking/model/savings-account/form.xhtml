@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+	<!-- HEADER_TITLE -->
+	<h:panelGroup layout="block" styleClass="padder clearfix m-b-small b-b"> 
+		<h4 class="m-b m-t m-l"><span class="semi-bold"> <i class="icon-edit"> </i> <h:outputText value="#{message.model_title_banking_savings_account}"/></span></h4>
+	</h:panelGroup>
+	<!-- / HEADER_TITLE -->
+		
+	<!-- CONTENT_BODY -->
+	<h:panelGroup styleClass="m-t" layout="block" rendered="#{savingsAccountController.has()}" >
+	
+		<div class="col-md-12"> 
+			<div class="grid simple"> 
+				<div class="grid-body no-border">
+			
+					<div class="row">
+						<div class="col-md-12">
+							<h4>#{message.general_data}</h4>
+				
+							<div class="row form-row">
+								<div class="col-md-6">
+									<p:autoComplete id="savings-account-bank" value="#{savingsAccountController.bean.bank}" completeMethod="#{bankController.getBanksAC}" var="bank"  itemLabel="#{bank.name}" itemValue="#{bank}" converter="bankConverter" styleClass="autocomplete" style="width: 100%;" required="true"/>
+									<p:watermark for="savings-account-bank" value="#{message.watermark_model_bank_name}" />
+								</div>
+								<div class="col-md-3">
+									<p:calendar id="savings-account-opening" value="#{savingsAccountController.bean.opening}" converter="#{dateCalendarConverter}" pattern="dd/MM/yyyy"/>
+									<p:watermark for="savings-account-opening" value="#{message.watermark_model_opening}" />
+								</div>
+								<div class="col-md-3">
+									<p:calendar id="savings-account-start" value="#{savingsAccountController.bean.start}"		converter="#{dateCalendarConverter}" pattern="dd/MM/yyyy"/>
+									<p:watermark for="savings-account-start" value="#{message.watermark_model_start}" />
+								</div>
+							</div>
+							
+							<div class="row form-row">
+								<div class="col-md-4">
+									<p:inputMask id="savings-account-bankUnit" value="#{savingsAccountController.bean.bankUnit}" 	 size="5" mask="9999?9" styleClass="form-control parsley-validated"/>
+									<p:watermark for="savings-account-bankUnit" value="#{message.watermark_model_bank_bankUnit}" />
+								</div>
+								<div class="col-md-2">
+									<p:inputMask id="savings-account-bankUnitDigit" value="#{savingsAccountController.bean.bankUnitDigit}" size="2" mask="9?9" styleClass="form-control parsley-validated"/>
+									<p:watermark for="savings-account-bankUnitDigit" value="#{message.watermark_model_bank_digit}" />
+								</div>
+								<div class="col-md-3">
+									<p:inputMask id="savings-account-start-balance" value="#{savingsAccountController.bean.startBalance}" 	size="15" mask="9?99999999999999" styleClass="form-control parsley-validated" />
+									<p:watermark for="savings-account-start-balance" value="#{message.watermark_model_money_signal}" />
+								</div>
+								<div class="col-md-3">
+								</div>
+							</div>
+
+							<div class="row form-row">
+								<div class="col-md-4">
+									<p:inputMask id="savings-account-number" value="#{savingsAccountController.bean.number}" size="6" mask="9?99999" styleClass="form-control parsley-validated" required="true"/>
+									<p:watermark for="savings-account-number" value="#{message.watermark_model_bank_number_account}"/>
+								</div>
+								<div class="col-md-2">
+									<p:inputMask id="savings-account-digit" value="#{savingsAccountController.bean.digit}"  size="2" mask="9?9" styleClass="form-control parsley-validated" required="true"/>
+									<p:watermark for="savings-account-digit" value="#{message.watermark_model_bank_digit}"/>
+								</div>
+								<div class="col-md-6">
+									<p:inputTextarea id="savings-account-observations" value="#{savingsAccountController.bean.description}" 	size="20" styleClass="form-control parsley-validated"/>
+									<p:watermark for="savings-account-observations" value="#{message.watermark_model_savings_account_observations}" />
+								</div>
+							</div>
+							
+							
+						</div>
+					</div>
+					
+					<div class="form-actions">
+						<div class="pull-right">
+							<p:commandButton value="#{message.action_save}"   actionListener="#{savingsAccountController.save()}" 	styleClass="btn btn-primary btn-cons" action="#{registerController.setCreate(false)}" style="margin-left: 5px;" type="push"		 update="@form"/>
+							<p:commandButton value="#{message.action_cancel}" actionListener="#{savingsAccountController.clean()}" 	styleClass="btn btn-white btn-cons"   action="#{registerController.setCreate(false)}" style="margin-left: 5px;" immediate="true" update="@form"/>
+						</div>
+				  	</div>
+				</div>
+			</div>
+		</div>
+		
+	</h:panelGroup>
+	<!-- / CONTENT_BODY -->
+	
+</ui:composition>

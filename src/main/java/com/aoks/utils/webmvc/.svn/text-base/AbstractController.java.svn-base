@@ -1,0 +1,132 @@
+package net.kallx.utils.webmvc;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
+/**
+ * 
+ * @author Marcos Vinicius
+ *
+ * @param <M>
+ * @param <U>
+ */
+public abstract class AbstractController<M extends GenericModel, U extends GenericBean<M>> implements ActionController {
+
+	private static final long serialVersionUID = 1L;
+	
+	protected List<U> beans = new ArrayList<U>();
+	protected U bean;
+	
+	@Override
+	public void save() {
+		
+		doPreSave();
+		saveCore();
+		doPostSave();
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		context.addMessage(null, new FacesMessage("Salvo com sucesso!", "" + getManager().createModel().getClass().getSimpleName()));
+		
+	}
+	
+	protected void doPreSave(){
+		
+	}
+
+	protected void doPostSave(){
+		bean = null;
+	}
+	
+	protected void saveCore(){
+
+		AbstractManager<M> manager = getManager();
+		manager.load(getAsModel(bean));
+		manager.save();
+		
+		if (!beans.contains(bean))
+			beans.add(bean);
+		
+	}
+
+	@Override
+	public void delete() {
+		if (bean != null)
+			getManager().load(bean.build(getFactory())).remove();
+		if (beans.contains(bean))
+			beans.remove(bean);
+		bean = null;
+	}
+
+	@Override
+	public void create() {
+		bean = createBean();
+	}
+
+	@Override
+	public void clean() {
+		bean = null;
+	}
+
+	@Override
+	public boolean has() {
+		return bean != null;
+	}
+	
+	
+	public List<U> getBeans() {
+		return beans;
+	}
+	public void setBeans(List<U> beans) {
+		this.beans = beans;
+	}
+
+	
+	public U getBean() {
+		return bean;
+	}
+	public void setBean(U bean) {
+		if (bean != null)
+			this.bean = bean;
+		doAfterSetBean();
+	}
+	public void doAfterSetBean(){
+		// do nothing
+	}
+	
+	
+	public List<U> updateBeans() {
+		List<M> list = getManager().list();
+		List<U> ret = new ArrayList<U>();
+		for (M t : list) {
+			if (t==null) continue;
+			@SuppressWarnings("unchecked")
+			U u = (U) createBean().load(t);
+			ret.add(u);
+		}
+		return ret;
+	}
+	
+	protected U createBean() {
+		try {
+			return getBeanClazz().newInstance();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
+		throw new IllegalStateException();
+	}
+	
+	public M getAsModel(U bean){
+		return bean.build(getFactory());
+	}
+	
+	public abstract Class<U> getBeanClazz();
+	public abstract AbstractManager<M> getManager();
+	public abstract GenericFactory<M> getFactory();
+	
+}

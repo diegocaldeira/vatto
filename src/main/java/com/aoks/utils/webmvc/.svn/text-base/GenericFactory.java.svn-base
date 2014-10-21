@@ -1,0 +1,9 @@
+package net.kallx.utils.webmvc;
+
+import java.io.Serializable;
+
+public interface GenericFactory<T extends GenericModel> extends Serializable {
+
+	T create(GenericBean<T> bean);
+	
+}

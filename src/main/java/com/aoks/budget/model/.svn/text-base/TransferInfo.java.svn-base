@@ -1,0 +1,12 @@
+package net.kallx.budget.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="TransferInfo", schema="budget")
+public class TransferInfo extends FlowItemInfo {
+
+	private static final long serialVersionUID = 1L;
+
+}

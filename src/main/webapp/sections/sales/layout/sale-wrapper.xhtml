@@ -1,0 +1,143 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<h:head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+		
+		<h:outputStylesheet library="css" name="plugins/jquery-polymaps/style.css"/>
+		<h:outputStylesheet library="css" name="plugins/jquery-metrojs/MetroJs.css"/>
+		<h:outputStylesheet library="css" name="plugins/shape-hover/css/demo.css"/>
+		<h:outputStylesheet library="css" name="plugins/shape-hover/css/component.css"/>
+		<h:outputStylesheet library="css" name="plugins/owl-carousel/owl.carousel.css"/>
+		<h:outputStylesheet library="css" name="plugins/owl-carousel/owl.theme.css"/>
+		<h:outputStylesheet library="css" name="plugins/pace/pace-theme-flash.css"/>
+		<h:outputStylesheet library="css" name="plugins/jquery-slider/css/jquery.sidr.light.css"/>
+		<h:outputStylesheet library="css" name="plugins/jquery-ricksaw-chart/css/rickshaw.css"/>
+		<h:outputStylesheet library="css" name="plugins/jquery-isotope/isotope.css"/>
+		<h:outputStylesheet library="css" name="jquery.nestable.css"/>
+		
+		<!-- BEGIN CORE CSS FRAMEWORK -->
+		<h:outputStylesheet library="css" name="plugins/bootstrapv3/css/bootstrap.min.css"/>
+		<h:outputStylesheet library="css" name="plugins/bootstrapv3/css/bootstrap-theme.min.css"/>
+		<h:outputStylesheet library="css" name="plugins/animate.min.css"/>
+		<!-- END CORE CSS FRAMEWORK -->
+
+		<!-- BEGIN CSS TEMPLATE -->
+		<h:outputStylesheet library="css" name="plugins/style.css"/>
+		<h:outputStylesheet library="css" name="plugins/responsive.css"/>
+		<h:outputStylesheet library="css" name="plugins/custom-icon-set.css"/>
+		<h:outputStylesheet library="css" name="plugins/magic_space.css"/>
+		<h:outputStylesheet library="css" name="plugins/tiles_responsive.css"/>
+		
+		<!-- END CSS TEMPLATE -->
+		
+		<h:outputStylesheet library="css" name="select2.css"/>
+		<h:outputStylesheet library="css" name="font.css"/>
+		<h:outputStylesheet library="css" name="css.css"/>
+		<h:outputStylesheet library="css" name="application.css"/>
+		
+		<link rel="stylesheet" href="resources/font-awesome-4.2.0/css/font-awesome.min.css"></link>
+	</h:head>
+	
+	<h:body class="breakpoint-1024 pace-done">
+		<f:event type="javax.faces.event.PreRenderViewEvent" listener="#{applicationScopeBean.preRenderView}"/>
+		
+		<div class="pace  pace-inactive">
+			<div class="pace-progress" data-progress-text="100%" data-progress="99" style="width: 100%;">
+		  		<div class="pace-progress-inner"></div>
+			</div>
+			<div class="pace-activity"></div>
+		</div>
+		
+	
+		<div class="page-container row-fluid">
+		 		<!-- BEGIN SIDEBAR -->
+			<div class="page-sidebar mini" id="main-menu">
+		<!-- 	 			BEGIN MINI-PROFILE -->
+		   		<div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: auto;">
+		   			<div class="page-sidebar-wrapper" id="main-menu-wrapper" style="overflow: hidden; width: auto; height: auto;">
+		     				<ul>
+		     					<li class="active">
+		     						<a href="widgets.html"> <i class="fa fa-shopping-cart"></i> <span class="title">#{message.module_sells}</span></a>
+		     					</li>
+					        <li class="">
+								<a href="widgets.html"> <i class="fa fa-bar-chart-o"></i> <span class="title">#{message.module_sells}</span></a>
+					        </li>
+		     				</ul>
+		     				
+		     				<div class="clearfix"></div>
+		<!-- 	      				END SIDEBAR MENU -->
+		   			</div>
+		   
+					<div class="slimScrollBar" style="width: 4px; position: absolute; top: -24px; opacity: 0.4; display: block; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; right: 1px; height: 54.42304147465438px; background: rgb(161, 178, 189);"></div>
+					<div class="slimScrollRail" style="width: 4px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div>
+				</div>
+			</div>
+		
+			  
+				<!-- BEGIN PAGE CONTAINER-->
+			<div class="page-content condensed">
+			   	<div class="clearfix"></div>
+			
+				<!-- body -->
+				<section id="content" class="content main bg-white" style="padding-top: 0px !important;">
+					<ui:fragment><ui:include src="../model/point-of-sales.xhtml"/></ui:fragment>
+				</section>
+				<!-- / body -->
+			
+			</div>
+	  	</div>
+
+		<!-- footer <footer id="footer"><div class="text-center padder clearfix"></div></footer> / footer -->
+	
+	<!-- BEGIN CORE JS FRAMEWORK-->
+    
+	<!-- [if lt IE 9]> -->
+	<!-- <script src="assets/plugins/respond.js"></script> -->
+	<!-- <![endif]-->
+	<h:outputScript library="script" name="plugins/bootstrap/js/bootstrap.min.js"/>
+	<h:outputScript library="script" name="plugins/breakpoints.js"/>
+	<h:outputScript library="script" name="plugins/jquery-unveil/jquery.unveil.min.js"/>
+	<h:outputScript library="script" name="plugins/jquery-block-ui/jqueryblockui.js"/>
+	<h:outputScript library="script" name="plugins/jquery-lazyload/jquery.lazyload.min.js"/>
+	<!-- END CORE JS FRAMEWORK -->
+	
+	<!-- BEGIN PAGE LEVEL JS -->
+	<h:outputScript library="script" name="plugins/jquery-slider/jquery.sidr.min.js"/>
+	<h:outputScript library="script" name="plugins/jquery-slimscroll/jquery.slimscroll.min.js"/>
+	<h:outputScript library="script" name="plugins/webarchScroll.js"/>
+	
+	<h:outputScript library="script" name="plugins/pace/pace.min.js"/>
+	<h:outputScript library="script" name="plugins/jquery-numberAnimate/jquery.animateNumbers.js"/>
+	<h:outputScript library="script" name="plugins/jquery-ricksaw-chart/js/raphael-min.js"/>
+	<h:outputScript library="script" name="plugins/jquery-ricksaw-chart/js/d3.v2.js"/>
+	<!-- <h:outputScript library="script" name="plugins/jquery-ricksaw-chart/js/rickshaw.min.js"/> -->
+	<h:outputScript library="script" name="plugins/jquery-sparkline/jquery-sparkline.js"/>
+	<h:outputScript library="script" name="plugins/skycons/skycons.js"/>
+	<h:outputScript library="script" name="plugins/owl-carousel/owl.carousel.min.js"/>
+	<h:outputScript library="script" name="plugins/jquery-polymaps/polymaps.min.js"/>
+	<!-- <h:outputScript library="script" name="plugins/jquery-flot/jquery.flot.js"/> -->
+	<!-- <h:outputScript library="script" name="plugins/jquery-flot/jquery.flot.resize.min.js"/> -->
+	<h:outputScript library="script" name="plugins/jquery-metrojs/MetroJs.min.js"/>
+	<!-- END PAGE LEVEL PLUGINS -->
+	
+	<!-- BEGIN CORE TEMPLATE JS -->
+	<h:outputScript library="script" name="core.js"/>
+	<!-- <h:outputScript library="script" name="chat.js"/> -->
+	<h:outputScript library="script" name="demo.js"/>
+	<!-- <h:outputScript library="script" name="dashboard_v2.js"/> -->
+	
+	<script type="text/javascript">
+	        $(document).ready(function () {
+	            $(".live-tile,.flip-list").liveTile();
+	        });
+	</script>
+	<!-- END CORE TEMPLATE JS -->
+			
+	</h:body>
+	
+</h:html>

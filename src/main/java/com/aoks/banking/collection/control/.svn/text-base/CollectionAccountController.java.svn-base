@@ -1,0 +1,5 @@
+package net.kallx.banking.collection.control;
+
+public class CollectionAccountController {
+
+}

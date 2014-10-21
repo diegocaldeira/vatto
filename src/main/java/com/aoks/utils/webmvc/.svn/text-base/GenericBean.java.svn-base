@@ -1,0 +1,20 @@
+package net.kallx.utils.webmvc;
+
+import java.io.Serializable;
+
+/**
+ * 
+ * @author Marcos Vinicius
+ *
+ * @param <T>
+ */
+public interface GenericBean<T extends GenericModel> extends Serializable {
+
+	long getId();
+	
+	GenericBean<T> load(T model);
+	
+	T build(GenericFactory<T> factory);
+	T getModel();
+	
+}

@@ -1,0 +1,24 @@
+package net.kallx.security;
+
+import java.io.Serializable;
+
+import javax.annotation.PostConstruct;
+import javax.ejb.DependsOn;
+import javax.ejb.Local;
+import javax.ejb.Singleton;
+import javax.ejb.Startup;
+
+@Startup
+@Singleton
+@DependsOn("PortalManagerMain")
+public class SecurityMain implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	
+	@PostConstruct
+	void prepare(){
+		
+		Thread.currentThread().getContextClassLoader().getResource("anySecurity.xml");
+		
+	}
+}

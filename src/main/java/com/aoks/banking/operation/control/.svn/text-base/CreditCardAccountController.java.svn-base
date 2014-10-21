@@ -1,0 +1,46 @@
+package net.kallx.banking.operation.control;
+
+import javax.enterprise.context.SessionScoped;
+import javax.enterprise.event.Observes;
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import net.kallx.banking.operation.control.bean.CreditCardAccountBean;
+import net.kallx.banking.operation.model.CreditCardAccount;
+import net.kallx.banking.operation.service.CreditCardAccountManager;
+import net.kallx.portalmanager.model.PortalApplication;
+import net.kallx.utils.webmvc.AbstractController;
+import net.kallx.utils.webmvc.AbstractManager;
+import net.kallx.utils.webmvc.GenericFactory;
+
+@Named("creditCardAccountController")
+@SessionScoped
+public class CreditCardAccountController extends AbstractController<CreditCardAccount, CreditCardAccountBean> {
+
+	private static final long serialVersionUID = 1L;
+
+	@Inject
+	private CreditCardAccountManager manager;
+
+	@Override
+	public AbstractManager<CreditCardAccount> getManager() {
+		return manager;
+	}
+	
+	public void listApplicationLoading(@Observes PortalApplication application){
+		if (application.getName().equals("zebra") || application.getName().equals("budget"))
+			beans = updateBeans();
+	}
+
+	@Override
+	public Class<CreditCardAccountBean> getBeanClazz() {
+		return CreditCardAccountBean.class;
+	}
+
+	@Override
+	public GenericFactory<CreditCardAccount> getFactory() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

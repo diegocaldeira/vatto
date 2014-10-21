@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+		<p:dataTable id="#{table}-table" var="att" widgetVar="#{table}Table"  scrollRows="20" scrollable="true" liveScroll="true" scrollHeight="400" 
+										 selection="#{controller['bean']}" selectionMode="single" 
+										 filteredValue="#{controller['dataModel']['filteredBeans']}"
+										 value="#{controller['dataModel']}" 
+										 emptyMessage="Nenhum resultado encontrado para a pesquisa."  styleClass="content-menuBody-datatable">
+				      
+		  	<f:facet name="header" style="height: 42px !important;">
+	            <p:inputText id="globalFilter" onkeyup="#{table}Table.filter()" style="border: 2px solid #ddd; font-weight: lighter; float: left;"/>  
+				<p:watermark for="globalFilter" value="Pesquisar em todos os campos" />
+				<p:commandButton value="#{new}" title="#{new}" action="#{registerController.setCreateOrEdit(true)}" style="float: right;" styleClass="btn btn-large btn-block btn-warning" 
+					 actionListener="#{controller['create']}" update=":container-form"/>
+	        </f:facet> 
+		  	
+		  	<p:ajax event="rowSelect" 	listener="#{controller['onRowSelect']}"   update="@form"/>  
+	        <p:ajax event="rowUnselect" listener="#{controller['onRowUnselect']}" update="@form"/>
+
+			<ui:insert/>
+		  	
+			<p:column style="width:22px">
+				<p:commandLink id="#{table}-remove">
+					<p:graphicImage value="resources/img/remove.png" height="22" width="22" />
+					<f:setPropertyActionListener value="#{att}" target="#{controller['bean']}" />
+				</p:commandLink>
+				<p:tooltip for="#{table}-remove" value="Remover" showEffect="fade" hideEffect="fade" /> 
+				<p:overlayPanel id="#{table}-remove-confirmation" for="#{table}-remove" hideEffect="fade" style="z-index: 1003; top: 146.84375px; left: 515.421875px; visibility: hidden; display: block;">  
+			        <h:outputText value="Você tem certeza que deseja remover este registro?"/>
+			        <h:commandLink style="margin-left: 15px;" value="Sim, tenho certeza" actionListener="#{controller['delete']}" update="#{table}-table"/>  
+			    </p:overlayPanel>  
+			</p:column>
+		</p:dataTable>
+</ui:composition>

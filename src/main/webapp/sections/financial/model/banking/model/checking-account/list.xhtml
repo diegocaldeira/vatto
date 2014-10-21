@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+	<h:panelGroup layout="block" styleClass="padder clearfix"> <h4 class="m-b m-t"> <span class="semi-bold"><i class="icon-th-list"></i> <h:outputText value=" #{message.financial_banking_checking_account_title}"/></span></h4> </h:panelGroup>
+		
+	<ui:decorate template="/sections/layout/templates/partner/model/list.xhtml">
+		<ui:param name="controller" 	value="#{checkingAccountController}" />
+		<ui:param name="table" 			value="checking-account" />
+		<ui:param name="registerType" 	value="#{message.module_menu_banking_checking_account}" />
+		<ui:param name="type" 			value="CheckingAccount"/>
+		
+		<p:ajax event="rowSelect" 	listener="#{checkingAccountController.onRowSelect}"   update="@form"/>  
+	    <p:ajax event="rowUnselect" listener="#{checkingAccountController.onRowUnselect}" update="@form"/>
+		
+	 	<p:column filterBy="#{att.bankDescription}"					filterMatchMode="contains" headerText="#{message.model_bank}" 			style="width: 32%;">	<h:outputText value="#{att.bankDescription}"/>									</p:column>
+		<p:column filterBy="#{att.bankUnit} #{att.bankUnitDigit}"	filterMatchMode="contains" headerText="#{message.model_bank_unit}"		style="width: 15%;">	<h:outputText value="#{att.bankUnit} #{att.bankUnitDigit}"/>					</p:column>
+		<p:column filterBy="#{att.number} #{att.digit}"				filterMatchMode="contains" headerText="#{message.model_account_number}" style="width: 20%;">	<h:outputText value="#{att.number} #{att.digit}"/>								</p:column>
+		<p:column filterBy="#{att.startBalance}"					filterMatchMode="contains" headerText="#{message.model_start_balance}"	style="width: 25%;">	<h:outputText value="#{message.watermark_model_money_signal} #{att.startBalance}"/>	</p:column>
+<!-- 		<p:column filterBy="#{att.description}"						filterMatchMode="contains" headerText="#{message.model_description}"	style="width: 30%;">	<h:outputText value="#{att.description}"/>										</p:column> -->
+	</ui:decorate>
+	
+</ui:composition>

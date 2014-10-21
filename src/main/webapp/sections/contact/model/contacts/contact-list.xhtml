@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<h:panelGroup layout="block" id="contact-mycontacts" styleClass="page contact-mycontacts-style">
+		
+		<h:panelGroup layout="block" id="contact-mycontacts-header" styleClass="page-header">
+			<h:panelGroup layout="block" id="contact-mycontacts-header-title" styleClass="page-header-content body-header-title">
+				<h:panelGroup rendered="#{tabMenuController.isLoaded('SIMPLES') and !individualPartnerController.has()}">	<h2><strong><h:outputText value="#{message.list_title_simple}"   />	</strong></h2></h:panelGroup>
+				<h:panelGroup rendered="#{tabMenuController.isLoaded('SIMPLES') and  individualPartnerController.has()}">	<h2><strong><h:outputText value="Cadastro de Contatos Simples" />	</strong></h2></h:panelGroup>
+				
+				<h:panelGroup rendered="#{tabMenuController.isLoaded('COMPANY' ) and !companyController.has()}"> 			<h2><strong><h:outputText value="#{message.list_title_company}"   />			</strong></h2></h:panelGroup>
+				<h:panelGroup rendered="#{tabMenuController.isLoaded('COMPANY' ) and  companyController.has()}"> 			<h2><strong><h:outputText value="Cadastro de Empresa" />			</strong></h2></h:panelGroup>
+				
+				<h:panelGroup rendered="#{tabMenuController.isLoaded('EMPLOYEE') and !individualPartnerController.has()}">	<h2><strong><h:outputText value="#{message.list_title_employee}"   />			</strong></h2></h:panelGroup>
+				<h:panelGroup rendered="#{tabMenuController.isLoaded('EMPLOYEE') and  individualPartnerController.has()}">	<h2><strong><h:outputText value="Cadastro de Empregado" />			</strong></h2></h:panelGroup>
+				
+				<h:panelGroup rendered="#{tabMenuController.isLoaded('TRAINEE' ) and !individualPartnerController.has()}">  <h2><strong><h:outputText value="#{message.list_title_trainee}" 	 />			</strong></h2></h:panelGroup>
+				<h:panelGroup rendered="#{tabMenuController.isLoaded('TRAINEE' ) and  individualPartnerController.has()}">  <h2><strong><h:outputText value="Cadastro de Estágiario" />			</strong></h2></h:panelGroup>
+				
+				<h:panelGroup rendered="#{tabMenuController.isLoaded('PROVIDER') and !legalPartnerController.has()}">		<h2><strong><h:outputText value="#{message.list_title_provider}"  />			</strong></h2></h:panelGroup>
+				<h:panelGroup rendered="#{tabMenuController.isLoaded('PROVIDER') and  legalPartnerController.has()}">		<h2><strong><h:outputText value="Cadastro de Fornecedor" />			</strong></h2></h:panelGroup>
+				
+				<h:panelGroup rendered="#{tabMenuController.isLoaded('COSTUMER') and !costumerController.has()}">			<h2><strong><h:outputText value="#{message.list_title_costumer}" />				</strong></h2></h:panelGroup>
+				<h:panelGroup rendered="#{tabMenuController.isLoaded('COSTUMER') and  costumerController.has()}">			<h2><strong><h:outputText value="Cadastro de Cliente" />			</strong></h2></h:panelGroup>
+			</h:panelGroup>
+		</h:panelGroup>
+		
+		<h:panelGroup layout="block" id="contact-mycontacts-body" styleClass="page-region">
+			<h:panelGroup layout="block" id="contact-mycontacts-body-content" styleClass="page-region-content" >
+				<h:panelGroup  layout="block" id="mycontacts-tabView" styleClass="ui-tabs ui-widget ui-widget-content ui-corner-all ui-hidden-container ui-tabs-top">
+				
+					<h:panelGroup layout="block" style="margin-left: 10px;" styleClass="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+						<p:commandLink value="SIMPLES"		disabled="#{registerController.createOrEdit}" immediate="true" actionListener="#{tabMenuController.load('SIMPLES')}"  styleClass="btn-tab" update="contact-mycontacts"/>
+						<p:commandLink value="EMPRESA" 		disabled="#{registerController.createOrEdit}" immediate="true" actionListener="#{tabMenuController.load('COMPANY')}"  styleClass="btn-tab" update="contact-mycontacts"/>
+						<p:commandLink value="EMPREGADO" 	disabled="#{registerController.createOrEdit}" immediate="true" actionListener="#{tabMenuController.load('EMPLOYEE')}" styleClass="btn-tab" update="contact-mycontacts"/>
+						<p:commandLink value="ESTAGIÁRIO"	disabled="#{registerController.createOrEdit}" immediate="true" actionListener="#{tabMenuController.load('TRAINEE')}"  styleClass="btn-tab" update="contact-mycontacts"/>
+						<p:commandLink value="FORNECEDOR"	disabled="#{registerController.createOrEdit}" immediate="true" actionListener="#{tabMenuController.load('PROVIDER')}" styleClass="btn-tab" update="contact-mycontacts"/>
+						<p:commandLink value="CLIENTE" 		disabled="#{registerController.createOrEdit}" immediate="true" actionListener="#{tabMenuController.load('COSTUMER')}" styleClass="btn-tab" update="contact-mycontacts"/>
+					</h:panelGroup>  
+					
+					<h:panelGroup layout="block" id="tab-view-body" styleClass="tab-view-body">
+						<h:panelGroup layout="block" rendered="#{tabMenuController.isLoaded('SIMPLES')}">
+				        	<ui:fragment rendered="#{!individualPartnerController.has()}"><ui:include src="simple/list.xhtml"/></ui:fragment>
+				        	<ui:fragment rendered="#{individualPartnerController.has()}"><ui:include src="simple/form.xhtml"/></ui:fragment>
+	        			</h:panelGroup>
+	        			
+						<h:panelGroup layout="block" rendered="#{tabMenuController.isLoaded('COMPANY')}">
+				        	<ui:fragment rendered="#{!companyController.has()}"><ui:include src="company/list.xhtml"/></ui:fragment>
+				        	<ui:fragment rendered="#{companyController.has()}"><ui:include src="company/form.xhtml"/></ui:fragment>
+	        			</h:panelGroup> 
+	        			
+				        <h:panelGroup layout="block" rendered="#{tabMenuController.isLoaded('EMPLOYEE')}">
+				        	<ui:fragment rendered="#{!individualPartnerController.has()}"><ui:include src="employee/list.xhtml"/></ui:fragment>
+				        	<ui:fragment rendered="#{individualPartnerController.has()}"><ui:include src="employee/form.xhtml"/></ui:fragment>
+				        </h:panelGroup>
+				        
+				        <h:panelGroup layout="block" rendered="#{tabMenuController.isLoaded('TRAINEE')}">
+				        	<ui:fragment rendered="#{!individualPartnerController.has()}"><ui:include src="trainee/list.xhtml"/></ui:fragment>
+				        	<ui:fragment rendered="#{individualPartnerController.has()}"><ui:include src="trainee/form.xhtml"/></ui:fragment>
+				        </h:panelGroup>
+				        
+				        <h:panelGroup layout="block" rendered="#{tabMenuController.isLoaded('PROVIDER')}">
+				        	<ui:fragment rendered="#{!legalPartnerController.has()}"><ui:include src="provider/list.xhtml"/></ui:fragment>
+				        	<ui:fragment rendered="#{legalPartnerController.has()}"><ui:include src="provider/form.xhtml"/></ui:fragment>
+	        			</h:panelGroup>
+	        			
+	        			<h:panelGroup layout="block" rendered="#{tabMenuController.isLoaded('COSTUMER')}">
+				        	<ui:fragment rendered="#{!costumerController.has()}"><ui:include src="costumer/list.xhtml"/></ui:fragment>
+				        	<ui:fragment rendered="#{costumerController.has()}"><ui:include src="costumer/form.xhtml"/></ui:fragment>
+	        			</h:panelGroup>
+			        </h:panelGroup>
+			        
+			    </h:panelGroup>
+			</h:panelGroup>	
+		</h:panelGroup>	
+
+	</h:panelGroup>
+	
+</ui:composition>

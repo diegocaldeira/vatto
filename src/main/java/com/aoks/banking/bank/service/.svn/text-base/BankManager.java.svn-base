@@ -1,0 +1,18 @@
+package net.kallx.banking.bank.service;
+
+import javax.enterprise.context.RequestScoped;
+
+import net.kallx.banking.bank.model.Bank;
+import net.kallx.utils.webmvc.AbstractManager;
+
+@RequestScoped
+public class BankManager extends AbstractManager<Bank> {
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	public Class<Bank> getModelClazz() {
+		return Bank.class;
+	}
+
+}

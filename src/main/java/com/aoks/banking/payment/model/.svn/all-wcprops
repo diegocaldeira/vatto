@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kallxit/!svn/ver/287/kx-banking/trunk/src/java/net/kallx/banking/payment/model
+END
+OtherInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/kallxit/!svn/ver/287/kx-banking/trunk/src/java/net/kallx/banking/payment/model/OtherInfo.java
+END
+PayeeInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/kallxit/!svn/ver/287/kx-banking/trunk/src/java/net/kallx/banking/payment/model/PayeeInfo.java
+END
+Payment.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/kallxit/!svn/ver/287/kx-banking/trunk/src/java/net/kallx/banking/payment/model/Payment.java
+END
+PayerInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/kallxit/!svn/ver/287/kx-banking/trunk/src/java/net/kallx/banking/payment/model/PayerInfo.java
+END
+ServiceInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/kallxit/!svn/ver/287/kx-banking/trunk/src/java/net/kallx/banking/payment/model/ServiceInfo.java
+END

@@ -1,0 +1,46 @@
+package net.kallx.banking.operation.control;
+
+import javax.enterprise.context.SessionScoped;
+import javax.enterprise.event.Observes;
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import net.kallx.banking.operation.control.bean.SavingsAccountBean;
+import net.kallx.banking.operation.model.SavingsAccount;
+import net.kallx.banking.operation.service.SavingsAccountManager;
+import net.kallx.portalmanager.model.PortalApplication;
+import net.kallx.utils.webmvc.AbstractController;
+import net.kallx.utils.webmvc.AbstractManager;
+import net.kallx.utils.webmvc.GenericFactory;
+
+@Named("savingsAccountController")
+@SessionScoped
+public class SavingsAccountController extends AbstractController<SavingsAccount, SavingsAccountBean> {
+
+	private static final long serialVersionUID = 1L;
+
+	@Inject
+	private SavingsAccountManager manager;
+
+	@Override
+	public AbstractManager<SavingsAccount> getManager() {
+		return manager;
+	}
+
+	@Override
+	public Class<SavingsAccountBean> getBeanClazz() {
+		return SavingsAccountBean.class;
+	}
+
+	@Override
+	public GenericFactory<SavingsAccount> getFactory() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public void listApplicationLoading(@Observes PortalApplication application){
+		if (application.getName().equals("zebra") || application.getName().equals("budget"))
+			beans = updateBeans();
+	}
+
+}

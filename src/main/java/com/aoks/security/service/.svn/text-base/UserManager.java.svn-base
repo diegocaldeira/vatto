@@ -1,0 +1,25 @@
+package net.kallx.security.service;
+
+import javax.enterprise.context.RequestScoped;
+
+import net.kallx.security.model.User;
+import net.kallx.utils.webmvc.AbstractManager;
+
+@RequestScoped
+public class UserManager extends AbstractManager<User> {
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	public Class<User> getModelClazz() {
+		return User.class;
+	}
+
+	public User getUserFromUsername(String username){
+		
+		User user = wrapper.get(User.class, "loginInfo.username", username);
+		return user;
+		
+	}
+
+}

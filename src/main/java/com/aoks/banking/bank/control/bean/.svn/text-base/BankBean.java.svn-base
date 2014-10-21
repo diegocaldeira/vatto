@@ -1,0 +1,67 @@
+package net.kallx.banking.bank.control.bean;
+
+import net.kallx.banking.bank.model.Bank;
+import net.kallx.utils.webmvc.GenericBean;
+import net.kallx.utils.webmvc.GenericFactory;
+
+public class BankBean implements GenericBean<Bank>{
+
+	private static final long serialVersionUID = 1L;
+	
+	private long id;
+	
+	private Bank model;
+	
+	private String code;
+	private String name;
+	
+
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	@Override
+	public long getId() {
+		return id;
+	}
+	@Override
+	public Bank build(GenericFactory<Bank> factory) {
+		
+		if (model == null)
+			model = new Bank();
+		
+		model.setCode(code);
+		model.setName(name);
+		
+		return model;
+	}
+	@Override
+	public Bank getModel() {
+		return model;
+	}
+	@Override
+	public BankBean load(Bank model) {
+		
+		if (model == null)
+			throw new IllegalArgumentException();
+		
+		this.model = model;
+		this.id = model.getId();
+		
+		this.name = model.getName();
+		this.code = model.getCode();
+		
+		return this;
+	}
+}

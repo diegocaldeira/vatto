@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+    <h:panelGroup layout="block" id="contact-menuBody-wrapper" styleClass="page with-sidebar">
+	        <h:panelGroup layout="block" styleClass="page-header" style="height: 50px;">
+	        </h:panelGroup>
+	 
+	        <h:panelGroup layout="block" styleClass="page-sidebar">
+        		<h:panelGroup layout="block" styleClass="sidebar-menu-link border-left-orange">
+					<p:commandLink id="contact-dashboard-action" value="DASHBOARD" update="contact-menuBody" actionListener="#{registerController.load('CONTACT-DASHBOARD')}"/>
+				</h:panelGroup>
+				
+				<h:panelGroup layout="block" styleClass="sidebar-menu-link border-left-olive">
+	        		<p:commandLink id="contact-mycontacts-action" value="MEUS CONTATOS" update="contact-menuBody" actionListener="#{registerController.load('CONTACT-LIST')}"/>
+	        	</h:panelGroup>
+	        	
+	        	<h:panelGroup layout="block" styleClass="sidebar-menu-link border-left-purple">
+	        		<p:commandLink id="contact-category-action" value="CATEGORIAS" update="contact-menuBody" actionListener="#{registerController.load('CONTACT-CATEGORY')}"/>
+       			</h:panelGroup>
+	        	
+	        	<h:panelGroup layout="block" styleClass="sidebar-menu-link border-left-red">
+	        		<p:commandLink id="contact-birthday-action" value="ANIVERSARIANTES" update="contact-menuBody" actionListener="#{registerController.load('CONTACT-BIRTHDAY')}"/>
+	        	</h:panelGroup>
+	        	
+	        	<h:panelGroup layout="block" styleClass="sidebar-menu-link border-left-blue">
+	        		<p:commandLink id="contact-statistics-action" value="ESTATÍSTICAS" update="contact-menuBody" actionListener="#{registerController.load('CONTACT-STATISTICS')}"/>
+	        	</h:panelGroup>
+	        </h:panelGroup>
+	        
+	        <h:panelGroup layout="block" id="contact-menuBody" styleClass="span13">
+<!-- 		        <ui:fragment rendered="#{registerController.isLoaded('CONTACT-DASHBOARD')}"> -->
+<!-- 					<ui:include src="../model/dashboard/contact-dashboard.xhtml"/> -->
+<!-- 				</ui:fragment> -->
+
+				<ui:fragment rendered="#{registerController.isLoaded('CONTACT-LIST')}">
+					<ui:include src="../model/contacts/contact-list.xhtml"/>
+				</ui:fragment>
+				
+				<ui:fragment rendered="#{registerController.isLoaded('CONTACT-CATEGORY')}">
+					<ui:include src="../model/category/contact-category.xhtml"/>
+				</ui:fragment>
+				
+				<ui:fragment rendered="#{registerController.isLoaded('CONTACT-BIRTHDAY')}">
+					<ui:include src="../model/birthday/contact-birthday.xhtml"/>
+				</ui:fragment>
+				
+<!-- 				<ui:fragment rendered="#{registerController.isLoaded('CONTACT-STATISTICS')}"> -->
+<!-- 					<ui:include src="../model/statistics/contact-statistics.xhtml"/> -->
+<!-- 				</ui:fragment> -->
+				
+<!-- 				<ui:fragment rendered="#{registerController.isLoaded('CONTACT-CHOOSE-TYPE')}"> -->
+<!-- 					<ui:include src="../model/contact-model.xhtml"/> -->
+<!-- 				</ui:fragment> -->
+	        
+	        </h:panelGroup>
+		
+	</h:panelGroup>	 
+	
+</ui:composition>

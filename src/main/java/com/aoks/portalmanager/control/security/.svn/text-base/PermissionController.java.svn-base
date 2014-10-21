@@ -1,0 +1,50 @@
+package net.kallx.portalmanager.control.security;
+
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import net.kallx.portalmanager.control.security.bean.ApplicationPermissionBean;
+import net.kallx.portalmanager.model.security.ApplicationPermission;
+import net.kallx.portalmanager.service.ApplicationPermissionManager;
+import net.kallx.security.control.bean.UserBean;
+import net.kallx.utils.webmvc.AbstractController;
+import net.kallx.utils.webmvc.AbstractManager;
+import net.kallx.utils.webmvc.GenericFactory;
+
+@Named("permissionController")
+@SessionScoped
+public class PermissionController extends AbstractController<ApplicationPermission, ApplicationPermissionBean> {
+
+	private static final long serialVersionUID = 1L;
+	
+	@Inject
+	private ApplicationPermissionManager manager;
+	
+	private UserBean user;
+	
+	public UserBean getUser() {
+		return user;
+	}
+	public void setUser(UserBean user) {
+		this.user = user;
+	}
+	public boolean hasUser(){
+		return user != null;
+	}
+	
+	
+	@Override
+	public AbstractManager<ApplicationPermission> getManager() {
+		return manager;
+	}
+	@Override
+	public Class<ApplicationPermissionBean> getBeanClazz() {
+		return ApplicationPermissionBean.class;
+	}
+	@Override
+	public GenericFactory<ApplicationPermission> getFactory() {
+		return null;
+	}
+	
+}

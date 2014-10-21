@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+		<f:event listener="#{controller.loadBeansByType(type)}" type="preRenderComponent"/>
+		<p:dataTable id="#{table}-list" var="att" widgetVar="#{table}List"
+										paginator="true" rows="14" paginatorPosition="bottom" 
+										currentPageReportTemplate="#{message.general_you_have} {totalRecords} #{message.general_contacts_lower_case}."
+		 								paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"  
+										selection="#{controller.beans}"
+										filteredValue="#{controller.dataModel.filteredBeans}"
+										value="#{controller.dataModel}" editable="true"
+										emptyMessage="#{message.general_no_results}"  styleClass="content-menuBody-datatable">
+				      
+			<f:facet name="header" style="height: 42px !important;">
+				<p:inputText id="globalFilter" onkeyup="#{table}List.filter()" styleClass="input-sm form-control" style="width: 300px; float: left;"/>  
+				<p:watermark for="globalFilter" value="#{message.general_find_all_fields}" />
+				
+				<p:commandButton id="#{table}-list-remove" value="" title="#{message.action_remove} #{registerType}" styleClass="btn btn-white icon-trash" update="#{table}-list" style="margin-left: 3%; float: left;" disabled="#{controller.beans.isEmpty()}"/>
+				<p:tooltip for="#{table}-list-remove" value="#{message.action_remove} #{registerType}" showEffect="fade" hideEffect="fade" /> 
+				<p:overlayPanel id="#{table}-list-remove-confirmation" for="#{table}-list-remove" hideEffect="fade" styleClass="confirmation-style">  
+			        <h:outputText value="#{message.action_remove_all_general_ask}"/>
+			        <h:commandLink style="margin-left: 15px; padding: 3px 7px;" value="#{message.action_ask_confirmation}" action="#{controller.deleteAll()}" />
+			    </p:overlayPanel> 
+
+				<p:commandButton id="#{table}-list-export" value="" title="#{message.action_export} #{registerType}" ajax="false" styleClass="btn btn-primary icon-download-alt" style="margin-left: 10px; float: left;" disabled="#{controller.beans.isEmpty()}">
+					<p:fileDownload value="#{controller.export()}" />
+				</p:commandButton>
+				<p:tooltip for="#{table}-list-export" value="#{message.action_export} #{registerType} #{message.general_selected}" showEffect="fade" hideEffect="fade" /> 
+
+				<p:commandLink id="#{table}-list-add" value="#{message.action_add} #{registerType}" title="#{message.action_add} #{registerType}" oncomplete="updateLayout(); clearCheckBoxes($('.select-all').add($('.select-item')))"
+					style="float: right;" styleClass="btn btn-sm btn-info" actionListener="#{controller.add()}" action="#{registerController.setCreate(true)}" update="@form"/>
+				<p:tooltip for="#{table}-list-add" value="#{message.action_add} #{registerType}" showEffect="fade" hideEffect="fade" />
+			</f:facet> 
+		  	
+		  	<p:column selectionMode="multiple" style="width:3%" rendered="#{!controller.dataModel.filteredBeans.isEmpty()}"/>
+		  	<p:ajax event="rowEdit" 		listener="#{controller.onSave}"		update="@this"	/>  
+        	<p:ajax event="rowEditCancel" 	listener="#{controller.onCancel}"	update="@this"  />
+        	
+			<ui:insert/>
+		  	
+		  	<p:column style="width:22px;">
+		  		<p:rowEditor/>
+		  	</p:column>
+			
+			<p:column>
+				<h:panelGroup id="#{table}-remove">
+					<p:graphicImage value="resources/img/remove.png" height="22" width="22" />
+				</h:panelGroup>
+				<p:tooltip for="#{table}-remove" value="#{message.action_remove}" showEffect="fade" hideEffect="fade" /> 
+				<p:overlayPanel id="#{table}-remove-confirmation" for="#{table}-remove" hideEffect="fade" styleClass="confirmation-style">  
+			        <h:outputText value="#{message.action_remove_general_ask}"/>
+			        <h:commandLink style="margin-left: 15px;" value="#{message.action_ask_confirmation}" action="#{controller.delete()}">
+						<f:setPropertyActionListener value="#{att}" target="#{controller.bean}" />
+			        </h:commandLink>  
+			    </p:overlayPanel>  
+			</p:column>
+			
+		</p:dataTable>
+		<p:growl id="messages" showDetail="true"/>
+</ui:composition>

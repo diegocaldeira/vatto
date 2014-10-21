@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/kallxit/!svn/ver/289/kx-budget/trunk/src/java/net/kallx/budget/service
+END
+FlowManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kallxit/!svn/ver/380/kx-budget/trunk/src/java/net/kallx/budget/service/FlowManager.java
+END
+FlowTransactionManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/kallxit/!svn/ver/380/kx-budget/trunk/src/java/net/kallx/budget/service/FlowTransactionManager.java
+END
+FlowItemManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/kallxit/!svn/ver/380/kx-budget/trunk/src/java/net/kallx/budget/service/FlowItemManager.java
+END

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/kallxit/!svn/ver/315/kx-banking/trunk/src/java/net/kallx/banking/operation/service
+END
+CheckingAccountManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/kallxit/!svn/ver/380/kx-banking/trunk/src/java/net/kallx/banking/operation/service/CheckingAccountManager.java
+END
+SavingsAccountManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/kallxit/!svn/ver/380/kx-banking/trunk/src/java/net/kallx/banking/operation/service/SavingsAccountManager.java
+END
+CreditCardAccountManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/kallxit/!svn/ver/380/kx-banking/trunk/src/java/net/kallx/banking/operation/service/CreditCardAccountManager.java
+END
+InvestmentAccountManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/kallxit/!svn/ver/380/kx-banking/trunk/src/java/net/kallx/banking/operation/service/InvestmentAccountManager.java
+END
+CashAccountManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/kallxit/!svn/ver/380/kx-banking/trunk/src/java/net/kallx/banking/operation/service/CashAccountManager.java
+END

@@ -1,0 +1,8 @@
+package net.kallx.banking.payment.model;
+
+public class OtherInfo {
+
+	private String name;
+	private String value;
+	
+}

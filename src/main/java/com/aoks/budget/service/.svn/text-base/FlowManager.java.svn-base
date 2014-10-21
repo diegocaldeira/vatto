@@ -1,0 +1,26 @@
+package net.kallx.budget.service;
+
+import javax.enterprise.context.RequestScoped;
+
+import net.kallx.budget.model.Flow;
+import net.kallx.utils.webmvc.AbstractManager;
+
+@RequestScoped
+public class FlowManager extends AbstractManager<Flow> {
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	public Class<Flow> getModelClazz() {
+		return Flow.class;
+	}
+
+	
+	public Flow getFromName(String name){
+		
+		Flow user = wrapper.get(Flow.class, "name", name);
+		return user;
+		
+	}
+
+}

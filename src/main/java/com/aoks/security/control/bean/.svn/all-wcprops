@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/kallxit/!svn/ver/383/kx-security/trunk/src/java/net/kallx/security/control/bean
+END
+PermissionBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/kallxit/!svn/ver/302/kx-security/trunk/src/java/net/kallx/security/control/bean/PermissionBean.java
+END
+CredentialsBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/kallxit/!svn/ver/315/kx-security/trunk/src/java/net/kallx/security/control/bean/CredentialsBean.java
+END
+UserBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/kallxit/!svn/ver/383/kx-security/trunk/src/java/net/kallx/security/control/bean/UserBean.java
+END
+EmailInfoBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/kallxit/!svn/ver/383/kx-security/trunk/src/java/net/kallx/security/control/bean/EmailInfoBean.java
+END
+RoleBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/kallxit/!svn/ver/302/kx-security/trunk/src/java/net/kallx/security/control/bean/RoleBean.java
+END
+ApplicationRootBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/kallxit/!svn/ver/302/kx-security/trunk/src/java/net/kallx/security/control/bean/ApplicationRootBean.java
+END

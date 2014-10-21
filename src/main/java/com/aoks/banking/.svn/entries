@@ -1,0 +1,80 @@
+10
+
+dir
+315
+https://kallxtechnology.net/svn/kallxit/kx-banking/trunk/src/java/net/kallx/banking
+https://kallxtechnology.net/svn/kallxit
+
+
+
+2011-06-24T12:03:21.312500Z
+315
+marcos
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+4a8dfb25-51b6-ef4a-83d9-a4bc498b3bdf
+
+BankingMain.java
+file
+427
+
+
+
+2011-08-15T14:02:19.000000Z
+d74f316617575b67b8868a0e9218132c
+2011-08-11T18:28:51.296875Z
+427
+marcos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+485
+
+account
+dir
+
+bank
+dir
+
+collection
+dir
+
+operation
+dir
+
+payment
+dir
+
+statements
+dir
+

@@ -1,0 +1,18 @@
+package net.kallx.banking.operation.service;
+
+import javax.enterprise.context.RequestScoped;
+
+import net.kallx.banking.operation.model.SavingsAccount;
+import net.kallx.utils.webmvc.AbstractManager;
+
+@RequestScoped
+public class SavingsAccountManager extends AbstractManager<SavingsAccount> {
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	public Class<SavingsAccount> getModelClazz() {
+		return SavingsAccount.class;
+	}
+
+}

@@ -1,0 +1,53 @@
+package net.kallx.security.control;
+
+import java.io.Serializable;
+
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import net.kallx.security.control.bean.CredentialsBean;
+import net.kallx.security.model.User;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@Named("sessionController")
+@SessionScoped
+public class SecureSessionController implements Serializable {
+
+	private static final Logger logger = LoggerFactory.getLogger(SecureSessionController.class);
+	
+	private static final long serialVersionUID = 1L;
+	
+	private User logged;
+	private CredentialsBean credentials = new CredentialsBean();
+
+	@Inject
+	private LoginModule loginModule;
+	
+	public boolean isLogged(){
+		return logged != null;
+	}
+	
+	public boolean isPrincipalAllowedTo(String principal, String action){
+		return false;
+	}
+	
+	public CredentialsBean getCredentials() {
+		return credentials;
+	}
+	public void setCredentials(CredentialsBean credentials) {
+		this.credentials = credentials;
+	}
+	
+	public void attemptLogin(){
+		logged = loginModule.authenticate(credentials);
+	}
+	
+	public void attemptLogout(){
+		logged = null;
+		credentials = new CredentialsBean();
+	}
+	
+}

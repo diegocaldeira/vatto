@@ -1,0 +1,62 @@
+package net.kallx.utils.webmvc;
+
+import java.util.Map;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.ConverterException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public abstract class ModelConverter<T extends GenericBean<?>> implements Converter {
+	
+	private static Logger logger = LoggerFactory.getLogger(ModelConverter.class);
+
+	@Override
+	public Object getAsObject(FacesContext context, UIComponent component, String submittedValue) {
+		
+		Object ret = null;
+	
+		if (submittedValue.trim().equals("")) {  
+            ret = null;  
+        } else {  
+            try {  
+                long number = Long.parseLong(submittedValue);  
+                
+                if (mapped().containsKey(number))
+    				ret = mapped().get(number);  
+  
+            } catch(NumberFormatException exception) {
+            	logger.debug("Exception thrown");
+                throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Conversion Error", "Not a valid object conversion"));  
+            }  
+        }  
+		
+		logger.debug("Get as object called with '{}' as string value, returning '{}'", submittedValue, ret);
+  
+        return ret;
+		
+	}
+
+	@Override
+	public String getAsString(FacesContext context, UIComponent component, Object value) {
+		
+		logger.debug("Get as string called with '{}' as object value, for class '{}'", value, value.getClass().getName());
+		
+		if (value == null || value.equals("")) {  
+            return "";  
+        } else {  
+        	@SuppressWarnings("unchecked") // this is a bean default for GenericBeans
+			T bean = (T) value;
+        	mapped().put(bean.getId(), bean);
+            return String.valueOf(bean.getId());  
+        }
+		
+	}
+	
+	protected abstract Map<Long, T> mapped();
+
+}

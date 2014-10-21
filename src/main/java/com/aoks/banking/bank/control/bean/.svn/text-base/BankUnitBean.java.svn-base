@@ -1,0 +1,5 @@
+package net.kallx.banking.bank.control.bean;
+
+public class BankUnitBean {
+
+}

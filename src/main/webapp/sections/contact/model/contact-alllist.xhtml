@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+     
+	<ui:include src="../../../layout/menu.xhtml">
+		<ui:param name="controller" value="#{companyController}"/>		
+	</ui:include>
+
+	<p:dataTable var="cc" value="#{contactController.bean.register.contacts}" scrollRows="20" scrollable="true" liveScroll="true" scrollHeight="99%">  
+       <p:column headerText="Nome">  
+           <h:outputText value="#{cc.firstName}" />  
+       </p:column>  
+ 
+       <p:column headerText="Sobrenome">  
+           <h:outputText value="#{cc.lastName}" />  
+       </p:column>
+         
+       <p:column headerText="Telefone">  
+           <h:outputText value="#{cc.firstPhone.phoneNumber}" />  
+       </p:column>
+ 		
+ 		<p:column headerText="Email">  
+           <h:outputText value="#{cc.firstEmail.email}" />  
+       </p:column>
+ 
+       <p:column headerText="Categoria">  
+           <h:outputText value="#{cc.categoriesResume}" />  
+       </p:column>  
+   </p:dataTable>  
+   
+</ui:composition>

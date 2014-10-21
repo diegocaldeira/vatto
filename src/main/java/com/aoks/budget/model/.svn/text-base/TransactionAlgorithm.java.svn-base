@@ -1,0 +1,9 @@
+package net.kallx.budget.model;
+
+import java.util.List;
+
+public interface TransactionAlgorithm {
+
+	List<FlowTransaction> generateTransactions(FlowItem flowaccount);
+	
+}

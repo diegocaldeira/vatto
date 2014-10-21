@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/kallxit/!svn/ver/315/kx-budget/trunk/src/java/net/kallx/budget/model
+END
+FlowTransaction.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/kallxit/!svn/ver/401/kx-budget/trunk/src/java/net/kallx/budget/model/FlowTransaction.java
+END
+FlowItemInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/kallxit/!svn/ver/289/kx-budget/trunk/src/java/net/kallx/budget/model/FlowItemInfo.java
+END
+Flow.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kallxit/!svn/ver/315/kx-budget/trunk/src/java/net/kallx/budget/model/Flow.java
+END
+InstalmentsAlgorithm.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/kallxit/!svn/ver/289/kx-budget/trunk/src/java/net/kallx/budget/model/InstalmentsAlgorithm.java
+END
+RecurrentAlgorithm.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/kallxit/!svn/ver/396/kx-budget/trunk/src/java/net/kallx/budget/model/RecurrentAlgorithm.java
+END
+TransferAlgorithm.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/kallxit/!svn/ver/396/kx-budget/trunk/src/java/net/kallx/budget/model/TransferAlgorithm.java
+END
+FlowItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/kallxit/!svn/ver/396/kx-budget/trunk/src/java/net/kallx/budget/model/FlowItem.java
+END
+FlowStatus.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/kallxit/!svn/ver/396/kx-budget/trunk/src/java/net/kallx/budget/model/FlowStatus.java
+END
+FlowTransactionAccount.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/kallxit/!svn/ver/401/kx-budget/trunk/src/java/net/kallx/budget/model/FlowTransactionAccount.java
+END
+FlowItemType.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/kallxit/!svn/ver/289/kx-budget/trunk/src/java/net/kallx/budget/model/FlowItemType.java
+END
+TransferInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/kallxit/!svn/ver/289/kx-budget/trunk/src/java/net/kallx/budget/model/TransferInfo.java
+END
+RecurrentInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kallxit/!svn/ver/289/kx-budget/trunk/src/java/net/kallx/budget/model/RecurrentInfo.java
+END
+Periodicity.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/kallxit/!svn/ver/289/kx-budget/trunk/src/java/net/kallx/budget/model/Periodicity.java
+END
+InstalmentsInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/kallxit/!svn/ver/289/kx-budget/trunk/src/java/net/kallx/budget/model/InstalmentsInfo.java
+END
+TransactionAlgorithm.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/kallxit/!svn/ver/289/kx-budget/trunk/src/java/net/kallx/budget/model/TransactionAlgorithm.java
+END

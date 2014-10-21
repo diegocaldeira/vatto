@@ -1,0 +1,41 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<h:head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		
+		<h:outputStylesheet library="primefaces-bootstrap" name="theme.css"/>
+		<h:outputStylesheet library="css" name="default.css"/>
+		<h:outputStylesheet library="css" name="application.css"/>
+		
+		<h:outputStylesheet library="css" name="modern-responsive.css"/>
+		<h:outputStylesheet library="css" name="modern.css"/>
+		
+		<h:outputStylesheet library="css" name="flat-ui.css"/>
+		
+		<h:outputScript library="script" name="commons.js" />
+		<h:outputScript library="script" name="jquery.alphanumeric.js" />
+		
+	</h:head>
+	<h:body styleClass="metrouicss">
+		<h:form id="container-form" enctype="multipart/form-data" prependId="false">
+			<h:panelGroup layout="block" id="container-wrapper" styleClass="page">
+				 
+				 <h:panelGroup layout="block" id="header-wrapper" styleClass="page-header">
+				 	<ui:include src="sections/layout/header/header.xhtml"/> 
+				 </h:panelGroup>
+				 
+				 <h:panelGroup layout="block" id="content-wrapper" styleClass="page-region">
+			 		<ui:include src="sections/layout/content/content.xhtml"/> 
+				 </h:panelGroup>
+				 
+				 <h:panelGroup layout="block" id="footer-wrapper"/>
+				 
+			</h:panelGroup>
+		</h:form>
+	</h:body>
+	
+</h:html>

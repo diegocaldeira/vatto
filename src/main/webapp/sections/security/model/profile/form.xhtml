@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+    <!-- HEADER_TITLE -->
+	<h:panelGroup layout="block" styleClass="padder clearfix m-b-small b-b"> 
+		<h4 class="m-b m-t m-l"><span class="semi-bold"> <i class="icon-edit"> </i> <h:outputText value="#{message.action_change} #{message.model_title_security_my_data}"/></span></h4>
+	</h:panelGroup>
+	<!-- / HEADER_TITLE -->
+	
+	<div class="col-md-12"> 
+		<div class="grid simple" style="margin-top: 20px;"> 
+			<div class="grid-body no-border">
+		
+				<div class="row row column-seperation">
+					<div class="col-md-8">
+						<h4>#{message.general_data}</h4>
+<!-- 						<div class="row form-row"> -->
+<!-- 							<div class="col-md-6"> -->
+<!-- 								<h:form enctype="multipart/form-data"> -->
+<!-- 								<p:fileUpload mode="advanced" fileUploadListener="{userController.storeUserPicture()}" allowTypes="/(\.|\/)(gif|jpg|jpeg|gif|png|PNG|GIF|JPG|JPEG)$/" auto="true"/> -->
+<!-- 									<p:fileUpload fileUploadListener="{userController.bean.picture}" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" sizeLimit="100000" description="Select Images"/> -->
+<!-- 							        <p:commandButton value="Submit" ajax="false" actionListener="{userController.storeUserPicture}" /> -->
+<!-- 							        <h:graphicImage id="image" alt="uploaded image" url="{userController.bean.picture}"/> -->
+<!-- 							    </h:form> -->
+<!-- 						    </div> -->
+<!-- 						</div> -->
+			
+						<div class="row form-row">
+							<div class="col-md-6">
+								<p:inputText id="profile_first_Name" value="#{userController.bean.firstName}" size="50" maxlength="50" styleClass="form-control" placeholder="#{message.model_name}"/>
+							</div>
+							<div class="col-md-6">
+								<p:inputText id="profile_last_Name" value="#{userController.bean.lastName}" size="50" maxlength="50" styleClass="form-control" placeholder="#{message.model_lastname}"/>
+							</div>
+						</div>
+						
+						<div class="row form-row">
+							<div class="col-md-6">
+								<p:inputMask id="profile_phone" value="#{userController.bean.phone.phoneNumber}" size="11" maxlength="11" mask="(99) 9999-9999?9" styleClass="form-control" placeholder="#{message.model_phone_number}"/>
+			               	</div>
+			               	<div class="col-md-6"></div>	
+			            </div>
+						<div class="row form-row">
+							<div class="col-md-6">
+								<p:inputText id="profile_email" value="#{userController.bean.email.address}" size="50" maxlength="50" styleClass="form-control" placeholder="#{message.model_email}"/>
+			               	</div>	
+			               	<div class="col-md-6">
+								<p:inputText id="profile_confirm_email" value="#{userController.bean.email.address}" size="50" maxlength="50" styleClass="form-control" placeholder="#{message.general_email_confirmation}"/>
+							</div>
+			             </div>
+						
+					</div>
+					
+					<div class="col-md-4">
+						<h4>#{message.general_social}</h4>
+						
+						<div class="row form-row">
+							<div class="col-md-12">
+								<p:inputText id="profile_facebook" placeholder="#{message.model_facebook}" value="#{userController.bean.facebook}" styleClass="form-control"/>
+							</div>
+						</div>
+					
+						<div class="row form-row">
+							<div class="col-md-12">
+								<p:inputText id="profile_twitter" placeholder="#{message.model_twitter}" value="#{userController.bean.twitter}" styleClass="form-control"/>
+							</div>
+						</div>
+					
+						<div class="row form-row">
+							<div class="col-md-12">
+								<p:inputText id="profile_linkedin" placeholder="#{message.model_linkedin}" value="#{userController.bean.linkedin}" styleClass="form-control"/>
+							</div>
+						</div>
+						
+					</div>
+					
+				</div>
+				
+				<div class="form-actions">
+					<div class="pull-right">
+						<p:commandButton value="#{message.action_save}"   actionListener="#{userController.save()}" 	styleClass="btn btn-primary btn-cons" ajax="false" action="#{registerController.setCreate(false)}" style="margin-left: 5px;" type="push"/>
+						<p:commandButton value="#{message.action_cancel}" actionListener="#{userController.clean()}" 	styleClass="btn btn-white btn-cons"   ajax="false" action="#{registerController.setCreate(false)}" style="margin-left: 5px;" immediate="true" />
+					</div>
+			  	</div>
+				
+			</div>
+		</div>
+	</div>
+      
+</ui:composition>

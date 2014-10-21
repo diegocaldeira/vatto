@@ -1,0 +1,52 @@
+package com.aoks.budget.model;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import com.aoks.banking.operation.model.OperationAccount;
+
+/**
+ * 
+ * @author Diego Pereira
+ * @site www.diegopereira.com.br
+ *
+ */
+public class TransferAlgorithm implements TransactionAlgorithm {
+
+	@Override
+	public List<FlowTransaction> generateTransactions(FlowItem item) {
+		
+		List<FlowTransaction> ret = new ArrayList<FlowTransaction>();
+		
+		FlowTransaction txa = new FlowTransaction();
+		
+		OperationAccount origin = item.getOrigin();
+		OperationAccount target = item.getTarget();
+		
+		if (origin != null && target != null){
+			
+			txa.setAccount(origin);
+			txa.setAmount(item.getAmount());
+			txa.setOcurrence(item.getInfo().getStart());
+			txa.setCredit(false);
+			txa.setDescription("From " + origin.getDescription() + " to " + target.getDescription());
+			txa.setStatus(FlowStatus.OPEN);
+			
+			FlowTransaction txb = new FlowTransaction();
+			
+			txb.setAccount(target);
+			txb.setAmount(item.getAmount());
+			txb.setOcurrence(item.getInfo().getStart());
+			txb.setCredit(true);
+			txb.setDescription("From " + origin.getDescription() + " to " + target.getDescription());
+			txb.setStatus(FlowStatus.OPEN);
+			
+			ret = Arrays.asList(new FlowTransaction[]{txa, txb});
+			
+		}
+		
+		return ret;
+	}
+
+}

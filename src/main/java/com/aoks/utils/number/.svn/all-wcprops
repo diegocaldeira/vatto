@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/kallxit/!svn/ver/376/kx-utils/trunk/src/java/net/kallx/utils/number
+END
+Share.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kallxit/!svn/ver/376/kx-utils/trunk/src/java/net/kallx/utils/number/Share.java
+END
+Range.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kallxit/!svn/ver/376/kx-utils/trunk/src/java/net/kallx/utils/number/Range.java
+END
+BigDecimalRange.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/kallxit/!svn/ver/376/kx-utils/trunk/src/java/net/kallx/utils/number/BigDecimalRange.java
+END
+ShareI.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/kallxit/!svn/ver/376/kx-utils/trunk/src/java/net/kallx/utils/number/ShareI.java
+END
+RangeValue.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/kallxit/!svn/ver/376/kx-utils/trunk/src/java/net/kallx/utils/number/RangeValue.java
+END
+BasicValue.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/kallxit/!svn/ver/376/kx-utils/trunk/src/java/net/kallx/utils/number/BasicValue.java
+END

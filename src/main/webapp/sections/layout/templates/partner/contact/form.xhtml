@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<p:panel header="#{message.contact_title_model}" styleClass="form-horizontal col-sm-5" style="margin-left: 20px;" rendered="#{contactController.has() and !legalAddressController.has()}">
+		<h:panelGroup id="#{form}-contact" layout="block" styleClass="panel-body">
+		
+			<h:panelGroup layout="block" styleClass="form-group">
+				<h:outputLabel value="#{message.contact_type}" styleClass="col-lg-3 control-label"/>
+				<h:panelGroup layout="block" styleClass="col-lg-8">
+			        <p:inputText id="#{form}-contact-type" label="#{message.contact_type}" value="#{contactController.bean.contactType}" size="30" maxlength="30" styleClass=" form-control parsley-validated" style="width: 195px;"/>
+				</h:panelGroup>
+			</h:panelGroup>
+			
+			<h:panelGroup layout="block" styleClass="form-group">
+				<h:outputLabel value="#{message.model_name}" styleClass="col-lg-3 control-label" />
+				<h:panelGroup layout="block" styleClass="col-lg-8">
+					<p:inputText id="#{form}-name" label="#{message.model_name}" value="#{contactController.bean.firstName}" size="30" maxlength="30" styleClass=" form-control parsley-validated" style="width: 195px;"/>
+				</h:panelGroup>
+			</h:panelGroup>
+			
+			<h:panelGroup layout="block" styleClass="form-group">
+				<h:outputLabel value="#{message.model_lastname}" styleClass="col-lg-3 control-label" />
+				<h:panelGroup layout="block" styleClass="col-lg-8">
+					<p:inputText id="#{form}-last-name" label="#{message.model_lastname}" value="#{contactController.bean.lastName}" size="30" maxlength="30" styleClass=" form-control parsley-validated" style="width: 195px;"/>
+				</h:panelGroup>
+			</h:panelGroup>
+			
+			<h:panelGroup layout="block" styleClass="form-group">
+				<h:outputLabel value="#{message.model_phone_number}" styleClass="col-lg-3 control-label" />
+				<h:panelGroup layout="block" styleClass="col-lg-8">
+					<p:inputMask id="#{form}-phonenumber" label="#{message.model_insert_phone_number}" value="#{contactController.bean.firstPhone.phoneNumber}" size="14" maxlength="14" mask="(99) 9999-9999" styleClass="form-control parsley-validated" style="width: 180px;" />
+				</h:panelGroup>
+			</h:panelGroup>
+			
+			<h:panelGroup layout="block" styleClass="form-group">
+				<h:outputLabel value="#{message.model_email}" styleClass="col-lg-3 control-label" />
+				<h:panelGroup layout="block" styleClass="col-lg-8">
+					<p:inputText id="#{form}-email" label="#{message.model_email}" value="#{contactController.bean.firstEmail.email}" size="30" maxlength="30" styleClass=" form-control parsley-validated" style="width: 195px;"/>
+				</h:panelGroup>
+			</h:panelGroup>
+			
+			<h:panelGroup layout="block" styleClass="form-group">
+				<h:outputLabel value="#{message.model_facebook}" styleClass="col-lg-3 control-label" />
+				<h:panelGroup layout="block" styleClass="col-lg-8">
+					<p:inputText id="#{form}-facebook" label="#{message.model_facebook}" value="#{contactController.bean.facebook}" size="30" maxlength="30" styleClass=" form-control parsley-validated" style="width: 195px;"/>
+				</h:panelGroup>
+			</h:panelGroup>
+			
+			<h:panelGroup layout="block" styleClass="form-group">
+				<h:outputLabel value="#{message.model_twitter}" styleClass="col-lg-3 control-label" />
+				<h:panelGroup layout="block" styleClass="col-lg-8">
+					<p:inputText id="#{form}-twitter" label="#{message.model_twitter}" value="#{contactController.bean.twitter}" size="30" maxlength="30" styleClass=" form-control parsley-validated" style="width: 195px;"/>
+				</h:panelGroup>
+			</h:panelGroup>
+			
+			<h:panelGroup styleClass="form-group">
+				<h:panelGroup styleClass="col-lg-9 col-lg-offset-3">
+					<p:commandButton value="#{message.action_cancel}" actionListener="#{contactController.clean()}" 	  update="@form" immediate="true" styleClass="btn btn-white"/>
+					<p:commandButton value="#{message.action_add}"    actionListener="#{contactController.addContact()}"  update="@form" process="#{form}-contact"  styleClass="btn btn-primary"/>
+				</h:panelGroup>
+			</h:panelGroup>
+		
+		</h:panelGroup>		
+	</p:panel>	
+	
+</ui:composition>

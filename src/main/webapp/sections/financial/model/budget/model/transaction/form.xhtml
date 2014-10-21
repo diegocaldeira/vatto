@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+	<h:panelGroup layout="block" styleClass="bg-primary padder clearfix m-b-small"> 
+		<h4 class="m-b m-t"><i class="icon-edit"></i><h:outputText value="#{message.model_title_simple}"/></h4>
+	</h:panelGroup>
+		
+	<h:panelGroup layout="block" styleClass="row">
+	
+		<h:panelGroup layout="block" rendered="#{flowTransactionController.has()}" styleClass="form-horizontal col-sm-11" style="margin-left: 20px;">
+			<h:panelGroup layout="block" styleClass="panel">
+				<h:panelGroup layout="block" styleClass="panel-body">
+					
+					<p:panelGrid columns="2" colspan="5" style="margin-left: 20%; width: 50%;">
+						<h:outputLabel value="#{message.model_description}: " styleClass="col-lg-3 control-label" />
+						<p:inputText value="#{flowTransactionController.bean.description}" 	size="20" style="width: 250px;" styleClass="form-control parsley-validated"/>
+	
+						<h:outputLabel value="#{message.model_value}" styleClass="col-lg-3-label"/> 
+						<p:inputText label="#{message.model_value}" value="#{flowTransactionController.bean.amount}" size="30" maxlength="30" styleClass="form-control parsley-validated"/>
+				      
+						<h:outputLabel value="#{message.model_date}: " styleClass="col-lg-3-label"/>
+						<p:calendar label="#{message.model_ocurrence}" value="#{flowTransactionController.bean.ocurrence}" converter="#{dateCalendarConverter}" pattern="dd/MM/yyyy" styleClass="birth"/>
+	
+						<h:outputText value="#{message.model_account}" styleClass="col-lg-3-label"/> 
+						<p:autoComplete value="#{flowTransactionController.bean.account}" styleClass="birth" completeMethod="#{accountController.getAccountsAC}"
+						        var="account" itemLabel="#{account.description}" itemValue="#{account}" converter="accountConverter"/>
+						        
+					</p:panelGrid>
+					
+					<h:panelGroup styleClass="form-group">
+						<h:panelGroup styleClass="col-lg-9 col-lg-offset-3">
+							<p:commandButton value="#{message.action_cancel}" actionListener="#{flowTransactionController.clean()}" 	styleClass="btn btn-white"   update="@form" action="#{registerController.setCreate(false)}" style="margin-left: 5px;" immediate="true" />
+							<p:commandButton value="#{message.action_save}"   actionListener="#{flowTransactionController.save()}" 		styleClass="btn btn-primary" update="@form" action="#{registerController.setCreate(false)}" style="margin-left: 5px;" type="push"/>
+						</h:panelGroup>
+					</h:panelGroup>
+					
+				</h:panelGroup>
+			</h:panelGroup>
+		</h:panelGroup>
+	
+	</h:panelGroup>
+</ui:composition>

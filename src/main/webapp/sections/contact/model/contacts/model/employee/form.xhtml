@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<!-- HEADER_TITLE -->
+	<h:panelGroup layout="block" styleClass="padder clearfix m-b-small b-b"> 
+		<h4 class="m-b m-t m-l"><span class="semi-bold"> <i class="icon-edit"> </i> <h:outputText value="#{message.model_title_employee}"/></span></h4>
+	</h:panelGroup>
+	<!-- / HEADER_TITLE -->
+
+	<!-- CONTENT_BODY -->
+	<h:panelGroup styleClass="m-t" layout="block" rendered="#{individualPartnerController.has()}" >
+
+		<ui:decorate template="/sections/layout/templates/partner/model/form.xhtml">
+			<ui:param name="form" 		value="employee" />
+			<ui:param name="controller" value="#{individualPartnerController}" />
+			
+			<ui:define name="family">
+				<div class="row form-row">
+					<div class="col-md-6">
+						<p:inputText placeholder="#{message.model_fathername}" label="#{message.model_fathername}" value="#{individualPartnerController.bean.register.fatherName}" size="40" maxlength="80" styleClass="form-control parsley-validated"/>
+					</div>
+					<div class="col-md-6">
+						<p:inputText placeholder="#{message.model_mothername}" label="#{message.model_mothername}" value="#{individualPartnerController.bean.register.motherName}" size="40" maxlength="80" styleClass="form-control parsley-validated"/>
+					</div>
+				</div>
+			</ui:define>
+			
+			<ui:define name="address">
+				<ui:decorate template="/sections/layout/templates/partner/address/list.xhtml">
+					<ui:param name="table" 				value="employee" />
+					<ui:param name="registerBean" 		value="#{individualPartnerController.bean.register}" />
+					<ui:param name="controller" 		value="#{individualPartnerController}" />
+					<ui:param name="addressController"  value="#{individualAddressController}" />
+					
+					<p:ajax event="rowSelect" 	listener="#{individualAddressController.onRowSelect}"   update="@form"/>  
+			        <p:ajax event="rowUnselect" listener="#{individualAddressController.onRowUnselect}" update="@form"/>
+				</ui:decorate>
+				
+				<ui:decorate template="/sections/layout/templates/partner/address/form.xhtml">
+					<ui:param name="form" 				value="employee" />
+					<ui:param name="addressController"  value="#{individualAddressController}" />
+				</ui:decorate>
+			</ui:define>
+			
+		</ui:decorate>
+		
+	</h:panelGroup>
+	
+</ui:composition>

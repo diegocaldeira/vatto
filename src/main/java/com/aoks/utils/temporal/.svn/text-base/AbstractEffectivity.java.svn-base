@@ -1,0 +1,37 @@
+package net.kallx.utils.temporal;
+
+import java.util.Calendar;
+
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
+import javax.persistence.MappedSuperclass;
+
+@Embeddable
+@MappedSuperclass
+public class AbstractEffectivity implements Effectivity {
+
+    @Embedded
+    protected DateRange dateRange;
+
+    public AbstractEffectivity() {
+        dateRange = new DateRange();
+        dateRange.start(Calendar.getInstance());
+    }
+
+    public AbstractEffectivity(Calendar start) {
+        this();
+        dateRange.start(start);
+    }
+
+    public void create(Calendar start) {
+        dateRange.start(start);
+    }
+
+    public void end(Calendar end) {
+        dateRange.end(end);
+    }
+
+    public boolean isEffectiveOnDate(Calendar calendar) {
+        return dateRange.includes(calendar);
+    }
+}

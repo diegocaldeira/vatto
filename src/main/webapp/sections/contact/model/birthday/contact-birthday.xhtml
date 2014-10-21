@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<h:panelGroup layout="block" id="contact-birthday" styleClass="page contact-mycontacts-style">
+		
+		<h:panelGroup layout="block" id="contact-birthday-header" styleClass="page-header">
+			<h:panelGroup layout="block" id="contact-birthday-header-title" styleClass="page-header-content body-header-title">
+				<h:panelGroup rendered="#{birthdayMenuController.isLoaded(0)}">		<h2><strong><h:outputText value="#{message.general_birthday} - #{message.calendar_month_january}"  	 />	</strong></h2></h:panelGroup>
+				<h:panelGroup rendered="#{birthdayMenuController.isLoaded(1)}"> 	<h2><strong><h:outputText value="#{message.general_birthday} - #{message.calendar_month_february}" 	 />	</strong></h2></h:panelGroup>
+				<h:panelGroup rendered="#{birthdayMenuController.isLoaded(2)}">		<h2><strong><h:outputText value="#{message.general_birthday} - #{message.calendar_month_march}"    	 />	</strong></h2></h:panelGroup>
+				<h:panelGroup rendered="#{birthdayMenuController.isLoaded(3)}">  	<h2><strong><h:outputText value="#{message.general_birthday} - #{message.calendar_month_april}" 	 />	</strong></h2></h:panelGroup>
+				<h:panelGroup rendered="#{birthdayMenuController.isLoaded(4)}">		<h2><strong><h:outputText value="#{message.general_birthday} - #{message.calendar_month_may}"   	 />	</strong></h2></h:panelGroup>
+				<h:panelGroup rendered="#{birthdayMenuController.isLoaded(5)}">		<h2><strong><h:outputText value="#{message.general_birthday} - #{message.calendar_month_june}" 	 	 />	</strong></h2></h:panelGroup>
+				<h:panelGroup rendered="#{birthdayMenuController.isLoaded(6)}">		<h2><strong><h:outputText value="#{message.general_birthday} - #{message.calendar_month_july}" 	 	 />	</strong></h2></h:panelGroup>
+				<h:panelGroup rendered="#{birthdayMenuController.isLoaded(7)}">		<h2><strong><h:outputText value="#{message.general_birthday} - #{message.calendar_month_august}"	 />	</strong></h2></h:panelGroup>
+				<h:panelGroup rendered="#{birthdayMenuController.isLoaded(8)}">		<h2><strong><h:outputText value="#{message.general_birthday} - #{message.calendar_month_september}"  />	</strong></h2></h:panelGroup>
+				<h:panelGroup rendered="#{birthdayMenuController.isLoaded(9)}">		<h2><strong><h:outputText value="#{message.general_birthday} - #{message.calendar_month_october}" 	 />	</strong></h2></h:panelGroup>
+				<h:panelGroup rendered="#{birthdayMenuController.isLoaded(10)}">	<h2><strong><h:outputText value="#{message.general_birthday} - #{message.calendar_month_november}" 	 />	</strong></h2></h:panelGroup>
+				<h:panelGroup rendered="#{birthdayMenuController.isLoaded(11)}">	<h2><strong><h:outputText value="#{message.general_birthday} - #{message.calendar_month_december}" 	 />	</strong></h2></h:panelGroup>
+			</h:panelGroup>
+		</h:panelGroup>
+		
+		<h:panelGroup layout="block" id="contact-birthday-body" styleClass="page-region">
+			<h:panelGroup layout="block" id="contact-birthday-body-content" styleClass="page-region-content" >
+				<h:panelGroup  layout="block" id="birthday-tabView" styleClass="ui-tabs ui-widget ui-widget-content ui-corner-all ui-hidden-container ui-tabs-top">
+				
+					<h:panelGroup layout="block" style="margin-left: 10px;" styleClass="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+<!-- 						<p:commandLink value="#{message.calendar_month_january}"  	immediate="true" actionListener="#{birthdayMenuController.load(0)}"  	styleClass="btn-tab" update="contact-birthday"/> -->
+<!-- 						<p:commandLink value="#{message.calendar_month_february}" 	immediate="true" actionListener="#{birthdayMenuController.load(1)}" 	styleClass="btn-tab" update="contact-birthday"/> -->
+<!-- 						<p:commandLink value="#{message.calendar_month_march}"    	immediate="true" actionListener="#{birthdayMenuController.load(2)}"		styleClass="btn-tab" update="contact-birthday"/> -->
+<!-- 						<p:commandLink value="#{message.calendar_month_april}" 	  	immediate="true" actionListener="#{birthdayMenuController.load(3)}"	 	styleClass="btn-tab" update="contact-birthday"/> -->
+<!-- 						<p:commandLink value="#{message.calendar_month_may}" 	  	immediate="true" actionListener="#{birthdayMenuController.load(4)}"		styleClass="btn-tab" update="contact-birthday"/> -->
+<!-- 						<p:commandLink value="#{message.calendar_month_june}" 	  	immediate="true" actionListener="#{birthdayMenuController.load(5)}"		styleClass="btn-tab" update="contact-birthday"/> -->
+<!-- 						<p:commandLink value="#{message.calendar_month_july}" 	  	immediate="true" actionListener="#{birthdayMenuController.load(6)}"		styleClass="btn-tab" update="contact-birthday"/> -->
+<!-- 						<p:commandLink value="#{message.calendar_month_august}" 	immediate="true" actionListener="#{birthdayMenuController.load(7)}"		styleClass="btn-tab" update="contact-birthday"/> -->
+<!-- 						<p:commandLink value="#{message.calendar_month_september}" 	immediate="true" actionListener="#{birthdayMenuController.load(8)}" 	styleClass="btn-tab" update="contact-birthday"/> -->
+<!-- 						<p:commandLink value="#{message.calendar_month_october}" 	immediate="true" actionListener="#{birthdayMenuController.load(9)}" 	styleClass="btn-tab" update="contact-birthday"/> -->
+<!-- 						<p:commandLink value="#{message.calendar_month_november}" 	immediate="true" actionListener="#{birthdayMenuController.load(10)}"	styleClass="btn-tab" update="contact-birthday"/> -->
+<!-- 						<p:commandLink value="#{message.calendar_month_december}" 	immediate="true" actionListener="#{birthdayMenuController.load(11)}"	styleClass="btn-tab" update="contact-birthday"/> -->
+					</h:panelGroup>  
+					
+					<h:panelGroup layout="block" id="tab-view-body-birthday" styleClass="tab-view-body">
+						
+						<p:galleria id="contentGalleria" value="#{birthdayController.beans}" var="att" panelWidth="450" panelHeight="200"  
+						            frameWidth="48" frameHeight="65" effect="clip">  
+						  
+						    <p:graphicImage id="playerImage" value="/images/barca/#{att.picture}" alt="#{message.general_image}" title="#{att.name}"/>  
+						    <f:facet name="content">  
+						        <h:panelGrid  columns="2" cellpadding="5">  
+						            <f:facet name="header">  
+						                <p:graphicImage value="/images/barca/#{att.picture}" />  
+						            </f:facet>  
+						  
+						            <h:outputLabel value="#{message.model_name}: " />  
+						            <h:outputText id="birth-name" value="#{att.name}"/>  
+						  
+						            <h:outputLabel value="#{message.model_age}: " />  
+						            <h:outputText id="birth-age" value="#{att.number}"/>  
+						  
+						            <h:outputText value="#{message.model_category}: " />  
+						            <h:outputText id="birth-category" value="#{att.category}"/>  
+						        </h:panelGrid>  
+						    </f:facet>  
+						  
+						</p:galleria>  
+             
+					
+			        </h:panelGroup>
+			        
+			    </h:panelGroup>
+			</h:panelGroup>	
+		</h:panelGroup>	
+
+	</h:panelGroup>
+	
+</ui:composition>

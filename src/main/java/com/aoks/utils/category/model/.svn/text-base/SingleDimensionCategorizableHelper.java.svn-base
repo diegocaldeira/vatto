@@ -1,0 +1,69 @@
+package net.kallx.utils.category.model;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+/**
+ * 
+ * @author Marcos Vinicius
+ *
+ */
+@Entity
+@Table(name="SingleCategorizableHelper", schema="utils")
+public class SingleDimensionCategorizableHelper extends CategorizableHelper {
+
+	private static final long serialVersionUID = 1L;
+
+	@ManyToOne
+	@JoinColumn(name="cDimension")
+	private CategoryDimension dimension;
+	
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name="SingleCategorized_Category", schema="utils",
+			joinColumns=@JoinColumn(name="SingleCategorized"),
+			inverseJoinColumns=@JoinColumn(name="Category"))
+	private Set<Category> categories;
+	
+	
+	public SingleDimensionCategorizableHelper() {
+		if (categories == null)
+			categories = new HashSet<Category>();
+	}
+	
+	
+	public CategoryDimension getDimension() {
+		return dimension;
+	}
+	public void setDimension(CategoryDimension dimension) {
+		this.dimension = dimension;
+	}
+	
+	
+	public Set<Category> getCategories() {
+		return categories;
+	}
+	public void setCategories(Set<Category> categories) {
+		this.categories = categories;
+	}
+	public void addCategory(Category category){
+		categories.add(category);
+	}
+	
+	
+	public Category getCategory(){
+		return (categories != null && categories.size() > 0 ? new ArrayList<Category>(categories).get(0) : null);
+	}
+	public void setCategory(Category category){
+		categories.add(category);
+	}
+	
+}

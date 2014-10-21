@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+      
+	<h:panelGroup id="#{form}-address" class="col-md-12 row" rendered="#{addressController.has() and !contactController.has()}"> 
+		
+		<div class="col-md-12">
+			<h4>#{message.address_title_model}</h4>
+	
+			<div class="row form-row">
+				<div class="col-md-6">
+					<p:inputText id="#{form}-address-type" label="#{message.address_type}" value="#{addressController.bean.addressType}" size="30" maxlength="30" styleClass=" form-control parsley-validated" placeholder="#{message.address_type}"/>
+				</div>
+				<div class="col-md-6">
+					<p:inputMask id="#{form}-zipCode" label="#{message.address_zipCode}" value="#{addressController.bean.zipCode}" mask="99999-999" size="30" maxlength="30" styleClass=" form-control parsley-validated" placeholder="#{message.address_zipCode}" />
+				</div>
+			</div>
+				
+			<div class="row form-row">
+				<div class="col-md-6">
+					<p:inputText id="#{form}-street" label="#{message.address_street}" value="#{addressController.bean.street}"  size="70" maxlength="70" styleClass=" form-control parsley-validated" placeholder="#{message.address_street}"/>
+				</div>
+				<div class="col-md-3">
+					<p:inputMask id="#{form}-number" label="#{message.address_number}" value="#{addressController.bean.number}" mask="9?9999999" size="8" maxlength="8" styleClass=" form-control parsley-validated" placeholder="#{message.address_number}"/>
+				</div>
+				<div class="col-md-3">
+					<p:inputText id="#{form}-completion" label="#{message.address_completion}" value="#{addressController.bean.completion}" styleClass=" form-control parsley-validated" size="25" maxlength="25" placeholder="#{message.address_completion}"/>
+				</div>
+			</div>
+				
+			<div class="row form-row">
+				<div class="col-md-6">
+					<p:inputText id="#{form}-neighborhood" label="#{message.address_neighborhood}" value="#{addressController.bean.neighborhood}" styleClass=" form-control parsley-validated" size="60" maxlength="60" placeholder="#{message.address_neighborhood}"/>
+				</div>
+				<div class="col-md-6">
+					<p:inputText id="#{form}-city" label="#{message.address_city}" value="#{addressController.bean.city}" styleClass=" form-control parsley-validated" size="60" maxlength="60" required="true" placeholder="#{message.address_city}"/>
+				</div>
+			</div>
+				
+		</div>
+		
+		<h:panelGroup styleClass="form-group">
+			<h:panelGroup styleClass="col-lg-9 col-lg-offset-3">
+				<p:commandButton value="#{message.action_cancel}" actionListener="#{addressController.clean()}" 	  update="#{form}-address-wrapper" immediate="true" styleClass="btn btn-white"/>
+				<p:commandButton value="#{message.action_add}"    actionListener="#{addressController.addRegister()}" update="#{form}-address-wrapper" process="#{form}-address"  styleClass="btn btn-primary"/>
+			</h:panelGroup>
+		</h:panelGroup>
+		
+	</h:panelGroup>
+		
+		
+</ui:composition>

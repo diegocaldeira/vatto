@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/kallxit/!svn/ver/302/kx-security/trunk/src/java/net/kallx/security/model/jaas
+END
+SecurityRealm.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/kallxit/!svn/ver/302/kx-security/trunk/src/java/net/kallx/security/model/jaas/SecurityRealm.java
+END
+OldSecurityLoginModule.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/kallxit/!svn/ver/302/kx-security/trunk/src/java/net/kallx/security/model/jaas/OldSecurityLoginModule.java
+END
+SecurityLoginModule.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/kallxit/!svn/ver/302/kx-security/trunk/src/java/net/kallx/security/model/jaas/SecurityLoginModule.java
+END

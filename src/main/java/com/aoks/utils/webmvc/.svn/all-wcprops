@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/kallxit/!svn/ver/420/kx-utils/trunk/src/java/net/kallx/utils/webmvc
+END
+AbstractController.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/kallxit/!svn/ver/391/kx-utils/trunk/src/java/net/kallx/utils/webmvc/AbstractController.java
+END
+MenuController.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kallxit/!svn/ver/376/kx-utils/trunk/src/java/net/kallx/utils/webmvc/MenuController.java
+END
+AbstractManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/kallxit/!svn/ver/381/kx-utils/trunk/src/java/net/kallx/utils/webmvc/AbstractManager.java
+END
+GenericBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/kallxit/!svn/ver/382/kx-utils/trunk/src/java/net/kallx/utils/webmvc/GenericBean.java
+END
+ModelConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kallxit/!svn/ver/376/kx-utils/trunk/src/java/net/kallx/utils/webmvc/ModelConverter.java
+END
+ModelManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/kallxit/!svn/ver/381/kx-utils/trunk/src/java/net/kallx/utils/webmvc/ModelManager.java
+END
+PersistenceWrapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/kallxit/!svn/ver/420/kx-utils/trunk/src/java/net/kallx/utils/webmvc/PersistenceWrapper.java
+END
+GenericFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kallxit/!svn/ver/385/kx-utils/trunk/src/java/net/kallx/utils/webmvc/GenericFactory.java
+END
+ActionController.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/kallxit/!svn/ver/376/kx-utils/trunk/src/java/net/kallx/utils/webmvc/ActionController.java
+END
+ManagerException.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/kallxit/!svn/ver/376/kx-utils/trunk/src/java/net/kallx/utils/webmvc/ManagerException.java
+END
+GenericModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/kallxit/!svn/ver/376/kx-utils/trunk/src/java/net/kallx/utils/webmvc/GenericModel.java
+END
+GenericFacade.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/kallxit/!svn/ver/376/kx-utils/trunk/src/java/net/kallx/utils/webmvc/GenericFacade.java
+END

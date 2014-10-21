@@ -1,0 +1,45 @@
+package net.kallx.budget.control;
+
+import java.io.Serializable;
+import java.util.List;
+
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
+
+import net.kallx.budget.control.bean.FlowItemBean;
+import net.kallx.budget.model.FlowTransaction;
+
+@Named("flowItemPreviewController")
+@RequestScoped
+public class FlowItemPreviewController implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+
+	private List<FlowTransaction> itens;
+
+	private FlowItemBean item;
+	
+	public List<FlowTransaction> getItens() {
+		if (itens == null)
+			makeItens();
+		return itens;
+	}
+	
+	private void makeItens(){
+		
+		if (item == null)
+			return;
+		
+		itens = item.getModel().generateTransactions();
+		
+	}
+
+	public FlowItemBean getItem() {
+		return item;
+	}
+	public void setItem(FlowItemBean item) {
+		this.item = item;
+		makeItens();
+	}
+
+}

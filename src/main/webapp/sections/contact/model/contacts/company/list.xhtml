@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<ui:decorate template="/sections/layout/templates/partner/model/list.xhtml">
+		<ui:param name="controller" 	value="#{companyController}" />
+		<ui:param name="table" 			value="company" />
+		<ui:param name="registerType" 	value="#{message.model_company}" />
+		<ui:param name="type" 			value="Company"/>
+		
+		<p:ajax event="rowSelect" 	listener="#{companyController.onRowSelect}"   update="@form"/>  
+	    <p:ajax event="rowUnselect" listener="#{companyController.onRowUnselect}" update="@form"/>
+		
+		<p:column filterBy="#{att.register.fancyName}" 			filterMatchMode="contains" headerText="#{message.model_fancy_name}"   style="text-align: center;">	<h:outputText value="#{att.register.fancyName}"/>			</p:column>
+	    <p:column filterBy="#{att.register.companyName}" 		filterMatchMode="contains" headerText="#{message.model_company_name}" style="text-align: center;">	<h:outputText value="#{att.register.companyName}"/>			</p:column>
+	    <p:column filterBy="#{att.register.phone.phoneNumber}" 	filterMatchMode="contains" headerText="#{message.model_phone_number}" style="text-align: center;">	<h:outputText value="#{att.register.phone.phoneNumber}"/>	</p:column>
+    	<p:column filterBy="#{att.register.cnpj}" 				filterMatchMode="contains" headerText="#{message.model_cnpj}"		  style="text-align: center;">	<h:outputText value="#{att.register.cnpj}"/>				</p:column>
+	</ui:decorate>
+	
+</ui:composition>

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/kallxit/!svn/ver/310/kx-portalManager/trunk/src/java/net/kallx/portalmanager/model/security
+END
+Application.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/kallxit/!svn/ver/310/kx-portalManager/trunk/src/java/net/kallx/portalmanager/model/security/Application.java
+END
+ApplicationPermission.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/kallxit/!svn/ver/310/kx-portalManager/trunk/src/java/net/kallx/portalmanager/model/security/ApplicationPermission.java
+END
+ApplicationPrincipal.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/kallxit/!svn/ver/310/kx-portalManager/trunk/src/java/net/kallx/portalmanager/model/security/ApplicationPrincipal.java
+END
+ApplicationRole.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/kallxit/!svn/ver/310/kx-portalManager/trunk/src/java/net/kallx/portalmanager/model/security/ApplicationRole.java
+END

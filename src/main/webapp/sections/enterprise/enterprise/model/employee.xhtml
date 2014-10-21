@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+	<h:panelGroup id="employeePartner-menuBody-wrapper" layout="block" styleClass="grid">
+    	<h:panelGroup layout="block" styleClass="row" style="margin: 3.5% 6%;">
+			<h:panelGroup layout="block" styleClass="span12">	
+		    	
+		    	<h:panelGroup layout="block" styleClass="span12">  
+			    	
+		            <h:panelGroup layout="block" styleClass="datatable-title">
+		 				<h:outputText value="Listagem" rendered="#{!individualPartnerController.has()}"/>
+		 				<h:outputText value="Contatos " rendered="#{individualPartnerController.has()}"/>
+					</h:panelGroup>
+					
+					<h:panelGroup layout="block" styleClass="action-datatable">
+			 			<h:panelGroup styleClass="toolbar-action" layout="block">
+			                <p:inputText id="employee-search" value="#{individualPartnerController.query}" style="margin-left: 20px; float: left;" rendered="#{!individualPartnerController.has()}">
+			                	<p:ajax event="keyup" execute="@this" update="employeePartnerTableBase"></p:ajax>
+			                </p:inputText>  
+							<p:watermark for="employee-search" value="Digite aqui para pesquisar" /> 
+							<p:commandButton value="Voltar" immediate="true" action="#{registerController.setName(null)}" actionListener="#{appmenu.load('CONTACT')}" update="content-wrapper" rendered="#{!individualPartnerController.has()}"/>
+			               	<p:commandButton value="Novo Empregado" title="Novo Empregado" actionListener="#{individualPartnerController.create('Employee')}" update="employeePartner-menuBody-wrapper" rendered="#{!individualPartnerController.has()}"/>
+							<p:commandButton value="Cancelar" type="push" image="ui-icon-note" actionListener="#{individualPartnerController.clean}" update="employeePartner-menuBody-wrapper" rendered="#{individualPartnerController.has()}"/>
+			               	<p:commandButton value="Salvar" type="push" image="ui-icon-disk" actionListener="#{individualPartnerController.save}" update="employeePartner-menuBody-wrapper" rendered="#{individualPartnerController.has()}"/>
+			 			</h:panelGroup>
+					</h:panelGroup>
+		       	</h:panelGroup>
+
+				<h:panelGroup layout="block" id="employeePartnerTableBase" styleClass="span12" rendered="#{!individualPartnerController.has()}">
+					<h:panelGroup layout="block" styleClass="no-results" rendered="#{individualPartnerController.getBeansByType('Employee').size() == 0}">
+						<h:outputText value="Nenhum Resultado Encontrado."/>
+					</h:panelGroup>
+					
+					<p:dataTable styleClass="content-menuBody-datatable" value="#{individualPartnerController.dataModel}" rowKey="#{att}" selection="#{individualPartnerController.selectedIndividualPartners}" var="att" paginator="true" rows="10" selectionMode="multiple" rendered="#{individualPartnerController.getBeansByType('Employee').size() != 0}">
+						<f:facet name="header">Folha de Pagamento</f:facet>
+						<p:column selectionMode="multiple" style="width:2%" /> 
+					  	<p:column headerText="Nome"><h:outputText value="#{att.register.firstName}"/></p:column>
+					  	<p:column headerText="Sobrenome"><h:outputText value="#{att.register.lastName}"/></p:column>
+					  	<p:column headerText="Data de Nascimento"><h:outputText converter="#{dateCalendarConverter}" value="#{att.register.birth}"/></p:column>
+					  	<f:facet name="footer">Total de #{individualPartnerController.getBeansByType('Employee').size()} registro(s) encontrado(s).</f:facet> 				  	
+					</p:dataTable>
+				</h:panelGroup>
+				
+				<h:panelGroup layout="block" rendered="#{individualPartnerController.has()}">
+					<p:panel id="employeePartnerFormBase" header="Cadastro de Empregado" styleClass="panel-form"> 
+						<h:panelGrid columns="2" cellpading="8" styleClass="content-menuBody-form-grid">
+							<h:outputLabel value="Nome: "/>
+							<p:inputText label="Nome" value="#{individualPartnerController.bean.register.firstName}" size="30" maxlength="30"/>
+							
+							<h:outputLabel value="Sobrenome: "/>
+							<p:inputText label="Ultimo Nome" value="#{individualPartnerController.bean.register.lastName}" size="30" maxlength="30"/>
+							
+							<h:outputLabel value="Gênero: "/> 
+					        <p:selectOneMenu style="width: 160px; height: 25px;" value="#{individualPartnerController.bean.register.genre}">
+					            <f:selectItem itemLabel=" -- " itemValue="NONE" />  
+					            <f:selectItem itemLabel="Masculino" itemValue="MALE" />  
+					            <f:selectItem itemLabel="Feminino" itemValue="FEMALE" />  
+							</p:selectOneMenu>
+							
+							<h:outputLabel value="Data de Nascimento: "/>
+							<p:calendar value="#{individualPartnerController.bean.register.birth}" converter="#{dateCalendarConverter}" pattern="dd/MM/yyyy" style="width: 150px"/>  
+						
+							<h:outputLabel value="Estado Civil: "/>
+					        <p:selectOneMenu style="width: 160px; height: 25px;" value="#{individualPartnerController.bean.register.maritalStatus}">
+					            <f:selectItem itemLabel=" -- " itemValue="NONE" /> 
+					            <f:selectItem itemLabel="Solteiro" itemValue="SINGLE" />  
+					            <f:selectItem itemLabel="Casado" itemValue="MARRIED" />  
+					            <f:selectItem itemLabel="Divorciado" itemValue="DIVORCED" />
+					            <f:selectItem itemLabel="Viúvo" itemValue="WIDOWER" />
+			      				</p:selectOneMenu>			
+					        
+							<h:outputLabel value="Nome do Pai: "/>
+							<p:inputText label="Nome do Pai" value="#{individualPartnerController.bean.register.fatherName}" size="40" maxlength="80"/>
+							
+							<h:outputLabel value="Nome da Mãe: "/>
+							<p:inputText label="Nome da Mãe" value="#{individualPartnerController.bean.register.motherName}" size="40" maxlength="80"/>
+							
+							<h:outputLabel value="Nacionalidade: "/>
+							<p:inputText label="Nacionalidade" value="#{individualPartnerController.bean.register.nationality}" size="30" maxlength="30"/>
+							
+							<h:outputLabel value="Naturalidade: "/>
+							<p:inputText label="Naturalidade" value="#{individualPartnerController.bean.register.naturality}" size="30" maxlength="30"/>
+						</h:panelGrid>
+					</p:panel>
+				</h:panelGroup>
+			</h:panelGroup>	
+		</h:panelGroup>
+	</h:panelGroup>
+</ui:composition>

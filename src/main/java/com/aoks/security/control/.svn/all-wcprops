@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/kallxit/!svn/ver/315/kx-security/trunk/src/java/net/kallx/security/control
+END
+EncrypterUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/kallxit/!svn/ver/302/kx-security/trunk/src/java/net/kallx/security/control/EncrypterUtils.java
+END
+XmlLoaderService.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/kallxit/!svn/ver/302/kx-security/trunk/src/java/net/kallx/security/control/XmlLoaderService.java
+END
+SecureSessionController.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/kallxit/!svn/ver/302/kx-security/trunk/src/java/net/kallx/security/control/SecureSessionController.java
+END
+UserController.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/kallxit/!svn/ver/383/kx-security/trunk/src/java/net/kallx/security/control/UserController.java
+END
+LoginModule.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/kallxit/!svn/ver/420/kx-security/trunk/src/java/net/kallx/security/control/LoginModule.java
+END

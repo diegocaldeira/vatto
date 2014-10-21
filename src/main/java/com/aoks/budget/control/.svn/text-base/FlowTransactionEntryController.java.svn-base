@@ -1,0 +1,14 @@
+package net.kallx.budget.control;
+
+import java.io.Serializable;
+
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
+
+@SessionScoped
+@Named("transactionEntryController")
+public class FlowTransactionEntryController implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+}

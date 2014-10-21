@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+      	<h:panelGroup layout="block" styleClass="padder clearfix"> <h4 class="m-b m-t"><span class="semi-bold"><i class="icon-th-list"></i><h:outputText value="#{message.list_title_employee}"/></span></h4> </h:panelGroup>
+      
+		<ui:decorate template="/sections/layout/templates/partner/model/list.xhtml">
+			<ui:param name="controller" 	value="#{individualPartnerController}" />
+			<ui:param name="table" 			value="employee" />
+			<ui:param name="registerType" 	value="#{message.model_employee}" />
+			<ui:param name="type" 			value="Employee"/>
+			
+			<p:ajax event="rowSelect" 	listener="#{individualPartnerController.onRowSelect}"   update="@form"/>  
+		    <p:ajax event="rowUnselect" listener="#{individualPartnerController.onRowUnselect}" update="@form"/>
+			
+			<p:column filterBy="#{att.register.firstName}" 		filterMatchMode="contains" headerText="#{message.model_name}"  			style="text-align: left; width: 35%;">	<h:outputText value="#{att.register.firstName} #{att.register.lastName}"/>			</p:column>
+<!-- 		 	<p:column filterBy="#{att.register.birth}" converter="#{dateCalendarConverter}" filterMatchMode="contains" headerText="#{message.model_birth}" 			style="text-align: left;">	<h:outputText converter="#{dateCalendarConverter}" value="#{att.register.birth}"/>	</p:column> -->
+<!-- 		 	<p:column filterBy="#{message[att.register.maritalStatus]}" 					filterMatchMode="contains" headerText="#{message.model_marital_status}" style="text-align: left; width: 25%;">	<h:outputText value="#{message[att.register.maritalStatus]}"/>						</p:column> -->
+		 	<p:column filterBy="#{att.register.phone.phoneNumber}" 							filterMatchMode="contains" headerText="#{message.model_phone_number}"  	style="text-align: left; width: 20%;">	<h:outputText value="#{att.register.phone.phoneNumber}"/>							</p:column>
+		 	<p:column filterBy="#{att.register.email}" 										filterMatchMode="contains" headerText="#{message.model_email}"  		style="text-align: left; width: 30%;">	<h:outputText value="#{att.register.email}"/>										</p:column>
+		</ui:decorate>
+
+</ui:composition>

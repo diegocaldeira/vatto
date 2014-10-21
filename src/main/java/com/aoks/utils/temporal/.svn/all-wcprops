@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/kallxit/!svn/ver/376/kx-utils/trunk/src/java/net/kallx/utils/temporal
+END
+Effectivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/kallxit/!svn/ver/376/kx-utils/trunk/src/java/net/kallx/utils/temporal/Effectivity.java
+END
+DateRange.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/kallxit/!svn/ver/376/kx-utils/trunk/src/java/net/kallx/utils/temporal/DateRange.java
+END
+AbstractEffectivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/kallxit/!svn/ver/376/kx-utils/trunk/src/java/net/kallx/utils/temporal/AbstractEffectivity.java
+END
+Range.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/kallxit/!svn/ver/376/kx-utils/trunk/src/java/net/kallx/utils/temporal/Range.java
+END
+AbstractTemporal.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/kallxit/!svn/ver/376/kx-utils/trunk/src/java/net/kallx/utils/temporal/AbstractTemporal.java
+END
+Temporal.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/kallxit/!svn/ver/376/kx-utils/trunk/src/java/net/kallx/utils/temporal/Temporal.java
+END

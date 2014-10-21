@@ -1,0 +1,91 @@
+package net.kallx.banking.operation.control.bean;
+
+import java.math.BigDecimal;
+import java.util.Calendar;
+
+import net.kallx.banking.bank.control.bean.BankBean;
+import net.kallx.banking.operation.model.BankAccount;
+
+public abstract class BankAccountBean<T extends BankAccount> extends OperationAccountBean<T> {
+
+	private static final long serialVersionUID = 1L;
+
+	protected BankBean bank;
+	protected String bankUnit;
+	protected String bankUnitDigit;
+	protected Calendar start;
+	protected Calendar opening;
+	protected BigDecimal startBalance;
+	protected String number;
+	protected String digit;
+	
+	
+	public String getBankDescription(){
+		return (bank != null ? bank.getName() : "");
+	}
+	
+	
+	public BankBean getBank() {
+		return bank;
+	}
+	public void setBank(BankBean bank) {
+		this.bank = bank;
+	}
+	
+	
+	public String getBankUnit() {
+		return bankUnit;
+	}
+	public void setBankUnit(String bankUnit) {
+		this.bankUnit = bankUnit;
+	}
+	
+	
+	public String getBankUnitDigit() {
+		return bankUnitDigit;
+	}
+	public void setBankUnitDigit(String bankUnitDigit) {
+		this.bankUnitDigit = bankUnitDigit;
+	}
+	
+	
+	public Calendar getStart() {
+		return start;
+	}
+	public void setStart(Calendar start) {
+		this.start = start;
+	}
+	
+	
+	public Calendar getOpening() {
+		return opening;
+	}
+	public void setOpening(Calendar opening) {
+		this.opening = opening;
+	}
+	
+	
+	public BigDecimal getStartBalance() {
+		return startBalance;
+	}
+	public void setStartBalance(BigDecimal startBalance) {
+		this.startBalance = startBalance;
+	}
+	
+	
+	public String getNumber() {
+		return number;
+	}
+	public void setNumber(String number) {
+		this.number = number;
+	}
+	
+	
+	public String getDigit() {
+		return digit;
+	}
+	public void setDigit(String digit) {
+		this.digit = digit;
+	}
+	
+}

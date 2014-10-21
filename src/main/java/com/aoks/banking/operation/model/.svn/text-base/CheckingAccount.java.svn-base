@@ -1,0 +1,17 @@
+package net.kallx.banking.operation.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+/**
+ * Represents a current account (checking account).
+ * @author MarcosVinicius
+ *
+ */
+@Entity
+@Table(name="CurrentAccount", schema="banking")
+public class CheckingAccount extends BankAccount {
+
+	private static final long serialVersionUID = 1L;
+
+}

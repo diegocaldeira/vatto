@@ -1,0 +1,19 @@
+package net.kallx.utils.webmvc;
+
+import java.io.Serializable;
+
+/**
+ * 
+ * @author Marcos Vinicius
+ *
+ */
+public interface ActionController extends Serializable {
+
+	void save();
+	void delete();
+	void create();
+	void clean();
+	
+	boolean has();
+	
+}

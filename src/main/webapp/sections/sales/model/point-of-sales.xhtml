@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<h:panelGroup layout="block" styleClass="row">
+
+		<h:form id="productForm">
+			<div class="col-lg-7">
+				<div class="col-md-12">
+					<div class="grid simple vertical green">
+						<div class="grid-title no-border">
+							<h4> <span class="semi-bold">Produtos</span> </h4>
+							<div class="tools"> <a href="javascript:;" class="collapse"></a> </div>
+						</div>
+						<div class="grid-body no-border" style="min-height: 91%;">
+							<div class="row-fluid">
+						
+						
+								<f:event listener="#{productController.loadBeansByType(type)}" type="preRenderComponent"/>
+								
+								<p:dataGrid id="productList" var="att"
+											paginator="true" rows="9" paginatorPosition="bottom"
+											columns="3" layout="grid" 
+											value="#{productController.dataModel}" 
+											emptyMessage="#{message.general_no_results}" styleClass="content-menuBody-datatable">
+				      
+				      				<p:column>
+									  	<p:panel header="#{att.code}" style="text-align:center; border-radius: 5px;">
+								            <h:panelGrid columns="1" style="width:100%">
+								                <p:graphicImage width="49" height="49" value="#{sessionController.loggedBean.picture}"/> 
+								 
+								 				<span class="text-black p-t-5 normal-text">#{att.name}</span>
+								 				
+								 				<p:commandLink update=":productForm:productDetail" oncomplete="PF('productDialog').show()" title="#{message.action_add}">
+								                    <span class="btn btn-small btn-success btn-cons" style="width: 100%; -webkit-border-radius: 0px 0px 3px 3px; -moz-border-radius: 0px 0px 3px 3px; border-radius: 0px 0px 3px 3px;"> <i class="fa fa-plus icon"></i> #{message.action_add} </span>
+								                    <f:setPropertyActionListener value="#{att}" target="#{productController.bean}" />
+								                </p:commandLink>
+								            </h:panelGrid>
+								        </p:panel>
+								    </p:column>
+							        
+								</p:dataGrid>
+								
+								<p:dialog header="" widgetVar="productDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+							    	<p:outputPanel id="productDetail" style="text-align:center;">
+										<div class="modal-content" style="border-top: 0 !important; border-radius: 0 !important;">
+											<div class="modal-header">
+												<p:graphicImage width="49" height="49" value="#{sessionController.loggedBean.picture}"/>
+												<h4 class="semi-bold">#{productController.bean.name}</h4>
+												<p class="no-margin"></p>
+												<br/>
+											</div>
+											<div class="modal-body">
+												<div class="row form-row">
+													<div class="col-md-6">
+														<div class="well well-small">
+															<div class="input-group transparent">
+																<span class="input-group-addon" style="border-radius: 3px 0 0 3px;">
+																	#{message.model_quantity}
+																</span>
+																<p:inputText label="#{message.model_quantity}" value="#{productController.bean.quantity}" styleClass="form-control">
+																	<p:ajax event="blur" update=":productForm:totalValueMoneyBox" />
+																</p:inputText>
+																<p:watermark for="discountValueOrder" value="#{message.model_discount}" />
+															</div>
+														</div>
+													</div>
+													
+													<div class="col-md-6">
+														<div class="well well-small">
+															<div class="input-group transparent">
+																<span class="input-group-addon" style="border-radius: 3px 0 0 3px;">
+																	#{message.model_discount} #{message.watermark_model_percentage_signal}
+																</span>
+																<p:inputText label="#{message.model_discount}" value="#{productController.bean.discount}" size="3" maxlength="100" styleClass="form-control">
+																	<p:ajax event="blur" update=":productForm:totalValueMoneyBox" />
+																</p:inputText>
+																<p:watermark for="discountValueOrder" value="#{message.model_discount}" />
+															</div>
+														</div>
+													</div>
+												
+												</div>
+												<div class="row form-row">
+													<div class="col-md-9"></div>
+													<div class="col-md-3">
+														<div class="well well-small green">
+															<div class="pull-right"> <h:outputText id="totalValueMoneyBox" value="#{message.watermark_model_money_signal} #{productController.bean.totalPrice}"/></div>
+															<div class="clearfix"></div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<p:commandButton value="#{message.action_add}"		styleClass="btn btn-danger" update=":productForm:invoice" onclick="PF('productDialog').hide();" actionListener="#{productController.add}"/>
+												<p:commandButton value="#{message.action_cancel}"	styleClass="btn btn-white" onclick="PF('productDialog').hide();" actionListener="#{productController.clean}"/>
+											</div>
+										</div>
+							        </p:outputPanel>
+							    </p:dialog>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		
+		
+			<p:outputPanel id="invoice" styleClass="col-md-5">
+				<div class="grid simple vertical green pull-left" style="width: 100%;">
+					<div class="grid-body no-border pull-left" style="padding: 0; width: 100%; min-height: 82.5%;">
+						<div class="row-fluid">
+							<div class="grid simple">
+								<div class="grid-body no-border" style="padding: 7px; width: 100%;">
+								
+									<table class="table table-striped table-flip-scroll cf">
+										<thead class="cf">
+											<tr class="">
+												<th> </th>
+												<th>Código</th>
+												<th>Nome</th>
+												<th>Qtd</th>
+												<th>Preço</th>
+											</tr>
+										</thead>
+										<tbody>
+											<ui:repeat var="product" value="#{productController.orderBean.products.productList}" varStatus="status">
+												<tr class="">
+													<td>
+														<h:commandLink href="#" class="remove-widget label label-important">
+															<i class="fa fa-times icon"></i>
+															<p:ajax event="click" update="@form" listener="#{productController.remove(product)}" />
+														</h:commandLink>
+													</td>
+													<td><label class="form-label"><span class="label label-info">#{product.code}</span></label></td>
+													<td><span> #{product.name} </span></td>
+													<td><label class="form-label"><span class="label label-default">#{product.quantity}</span></label></td>
+													<td><span class="label label-success" style="font-size: 9pt; font-weight: bold;">#{message.watermark_model_money_signal} #{product.totalPrice} </span></td>
+												</tr>
+											</ui:repeat>
+										</tbody>
+										<tfoot>
+											<tr>
+												<td colspan="4"></td>
+												<td class="text-right"><strong>#{message.watermark_model_money_signal} #{productController.orderBean.price}</strong></td>
+											</tr>
+										</tfoot>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 
+				<div class="grid simple vertical green">
+					<div class="grid-title no-border">
+						<h4>
+							<span class="semi-bold">#{message.general_total} </span>
+						</h4>
+						<div class="tools"> <a href="javascript:;" class="collapse"></a> </div>
+					</div>
+					<div class="grid-body no-border">
+					
+						<div class="row form-row">
+							<div class="col-md-4">
+								<label class="form-label">#{message.model_discount}</label>
+								<div class="input-with-icon right">
+									<i class=""></i>
+									<p:inputText id="discount" label="#{message.model_discount}" value="#{productController.orderBean.discount}" size="12" maxlength="12" styleClass="form-control">
+										<p:ajax event="blur" update="@form"/>
+									</p:inputText>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<label class="form-label">#{message.model_delivery_value}</label>
+								<div class="input-with-icon right">
+									<i class=""></i>
+									<p:inputText id="delivery-value" label="#{message.model_delivery_value}" value="#{productController.orderBean.deliveryValue}" size="12" maxlength="12" styleClass="form-control">
+										<p:ajax event="blur" update="@form"/>
+									</p:inputText>
+								</div>
+							</div>
+							
+							<div class="col-md-4" style="margin-top: 20px;">
+								<div class="well well-small green">
+									<div class="pull-left"> #{message.general_total} : </div>
+									<div class="pull-right"> #{message.watermark_model_money_signal} #{productController.orderBean.price}</div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+						</div>		
+					</div>
+				</div>-->
+				
+				<div class="grid simple vertical green">
+					<div class="grid-title no-border">
+						<h4>
+							 #{message.general_ways_of} <span class="semi-bold">#{message.model_payment}</span>
+						</h4>
+						<div class="tools"> <a href="javascript:;" class="collapse"></a> </div>
+					</div>
+					<div class="grid-body no-border">
+						<div class="row form-row">
+							<div class="col-md-4">
+								<button class="btn btn-success btn-cons" data-toggle="modal" data-target="#moneyPayment"> <i class="fa fa-dollar icon"></i> #{message.model_money} </button>
+							</div>
+							<div class="col-md-4">
+								<button class="btn btn-success btn-cons" data-toggle="modal" data-target="#billetPayment"> <i class="fa fa-barcode icon"></i> #{message.model_billet} </button>
+							</div>
+							<div class="col-md-4">
+								<button class="btn btn-success btn-cons" data-toggle="modal" data-target="#creditCardPayment"> <i class="fa fa-credit-card icon"></i> #{message.model_credit_card} </button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</p:outputPanel>
+			
+			<div class="modal fade in" id="moneyPayment" tabindex="-1" role="dialog" aria-labelledby="moneyPaymentLabel" aria-hidden="true" style="display: none;">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<br/>
+							<i class="fa fa-dollar fa-7x"></i>
+							<h4 id="moneyPaymentLabel" class="semi-bold">#{message.model_payment} - #{message.model_money}</h4>
+							<p class="no-margin"></p>
+							<br/>
+						</div>
+						<div class="modal-body">
+							<div class="row form-row">
+								<div class="col-md-12">
+									<p:inputText id="moneyEmail" label="#{message.model_email}" value="#{productController.orderBean.email}" size="12" maxlength="12" styleClass="form-control"/>
+									<p:watermark for="moneyEmail" value="#{message.watermark_model_order_email}" />
+								</div>
+							</div>
+							<div class="row form-row">
+								<div class="col-md-6">
+									<div class="well well-small">
+										<div class="input-group transparent">
+											<span class="input-group-addon" style="border-radius: 3px 0 0 3px;">
+												#{message.model_discount} #{message.watermark_model_percentage_signal}
+											</span>
+											<p:inputText id="discountValueOrder" label="#{message.model_discount}" value="#{productController.orderBean.discount}" size="3" maxlength="100" styleClass="form-control" style="border-radius: 0px 3px 3px 0;">
+												<p:ajax event="blur" update=":productForm:totalValueBox" />
+											</p:inputText>
+											<p:watermark for="discountValueOrder" value="#{message.model_discount}" />
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="well well-small">
+										<div class="input-group transparent">
+											<span class="input-group-addon" style="border-radius: 3px 0 0 3px;">
+												#{message.model_delivery_value} #{message.watermark_model_money_signal}
+											</span>
+											<p:inputText id="deliveryValue" label="#{message.model_delivery_value}" value="#{productController.orderBean.deliveryValue}" size="3" maxlength="100" styleClass="form-control" style="border-radius: 0px 3px 3px 0;">
+												<p:ajax event="blur" update=":productForm:totalValueBox" />
+											</p:inputText>
+											<p:watermark for="deliveryValue" value="#{message.model_delivery_value}" />
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row form-row">
+								<div class="col-md-9"></div>
+								<div class="col-md-3">
+									<div class="well well-small green">
+										<div class="pull-right"> #{message.general_total}: <h:outputText id="totalValueBox" value="#{message.watermark_model_money_signal} #{productController.orderBean.price}"/></div>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+							</div>
+							<div class="row form-row">
+								<div class="col-md-6"></div>
+								<div class="col-md-6">
+									<div class="well well-small">
+										<div class="input-group transparent">
+											<span class="input-group-addon" style="border-radius: 3px 0 0 3px;">
+												#{message.model_amount_received} #{message.watermark_model_money_signal}
+											</span>
+											<p:inputText id="amountReceivedMoney" label="#{message.model_amount_received}" value="#{productController.orderBean.amountReceived}" size="3" maxlength="100" styleClass="form-control" style="border-radius: 0px 3px 3px 0;">
+												<p:ajax event="blur" update=":productForm" />
+											</p:inputText>
+											<p:watermark for="amountReceivedMoney" value="#{message.model_amount_received}" />
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row form-row">
+								<div class="col-md-9"></div>
+								<div class="col-md-3">
+									<div id="returnMoneyBox" class="well well-small green">
+										<div class="pull-left"> #{message.model_change} : </div>
+										<div class="pull-right"> #{message.watermark_model_money_signal} <span id="returnValueMoney"></span></div>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">#{message.action_finally}</button>
+						</div>
+					</div>
+	 
+				</div>
+			</div>
+			
+			
+			
+			<div class="modal fade in" id="billetPayment" tabindex="-1" role="dialog" aria-labelledby="billetPaymentLabel" aria-hidden="true" style="display: none;">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<br/>
+							<i class="fa fa-barcode fa-7x"></i>
+							<h4 id="billetPaymentLabel" class="semi-bold">#{message.model_payment} - #{message.model_billet}</h4>
+							<p class="no-margin"></p>
+							<br/>
+						</div>
+						<div class="modal-body">
+							<div class="row form-row">
+								<div class="col-md-4" style="margin-top: 20px;">
+									<div class="well well-small label-info">
+										<div class="pull-left"> #{message.model_discount} : </div>
+										<div class="pull-right"> #{message.watermark_model_money_signal} #{productController.orderBean.discount}</div>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+								<div class="col-md-4" style="margin-top: 20px;">
+									<div class="well well-small label-info">
+										<div class="pull-left"> #{message.model_delivery_value} : </div>
+										<div class="pull-right"> #{message.watermark_model_money_signal} #{productController.orderBean.deliveryValue}</div>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+								<div class="col-md-4" style="margin-top: 20px;">
+									<div class="well well-small green">
+										<div class="pull-left"> #{message.general_total} : </div>
+										<div class="pull-right"> #{message.watermark_model_money_signal} #{productController.orderBean.price}</div>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+							</div>
+							<div class="row form-row">
+								<div class="col-md-12">
+									<p:inputText id="billetEmail" label="#{message.model_email}" value="#{productController.orderBean.email}" size="12" maxlength="12" styleClass="form-control"/>
+									<p:watermark for="billetEmail" value="#{message.watermark_model_order_email}" />
+								</div>
+							</div>
+							<div class="row form-row">
+								<div class="col-md-6"></div>
+								<div class="col-md-6">
+									<label class="form-label">#{message.model_amount_received} : </label>
+									<div class="input-with-icon right">
+										<i class=""></i>
+										<p:inputText label="#{message.model_amount_received}" value="#{productController.orderBean.amountReceived}" size="12" maxlength="12" styleClass="form-control"/>
+									</div>
+								</div>
+							</div>
+							<div class="row form-row">
+								<div class="col-md-6"></div>
+								<div class="col-md-6">
+									<div class="well well-small green">
+										<div class="pull-left"> #{message.model_change} : </div>
+										<div class="pull-right"> #{message.watermark_model_money_signal} #{productController.orderBean.change}</div>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">#{message.action_finally}</button>
+						</div>
+					</div>
+	 
+				</div>
+			</div>
+			
+			
+			
+			<div class="modal fade in" id="creditCardPayment" tabindex="-1" role="dialog" aria-labelledby="creditCardPaymentLabel" aria-hidden="true" style="display: none;">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<br/>
+							<i class="fa fa-credit-card fa-7x"></i>
+							<h4 id="creditCardPaymentLabel" class="semi-bold">#{message.model_payment} - #{message.model_credit_card}</h4>
+							<p class="no-margin"></p>
+							<br/>
+						</div>
+						<div class="modal-body">
+							<div class="row form-row">
+								<div class="col-md-4" style="margin-top: 20px;">
+									<div class="well well-small label-info">
+										<div class="pull-left"> #{message.model_discount} : </div>
+										<div class="pull-right"> #{message.watermark_model_money_signal} #{productController.orderBean.discount}</div>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+								<div class="col-md-4" style="margin-top: 20px;">
+									<div class="well well-small label-info">
+										<div class="pull-left"> #{message.model_delivery_value} : </div>
+										<div class="pull-right"> #{message.watermark_model_money_signal} #{productController.orderBean.deliveryValue}</div>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+								<div class="col-md-4" style="margin-top: 20px;">
+									<div class="well well-small green">
+										<div class="pull-left"> #{message.general_total} : </div>
+										<div class="pull-right"> #{message.watermark_model_money_signal} #{productController.orderBean.price}</div>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+							</div>
+							<div class="row form-row">
+								<div class="col-md-12">
+									<p:inputText id="creditCardEmail" label="#{message.model_email}" value="#{productController.orderBean.email}" size="12" maxlength="12" styleClass="form-control"/>
+									<p:watermark for="creditCardEmail" value="#{message.watermark_model_order_email}" />
+								</div>
+							</div>
+							<div class="row form-row">
+								<div class="col-md-6"></div>
+								<div class="col-md-6">
+									<label class="form-label">#{message.model_amount_received} : </label>
+									<div class="input-with-icon right">
+										<i class=""></i>
+										<p:inputText label="#{message.model_amount_received}" value="#{productController.orderBean.amountReceived}" size="12" maxlength="12" styleClass="form-control"/>
+									</div>
+								</div>
+							</div>
+							<div class="row form-row">
+								<div class="col-md-6"></div>
+								<div class="col-md-6">
+									<div class="well well-small green">
+										<div class="pull-left"> #{message.model_change} : </div>
+										<div class="pull-right"> #{message.watermark_model_money_signal} #{productController.orderBean.change}</div>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">#{message.action_finally}</button>
+						</div>
+					</div>
+	 
+				</div>
+			</div>
+			
+			
+			<div class="modal fade in" id="addProduct" tabindex="-1" role="dialog" aria-labelledby="addProductLabel" aria-hidden="true" style="display: none;">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<br/>
+							<i class="fa fa-dollar fa-7x"></i>
+							<h4 id="moneyPaymentLabel" class="semi-bold">#{message.model_payment} - #{message.model_money}</h4>
+							<p class="no-margin"></p>
+							<br/>
+						</div>
+						<div class="modal-body">
+							<div class="row form-row">
+								<div class="col-md-4" style="margin-top: 20px;">
+									<div class="well well-small label-info">
+										<div class="pull-left"> #{message.model_discount} : </div>
+										<div class="pull-right"> #{message.watermark_model_money_signal} #{productController.orderBean.discount}</div>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+								<div class="col-md-4" style="margin-top: 20px;">
+									<div class="well well-small label-info">
+										<div class="pull-left"> #{message.model_delivery_value} : </div>
+										<div class="pull-right"> #{message.watermark_model_money_signal} #{productController.orderBean.deliveryValue}</div>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+								<div class="col-md-4" style="margin-top: 20px;">
+									<div class="well well-small green">
+										<div class="pull-left"> #{message.general_total} : </div>
+										<div class="pull-right"> #{message.watermark_model_money_signal} <span id="totalPriceMoney">#{productController.orderBean.price}</span></div>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+							</div>
+							<div class="row form-row">
+								<div class="col-md-6"></div>
+								<div class="col-md-6">
+									<div id="returnMoneyBox" class="well well-small green">
+										<div class="pull-left"> #{message.model_change} : </div>
+										<div class="pull-right"> #{message.watermark_model_money_signal} <span id="returnValueMoney"></span></div>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">#{message.action_finally}</button>
+						</div>
+					</div>
+	 
+				</div>
+			</div>
+			
+		</h:form>
+	</h:panelGroup>
+
+</ui:composition>

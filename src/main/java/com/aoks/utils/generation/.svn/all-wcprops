@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/kallxit/!svn/ver/376/kx-utils/trunk/src/java/net/kallx/utils/generation
+END
+AnnotationRep.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/kallxit/!svn/ver/376/kx-utils/trunk/src/java/net/kallx/utils/generation/AnnotationRep.java
+END
+MethodRep.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/kallxit/!svn/ver/376/kx-utils/trunk/src/java/net/kallx/utils/generation/MethodRep.java
+END
+BasicStructureLayoutGeneration.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/kallxit/!svn/ver/376/kx-utils/trunk/src/java/net/kallx/utils/generation/BasicStructureLayoutGeneration.java
+END
+ClassRep.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/kallxit/!svn/ver/376/kx-utils/trunk/src/java/net/kallx/utils/generation/ClassRep.java
+END
+FieldRep.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/kallxit/!svn/ver/376/kx-utils/trunk/src/java/net/kallx/utils/generation/FieldRep.java
+END

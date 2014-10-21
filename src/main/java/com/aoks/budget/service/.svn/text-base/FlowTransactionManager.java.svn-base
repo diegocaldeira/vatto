@@ -1,0 +1,18 @@
+package net.kallx.budget.service;
+
+import javax.enterprise.context.RequestScoped;
+
+import net.kallx.budget.model.FlowTransaction;
+import net.kallx.utils.webmvc.AbstractManager;
+
+@RequestScoped
+public class FlowTransactionManager extends AbstractManager<FlowTransaction> {
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	public Class<FlowTransaction> getModelClazz() {
+		return FlowTransaction.class;
+	}
+
+}

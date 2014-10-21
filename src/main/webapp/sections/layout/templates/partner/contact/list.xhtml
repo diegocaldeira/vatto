@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<f:event listener="#{contactController.loadBeans(legalRegisterBean)}" type="preRenderComponent"/>
+	<p:panel id="#{table}-contact-list" header="#{message.contact_title_list}" styleClass="form-horizontal col-sm-12 m-t" rendered="#{!contactController.has() and !legalAddressController.has()}">	
+		<p:dataTable var="cts" scrollRows="5" scrollable="true" liveScroll="true" scrollHeight="200" 
+										 selection="#{contactController.bean}" selectionMode="single" 
+										 value="#{contactController.dataModel}" 
+										 emptyMessage="#{message.general_no_results}" styleClass="content-menuBody-datatable">
+			
+			<ui:insert/>
+			
+			<p:column headerText="#{message.model_name}" 	 	 style="width:30%;">	<h:outputText value="#{cts.firstName} #{cts.lastName}"/>	</p:column>
+			<p:column headerText="#{message.model_phone_number}" style="width:38%;">	<h:outputText value="#{cts.firstPhone.phoneNumber}"/>		</p:column>
+			<p:column headerText="#{message.contact_type}" 	 	 style="width:22%">		<h:outputText value="#{cts.contactType}"/>			    	</p:column>
+			
+			<p:column>
+				<h:panelGroup id="#{table}-contact-remove">
+					<p:graphicImage value="resources/img/remove.png" height="22" width="22" />
+				</h:panelGroup>
+				<p:tooltip for="#{table}-contact-remove" value="#{message.action_remove}" showEffect="fade" hideEffect="fade" /> 
+				<p:overlayPanel id="#{table}-contact-remove-confirmation" for="#{table}-contact-remove" hideEffect="fade" styleClass="confirmation-style">  
+			        <h:outputText value="#{message.action_remove_contact_ask}"/>
+			        <h:commandLink style="margin-left: 15px;" value="#{message.action_remove_ask_confirmation}" action="#{contactController.delete()}">
+						<f:setPropertyActionListener value="#{cts}" target="#{contactController.bean}" />
+			        </h:commandLink>  
+			    </p:overlayPanel>  
+			</p:column>
+			
+		</p:dataTable>
+		
+		<p:commandLink id="#{table}-contact-add" actionListener="#{contactController.create()}" update="@form" immediate="true">
+			<i class="icon-plus" style="float: left; margin: 6px; margin-left: 15px;"></i>
+		</p:commandLink>
+	</p:panel>		
+		
+</ui:composition>

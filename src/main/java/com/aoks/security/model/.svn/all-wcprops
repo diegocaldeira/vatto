@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/kallxit/!svn/ver/315/kx-security/trunk/src/java/net/kallx/security/model
+END
+ContactCategory.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/kallxit/!svn/ver/302/kx-security/trunk/src/java/net/kallx/security/model/ContactCategory.java
+END
+GroupInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kallxit/!svn/ver/302/kx-security/trunk/src/java/net/kallx/security/model/GroupInfo.java
+END
+PhoneInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kallxit/!svn/ver/302/kx-security/trunk/src/java/net/kallx/security/model/PhoneInfo.java
+END
+User.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/kallxit/!svn/ver/422/kx-security/trunk/src/java/net/kallx/security/model/User.java
+END
+EmailInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kallxit/!svn/ver/371/kx-security/trunk/src/java/net/kallx/security/model/EmailInfo.java
+END
+PhoneType.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kallxit/!svn/ver/302/kx-security/trunk/src/java/net/kallx/security/model/PhoneType.java
+END
+LoginInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kallxit/!svn/ver/315/kx-security/trunk/src/java/net/kallx/security/model/LoginInfo.java
+END
+UserPrincipal.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/kallxit/!svn/ver/302/kx-security/trunk/src/java/net/kallx/security/model/UserPrincipal.java
+END

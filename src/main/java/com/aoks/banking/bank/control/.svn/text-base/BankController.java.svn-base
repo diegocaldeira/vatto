@@ -1,0 +1,74 @@
+package net.kallx.banking.bank.control;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.enterprise.context.SessionScoped;
+import javax.enterprise.event.Observes;
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import net.kallx.banking.bank.control.bean.BankBean;
+import net.kallx.banking.bank.model.Bank;
+import net.kallx.banking.bank.service.BankManager;
+import net.kallx.portalmanager.model.PortalApplication;
+import net.kallx.utils.webmvc.AbstractController;
+import net.kallx.utils.webmvc.AbstractManager;
+import net.kallx.utils.webmvc.GenericFactory;
+
+import org.primefaces.event.RowEditEvent;
+
+@Named("bankController")
+@SessionScoped
+public class BankController extends AbstractController<Bank, BankBean> {
+
+	private static final long serialVersionUID = 1L;
+
+	@Inject
+	private BankManager manager;
+
+	public List<BankBean> getBanksAC(String query){
+		
+		List<BankBean> suggestions = new ArrayList<BankBean>();  
+        
+		for (BankBean b : beans) {
+			if (b.getName().startsWith(query))
+				suggestions.add(b);
+		}
+          
+        return suggestions;  
+		
+	}
+	
+	public void addBank(){
+		beans.add(new BankBean());
+	}
+	public void saveBank(RowEditEvent event){
+		BankBean obj = (BankBean) event.getObject();
+		bean = obj;
+		saveCore();
+	}
+	
+	
+	
+	@Override
+	public AbstractManager<Bank> getManager() {
+		return manager;
+	}
+	
+	public void listApplicationLoading(@Observes PortalApplication application){
+		if (application.getName().equals("zebra") || application.getName().equals("budget"))
+			beans = updateBeans();
+	}
+
+	@Override
+	public Class<BankBean> getBeanClazz() {
+		return BankBean.class;
+	}
+
+	@Override
+	public GenericFactory<Bank> getFactory() {
+		return null;
+	}
+
+}

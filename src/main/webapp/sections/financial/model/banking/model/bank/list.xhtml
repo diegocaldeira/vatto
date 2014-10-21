@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+	<h:panelGroup layout="block" styleClass="padder clearfix"> <h4 class="m-b m-t"><span class="semi-bold"><i class="icon-th-list"></i><h:outputText value=" #{message.financial_banking_bank_title}"/></span></h4> </h:panelGroup>
+		
+	<ui:decorate template="/sections/layout/templates/partner/model/list.xhtml">
+		<ui:param name="controller" 	value="#{bankController}" />
+		<ui:param name="table" 			value="bank" />
+		<ui:param name="registerType" 	value="#{message.model_bank}" />
+		<ui:param name="type" 			value="Bank"/>
+		
+		<p:ajax event="rowSelect" 	listener="#{bankController.onRowSelect}"   update="@form"/>  
+	    <p:ajax event="rowUnselect" listener="#{bankController.onRowUnselect}" update="@form"/>
+		
+	 	<p:column filterBy="#{att.code}" filterMatchMode="contains" headerText="#{message.model_code}" style="width: 40%;"> <h:outputText value="#{att.code}"/> </p:column>
+		<p:column filterBy="#{att.name}" filterMatchMode="contains" headerText="#{message.model_bank}" style="width: 50%;">	<h:outputText value="#{att.name}"/> </p:column>
+	</ui:decorate>
+		
+</ui:composition>

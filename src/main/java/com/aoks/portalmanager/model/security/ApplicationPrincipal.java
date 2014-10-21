@@ -1,0 +1,68 @@
+package com.aoks.portalmanager.model.security;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.aoks.security.model.UserPrincipal;
+
+/**
+ * 
+ * @author Diego Pereira
+ * @site www.diegopereira.com.br
+ *
+ */
+@Entity
+@Table(name="ApplicationPrincipal", schema="portalManager")
+public class ApplicationPrincipal extends UserPrincipal {
+
+	@ManyToOne
+	@JoinColumn(name="cApplication")
+	private Application application;
+	
+	
+	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinTable(name="ApplicationPrincipal_ApplicationPermission", schema="portalManager",
+			joinColumns=@JoinColumn(name="cApplicationPrincipal"),
+			inverseJoinColumns=@JoinColumn(name="cApplicationPermission"))
+	private Set<ApplicationPermission> permissions = new HashSet<ApplicationPermission>();
+	
+	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinTable(name="ApplicationPrincipal_ApplicationRole", schema="portalManager",
+			joinColumns=@JoinColumn(name="cApplicationPrincipal"),
+			inverseJoinColumns=@JoinColumn(name="cApplicationRole"))
+	private Set<ApplicationRole> roles = new HashSet<ApplicationRole>();
+	
+	
+	public Application getApplication() {
+		return application;
+	}
+	public void setApplication(Application application) {
+		this.application = application;
+	}
+
+	
+	public Set<ApplicationRole> getRoles() {
+		return roles;
+	}
+	public void setRoles(Set<ApplicationRole> roles) {
+		this.roles = roles;
+	}
+	
+	
+	public Set<ApplicationPermission> getPermissions() {
+		return permissions;
+	}
+	public void setPermissions(Set<ApplicationPermission> permissions) {
+		this.permissions = permissions;
+	}
+	
+}

@@ -1,0 +1,75 @@
+package net.kallx.utils.category.model;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.TableGenerator;
+
+import net.kallx.utils.webmvc.GenericModel;
+
+/**
+ * A class that represents an application that uses the Category Model.
+ * @author Marcos Vinicius
+ *
+ */
+@Entity
+@Table(name="CategorizedApplication", schema="utils")
+public class CategorizedApplication implements GenericModel {
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Id @GeneratedValue(strategy=GenerationType.TABLE, generator="UtilsSequence")
+	@TableGenerator(name="UtilsSequence", table="UtilsSequence", schema="utils", 
+			pkColumnName="cTable", pkColumnValue="CategorizedApplicationSequence", valueColumnName="cNext", initialValue=1, allocationSize=1)
+	@Column(name="cId")
+	private long id;
+	
+	@Column(name="cName")
+	private String name;
+	
+	@ManyToMany(mappedBy="categorizedApplications", fetch=FetchType.EAGER)
+	public Set<CategoryDimension> dimensions;
+	
+	
+	public CategorizedApplication() {
+		dimensions = new HashSet<CategoryDimension>();
+	}
+	
+	
+	public Set<CategoryDimension> getDimensions() {
+		return dimensions;
+	}
+	public void setDimensions(Set<CategoryDimension> dimensions) {
+		this.dimensions = dimensions;
+	}
+	public void addDimensions(CategoryDimension dimension){
+		dimensions.add(dimension);
+	}
+	
+	
+	@Override
+	public long getId() {
+		return id;
+	}
+	@Override
+	public void setId(long id) {
+		this.id = id;
+	}
+	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+
+}

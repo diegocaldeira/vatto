@@ -1,0 +1,35 @@
+package net.kallx.budget.control.bean;
+
+import net.kallx.budget.model.Flow;
+import net.kallx.utils.webmvc.GenericBean;
+import net.kallx.utils.webmvc.GenericFactory;
+
+public class FlowBean implements GenericBean<Flow> {
+	
+	private static final long serialVersionUID = 1L;
+	
+	private long id;
+
+	@Override
+	public long getId() {
+		return id;
+	}
+
+	@Override
+	public Flow build(GenericFactory<Flow> factory) {
+		return null;
+	}
+
+	@Override
+	public Flow getModel() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public GenericBean<Flow> load(Flow model) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

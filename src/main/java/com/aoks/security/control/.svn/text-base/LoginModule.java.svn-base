@@ -1,0 +1,39 @@
+package net.kallx.security.control;
+
+import java.io.Serializable;
+
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+
+import net.kallx.security.control.bean.CredentialsBean;
+import net.kallx.security.model.User;
+import net.kallx.security.service.UserManager;
+
+@RequestScoped
+public class LoginModule implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
+	@Inject
+	private UserManager manager;
+	
+	public User authenticate(CredentialsBean credentials){
+
+		String username = credentials.getUsername();
+		
+		User tmpuser = manager.getUserFromUsername(username);
+		
+		if (tmpuser == null)
+			return null;
+		
+		String password = tmpuser.getLoginInfo().getPassword();
+		String hexString = new EncrypterUtils().digest("sha1", credentials.getPassword()).getHexString();
+		
+		if (!password.equals(hexString))
+			return null;
+		
+		return tmpuser;
+		
+	}
+	
+}

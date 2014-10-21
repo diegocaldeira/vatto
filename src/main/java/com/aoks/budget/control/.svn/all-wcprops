@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/kallxit/!svn/ver/289/kx-budget/trunk/src/java/net/kallx/budget/control
+END
+DashboardController.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/kallxit/!svn/ver/289/kx-budget/trunk/src/java/net/kallx/budget/control/DashboardController.java
+END
+FlowTransactionEntryController.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/kallxit/!svn/ver/289/kx-budget/trunk/src/java/net/kallx/budget/control/FlowTransactionEntryController.java
+END
+FlowItemController.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/kallxit/!svn/ver/419/kx-budget/trunk/src/java/net/kallx/budget/control/FlowItemController.java
+END
+FlowTransactionController.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/kallxit/!svn/ver/419/kx-budget/trunk/src/java/net/kallx/budget/control/FlowTransactionController.java
+END
+FlowItemPreviewController.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/kallxit/!svn/ver/388/kx-budget/trunk/src/java/net/kallx/budget/control/FlowItemPreviewController.java
+END

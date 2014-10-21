@@ -1,0 +1,18 @@
+package net.kallx.banking.operation.service;
+
+import javax.enterprise.context.RequestScoped;
+
+import net.kallx.banking.operation.model.CheckingAccount;
+import net.kallx.utils.webmvc.AbstractManager;
+
+@RequestScoped
+public class CheckingAccountManager extends AbstractManager<CheckingAccount>{
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	public Class<CheckingAccount> getModelClazz() {
+		return CheckingAccount.class;
+	}
+
+}

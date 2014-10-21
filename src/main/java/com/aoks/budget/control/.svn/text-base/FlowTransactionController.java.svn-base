@@ -1,0 +1,147 @@
+package net.kallx.budget.control;
+
+import java.util.List;
+
+import javax.enterprise.context.SessionScoped;
+import javax.enterprise.event.Observes;
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import org.primefaces.event.RowEditEvent;
+
+import net.kallx.banking.operation.control.bean.OperationEntryBean;
+import net.kallx.banking.operation.model.OperationAccount;
+import net.kallx.banking.operation.model.OperationEntry;
+import net.kallx.budget.control.bean.FlowTransactionBean;
+import net.kallx.budget.model.FlowStatus;
+import net.kallx.budget.model.FlowTransaction;
+import net.kallx.budget.service.FlowTransactionManager;
+import net.kallx.portalmanager.model.PortalApplication;
+import net.kallx.utils.webmvc.AbstractController;
+import net.kallx.utils.webmvc.AbstractManager;
+import net.kallx.utils.webmvc.GenericFactory;
+import net.kallx.utils.webmvc.PersistenceWrapper;
+
+@SessionScoped
+@Named("flowTransactionController")
+public class FlowTransactionController extends AbstractController<FlowTransaction, FlowTransactionBean>{
+
+	private static final long serialVersionUID = 1L;
+	
+	@Inject private FlowTransactionManager manager;
+	@Inject private transient PersistenceWrapper wrapper;
+	
+	private List<OperationEntryBean> entries;
+	
+	public void addEntry(){
+		
+		if (bean == null) return;
+		OperationEntryBean entry = new OperationEntryBean();
+		entry.setAccount(bean.getAccount());
+		entry.setDescription(bean.getDescription());
+		entry.setOcurrence(bean.getOcurrence());
+		entry.setAmount(bean.getAmount());
+		entries.add(entry);
+		
+	}
+	
+	public void saveEntry(RowEditEvent event) {
+		
+		OperationEntryBean entry = (OperationEntryBean) event.getObject();
+		closeEntry(entry.build(null));
+		save();
+		
+	}
+	
+	
+	public void closeTransaction(){
+		
+		if (bean == null)
+			return;
+		
+		FlowTransaction tx = bean.getModel();
+		
+		if (tx.isClosed())
+			return;
+		
+		if (tx.getTxAccount().getEntries().size() == 0){
+			
+			if (!(tx.getAccount() == null)){
+				
+				OperationEntry entry = new OperationEntry();
+				entry.setAccount(tx.getAccount());
+				entry.setDescription(tx.getDescription());
+				entry.setOcurrence(tx.getOcurrence());
+				entry.setAmount(tx.getAmount());
+				tx.getTxAccount().addEntry(entry);
+				
+				closeEntry(entry);
+				
+			} else 
+				return;
+
+		} 
+		
+		tx.setStatus(FlowStatus.CLOSED);
+		save();
+		
+	}
+
+	private void closeEntry(OperationEntry entry){
+		
+		OperationAccount account = (OperationAccount) entry.getAccount();
+		account.addEntry(entry);
+		FlowTransaction tx = bean.getModel();
+		tx.getTxAccount().addEntry(entry);
+		
+		wrapper.saveOrUpdate(entry);
+		saveCore();
+		
+	}
+	
+	
+	@Override
+	public List<FlowTransactionBean> getBeans() {
+		beans = updateBeans();
+		return beans;
+	}
+	
+	
+	public List<OperationEntryBean> getEntries() {
+		return entries;
+	}
+	public void setEntries(List<OperationEntryBean> entries) {
+		this.entries = entries;
+	}
+
+	
+	@Override
+	public void setBean(FlowTransactionBean bean) {
+		super.setBean(bean);
+		entries = bean.getEntries();
+	}
+	
+	
+	
+	@Override
+	public AbstractManager<FlowTransaction> getManager() {
+		return manager;
+	}
+	public void listApplicationLoading(@Observes PortalApplication application){
+		if (application.getName().equals("budget"))
+			beans = updateBeans();
+	}
+
+	@Override
+	public Class<FlowTransactionBean> getBeanClazz() {
+		return FlowTransactionBean.class;
+	}
+
+	@Override
+	public GenericFactory<FlowTransaction> getFactory() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+}

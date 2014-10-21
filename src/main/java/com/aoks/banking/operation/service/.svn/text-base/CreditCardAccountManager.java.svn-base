@@ -1,0 +1,18 @@
+package net.kallx.banking.operation.service;
+
+import javax.enterprise.context.RequestScoped;
+
+import net.kallx.banking.operation.model.CreditCardAccount;
+import net.kallx.utils.webmvc.AbstractManager;
+
+@RequestScoped
+public class CreditCardAccountManager extends AbstractManager<CreditCardAccount> {
+
+	private static final long serialVersionUID = 1L;
+	
+	@Override
+	public Class<CreditCardAccount> getModelClazz() {
+		return CreditCardAccount.class;
+	}
+
+}

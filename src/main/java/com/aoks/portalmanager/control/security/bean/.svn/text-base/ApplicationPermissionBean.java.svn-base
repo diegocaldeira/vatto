@@ -1,0 +1,45 @@
+package net.kallx.portalmanager.control.security.bean;
+
+import net.kallx.portalmanager.model.security.ApplicationPermission;
+import net.kallx.utils.webmvc.GenericBean;
+import net.kallx.utils.webmvc.GenericFactory;
+
+public class ApplicationPermissionBean implements GenericBean<ApplicationPermission> {
+
+	private static final long serialVersionUID = 1L;
+	
+	private long id;
+	private String name;
+	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
+	@Override
+	public long getId() {
+		return id;
+	}
+	
+	@Override
+	public ApplicationPermission build(GenericFactory<ApplicationPermission> factory) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ApplicationPermission getModel() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public GenericBean<ApplicationPermission> load(ApplicationPermission model) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+}

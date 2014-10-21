@@ -1,0 +1,130 @@
+package net.kallx.portalmanager.control.security;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import net.kallx.portalmanager.model.PortalAggregate;
+import net.kallx.portalmanager.model.PortalApplication;
+import net.kallx.portalmanager.model.PortalApplications;
+import net.kallx.portalmanager.model.PortalModule;
+import net.kallx.security.control.bean.UserBean;
+
+@Named("applicationSecurityController")
+@SessionScoped
+public class ApplicationSecurityController implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	@Inject
+	@PortalApplications
+	private Set<PortalApplication> applications;
+	
+	private UserBean user;
+	private PortalApplication applicationBean;
+	private PortalModule moduleBean;
+	private PortalAggregate aggregateBean;
+	
+	
+	public boolean hasUser(){
+		
+		return user != null;
+	}
+	public UserBean getUser() {
+		return user;
+	}
+	public void setUser(UserBean user) {
+		this.user = user;
+	}
+	public void handleUserChange(){
+		System.out.println("User: " + user);
+	}
+	
+
+	public List<String> getApplications(){
+		List<String> ret = new ArrayList<String>();
+		for (PortalApplication portalApplication : applications) {
+			System.out.println(portalApplication.getName());
+			ret.add(portalApplication.getName());
+		}
+		return ret;
+	}
+	public void setApplications(List<String> applications){
+		
+	}
+	
+	
+	public String getAggregate() {
+		return aggregateBean != null ? aggregateBean.getName() : null;
+	}
+	public void setAggregate(String aggregate) {
+		List<PortalAggregate> aggregates = moduleBean.getAggregates();
+		for (PortalAggregate portalAggregate : aggregates) {
+			if (portalAggregate.getName().equals(aggregate))
+				this.aggregateBean = portalAggregate;
+		}
+	}
+	
+	
+	public String getApplication() {
+		return applicationBean != null ? applicationBean.getName() : null;
+	}
+	public void setApplication(String application) {
+		for (PortalApplication portalApplication : applications) {
+			if (portalApplication.getName().equals(application))
+				this.applicationBean = portalApplication;
+		}
+	}
+	
+	
+	public String getModule() {
+		return moduleBean != null ? moduleBean.getName() : null;
+	}
+	public void setModule(String module) {
+		List<PortalModule> modules = applicationBean.getModules();
+		for (PortalModule portalModule : modules) {
+			if (portalModule.getName().equals(module))
+				this.moduleBean = portalModule;
+		}
+	}
+	
+	
+	public boolean hasApplicationBean() {
+		System.out.println("Application: " + applicationBean);
+		return applicationBean != null;
+	}
+	public PortalApplication getApplicationBean() {
+		return applicationBean;
+	}
+	public void setApplicationBean(PortalApplication applicationBean) {
+		this.applicationBean = applicationBean;
+	}
+	
+	
+	public boolean hasAggregateBean() {
+		return aggregateBean != null;
+	}
+	public PortalAggregate getAggregateBean() {
+		return aggregateBean;
+	}
+	public void setAggregateBean(PortalAggregate aggregateBean) {
+		this.aggregateBean = aggregateBean;
+	}
+	
+	
+	public boolean hasModuleBean() {
+		return moduleBean != null;
+	}
+	public PortalModule getModuleBean() {
+		return moduleBean;
+	}
+	public void setModuleBean(PortalModule moduleBean) {
+		this.moduleBean = moduleBean;
+	}
+	
+}

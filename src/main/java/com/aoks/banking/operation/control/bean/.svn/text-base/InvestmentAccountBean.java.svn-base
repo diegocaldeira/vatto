@@ -1,0 +1,29 @@
+package net.kallx.banking.operation.control.bean;
+
+import net.kallx.banking.operation.model.InvestmentAccount;
+import net.kallx.utils.webmvc.GenericBean;
+import net.kallx.utils.webmvc.GenericFactory;
+
+public class InvestmentAccountBean extends BankAccountBean<InvestmentAccount> {
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	public InvestmentAccount build(GenericFactory<InvestmentAccount> model) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public InvestmentAccount getModel() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public GenericBean<InvestmentAccount> load(InvestmentAccount factory) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

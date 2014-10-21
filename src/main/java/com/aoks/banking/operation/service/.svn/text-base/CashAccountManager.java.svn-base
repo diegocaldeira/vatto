@@ -1,0 +1,20 @@
+package net.kallx.banking.operation.service;
+
+import javax.enterprise.context.RequestScoped;
+
+import net.kallx.banking.operation.model.CashAccount;
+import net.kallx.utils.webmvc.AbstractManager;
+
+@RequestScoped
+public class CashAccountManager extends AbstractManager<CashAccount> {
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	public Class<CashAccount> getModelClazz() {
+		return CashAccount.class;
+	}
+
+	
+	
+}

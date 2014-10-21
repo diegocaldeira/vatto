@@ -1,0 +1,117 @@
+package com.aoks.utils.generation;
+
+import java.lang.reflect.Method;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 
+ * @author Diego Pereira
+ * @site aoks.com.br
+ *
+ */
+public class BasicStructureLayoutGeneration {
+
+	Class<?> clazz;
+	
+	public String outerPackageName;
+	public String innerPackageName;
+	
+	ClassRep bean;
+	
+	public BasicStructureLayoutGeneration(Class<?> clazz){
+		this.clazz = clazz;
+	}
+	
+	public void generate(){
+		
+		findPackageNames();
+		
+	}
+	
+	public void generateBean(){
+	
+		ClassRep rep = new ClassRep();
+		
+		rep.setPack("outerPackageName".concat(".view"));
+		rep.setName(clazz.getSimpleName().concat("Bean"));
+		
+		rep.addImplements("com.aoks.utils.view.GenericBean");
+		rep.addImplements("java.io.Serializable");
+		
+		AnnotationRep annot1 = new AnnotationRep("javax.enterprise.context.RequestScoped");
+		AnnotationRep annot2 = new AnnotationRep("javax.inject.Named");
+		
+		rep.addAnnotation(annot1);
+		rep.addAnnotation(annot2);
+		
+		FieldRep field1 = FieldRep.getSerialVersionUIDField();
+		rep.addField(field1);
+		
+		Method[] methods = clazz.getMethods();
+		List<String[]> javabeanProperties = findJavabeanProperties(methods);
+		
+		for (String[] strings : javabeanProperties) {
+			
+		}
+		
+		bean = rep;
+		
+	}
+	
+	public void generateEntity(){
+		
+	}
+	
+	public void generateController(){
+		
+	}
+	
+	public void generateManager(){
+		
+	}
+	
+	public void generateBuilder(){
+		
+	}
+
+	public void findPackageNames(){
+		
+		Package pack = clazz.getPackage();
+		
+		String totalName = pack.getName();
+		if (!totalName.contains("model")) throw new IllegalArgumentException("Object informed is not in the adequate package");
+
+		String[] split = totalName.split(".model");
+		outerPackageName = split[0];
+		
+		if (split.length == 1)
+			innerPackageName = "";
+		else if (split[1].startsWith("."))
+			innerPackageName = split[1].substring(1);
+		
+		URL resource = clazz.getClassLoader().getResource("\\");
+		System.out.println(resource.getFile());
+		
+	}
+	
+	public List<String[]> findJavabeanProperties(Method[] methods){
+		
+		List<String[]> properties = new ArrayList<String[]>();
+		
+		for (Method method : methods) {
+			if (method.getName().startsWith("get")){
+				if (method.getName().startsWith("getClass")) continue;
+				String[] a = new String[2];
+				String tmpprop = method.getName().substring(3);
+				a[0] = tmpprop.substring(0, 1).toLowerCase() + tmpprop.substring(1);
+				a[1] = method.getReturnType().getName();
+				properties.add(a);
+			}
+		}
+		
+		return properties;
+	}
+	
+}

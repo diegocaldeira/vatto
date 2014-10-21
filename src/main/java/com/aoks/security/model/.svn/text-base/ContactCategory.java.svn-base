@@ -1,0 +1,7 @@
+package net.kallx.security.model;
+
+public enum ContactCategory {
+	
+	MAIN, OTHER;
+
+}

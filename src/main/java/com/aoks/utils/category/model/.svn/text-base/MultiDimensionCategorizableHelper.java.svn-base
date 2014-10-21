@@ -1,0 +1,66 @@
+package net.kallx.utils.category.model;
+
+import java.util.Set;
+
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
+import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+/**
+ * 
+ * @author Marcos Vinicius
+ *
+ */
+@Entity
+@Table(name="MultiCategorizableHelper", schema="utils")
+public class MultiDimensionCategorizableHelper extends CategorizableHelper {
+
+	private static final long serialVersionUID = 1L;
+	
+	@ElementCollection
+	@CollectionTable(name="MultiCategorized_Categories", schema="utils",
+			joinColumns=@JoinColumn(name="MultiCategorized"))
+	private Set<DimensionCategoryPair> dimensions;
+	
+	
+	public Set<DimensionCategoryPair> getDimensions() {
+		return dimensions;
+	}
+	public void setDimensions(Set<DimensionCategoryPair> dimensions) {
+		this.dimensions = dimensions;
+	}
+	
+}
+
+@Embeddable
+class DimensionCategoryPair {
+	
+	@ManyToOne
+	@JoinColumn(name="cDimension")
+	private CategoryDimension dimension;
+	
+	@ManyToOne
+	@JoinColumn(name="cCategory")
+	private Category category;
+	
+	
+	public CategoryDimension getDimension() {
+		return dimension;
+	}
+	public void setDimension(CategoryDimension dimension) {
+		this.dimension = dimension;
+	}
+	
+	
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	
+}

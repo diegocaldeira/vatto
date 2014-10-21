@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+	<h:panelGroup layout="block" styleClass="content-menuBody-wrapper" style="width: 87%;">
+			
+		<h:panelGroup layout="block" id="contact-model-title"><h:outputText value="Você quer cadastrar que tipo de contato?"/></h:panelGroup>
+
+		<h:panelGroup layout="block" id="contact-model-options">  
+			<p:commandLink value="Simples" 		update=":container-form:content-wrapper" 	actionListener="#{registerController.load('SIMPLE')}" 	style="margin-right:20px;"/>  
+		    <h:commandLink value="Empresa" 		update=":container-form:content-wrapper" 	actionListener="#{registerController.load('COMPANY')}" 	style="margin-right:20px;"/>  
+		    <p:commandLink value="Empregado" 	update=":container-form:content-wrapper"	actionListener="#{registerController.load('EMPLOYEE')}" style="margin-right:20px;"/>  
+		    <p:commandLink value="Estágiario" 	update=":container-form:content-wrapper"  	actionListener="#{registerController.load('TRAINEE')}" 	style="margin-right:20px;"/>  
+		    <p:commandLink value="Fornecedor" 	update=":container-form:content-wrapper"  	actionListener="#{registerController.load('PROVIDER')}" style="margin-right:20px;"/>  
+		    <p:commandLink value="Cliente" 		update=":container-form:content-wrapper" 	actionListener="#{registerController.load('COSTUMER')}" 	style="margin-right:20px;"/>
+		</h:panelGroup>
+
+	</h:panelGroup>
+	
+</ui:composition>

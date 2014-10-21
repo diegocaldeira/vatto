@@ -1,0 +1,142 @@
+package net.kallx.banking.operation.model;
+
+import java.util.Calendar;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+/**
+ * Represents a credit card account.
+ * @author MarcosVinicius
+ *
+ */
+@Entity
+@Table(name="CreditCardAccount", schema="banking")
+public class CreditCardAccount extends OperationAccount {
+	
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * That credit card number. This field is used as the system identifier for the account.
+	 */
+	@Column(name="cCardNumber")
+	private String cardNumber;
+
+	/**
+	 * The credit card flag of this account.
+	 */
+	@Enumerated
+	@Column(name="cFlag")
+	private CreditCardFlag flag;
+	
+	/**
+	 * The date when this account started operating in the system.
+	 */
+	@Temporal(TemporalType.DATE)
+	@Column(name="cStart")
+	private Calendar start;
+	
+	/**
+	 * The day of the month defined for the maturity day of this account.
+	 */
+	@Column(name="cMaturityDay")
+	private int maturityDay;
+	
+	/**
+	 * The number of days before the maturity day that is set as the limit period
+	 * for the the debts and credits in this account to be charged in this maturity
+	 * day.
+	 */
+	@Column(name="cCalculationTime")
+	private int calculationTime;
+	
+	/**
+	 * The current account to which this credit card account is linked.
+	 */
+	@ManyToOne
+	@JoinColumn(name="cLinkedAccount")
+	private CheckingAccount linkedAccount;
+	
+	
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+
+	public String getCardNumber() {
+		return cardNumber;
+	}
+	public void setCardNumber(String cardNumber) {
+		this.cardNumber = cardNumber;
+	}
+	
+
+	public CreditCardFlag getFlag() {
+		return flag;
+	}
+	public void setFlag(CreditCardFlag flag) {
+		this.flag = flag;
+	}
+	
+
+	public Calendar getStart() {
+		return start;
+	}
+	public void setStart(Calendar start) {
+		this.start = start;
+	}
+	
+
+	public int getMaturityDay() {
+		return maturityDay;
+	}
+	public void setMaturityDay(int maturityDay) {
+		this.maturityDay = maturityDay;
+	}
+
+	
+	public int getCalculationTime() {
+		return calculationTime;
+	}
+	public void setCalculationTime(int calculationTime) {
+		this.calculationTime = calculationTime;
+	}
+
+	
+	public CheckingAccount getLinkedAccount() {
+		return linkedAccount;
+	}
+	public void setLinkedAccount(CheckingAccount linkedAccount) {
+		this.linkedAccount = linkedAccount;
+	}
+	
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == this) return true;
+		if (!(obj instanceof CreditCardAccount)) return false;
+		CreditCardAccount that = (CreditCardAccount) obj;
+		if (this.cardNumber == null ? that.cardNumber == null : this.cardNumber.equals(that.cardNumber) && 
+				this.flag == null ? that.flag == null : this.flag == that.flag)
+			return true;
+		return false;
+	}
+	
+	@Override
+	public int hashCode() {
+		int result = 13;
+		result = result * 31 + (cardNumber != null ? cardNumber.hashCode() : 0);
+		result = result * 31 + (flag != null ? flag.hashCode() : 0);
+		return result;
+	}
+
+}

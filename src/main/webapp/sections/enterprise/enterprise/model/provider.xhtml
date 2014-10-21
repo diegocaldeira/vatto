@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+	<h:panelGroup layout="block" styleClass="content-menuBody-wrapper" style="width: 87%;" >
+	     
+	     <h:panelGroup layout="block" rendered="#{!legalPartnerController.has()}">
+			<h:panelGroup style="background: white; height: 30px;" layout="block">  
+		    	
+		    	<h:panelGroup styleClass="search-datatable" layout="block">
+		            <h:panelGroup styleClass="search-datatable-title" layout="block"><h:outputText value="Pesquisar: "/></h:panelGroup>
+		 			<h:panelGroup styleClass="search-action" layout="block">
+		                <p:inputText id="provider-search" onkeyup="{legalPartnerController.getContactsAC}" />  
+						<p:watermark for="provider-search" value="Pesquisar em todos os campos" /> 
+		 			</h:panelGroup>
+				</h:panelGroup>
+				
+				<h:panelGroup styleClass="action-datatable" layout="block" rendered="#{!legalPartnerController.has()}">
+		 			<h:panelGroup styleClass="toolbar-action" layout="block">
+		               	<p:commandButton value="Novo Fornecedor" title="Novo Fornecedor" actionListener="#{legalPartnerController.addPartner('LegalProvider')}" update="content-wrapper"/>
+						<p:commandButton value="Cancelar" immediate="true" action="#{registerController.setName(null)}" actionListener="#{appmenu.load('CONTACT')}"/>
+		 			</h:panelGroup>
+				</h:panelGroup>
+				
+	       </h:panelGroup> 
+		</h:panelGroup>
+		
+		<h:panelGroup styleClass="content-menuBody" layout="block" rendered="#{!legalPartnerController.has()}">
+			<p:dataTable var="att" value="#{legalPartnerController.getBeansByType('Trainee')}">
+				<f:facet name="header">Prestadores PJ</f:facet>
+			  	<p:column headerText="Razão Social"><h:outputText value="#{att.register.companyName}"/></p:column>
+			  	<p:column headerText="CNPJ"><h:outputText value="#{att.register.getRegistration('cnpj').value}"/></p:column>
+			</p:dataTable>
+		</h:panelGroup>
+		
+		
+		<h:panelGroup layout="block" rendered="#{legalPartnerController.has()}">
+		 	<h:outputStylesheet>
+		 		.label {
+		 			width: 100px;
+		 		}
+		 	</h:outputStylesheet>
+		 	
+			<p:panel header="Cadastro de Fornecedor" style="width: 100%; float: left; text-align: center;"> 
+				<h:panelGrid columns="2" cellpading="5" style="margin-left: 300px; float: left;">
+					<h:outputLabel value="Razão Social"/>
+					<p:inputText value="#{att.register.companyName}" required="true" size="50" maxlength="50"/>
+					
+					<h:outputLabel value="CNPJ"/>
+					<p:inputMask value="#{att.register.getRegistration('cnpj').value}" required="true" mask="99.999.999/9999-99" size="20" maxlength="20"/>
+					
+					<h:outputLabel value="Inscrição Estadual"/>
+					<p:inputText value="#{att.register.getRegistration('inscrest').value}" size="20" maxlength="20"/>
+					
+					<h:outputLabel value="Inscrição Municipal"/>
+					<p:inputText value="#{att.register.getRegistration('inscrmun').value}" size="20" maxlength="20"/>
+					
+					<h:outputLabel value="Nome Fantasia"/>
+					<p:inputText value="#{att.register.fancyName}" size="50" maxlength="50"/>
+					
+				</h:panelGrid>
+				<h:panelGroup layout="block" styleClass="action-datatable" style="margin-top: 10px;">
+					<p:commandButton type="push" value="Salvar" image="ui-icon-disk" actionListener="#{legalPartnerController.save}" update="content-wrapper"/>
+					<p:commandButton type="push" value="Limpar" image="ui-icon-note" actionListener="#{legalPartnerController.clean}" update="content-wrapper" />
+					<p:commandButton type="push" value="Cancelar" image="ui-icon-note" immediate="true" action="#{registerController.setName(null)}" actionListener="#{appmenu.load('CONTACT')}" update="content-wrapper" />
+				</h:panelGroup>
+			</p:panel>
+		</h:panelGroup>
+		
+	</h:panelGroup>
+</ui:composition>

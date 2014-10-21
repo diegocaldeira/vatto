@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+
+	<!-- HEADER_TITLE -->
+	<h:panelGroup layout="block" styleClass="padder clearfix m-b-small b-b"> 
+		<h4 class="m-b m-t m-l"><span class="semi-bold"> <i class="icon-edit"> </i> <h:outputText value="#{message.model_title_banking_cash_account}"/></span></h4>
+	</h:panelGroup>
+	<!-- / HEADER_TITLE -->
+		
+	<!-- CONTENT_BODY -->
+	<h:panelGroup styleClass="m-t" layout="block" rendered="#{cashAccountController.has()}" >
+	
+		<div class="col-md-12"> 
+			<div class="grid simple"> 
+				<div class="grid-body no-border">
+			
+					<div class="row">
+						<div class="col-md-12">
+							<h4>#{message.general_data}</h4>
+				
+							<div class="row form-row">
+								<div class="col-md-5">
+									<p:calendar id="cash-account-start" value="#{cashAccountController.bean.start}" converter="#{dateCalendarConverter}" pattern="dd/MM/yyyy"/>
+									<p:watermark for="cash-account-start" value="#{message.watermark_model_start}" />
+									<p:inputMask id="cash-account-start-balance" value="#{cashAccountController.bean.startBalance}" size="15" mask="9?99999999999999" styleClass="form-control parsley-validated"/>
+									<p:watermark for="cash-account-start-balance" value="#{message.watermark_model_money_signal}" />
+								</div>
+								<div class="col-md-7">
+									<p:inputTextarea id="cash-account-observations" value="#{cashAccountController.bean.description}" 	size="20" styleClass="form-control parsley-validated"/>
+									<p:watermark for="cash-account-observations" value="#{message.watermark_model_cash_account_observations}" />
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					
+					<div class="form-actions">
+						<div class="pull-right">
+							<p:commandButton value="#{message.action_save}"   actionListener="#{cashAccountController.save()}" 	styleClass="btn btn-primary btn-cons" action="#{registerController.setCreate(false)}" style="margin-left: 5px;" type="push"		 update="@form"/>
+							<p:commandButton value="#{message.action_cancel}" actionListener="#{cashAccountController.clean()}" styleClass="btn btn-white btn-cons"   action="#{registerController.setCreate(false)}" style="margin-left: 5px;" immediate="true" update="@form"/>
+						</div>
+				  	</div>
+				</div>
+			</div>
+		</div>
+		
+	</h:panelGroup>
+	<!-- / CONTENT_BODY -->
+	
+</ui:composition>

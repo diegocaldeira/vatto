@@ -1,0 +1,47 @@
+package com.aoks.utils.category.model;
+
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+import javax.persistence.TableGenerator;
+
+import com.aoks.utils.webmvc.GenericModel;
+
+
+/**
+ * A helper for classes the will use the Category Model.
+ * 
+ * @author Diego Pereira
+ * @site www.diegopereira.com.br
+ *
+ */
+@Entity
+@Table(name="CategorizableHelper", schema="utils")
+@Inheritance(strategy=InheritanceType.JOINED)
+public abstract class CategorizableHelper implements GenericModel {
+	
+	private static final long serialVersionUID = 1L;
+	@Id @GeneratedValue(strategy=GenerationType.TABLE, generator="UtilsSequence")
+	@TableGenerator(name="UtilsSequence", table="UtilsSequence", schema="utils", 
+			pkColumnName="cTable", pkColumnValue="CategorizableSequence", valueColumnName="cNext", initialValue=1, allocationSize=1)
+	@Column(name="cId")
+	private long id;
+
+	
+	@Override
+	public long getId() {
+		return id;
+	}
+
+	@Override
+	public void setId(long id) {
+		this.id = id;
+	}
+
+}

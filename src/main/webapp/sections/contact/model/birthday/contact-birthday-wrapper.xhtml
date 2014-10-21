@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+    <aside class="sidebar bg-lighter sidebar-small" style="float: left;"> 
+		<h:panelGroup layout="block" styleClass="list-group list-normal m-b-none"> 
+			f
+		</h:panelGroup>
+	</aside>
+	
+	<section class="main">
+		<h:panelGroup layout="block" id="contact-birthday-menuBody" styleClass="col-lg-10 main">
+			<h:panelGroup layout="block" styleClass="bg-primary padder clearfix"> <h4 class="m-b m-t"><i class="icon-gift"></i><h:outputText value=" #{message.general_birthday_u}"/></h4> </h:panelGroup>
+			
+			<h:panelGroup layout="block" styleClass="row">
+
+				<p:carousel id="birthday-carousel" value="#{birthdayController.birthdaysMonth}" var="att" itemStyleClass="carItem">  
+				    <f:facet name="header"><h:outputText value="#{att.name}"/></f:facet>  
+				   
+				    <h:panelGrid columns="1" style="width:100%" cellpadding="5">  
+				        <h:outputText value="#{att.name}" />  
+				        <h:outputText value="#{att.age} #{message.general_years}" />
+				        <h:outputText value="#{att.date}" />    
+				        <h:outputText value="#{att.category}" />  
+				    </h:panelGrid>
+				</p:carousel>
+
+			</h:panelGroup>
+		</h:panelGroup>
+	</section>
+	
+</ui:composition>

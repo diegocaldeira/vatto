@@ -1,0 +1,47 @@
+package net.kallx.security.control;
+
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import net.kallx.security.control.bean.UserBean;
+import net.kallx.security.model.User;
+import net.kallx.security.service.UserManager;
+import net.kallx.utils.webmvc.AbstractController;
+import net.kallx.utils.webmvc.AbstractManager;
+import net.kallx.utils.webmvc.GenericFactory;
+
+@Named("userController")
+@SessionScoped
+public class UserController extends AbstractController<User, UserBean> {
+
+	private static final long serialVersionUID = 1L;
+
+	@Inject
+	private UserManager manager;
+	
+	@PostConstruct
+	void init(){
+		beans = updateBeans();
+	}
+
+
+	@Override
+	public AbstractManager<User> getManager() {
+		return manager;
+	}
+
+
+	@Override
+	public Class<UserBean> getBeanClazz() {
+		return UserBean.class;
+	}
+
+
+	@Override
+	public GenericFactory<User> getFactory() {
+		return null;
+	}
+	
+}

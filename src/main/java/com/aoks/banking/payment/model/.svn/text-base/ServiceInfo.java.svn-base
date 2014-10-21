@@ -1,0 +1,12 @@
+package net.kallx.banking.payment.model;
+
+import java.util.List;
+
+public class ServiceInfo {
+	
+	private String movementType;
+	private String movementCode;
+	
+	private List<OtherInfo> otherInfo;
+
+}

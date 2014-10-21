@@ -1,0 +1,32 @@
+package net.kallx.utils.webmvc;
+
+import java.io.Serializable;
+import java.util.List;
+
+/**
+ * 
+ * @author Marcos Vinicius
+ *
+ * @param <T>
+ */
+public interface ModelManager<T extends GenericModel> extends Serializable {
+	
+	ModelManager<T> load(T t);
+	ModelManager<T> load(long id);
+	ModelManager<T> remove();
+	ModelManager<T> save();
+	ModelManager<T> create();
+	
+	
+	List<T> list();
+	List<T> list(int maxresults);
+	
+	T getModel();
+	
+	T createModel();
+	
+	Class<T> getModelClazz();
+	
+	void verifyState();
+	
+}

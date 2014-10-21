@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+  	<!-- HEADER_TITLE -->
+	<h:panelGroup layout="block" styleClass="padder clearfix b-b"> 
+		<h4><span class="semi-bold"> <i class="icon-edit"> </i> <h:outputText value="#{message.model_title_bugdget_transfer}"/></span></h4>
+	</h:panelGroup>
+	<!-- / HEADER_TITLE -->
+	
+	<!-- CONTENT_BODY -->
+	<h:panelGroup id="transfer" layout="block" style="margin-top: 30px;" rendered="#{flowController.hasTransfer()}" >
+		<f:event listener="{partyController.create()}" type="preRenderComponent"/>
+		
+		<div class="col-md-12"> 
+			<div class="grid simple"> 
+				<div class="grid-body no-border">
+			
+					<div class="row column-seperation">
+						<div class="col-md-6">
+							<h4>#{message.general_data}</h4>
+				
+							<div class="row form-row">
+								<div class="col-md-6">
+									<p:inputText id="transfer-amount" label="#{message.model_value}" value="#{flowController.bean.amount}" size="30" maxlength="30" styleClass="form-control parsley-validated"/>
+									<p:watermark for="transfer-amount" value="#{message.watermark_model_money_signal}" />
+								</div>
+								<div class="col-md-6">
+									<p:calendar id="transfer-start" value="#{flowController.bean.start}" converter="#{dateCalendarConverter}" pattern="dd/MM/yyyy"/>
+									<p:watermark for="transfer-start" value="#{message.watermark_model_start}" />
+								</div>
+							</div>
+							<div class="row form-row">
+								<div class="col-md-12">
+									<p:inputText id="transfer-name" label="#{message.model_name}" value="#{flowController.bean.name}" size="30" maxlength="30" styleClass="form-control parsley-validated"/>
+									<p:watermark for="transfer-name" value="#{message.watermark_model_transfer_name}" />
+								</div>
+							</div>
+							
+							<div class="row form-row">
+								<div class="col-md-12">
+									<p:inputTextarea id="transfer-description" label="#{message.model_description}" value="#{flowController.bean.description}" size="50" maxlength="50" styleClass="form-control parsley-validated"/>
+									<p:watermark for="transfer-description" value="#{message.watermark_model_transfer_observations}" />
+								</div>
+							</div>
+						
+						</div>
+						<div class="col-md-6">
+							<h4>#{message.general_data}</h4>
+							
+							<div class="row form-row">
+								<div class="col-md-6">
+									<p:autoComplete id="transfer-origin-account" value="#{flowController.bean.origin}"
+									        completeMethod="#{accountController.getAccountsAC}" var="account" itemLabel="#{account.description}"   
+								        	itemValue="#{account}" converter="accountConverter"/>
+						        	<p:watermark for="transfer-origin-account" value="#{message.watermark_model_origin_account}" />
+								</div>
+								<div class="col-md-6">
+									<p:autoComplete id="transfer-target-account" value="#{flowController.bean.target}"
+									        completeMethod="#{accountController.getAccountsAC}" var="account" itemLabel="#{account.description}"   
+									        itemValue="#{account}" converter="accountConverter"/>
+							        <p:watermark for="transfer-target-account" value="#{message.watermark_model_target_account}" />
+								</div>
+							</div>
+							
+							<div class="row form-row">
+								<div class="col-md-10">
+									<p:autoComplete id="transfer-payee" value="#{flowController.bean.payee}" completeMethod="#{partyController.getPartiesAC}" 
+						 				var="p" itemLabel="#{p.name}" itemValue="#{p}" converter="partyConverter"/>
+						 			<p:watermark for="transfer-payee" value="#{message.watermark_model_payee}" />
+						 		</div>
+						 		<div class="col-md-2">	
+						 			<p:commandButton id="transfer-payee-btn" value="" styleClass="btn btn-white icon-plus-sign icon-large-form" style="padding: 5px;"/>
+						 			<p:overlayPanel id="transfer-payee-panel" for="transfer-payee-btn" hideEffect="fade" dynamic="true">
+										<h:panelGroup layout="block" rendered="#{partyController.has()}">
+											<p:inputText id="transfer-payee-add" value="#{partyController.bean.name}" size="20" style="width: 265px;" styleClass="form-control parsley-validated"/>
+											<p:watermark for="expense-payee-add" value="#{message.watermark_model_payee}" />
+											<p:commandLink id="transfer-add-payee" value="#{message.action_add} #{message.model_payee}" title="#{message.action_add} #{message.model_payee}" update="transfer-payee-panel"
+												styleClass="btn btn-small btn-success pull-right" style="margin-bottom: 10px;" actionListener="#{partyController.save()}"/>
+										</h:panelGroup>
+						 			</p:overlayPanel>
+					 			</div>
+					 		</div>
+						</div>
+							
+					</div>
+					
+					<div class="form-actions">
+						<div class="pull-right">
+							<p:commandButton value="#{message.action_save}"   actionListener="#{flowController.save()}"  styleClass="btn btn-primary btn-cons" update="@form" action="#{registerController.setCreate(false)}" style="margin-left: 5px;" type="push"/>
+							<p:commandButton value="#{message.action_cancel}" actionListener="#{flowController.clean()}" styleClass="btn btn-white btn-cons"   update="@form" action="#{registerController.setCreate(false)}" style="margin-left: 5px;" immediate="true" />
+						</div>
+				  	</div>
+				  	
+				</div>
+			</div>
+		</div>
+	</h:panelGroup>
+	<!-- / CONTENT_BODY -->
+		
+</ui:composition>

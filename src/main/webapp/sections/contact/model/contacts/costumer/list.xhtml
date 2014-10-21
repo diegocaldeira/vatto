@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+   	<ui:decorate template="/sections/layout/templates/partner/model/list.xhtml">
+		<ui:param name="controller" value="#{costumerController}" />
+		<ui:param name="table" 		value="costumer" />
+		
+		<p:ajax event="rowSelect" 	listener="#{costumerController.onRowSelect}"   update="@form"/>  
+	    <p:ajax event="rowUnselect" listener="#{costumerController.onRowUnselect}" update="@form"/>
+		
+		<p:column filterBy="#{att.name}" 					filterMatchMode="contains" headerText="#{message.model_name}"			style="width:300px; border: 0px;"><h:outputText value="#{att.name}"/>					</p:column>
+	  	<p:column filterBy="#{att.register.costumerName}" 	filterMatchMode="contains" headerText="#{message.model_company_name}"	style="width:300px; border: 0px;"><h:outputText value="#{att.register.costumerName}"/>	</p:column>
+	  	<p:column filterBy="#{att.register.cnpj}"			filterMatchMode="contains" headerText="#{message.model_cnpj}"			style="width:250px; border: 0px;"><h:outputText value="#{att.register.cnpj}"/>			</p:column>
+	</ui:decorate>
+	  	
+</ui:composition>

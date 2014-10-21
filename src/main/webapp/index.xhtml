@@ -1,0 +1,432 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<h:head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+		
+		<h:outputStylesheet library="css" name="plugins/jquery-polymaps/style.css"/>
+		<h:outputStylesheet library="css" name="plugins/jquery-metrojs/MetroJs.css"/>
+		<h:outputStylesheet library="css" name="plugins/shape-hover/css/demo.css"/>
+		<h:outputStylesheet library="css" name="plugins/shape-hover/css/component.css"/>
+		<h:outputStylesheet library="css" name="plugins/owl-carousel/owl.carousel.css"/>
+		<h:outputStylesheet library="css" name="plugins/owl-carousel/owl.theme.css"/>
+		<h:outputStylesheet library="css" name="plugins/pace/pace-theme-flash.css"/>
+		<h:outputStylesheet library="css" name="plugins/jquery-slider/css/jquery.sidr.light.css"/>
+		<h:outputStylesheet library="css" name="plugins/jquery-ricksaw-chart/css/rickshaw.css"/>
+		<h:outputStylesheet library="css" name="plugins/jquery-isotope/isotope.css"/>
+		<h:outputStylesheet library="css" name="jquery.nestable.css"/>
+		
+		<!-- BEGIN CORE CSS FRAMEWORK -->
+		<h:outputStylesheet library="css" name="plugins/bootstrapv3/css/bootstrap.min.css"/>
+		<h:outputStylesheet library="css" name="plugins/bootstrapv3/css/bootstrap-theme.min.css"/>
+		<h:outputStylesheet library="css" name="plugins/animate.min.css"/>
+		<!-- END CORE CSS FRAMEWORK -->
+
+		<!-- BEGIN CSS TEMPLATE -->
+		<h:outputStylesheet library="css" name="plugins/style.css"/>
+		<h:outputStylesheet library="css" name="plugins/responsive.css"/>
+		<h:outputStylesheet library="css" name="plugins/custom-icon-set.css"/>
+		<h:outputStylesheet library="css" name="plugins/magic_space.css"/>
+		<h:outputStylesheet library="css" name="plugins/tiles_responsive.css"/>
+		
+		<!-- END CSS TEMPLATE -->
+		
+		<h:outputStylesheet library="css" name="select2.css"/>
+		<h:outputStylesheet library="css" name="font.css"/>
+		<h:outputStylesheet library="css" name="css.css"/>
+		<h:outputStylesheet library="css" name="application.css"/>
+		
+		<link rel="stylesheet" href="resources/font-awesome-4.2.0/css/font-awesome.min.css"></link>
+		
+	</h:head>
+	<h:body class="inner-menu-always-close breakpoint-1024 pace-done" rendered="#{sessionController.isLogged()}">
+		<f:event type="javax.faces.event.PreRenderViewEvent" listener="#{applicationScopeBean.preRenderView}"/>
+		
+		<h:form prependId="false">
+			<div class="pace  pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99" style="width: 100%;">
+			  <div class="pace-progress-inner"></div>
+			</div>
+			<div class="pace-activity"></div></div>
+			
+			<div class="header navbar navbar-inverse ">
+			<!-- header -->
+				<div class="navbar-inner">
+				    <div class="header-seperation">
+				      <ul class="nav pull-left notifcation-center" id="main-menu-toggle-wrapper" style="display:none">
+				        <li class="dropdown">
+							<a id="main-menu-toggle" href="#main-menu" class="">
+				          		<div class="iconset top-menu-toggle-white"></div>
+				          	</a>
+				         </li>
+				      </ul>
+				      <!-- BEGIN LOGO -->
+<!-- 				      <a href="index.html"><img src="resources/img/profiles/logo.png" class="logo" alt="" data-src="resources/img/logo.png" data-src-retina="resources/img/logo2x.png" width="106" height="21"></img></a> -->
+				      <!-- END LOGO -->
+				      <ul class="nav pull-right notifcation-center">
+				        <li class="dropdown" id="header_task_bar">
+				        	<a href="http://www.diegopereira.com.br" class="dropdown-toggle active" data-toggle="">
+				          		<div class="iconset top-home"></div>
+				          	</a>
+				        </li>
+				        <!--<li class="dropdown" id="header_inbox_bar">
+				        	<a href="email.html" class="dropdown-toggle">
+				          		<div class="iconset top-messages"></div>
+				          		<span class="badge animated bounceIn" id="msgs-badge">2</span>
+				          	</a>
+				        </li>-->
+				        <li class="dropdown" id="portrait-chat-toggler" style="display:none"> <a href="#sidr" class="chat-menu-toggle">
+				          <div class="iconset top-chat-white "></div>
+				          </a> </li>
+				      </ul>
+				    </div>
+				    <!-- END RESPONSIVE MENU TOGGLER -->
+				    <div class="header-quick-nav">
+						
+						<!-- BEGIN TOP NAVIGATION MENU -->
+						<div class="pull-left">
+					        <ul class="nav quick-section">
+					        	<li class="quicklinks">
+					        		<a href="#" class="" id="layout-condensed-toggle">
+					            		<div class="iconset top-menu-toggle-dark"></div>
+					            	</a>
+					           </li>
+					        </ul>
+					        <ul class="nav quick-section">
+					        	<li class="quicklinks"><a href="/erp" class=""><div class="iconset top-reload"></div></a></li>
+					          	<li class="quicklinks"><span class="h-seperate"></span></li>
+					          	<li class="m-r-10 input-prepend inside search-form no-boarder">
+					          		<span class="add-on"> <span class="iconset top-search"></span></span>
+					            	<input name="" type="text" class="no-boarder " placeholder="Search Dashboard" style="width:250px;"/>
+					          	</li>
+					        </ul>
+				      	</div>
+				      	<!-- END TOP NAVIGATION MENU -->
+				      	
+				     	 <!-- BEGIN CHAT TOGGLER -->
+							<div class="pull-right">
+					      		<div class="chat-toggler">
+						      		<a href="#" class="dropdown-toggle" id="my-task-list" data-placement="bottom" data-content="" data-toggle="dropdown" data-original-title="Notifications">
+						        		<div class="user-details">
+							            	<div class="username">  #{sessionController.loggedBean.firstName} <span class="bold">#{sessionController.loggedBean.lastName}</span> </div>
+								        </div>
+<!-- 						    			<div class="iconset top-down-arrow"></div> -->
+						          	</a>
+<!-- 						          	<div id="notification-list" style="display:none"> -->
+<!-- 						            <div style="width:300px"> -->
+<!-- 						            	<div class="notification-messages info"> -->
+<!-- 						                	<div class="user-profile"> <img src="resources/img/profiles/d.jpg" alt="" data-src="resources/img/profiles/d.jpg" data-src-retina="resources/img/profiles/d2x.jpg" width="35" height="35"> </img></div> -->
+<!-- 						                	<div class="message-wrapper"> -->
+<!-- 						                  		<div class="heading"> David Nester - Commented on your wall </div> -->
+<!-- 						                  		<div class="description"> Meeting postponed to tomorrow </div> -->
+<!-- 						                  		<div class="date pull-left"> A min ago </div> -->
+<!-- 						                	</div> -->
+<!-- 						                	<div class="clearfix"></div> -->
+<!-- 						              	</div> -->
+						              	
+<!-- 						             	<div class="notification-messages danger"> -->
+<!-- 						                	<div class="iconholder"> <i class="icon-warning-sign"></i> </div> -->
+<!-- 						                	<div class="message-wrapper"> -->
+<!-- 						                  		<div class="heading"> Server load limited </div> -->
+<!-- 						                  		<div class="description"> Database server has reached its daily capicity </div> -->
+<!-- 						                  		<div class="date pull-left"> 2 mins ago </div> -->
+<!-- 						                	</div> -->
+<!-- 						                	<div class="clearfix"></div> -->
+<!-- 						              	</div> -->
+						              	
+<!-- 						              	<div class="notification-messages success"> -->
+<!-- 						                	<div class="user-profile"> <img src="resources/img/profiles/h.jpg" alt="" data-src="resources/img/profiles/h.jpg" data-src-retina="resources/img/profiles/h2x.jpg" width="35" height="35"> </img></div> -->
+<!-- 						                	<div class="message-wrapper"> -->
+<!-- 						                  		<div class="heading"> You haveve got 150 messages </div> -->
+<!-- 						                  		<div class="description"> 150 newly unread messages in your inbox </div> -->
+<!-- 						                  		<div class="date pull-left"> An hour ago </div> -->
+<!-- 						                	</div> -->
+<!-- 						                	<div class="clearfix"></div> -->
+<!-- 						              	</div> -->
+<!-- 						            </div> -->
+<!-- 						       	</div> -->
+					        
+<!-- 					        	<div class="profile-pic"> <img src="resources/img/profiles/avatar.jpg" alt="" data-src="resources/img/profiles/avatar.jpg" data-src-retina="resources/img/profiles/avatar2x.jpg" width="35" height="35"> </img></div> -->
+					        	
+					        </div>
+					     
+						     <ul class="nav quick-section ">
+						     	<li class="quicklinks">
+						     		<a data-toggle="dropdown" class="dropdown-toggle  pull-right " href="#" id="user-options">
+						        		<div class="iconset top-settings-dark "></div>
+						            </a>
+						            <ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="user-options">
+						            	<li><p:commandLink value="#{message.module_profile}" update="@all" actionListener="#{appMenu.load('PROFILE-WRAPPER')}"  style="border: 0 !important;"/></li>
+						            	<li class="divider"></li>
+						            	<li><h:commandLink value="#{message.general_logout}" styleClass="btn btn-sm" update="@all" action="#{sessionController.attemptLogout}"/></li>
+						            </ul>
+						       	</li>
+						        <li class="quicklinks"> <span class="h-seperate"></span></li>
+						        <li class="quicklinks">
+						        	<a id="chat-menu-toggle" href="#sidr" class="chat-menu-toggle">
+							        	<div class="iconset top-chat-dark "><span class="badge badge-important animated bounceIn" id="chat-message-count">1</span></div>
+						            </a>
+						            <div class="simple-chat-popup chat-menu-toggle hide animated fadeOut">
+						            	<div class="simple-chat-popup-arrow"></div>
+						              	<div class="simple-chat-popup-inner">
+							                <div style="width:100px">
+						                		<div class="semi-bold"></div>
+						                  		<div class="message"></div>
+						                	</div>
+						              	</div>
+						            </div>
+						        </li>
+							</ul>
+						</div>
+					<!-- END CHAT TOGGLER -->
+					</div>
+				<!-- END TOP NAVIGATION MENU -->
+			</div>
+		</div>
+		<!-- / header -->
+		
+		
+		<div class="page-container row-fluid">
+	  		<!-- BEGIN SIDEBAR -->
+			<div class="page-sidebar" id="main-menu">
+<!-- 	 			BEGIN MINI-PROFILE -->
+	    		<div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: auto;">
+	    			<div class="page-sidebar-wrapper" id="main-menu-wrapper" style="overflow: hidden; width: auto; height: auto;">
+						<div class="user-info-wrapper">
+        					<div class="profile-wrapper"><p:graphicImage width="69" height="69" value="#{sessionController.loggedBean.picture}"/></div>
+        					<div class="user-info">
+						       	<div class="greeting">Bem vindo,</div>
+						       	<div class="username"><span class="semi-bold">#{sessionController.loggedBean.firstName}</span></div>
+						      	<div class="status" style="margin-bottom: 40px;"><div class="green"></div></div>
+						    </div>
+				      	</div>
+<!-- 	     	 			END MINI-PROFILE -->
+<!-- 	      				BEGIN SIDEBAR MENU -->
+<!-- 	      				<p class="menu-title">BROWSE <span class="pull-right"><a href="javascript:;"><i class="fa fa-refresh"></i></a></span></p> -->
+	      				
+	      				<ul>
+	      					<li class="active">
+	      						<a href="dashboard" title="#{message.general_dashboard}"><i class="fa fa-dashboard"></i> <span class="title">#{message.general_dashboard}</span></a>
+	      					</li>
+	      					<li class="">
+	      						<a href="javascript:;" title="#{message.module_financial}"><i class="fa fa-dollar"></i><span class="title">#{message.module_financial}</span></a>
+					        	<ul class="sub-menu" style="overflow: hidden; display: none;">
+					            	<li> <a href="financial"> <i class="fa fa-dashboard"></i> <span class="title">#{message.general_dashboard}</span></a></li>
+					            </ul>
+					        </li>
+					        <li class="">
+					        	<a href="sales" title="#{message.module_sales}"> <i class="fa fa-shopping-cart"></i> <span class="title">#{message.module_sales}</span></a>
+					        </li>
+					        <li class="">
+					        	<a href="contacts" title="#{message.module_contacts}"><i class="fa fa-group"></i> <span class="title">#{message.module_contacts}</span></a>
+					        </li>
+					         <li class="">
+					         	<a href="profile" title="#{message.module_profile}"><i class="fa fa-cog"></i> <span class="title">#{message.module_profile}</span></a>
+					        	<!-- <h:commandLink value="#{message.module_profile}" actionListener="#{applicationMenuController.loadModule('PROFILE-WRAPPER')}" action="#{userController.clean()}" style="border: 0 !important;"/> -->
+					        </li>
+	      				</ul>
+	      				
+	      				<div class="clearfix"></div>
+<!-- 	      				END SIDEBAR MENU -->
+	    			</div>
+	    
+					<div class="slimScrollBar" style="width: 4px; position: absolute; top: -24px; opacity: 0.4; display: block; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; right: 1px; height: 54.42304147465438px; background: rgb(161, 178, 189);"></div>
+					<div class="slimScrollRail" style="width: 4px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div>
+				</div>
+			</div>
+
+			<!--
+			<div class="footer-widget">
+				<div class="progress transparent progress-small no-radius no-margin">
+			    	<div data-percentage="79%" class="progress-bar progress-bar-success animate-progress-bar" style="width: 79%;"></div>
+			    </div>
+			    <div class="pull-right">
+			    	<div class="details-status"> <span data-animation-duration="560" data-value="86" class="animate-number">86</span>% </div>
+				<a href="lockscreen.html"><i class="fa fa-power-off"></i></a></div>
+			</div>
+			-->
+ 			 <!-- END SIDEBAR -->
+  
+	 		<!-- BEGIN PAGE CONTAINER-->
+			<div class="page-content">
+			    
+				<!--
+				<div id="portlet-config" class="modal hide">
+			    	<div class="modal-header">
+			        	<button data-dismiss="modal" class="close" type="button"></button>
+			        	<h3>Widget Settings</h3>
+			      	</div>
+			      	<div class="modal-body"> Widget settings form goes here </div>
+			    </div>
+		    	-->
+		    	<div class="clearfix"></div>
+			
+					<!-- body -->
+					<section id="content" class="content main bg-white">
+						<ui:fragment rendered="#{applicationMenuController.isModuleLoaded('DASHBOARD-WRAPPER')}">
+							<ui:include src="sections/dashboard/layout/dashboard-wrapper.xhtml"/>
+						</ui:fragment>
+						
+						<ui:fragment rendered="#{applicationMenuController.isModuleLoaded('BANKING-WRAPPER')}">
+							<ui:include src="sections/financial/model/banking/layout/banking-wrapper.xhtml"/>
+						</ui:fragment>
+						
+						<ui:fragment rendered="#{applicationMenuController.isModuleLoaded('BUDGET-WRAPPER')}">
+							<ui:include src="sections/financial/model/budget/layout/budget-wrapper.xhtml"/>
+						</ui:fragment>
+						
+						<ui:fragment rendered="#{applicationMenuController.isModuleLoaded('SALE-WRAPPER')}">
+							<ui:include src="sections/sales/layout/sale-wrapper.xhtml"/>
+						</ui:fragment>
+						
+						<ui:fragment rendered="#{applicationMenuController.isModuleLoaded('CONTACT-WRAPPER')}">
+							<ui:include src="sections/contact/model/contacts/layout/contact-wrapper.xhtml"/>
+						</ui:fragment>
+						
+						<ui:fragment rendered="#{applicationMenuController.isModuleLoaded('PROFILE-WRAPPER')}">
+							<ui:include src="sections/security/layout/profile-wrapper.xhtml"/>
+						</ui:fragment>
+							
+					</section>
+					<!-- / body -->
+			
+				</div>
+		  
+		</div>
+		
+
+			<!-- footer <footer id="footer"><div class="text-center padder clearfix"></div></footer> / footer -->
+		</h:form>
+		
+			
+	
+	<!-- BEGIN CORE JS FRAMEWORK-->
+    
+	<!-- [if lt IE 9]> -->
+	<!-- <script src="assets/plugins/respond.js"></script> -->
+	<!-- <![endif]-->
+	<h:outputScript library="script" name="plugins/bootstrap/js/bootstrap.min.js"/>
+	<h:outputScript library="script" name="plugins/breakpoints.js"/>
+	<h:outputScript library="script" name="plugins/jquery-unveil/jquery.unveil.min.js"/>
+	<h:outputScript library="script" name="plugins/jquery-block-ui/jqueryblockui.js"/>
+	<h:outputScript library="script" name="plugins/jquery-lazyload/jquery.lazyload.min.js"/>
+	<!-- END CORE JS FRAMEWORK -->
+	
+	<!-- BEGIN PAGE LEVEL JS -->
+	<h:outputScript library="script" name="plugins/jquery-slider/jquery.sidr.min.js"/>
+	<h:outputScript library="script" name="plugins/jquery-slimscroll/jquery.slimscroll.min.js"/>
+	<h:outputScript library="script" name="plugins/webarchScroll.js"/>
+	
+	<h:outputScript library="script" name="plugins/pace/pace.min.js"/>
+	<h:outputScript library="script" name="plugins/jquery-numberAnimate/jquery.animateNumbers.js"/>
+	<h:outputScript library="script" name="plugins/jquery-ricksaw-chart/js/raphael-min.js"/>
+	<h:outputScript library="script" name="plugins/jquery-ricksaw-chart/js/d3.v2.js"/>
+<!-- 	<h:outputScript library="script" name="plugins/jquery-ricksaw-chart/js/rickshaw.min.js"/> -->
+	<h:outputScript library="script" name="plugins/jquery-sparkline/jquery-sparkline.js"/>
+	<h:outputScript library="script" name="plugins/skycons/skycons.js"/>
+	<h:outputScript library="script" name="plugins/owl-carousel/owl.carousel.min.js"/>
+	<h:outputScript library="script" name="plugins/jquery-polymaps/polymaps.min.js"/>
+<!-- 	<h:outputScript library="script" name="plugins/jquery-flot/jquery.flot.js"/> -->
+<!-- 	<h:outputScript library="script" name="plugins/jquery-flot/jquery.flot.resize.min.js"/> -->
+	<h:outputScript library="script" name="plugins/jquery-metrojs/MetroJs.min.js"/>
+	<!-- END PAGE LEVEL PLUGINS -->
+	
+	<!-- BEGIN CORE TEMPLATE JS -->
+	<h:outputScript library="script" name="core.js"/>
+<!-- 	<h:outputScript library="script" name="chat.js"/> -->
+	<h:outputScript library="script" name="demo.js"/>
+<!-- 	<h:outputScript library="script" name="dashboard_v2.js"/> -->
+	
+	<script type="text/javascript">
+	        $(document).ready(function () {
+	            $(".live-tile,.flip-list").liveTile();
+	        });
+	</script>
+	<!-- END CORE TEMPLATE JS -->
+			
+	</h:body>
+	
+	<h:body class="error-body no-top lazy" data-original="resources/img/login/bg-7.png" rendered="#{not sessionController.isLogged()}" style="background-image: url('resources/img/login/bg-7.png')">
+		
+		<div class="container">
+			<div class="row login-container animated fadeInUp">
+				<div class="col-md-7 col-md-offset-2 tiles white no-padding">
+					<div class="p-t-30 p-l-40 p-b-20 xs-p-t-10 xs-p-l-10 xs-p-b-10">
+						<h2 class="normal">XINGLING</h2>
+						<p class="p-b-20">Cadastre-se! <br/>Tenha controle sobre suas financas, e gratis e sempre sera..</p>
+						<button class="btn btn-primary btn-cons" id="login_toggle">#{message.general_login}</button> ou  <button class="btn btn-info btn-cons" id="register_toggle">#{message.general_create_an_account}</button>
+					</div>
+					<div class="tiles grey p-t-20 p-b-20 text-black">
+						
+						<h:form id="frm_login" class="animated fadeIn" method="post" action="/app">
+							<div class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
+								<p:messages severity="warn" />
+								<div class="col-md-5 col-sm-5 ">
+									<p:inputText id="login_username" value="#{sessionController.credentials.username}" styleClass="form-control" size="50" maxlength="50" required="true" placeholder="#{message.model_username}"/>
+								</div>
+								<div class="col-md-5 col-sm-5">
+									<p:password id="login_pass" value="#{sessionController.credentials.password}" styleClass="form-control" feedback="false" required="true" placeholder="#{message.model_password}"/>
+								</div>
+								<div class="col-md-2 col-sm-2">
+									<h:commandButton value="#{message.general_login}" styleClass="btn btn-sm btn-primary" update="@all" style="padding: 4px 17px;" action="#{sessionController.attemptLogin}"/>
+								</div>
+							</div>
+							<div class="row p-t-10 m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
+								<div class="control-group  col-md-10">
+									<div class="checkbox checkbox check-success"> <a href="#">Problemas para acessar?</a>
+										<input type="checkbox" id="checkbox1" value="1"/>
+										<label for="checkbox1">Manter logado </label>
+									</div>
+								</div>
+							</div>
+						</h:form>
+						<h:form id="frm_register" styleClass="animated fadeIn" style="display:none">
+							<f:event type="javax.faces.event.PreRenderComponentEvent" listener="#{userController.create}"/>
+							
+							<h:panelGroup layout="block" rendered="#{userController.has()}">
+								<div class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
+									<div class="col-md-6 col-sm-6">
+										<p:inputText id="reg_username" value="#{userController.bean.username}" styleClass="form-control" size="50" maxlength="50" placeholder="#{message.model_username}"/>
+									</div>
+									<div class="col-md-6 col-sm-6">
+										<p:password id="reg_pass" value="#{userController.bean.password}" styleClass="form-control" feedback="false" placeholder="#{message.model_password}"/>
+									</div>
+								</div>
+								<div class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
+									<div class="col-md-12">
+										<p:inputText id="reg_email" value="#{userController.bean.email.address}" size="50" maxlength="50" styleClass="form-control" converter="#{emailInfoConverter}" placeholder="#{message.model_email}"/>
+									</div>
+								</div>
+								<div class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
+									<div class="col-md-6 col-sm-6">
+										<p:inputText id="reg_first_Name" value="#{userController.bean.firstName}" size="50" maxlength="50" styleClass="form-control" placeholder="#{message.model_name}"/>
+									</div>
+									<div class="col-md-6 col-sm-6">
+										<p:inputText id="reg_last_Name" value="#{userController.bean.lastName}" size="50" maxlength="50" styleClass="form-control" placeholder="#{message.model_lastname}"/>
+									</div>
+								</div>
+								<div class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
+									<div class="col-md-12 ">
+										<p:inputText id="reg_confirm_email" value="#{userController.bean.email.address}" size="50" maxlength="50" styleClass="form-control" placeholder="#{message.general_email_confirmation}"/>
+									</div>
+								</div>
+							</h:panelGroup>
+							
+							<h:commandButton type="push" value="Salvar" actionListener="#{userController.save}" update="@all" styleClass="btn btn-primary btn-cons pull-right" style="margin-right: 5%;"/>
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</div>
+			 
+		<h:outputScript library="script" name="plugins/bootstrap/js/bootstrap.min.js"/>
+		<h:outputScript library="script" name="plugins/pace/pace.min.js"/>
+		<h:outputScript library="script" name="plugins/jquery-lazyload/jquery.lazyload.min.js"/>
+		<h:outputScript library="script" name="login_v2.js"/>
+		<h:outputScript library="script" name="jquery.validate.min.js"/>
+	</h:body>
+	
+</h:html>
