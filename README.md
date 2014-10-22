@@ -17,12 +17,13 @@ This README would normally document whatever steps are necessary to get your app
 
 ```
 #!text
- PostgreSQL 9.2 database.  Please make note of these credentials:
- 
- Root User: adminrreugib
- Root Password: SgfI6MSuAvxQ
- Database Name: erp
- Connection URL: postgresql://$OPENSHIFT_POSTGRESQL_DB_HOST:$OPENSHIFT_POSTGRESQL_DB_PORT
+ PostgreSQL 9.2 database added.  Please make note of these credentials:
+
+   Root User: adminfcjxuk4
+   Root Password: 1q2lqhiftw8g
+   Database Name: budget
+
+Connection URL: postgresql://$OPENSHIFT_POSTGRESQL_DB_HOST:$OPENSHIFT_POSTGRESQL_DB_PORT
 
 ```
 
