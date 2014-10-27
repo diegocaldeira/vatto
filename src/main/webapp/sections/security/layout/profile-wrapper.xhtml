@@ -4,45 +4,10 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
 
-	<h:head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-		
-		<h:outputStylesheet library="css" name="plugins/jquery-polymaps/style.css"/>
-		<h:outputStylesheet library="css" name="plugins/jquery-metrojs/MetroJs.css"/>
-		<h:outputStylesheet library="css" name="plugins/shape-hover/css/demo.css"/>
-		<h:outputStylesheet library="css" name="plugins/shape-hover/css/component.css"/>
-		<h:outputStylesheet library="css" name="plugins/owl-carousel/owl.carousel.css"/>
-		<h:outputStylesheet library="css" name="plugins/owl-carousel/owl.theme.css"/>
-		<h:outputStylesheet library="css" name="plugins/pace/pace-theme-flash.css"/>
-		<h:outputStylesheet library="css" name="plugins/jquery-slider/css/jquery.sidr.light.css"/>
-		<h:outputStylesheet library="css" name="plugins/jquery-ricksaw-chart/css/rickshaw.css"/>
-		<h:outputStylesheet library="css" name="plugins/jquery-isotope/isotope.css"/>
-		<h:outputStylesheet library="css" name="jquery.nestable.css"/>
-		
-		<!-- BEGIN CORE CSS FRAMEWORK -->
-		<h:outputStylesheet library="css" name="plugins/bootstrapv3/css/bootstrap.min.css"/>
-		<h:outputStylesheet library="css" name="plugins/bootstrapv3/css/bootstrap-theme.min.css"/>
-		<h:outputStylesheet library="css" name="plugins/animate.min.css"/>
-		<!-- END CORE CSS FRAMEWORK -->
-
-		<!-- BEGIN CSS TEMPLATE -->
-		<h:outputStylesheet library="css" name="plugins/style.css"/>
-		<h:outputStylesheet library="css" name="plugins/responsive.css"/>
-		<h:outputStylesheet library="css" name="plugins/custom-icon-set.css"/>
-		<h:outputStylesheet library="css" name="plugins/magic_space.css"/>
-		<h:outputStylesheet library="css" name="plugins/tiles_responsive.css"/>
-		
-		<!-- END CSS TEMPLATE -->
-		
-		<h:outputStylesheet library="css" name="select2.css"/>
-		<h:outputStylesheet library="css" name="font.css"/>
-		<h:outputStylesheet library="css" name="css.css"/>
-		<h:outputStylesheet library="css" name="application.css"/>
-		
-		<link rel="stylesheet" href="resources/font-awesome-4.2.0/css/font-awesome.min.css"></link>
-		
-	</h:head>
+	<!-- BEGIN HEADER -->
+		<ui:include src="../../../../layout/header/dependencies.xhtml"/>
+	<!-- END HEADER -->
+	
 	<h:body class="inner-menu-always-close breakpoint-1024 pace-done" rendered="#{sessionController.isLogged()}">
 		<f:event type="javax.faces.event.PreRenderViewEvent" listener="#{applicationScopeBean.preRenderView}"/>
 		

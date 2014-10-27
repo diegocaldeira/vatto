@@ -184,7 +184,7 @@ textarea::-webkit-input-placeholder {
 }
 
 .ui-icon-pencil{
-	background: url('/dp-budget/resources/img/edit.png') no-repeat !important;
+	background: url('/budget/resources/img/edit.png') no-repeat !important;
 	width: 22px !important;
 	height: 22px !important;
 }
@@ -552,10 +552,10 @@ tr { /* 	border-bottom: 1px solid #C33F77; */
 	margin-top: 3px;
 }
 .ui-state-hover .ui-icon, .ui-state-focus .ui-icon {
-	background-image: url("/dp-budget/resources/primefaces-bootstrap/images/ui-icons_333333_256x240.png");
+	background-image: url("/budget/resources/primefaces-bootstrap/images/ui-icons_333333_256x240.png");
 }
 .ui-state-default .ui-icon {
-/* 	background-image: url("/dp-budget/resources/primefaces-bootstrap/images/ui-icons_333333_256x240.png"); */
+/* 	background-image: url("/budget/resources/primefaces-bootstrap/images/ui-icons_333333_256x240.png"); */
 }
 .ui-icon-triangle-1-s {
 	background-position: -64px -16px;
@@ -563,11 +563,11 @@ tr { /* 	border-bottom: 1px solid #C33F77; */
 .ui-icon {
 	width: 16px;
 	height: 16px;
-	background-image: url("/dp-budget/resources/primefaces-bootstrap/images/ui-icons_333333_256x240.png");
+	background-image: url("/budget/resources/primefaces-bootstrap/images/ui-icons_333333_256x240.png");
 }
 
 .ui-icon-check{
-	background-image: url("/dp-budget/resources/img/check-black-16.png");
+	background-image: url("/budget/resources/img/check-black-16.png");
 	width: 16px;
 	height: 16px;
 }

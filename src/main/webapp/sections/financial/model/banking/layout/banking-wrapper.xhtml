@@ -4,46 +4,12 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
 
-	<h:head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-		
-		<h:outputStylesheet library="css" name="plugins/jquery-polymaps/style.css"/>
-		<h:outputStylesheet library="css" name="plugins/jquery-metrojs/MetroJs.css"/>
-		<h:outputStylesheet library="css" name="plugins/shape-hover/css/demo.css"/>
-		<h:outputStylesheet library="css" name="plugins/shape-hover/css/component.css"/>
-		<h:outputStylesheet library="css" name="plugins/owl-carousel/owl.carousel.css"/>
-		<h:outputStylesheet library="css" name="plugins/owl-carousel/owl.theme.css"/>
-		<h:outputStylesheet library="css" name="plugins/pace/pace-theme-flash.css"/>
-		<h:outputStylesheet library="css" name="plugins/jquery-slider/css/jquery.sidr.light.css"/>
-		<h:outputStylesheet library="css" name="plugins/jquery-ricksaw-chart/css/rickshaw.css"/>
-		<h:outputStylesheet library="css" name="plugins/jquery-isotope/isotope.css"/>
-		<h:outputStylesheet library="css" name="jquery.nestable.css"/>
-		
-		<!-- BEGIN CORE CSS FRAMEWORK -->
-		<h:outputStylesheet library="css" name="plugins/bootstrapv3/css/bootstrap.min.css"/>
-		<h:outputStylesheet library="css" name="plugins/bootstrapv3/css/bootstrap-theme.min.css"/>
-		<h:outputStylesheet library="css" name="plugins/animate.min.css"/>
-		<!-- END CORE CSS FRAMEWORK -->
-
-		<!-- BEGIN CSS TEMPLATE -->
-		<h:outputStylesheet library="css" name="plugins/style.css"/>
-		<h:outputStylesheet library="css" name="plugins/responsive.css"/>
-		<h:outputStylesheet library="css" name="plugins/custom-icon-set.css"/>
-		<h:outputStylesheet library="css" name="plugins/magic_space.css"/>
-		<h:outputStylesheet library="css" name="plugins/tiles_responsive.css"/>
-		
-		<!-- END CSS TEMPLATE -->
-		
-		<h:outputStylesheet library="css" name="select2.css"/>
-		<h:outputStylesheet library="css" name="font.css"/>
-		<h:outputStylesheet library="css" name="css.css"/>
-		<h:outputStylesheet library="css" name="application.css"/>
-		
-		<link rel="stylesheet" href="resources/font-awesome-4.2.0/css/font-awesome.min.css"></link>
-		
-	</h:head>
-	<h:body class="inner-menu-always-close breakpoint-1024 pace-done" rendered="#{sessionController.isLogged()}">
+	<!-- BEGIN HEADER -->
+		<ui:include src="../../../../layout/header/dependencies.xhtml"/>
+	<!-- END HEADER -->
+	
+	<h:body class="inner-menu-always-close breakpoint-1024 pace-done">
+	
 		<f:event type="javax.faces.event.PreRenderViewEvent" listener="#{applicationScopeBean.preRenderView}"/>
 		
 		<h:form prependId="false">
@@ -72,18 +38,13 @@
 				          		<h:panelGroup layout="block" class="iconset top-home"></h:panelGroup>
 				          	</a>
 				        </li>
-				        <!--<li class="dropdown" id="header_inbox_bar">
-				        	<a href="email.html" class="dropdown-toggle">
-				          		<h:panelGroup layout="block" class="iconset top-messages"></h:panelGroup>
-				          		<span class="badge animated bounceIn" id="msgs-badge">2</span>
-				          	</a>
-				        </li>-->
-				        <li class="dropdown" id="portrait-chat-toggler" style="display:none"> <a href="#sidr" class="chat-menu-toggle">
-				          <h:panelGroup layout="block" class="iconset top-chat-white "></h:panelGroup>
-				          </a> </li>
+				        <li class="dropdown" id="portrait-chat-toggler" style="display:none">
+				        	<a href="#sidr" class="chat-menu-toggle"><h:panelGroup layout="block" class="iconset top-chat-white "></h:panelGroup></a>
+			          	</li>
 				      </ul>
 				    </h:panelGroup>
 				    <!-- END RESPONSIVE MENU TOGGLER -->
+
 				    <h:panelGroup layout="block" class="header-quick-nav">
 						
 						<!-- BEGIN TOP NAVIGATION MENU -->
@@ -107,51 +68,14 @@
 				      	<!-- END TOP NAVIGATION MENU -->
 				      	
 				     	 <!-- BEGIN CHAT TOGGLER -->
-							<h:panelGroup layout="block" class="pull-right">
-					      		<h:panelGroup layout="block" class="chat-toggler">
-						      		<a href="#" class="dropdown-toggle" id="my-task-list" data-placement="bottom" data-content="" data-toggle="dropdown" data-original-title="Notifications">
-						        		<h:panelGroup layout="block" class="user-details">
-							            	<h:panelGroup layout="block" class="username">  #{sessionController.loggedBean.firstName} <span class="bold">#{sessionController.loggedBean.lastName}</span> </h:panelGroup>
-								        </h:panelGroup>
-<!-- 						    			<h:panelGroup layout="block" class="iconset top-down-arrow"></h:panelGroup> -->
-						          	</a>
-<!-- 						          	<h:panelGroup layout="block" id="notification-list" style="display:none"> -->
-<!-- 						            <h:panelGroup layout="block" style="width:300px"> -->
-<!-- 						            	<h:panelGroup layout="block" class="notification-messages info"> -->
-<!-- 						                	<h:panelGroup layout="block" class="user-profile"> <img src="resources/img/profiles/d.jpg" alt="" data-src="resources/img/profiles/d.jpg" data-src-retina="resources/img/profiles/d2x.jpg" width="35" height="35"> </img></h:panelGroup> -->
-<!-- 						                	<h:panelGroup layout="block" class="message-wrapper"> -->
-<!-- 						                  		<h:panelGroup layout="block" class="heading"> David Nester - Commented on your wall </h:panelGroup> -->
-<!-- 						                  		<h:panelGroup layout="block" class="description"> Meeting postponed to tomorrow </h:panelGroup> -->
-<!-- 						                  		<h:panelGroup layout="block" class="date pull-left"> A min ago </h:panelGroup> -->
-<!-- 						                	</h:panelGroup> -->
-<!-- 						                	<h:panelGroup layout="block" class="clearfix"></h:panelGroup> -->
-<!-- 						              	</h:panelGroup> -->
-						              	
-<!-- 						             	<h:panelGroup layout="block" class="notification-messages danger"> -->
-<!-- 						                	<h:panelGroup layout="block" class="iconholder"> <i class="icon-warning-sign"></i> </h:panelGroup> -->
-<!-- 						                	<h:panelGroup layout="block" class="message-wrapper"> -->
-<!-- 						                  		<h:panelGroup layout="block" class="heading"> Server load limited </h:panelGroup> -->
-<!-- 						                  		<h:panelGroup layout="block" class="description"> Database server has reached its daily capicity </h:panelGroup> -->
-<!-- 						                  		<h:panelGroup layout="block" class="date pull-left"> 2 mins ago </h:panelGroup> -->
-<!-- 						                	</h:panelGroup> -->
-<!-- 						                	<h:panelGroup layout="block" class="clearfix"></h:panelGroup> -->
-<!-- 						              	</h:panelGroup> -->
-						              	
-<!-- 						              	<h:panelGroup layout="block" class="notification-messages success"> -->
-<!-- 						                	<h:panelGroup layout="block" class="user-profile"> <img src="resources/img/profiles/h.jpg" alt="" data-src="resources/img/profiles/h.jpg" data-src-retina="resources/img/profiles/h2x.jpg" width="35" height="35"> </img></h:panelGroup> -->
-<!-- 						                	<h:panelGroup layout="block" class="message-wrapper"> -->
-<!-- 						                  		<h:panelGroup layout="block" class="heading"> You haveve got 150 messages </h:panelGroup> -->
-<!-- 						                  		<h:panelGroup layout="block" class="description"> 150 newly unread messages in your inbox </h:panelGroup> -->
-<!-- 						                  		<h:panelGroup layout="block" class="date pull-left"> An hour ago </h:panelGroup> -->
-<!-- 						                	</h:panelGroup> -->
-<!-- 						                	<h:panelGroup layout="block" class="clearfix"></h:panelGroup> -->
-<!-- 						              	</h:panelGroup> -->
-<!-- 						            </h:panelGroup> -->
-<!-- 						       	</h:panelGroup> -->
-					        
-<!-- 					        	<h:panelGroup layout="block" class="profile-pic"> <img src="resources/img/profiles/avatar.jpg" alt="" data-src="resources/img/profiles/avatar.jpg" data-src-retina="resources/img/profiles/avatar2x.jpg" width="35" height="35"> </img></h:panelGroup> -->
-					        	
-					        </h:panelGroup>
+						<h:panelGroup layout="block" class="pull-right">
+				      		<h:panelGroup layout="block" class="chat-toggler">
+					      		<a href="#" class="dropdown-toggle" id="my-task-list" data-placement="bottom" data-content="" data-toggle="dropdown" data-original-title="Notifications">
+					        		<h:panelGroup layout="block" class="user-details">
+						            	<h:panelGroup layout="block" class="username">  #{sessionController.loggedBean.firstName} <span class="bold">#{sessionController.loggedBean.lastName}</span> </h:panelGroup>
+							        </h:panelGroup>
+					          	</a>
+				       		</h:panelGroup>
 					     
 						     <ul class="nav quick-section ">
 						     	<li class="quicklinks">
@@ -197,95 +121,82 @@
   
 	 		<!-- BEGIN PAGE CONTAINER-->
 			<h:panelGroup layout="block" class="page-content">
-			    
-				<!--
-				<h:panelGroup layout="block" id="portlet-config" class="modal hide">
-			    	<h:panelGroup layout="block" class="modal-header">
-			        	<button data-dismiss="modal" class="close" type="button"></button>
-			        	<h3>Widget Settings</h3>
-			      	</h:panelGroup>
-			      	<h:panelGroup layout="block" class="modal-body"> Widget settings form goes here </h:panelGroup>
-			    </h:panelGroup>
-		    	-->
 		    	<h:panelGroup layout="block" class="clearfix"></h:panelGroup>
 		    	
-		    		<!-- body -->
-					<section id="content" class="content main bg-white">
-						<ul class="breadcrumb" style="position: fixed; width: 100%; z-index: 999;">
-							<li><p>#{message.module_banking_menu}</p></li>
-						   	<li>
-						   		<p:commandLink value="#{message.module_menu_banking_and_unit}" 			actionListener="#{bankingMenuController.load('BANK-UNIT')}" 		rendered="#{bankingMenuController.isLoaded('BANK-UNIT')}" 			styleClass="active" update="@form" style="border-radius: 0 !important;"/>
-								<p:commandLink value="#{message.module_menu_banking_checking_account}" 	actionListener="#{bankingMenuController.load('CHECKING-ACCOUNT')}"  rendered="#{bankingMenuController.isLoaded('CHECKING-ACCOUNT')}"  	styleClass="active" update="@form" style="border-radius: 0 !important;"/>
-								<p:commandLink value="#{message.module_menu_banking_credit_account}"	actionListener="#{bankingMenuController.load('CREDIT-ACCOUNT')}" 	rendered="#{bankingMenuController.isLoaded('CREDIT-ACCOUNT')}" 		styleClass="active" update="@form" style="border-radius: 0 !important;"/>
-								<p:commandLink value="#{message.module_menu_banking_savings_account}" 	actionListener="#{bankingMenuController.load('SAVINGS-ACCOUNT')}"  	rendered="#{bankingMenuController.isLoaded('SAVINGS-ACCOUNT')}" 	styleClass="active" update="@form" style="border-radius: 0 !important;"/>
-								<p:commandLink value="#{message.module_menu_banking_cash_account}" 		actionListener="#{bankingMenuController.load('CASH-ACCOUNT')}" 		rendered="#{bankingMenuController.isLoaded('CASH-ACCOUNT')}" 		styleClass="active" update="@form" style="border-radius: 0 !important;"/>
-								<p:commandLink value="#{message.module_menu_banking_payee}" 			actionListener="#{bankingMenuController.load('PAYEE')}" 			rendered="#{bankingMenuController.isLoaded('PAYEE')}" 				styleClass="active" update="@form" style="border-radius: 0 !important;"/>
-							</li>
-						</ul>
-						
-						<h:panelGroup layout="block" id="banking-menu-wrapper" class="row-fluid">
-					     	
-							<h:panelGroup layout="block" style="width: 13.666667%; padding-left: 0 !important; position: fixed; z-index: 999; margin-top: 40px;">
-								<h:panelGroup layout="block" styleClass="list-group list-normal m-b-none"> 
-									<p:commandLink value="#{message.module_menu_banking_and_unit}" 			actionListener="#{bankingMenuController.load('BANK-UNIT')}"  		disabled="#{bankingMenuController.create}" styleClass="list-group-item #{bankingMenuController.isLoaded('BANK-UNIT')  		? 'menu-active' : ''}" update="@form" />
-									<p:commandLink value="#{message.module_menu_banking_checking_account}" 	actionListener="#{bankingMenuController.load('CHECKING-ACCOUNT')}"  disabled="#{bankingMenuController.create}" styleClass="list-group-item #{bankingMenuController.isLoaded('CHECKING-ACCOUNT') ? 'menu-active' : ''}" update="@form" />
-									<p:commandLink value="#{message.module_menu_banking_credit_account}"	actionListener="#{bankingMenuController.load('CREDIT-ACCOUNT')}" 	disabled="#{bankingMenuController.create}" styleClass="list-group-item #{bankingMenuController.isLoaded('CREDIT-ACCOUNT') 	? 'menu-active' : ''}" update="@form" />
-									<p:commandLink value="#{message.module_menu_banking_savings_account}" 	actionListener="#{bankingMenuController.load('SAVINGS-ACCOUNT')}" 	disabled="#{bankingMenuController.create}" styleClass="list-group-item #{bankingMenuController.isLoaded('SAVINGS-ACCOUNT') 	? 'menu-active' : ''}" update="@form" />
-									<p:commandLink value="#{message.module_menu_banking_cash_account}" 		actionListener="#{bankingMenuController.load('CASH-ACCOUNT')}"  	disabled="#{bankingMenuController.create}" styleClass="list-group-item #{bankingMenuController.isLoaded('CASH-ACCOUNT')		? 'menu-active' : ''}" update="@form" />
-									<p:commandLink value="#{message.module_menu_banking_payee}" 			actionListener="#{bankingMenuController.load('PAYEE')}" 			disabled="#{bankingMenuController.create}" styleClass="list-group-item #{bankingMenuController.isLoaded('PAYEE-ACCOUNT') 	? 'menu-active' : ''}" update="@form" />
-								</h:panelGroup>
-							</h:panelGroup>
-							
-							<h:panelGroup layout="block" class="col-lg-10" style="margin-left: 18.666667%;">
-								<h:panelGroup layout="block" id="banking-menuBody" styleClass="col-lg-12 b-a b-grey" style="background: #FFF; margin-top: 40px; max-height: auto; min-height: 70%; border-radius: 4px;">
-									
-									<h:panelGroup layout="block">
-										
-										<h:panelGroup layout="block" rendered="#{bankingMenuController.isLoaded('BANK-UNIT') || contactMenuController.isNull()}">
-								        	<ui:fragment rendered="#{!bankController.has()}"><ui:include src="../model/bank/list.xhtml"/></ui:fragment>
-								        	<ui:fragment rendered="#{bankController.has()}"><ui:include src="../model/bank/form.xhtml"/></ui:fragment>
-						       			</h:panelGroup>
-									
-										<h:panelGroup layout="block" rendered="#{bankingMenuController.isLoaded('CHECKING-ACCOUNT')}">
-								        	<ui:fragment rendered="#{!checkingAccountController.has()}"><ui:include src="../model/checking-account/list.xhtml"/></ui:fragment>
-								        	<ui:fragment rendered="#{checkingAccountController.has()}"><ui:include src="../model/checking-account/form.xhtml"/></ui:fragment>
-						       			</h:panelGroup>
-						       			
-						       			<h:panelGroup layout="block" rendered="#{bankingMenuController.isLoaded('CREDIT-ACCOUNT')}">
-								        	<ui:fragment rendered="#{!creditCardAccountController.has()}"><ui:include src="../model/credit-account/list.xhtml"/></ui:fragment>
-								        	<ui:fragment rendered="#{creditCardAccountController.has()}"><ui:include src="../model/credit-account/form.xhtml"/></ui:fragment>
-						       			</h:panelGroup>
-						       			
-						       			<h:panelGroup layout="block" rendered="#{bankingMenuController.isLoaded('SAVINGS-ACCOUNT')}">
-								        	<ui:fragment rendered="#{!savingsAccountController.has()}"><ui:include src="../model/savings-account/list.xhtml"/></ui:fragment>
-								        	<ui:fragment rendered="#{savingsAccountController.has()}"><ui:include src="../model/savings-account/form.xhtml"/></ui:fragment>
-						       			</h:panelGroup>
-						       			
-						       			<h:panelGroup layout="block" rendered="#{bankingMenuController.isLoaded('CASH-ACCOUNT')}">
-								        	<ui:fragment rendered="#{!cashAccountController.has()}"><ui:include src="../model/cash-account/list.xhtml"/></ui:fragment>
-								        	<ui:fragment rendered="#{cashAccountController.has()}"><ui:include src="../model/cash-account/form.xhtml"/></ui:fragment>
-						       			</h:panelGroup>
-						       			
-						       			<h:panelGroup layout="block" rendered="#{bankingMenuController.isLoaded('PAYEE')}">
-								        	<ui:fragment rendered="#{!partyController.has()}"><ui:include src="../../../../enterprise/enterprise/model/payee/list.xhtml"/></ui:fragment>
-								        	<ui:fragment rendered="#{partyController.has()}"><ui:include src="../../../../enterprise/enterprise/model/payee/form.xhtml"/></ui:fragment>
-						       			</h:panelGroup>
-						       			
-					       			</h:panelGroup>
-								</h:panelGroup>
+	    		<!-- body -->
+				<section id="content" class="content main bg-white">
+					<ul class="breadcrumb" style="position: fixed; width: 100%; z-index: 999;">
+						<li><p>#{message.module_banking_menu}</p></li>
+					   	<li>
+					   		<p:commandLink value="#{message.module_menu_banking_and_unit}" 			actionListener="#{bankingMenuController.load('BANK-UNIT')}" 		rendered="#{bankingMenuController.isLoaded('BANK-UNIT')}" 			styleClass="active" update="@form" style="border-radius: 0 !important;"/>
+							<p:commandLink value="#{message.module_menu_banking_checking_account}" 	actionListener="#{bankingMenuController.load('CHECKING-ACCOUNT')}"  rendered="#{bankingMenuController.isLoaded('CHECKING-ACCOUNT')}"  	styleClass="active" update="@form" style="border-radius: 0 !important;"/>
+							<p:commandLink value="#{message.module_menu_banking_credit_account}"	actionListener="#{bankingMenuController.load('CREDIT-ACCOUNT')}" 	rendered="#{bankingMenuController.isLoaded('CREDIT-ACCOUNT')}" 		styleClass="active" update="@form" style="border-radius: 0 !important;"/>
+							<p:commandLink value="#{message.module_menu_banking_savings_account}" 	actionListener="#{bankingMenuController.load('SAVINGS-ACCOUNT')}"  	rendered="#{bankingMenuController.isLoaded('SAVINGS-ACCOUNT')}" 	styleClass="active" update="@form" style="border-radius: 0 !important;"/>
+							<p:commandLink value="#{message.module_menu_banking_cash_account}" 		actionListener="#{bankingMenuController.load('CASH-ACCOUNT')}" 		rendered="#{bankingMenuController.isLoaded('CASH-ACCOUNT')}" 		styleClass="active" update="@form" style="border-radius: 0 !important;"/>
+							<p:commandLink value="#{message.module_menu_banking_payee}" 			actionListener="#{bankingMenuController.load('PAYEE')}" 			rendered="#{bankingMenuController.isLoaded('PAYEE')}" 				styleClass="active" update="@form" style="border-radius: 0 !important;"/>
+						</li>
+					</ul>
+					
+					<h:panelGroup layout="block" id="banking-menu-wrapper" class="row-fluid">
+				     	
+						<h:panelGroup layout="block" style="width: 13.666667%; padding-left: 0 !important; position: fixed; z-index: 999; margin-top: 40px;">
+							<h:panelGroup layout="block" styleClass="list-group list-normal m-b-none"> 
+								<p:commandLink value="#{message.module_menu_banking_and_unit}" 			actionListener="#{bankingMenuController.load('BANK-UNIT')}"  		disabled="#{bankingMenuController.create}" styleClass="list-group-item #{bankingMenuController.isLoaded('BANK-UNIT')  		? 'menu-active' : ''}" update="@form" />
+								<p:commandLink value="#{message.module_menu_banking_checking_account}" 	actionListener="#{bankingMenuController.load('CHECKING-ACCOUNT')}"  disabled="#{bankingMenuController.create}" styleClass="list-group-item #{bankingMenuController.isLoaded('CHECKING-ACCOUNT') ? 'menu-active' : ''}" update="@form" />
+								<p:commandLink value="#{message.module_menu_banking_credit_account}"	actionListener="#{bankingMenuController.load('CREDIT-ACCOUNT')}" 	disabled="#{bankingMenuController.create}" styleClass="list-group-item #{bankingMenuController.isLoaded('CREDIT-ACCOUNT') 	? 'menu-active' : ''}" update="@form" />
+								<p:commandLink value="#{message.module_menu_banking_savings_account}" 	actionListener="#{bankingMenuController.load('SAVINGS-ACCOUNT')}" 	disabled="#{bankingMenuController.create}" styleClass="list-group-item #{bankingMenuController.isLoaded('SAVINGS-ACCOUNT') 	? 'menu-active' : ''}" update="@form" />
+								<p:commandLink value="#{message.module_menu_banking_cash_account}" 		actionListener="#{bankingMenuController.load('CASH-ACCOUNT')}"  	disabled="#{bankingMenuController.create}" styleClass="list-group-item #{bankingMenuController.isLoaded('CASH-ACCOUNT')		? 'menu-active' : ''}" update="@form" />
+								<p:commandLink value="#{message.module_menu_banking_payee}" 			actionListener="#{bankingMenuController.load('PAYEE')}" 			disabled="#{bankingMenuController.create}" styleClass="list-group-item #{bankingMenuController.isLoaded('PAYEE-ACCOUNT') 	? 'menu-active' : ''}" update="@form" />
 							</h:panelGroup>
 						</h:panelGroup>
-		
-					</section>
-					<!-- / body -->
+						
+						<h:panelGroup layout="block" id="banking-menuBody" class="col-lg-10" style="margin-left: 18.666667%;">
+							<h:panelGroup layout="block" styleClass="col-lg-12 b-a b-grey" style="background: #FFF; margin-top: 40px; max-height: auto; min-height: 70%; border-radius: 4px;">
+								
+								<h:panelGroup layout="block">
+									
+									<h:panelGroup layout="block" rendered="#{bankingMenuController.isLoaded('BANK-UNIT')}">
+							        	<ui:fragment rendered="#{!bankController.has()}"><ui:include src="../model/bank/list.xhtml"/></ui:fragment>
+							        	<ui:fragment rendered="#{bankController.has()}"><ui:include src="../model/bank/form.xhtml"/></ui:fragment>
+					       			</h:panelGroup>
+								
+									<h:panelGroup layout="block" rendered="#{bankingMenuController.isLoaded('CHECKING-ACCOUNT')}">
+							        	<ui:fragment rendered="#{!checkingAccountController.has()}"><ui:include src="../model/checking-account/list.xhtml"/></ui:fragment>
+							        	<ui:fragment rendered="#{checkingAccountController.has()}"><ui:include src="../model/checking-account/form.xhtml"/></ui:fragment>
+					       			</h:panelGroup>
+					       			
+					       			<h:panelGroup layout="block" rendered="#{bankingMenuController.isLoaded('CREDIT-ACCOUNT')}">
+							        	<ui:fragment rendered="#{!creditCardAccountController.has()}"><ui:include src="../model/credit-account/list.xhtml"/></ui:fragment>
+							        	<ui:fragment rendered="#{creditCardAccountController.has()}"><ui:include src="../model/credit-account/form.xhtml"/></ui:fragment>
+					       			</h:panelGroup>
+					       			
+					       			<h:panelGroup layout="block" rendered="#{bankingMenuController.isLoaded('SAVINGS-ACCOUNT')}">
+							        	<ui:fragment rendered="#{!savingsAccountController.has()}"><ui:include src="../model/savings-account/list.xhtml"/></ui:fragment>
+							        	<ui:fragment rendered="#{savingsAccountController.has()}"><ui:include src="../model/savings-account/form.xhtml"/></ui:fragment>
+					       			</h:panelGroup>
+					       			
+					       			<h:panelGroup layout="block" rendered="#{bankingMenuController.isLoaded('CASH-ACCOUNT')}">
+							        	<ui:fragment rendered="#{!cashAccountController.has()}"><ui:include src="../model/cash-account/list.xhtml"/></ui:fragment>
+							        	<ui:fragment rendered="#{cashAccountController.has()}"><ui:include src="../model/cash-account/form.xhtml"/></ui:fragment>
+					       			</h:panelGroup>
+					       			
+					       			<h:panelGroup layout="block" rendered="#{bankingMenuController.isLoaded('PAYEE')}">
+							        	<ui:fragment rendered="#{!partyController.has()}"><ui:include src="../../../../enterprise/enterprise/model/payee/list.xhtml"/></ui:fragment>
+							        	<ui:fragment rendered="#{partyController.has()}"><ui:include src="../../../../enterprise/enterprise/model/payee/form.xhtml"/></ui:fragment>
+					       			</h:panelGroup>
+					       			
+				       			</h:panelGroup>
+							</h:panelGroup>
+						</h:panelGroup>
+					</h:panelGroup>
+	
+				</section>
+				<!-- / body -->
 			
-				</h:panelGroup>
-		  
+			</h:panelGroup>
 		</h:panelGroup>
 		
-
-			<!-- footer <footer id="footer"><h:panelGroup layout="block" class="text-center padder clearfix"></h:panelGroup></footer> / footer -->
-		</h:form>
+	</h:form>
 		
 			
 	
@@ -334,85 +245,4 @@
 	<!-- END CORE TEMPLATE JS -->
 			
 	</h:body>
-	
-	<h:body class="error-body no-top lazy" data-original="resources/img/login/bg-7.png" rendered="#{not sessionController.isLogged()}" style="background-image: url('resources/img/login/bg-7.png')">
-		
-		<h:panelGroup layout="block" class="container">
-			<h:panelGroup layout="block" class="row login-container animated fadeInUp">
-				<h:panelGroup layout="block" class="col-md-7 col-md-offset-2 tiles white no-padding">
-					<h:panelGroup layout="block" class="p-t-30 p-l-40 p-b-20 xs-p-t-10 xs-p-l-10 xs-p-b-10">
-						<h2 class="normal">XINGLING</h2>
-						<p class="p-b-20">Cadastre-se! <br/>Tenha controle sobre suas financas, e gratis e sempre sera..</p>
-						<button class="btn btn-primary btn-cons" id="login_toggle">#{message.general_login}</button> ou  <button class="btn btn-info btn-cons" id="register_toggle">#{message.general_create_an_account}</button>
-					</h:panelGroup>
-					<h:panelGroup layout="block" class="tiles grey p-t-20 p-b-20 text-black">
-						
-						<h:form id="banking_login" class="animated fadeIn" method="post" action="/app">
-							<h:panelGroup layout="block" class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
-								<p:messages severity="warn" />
-								<h:panelGroup layout="block" class="col-md-5 col-sm-5 ">
-									<p:inputText id="login_username" value="#{sessionController.credentials.username}" styleClass="form-control" size="50" maxlength="50" required="true" placeholder="#{message.model_username}"/>
-								</h:panelGroup>
-								<h:panelGroup layout="block" class="col-md-5 col-sm-5">
-									<p:password id="login_pass" value="#{sessionController.credentials.password}" styleClass="form-control" feedback="false" required="true" placeholder="#{message.model_password}"/>
-								</h:panelGroup>
-								<h:panelGroup layout="block" class="col-md-2 col-sm-2">
-									<h:commandButton value="#{message.general_login}" styleClass="btn btn-sm btn-primary" update="@all" style="padding: 4px 17px;" action="#{sessionController.attemptLogin}"/>
-								</h:panelGroup>
-							</h:panelGroup>
-							<h:panelGroup layout="block" class="row p-t-10 m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
-								<h:panelGroup layout="block" class="control-group  col-md-10">
-									<h:panelGroup layout="block" class="checkbox checkbox check-success"> <a href="#">Problemas para acessar?</a>
-										<input type="checkbox" id="checkbox1" value="1"/>
-										<label for="checkbox1">Manter logado </label>
-									</h:panelGroup>
-								</h:panelGroup>
-							</h:panelGroup>
-						</h:form>
-						<h:form id="banking_register" styleClass="animated fadeIn" style="display:none">
-							<f:event type="javax.faces.event.PreRenderComponentEvent" listener="#{userController.create}"/>
-							
-							<h:panelGroup layout="block" rendered="#{userController.has()}">
-								<h:panelGroup layout="block" class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
-									<h:panelGroup layout="block" class="col-md-6 col-sm-6">
-										<p:inputText id="reg_username" value="#{userController.bean.username}" styleClass="form-control" size="50" maxlength="50" placeholder="#{message.model_username}"/>
-									</h:panelGroup>
-									<h:panelGroup layout="block" class="col-md-6 col-sm-6">
-										<p:password id="reg_pass" value="#{userController.bean.password}" styleClass="form-control" feedback="false" placeholder="#{message.model_password}"/>
-									</h:panelGroup>
-								</h:panelGroup>
-								<h:panelGroup layout="block" class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
-									<h:panelGroup layout="block" class="col-md-12">
-										<p:inputText id="reg_email" value="#{userController.bean.email.address}" size="50" maxlength="50" styleClass="form-control" converter="#{emailInfoConverter}" placeholder="#{message.model_email}"/>
-									</h:panelGroup>
-								</h:panelGroup>
-								<h:panelGroup layout="block" class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
-									<h:panelGroup layout="block" class="col-md-6 col-sm-6">
-										<p:inputText id="reg_first_Name" value="#{userController.bean.firstName}" size="50" maxlength="50" styleClass="form-control" placeholder="#{message.model_name}"/>
-									</h:panelGroup>
-									<h:panelGroup layout="block" class="col-md-6 col-sm-6">
-										<p:inputText id="reg_last_Name" value="#{userController.bean.lastName}" size="50" maxlength="50" styleClass="form-control" placeholder="#{message.model_lastname}"/>
-									</h:panelGroup>
-								</h:panelGroup>
-								<h:panelGroup layout="block" class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
-									<h:panelGroup layout="block" class="col-md-12 ">
-										<p:inputText id="reg_confirm_email" value="#{userController.bean.email.address}" size="50" maxlength="50" styleClass="form-control" placeholder="#{message.general_email_confirmation}"/>
-									</h:panelGroup>
-								</h:panelGroup>
-							</h:panelGroup>
-							
-							<h:commandButton type="push" value="Salvar" actionListener="#{userController.save}" update="@all" styleClass="btn btn-primary btn-cons pull-right" style="margin-right: 5%;"/>
-						</h:form>
-					</h:panelGroup>
-				</h:panelGroup>
-			</h:panelGroup>
-		</h:panelGroup>
-			 
-		<h:outputScript library="script" name="plugins/bootstrap/js/bootstrap.min.js"/>
-		<h:outputScript library="script" name="plugins/pace/pace.min.js"/>
-		<h:outputScript library="script" name="plugins/jquery-lazyload/jquery.lazyload.min.js"/>
-		<h:outputScript library="script" name="login_v2.js"/>
-		<h:outputScript library="script" name="jquery.validate.min.js"/>
-	</h:body>
-	
 </h:html>

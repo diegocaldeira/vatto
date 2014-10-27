@@ -9,9 +9,10 @@
 	<h:panelGroup layout="block" styleClass="page-region-content">
     
     	<h:panelGroup layout="block" class="page-sidebar" id="main-menu">
-<!-- 	 			BEGIN MINI-PROFILE -->
 	    		<h:panelGroup layout="block" class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: auto;">
 	    			<h:panelGroup layout="block" class="page-sidebar-wrapper" id="main-menu-wrapper" style="overflow: hidden; width: auto; height: auto;">
+						
+						<!-- BEGIN MINI-PROFILE -->
 						<h:panelGroup layout="block" class="user-info-wrapper">
         					<h:panelGroup layout="block" class="profile-wrapper"><p:graphicImage width="69" height="69" value="#{sessionController.loggedBean.picture}"/></h:panelGroup>
         					<h:panelGroup layout="block" class="user-info">
@@ -20,10 +21,9 @@
 						      	<h:panelGroup layout="block" class="status" style="margin-bottom: 40px;"><h:panelGroup layout="block" class="green"></h:panelGroup></h:panelGroup>
 						    </h:panelGroup>
 				      	</h:panelGroup>
-<!-- 	     	 			END MINI-PROFILE -->
-<!-- 	      				BEGIN SIDEBAR MENU -->
-<!-- 	      				<p class="menu-title">BROWSE <span class="pull-right"><a href="javascript:;"><i class="fa fa-refresh"></i></a></span></p> -->
-	      				
+						<!-- END MINI-PROFILE -->
+
+						<!-- BEGIN SIDEBAR MENU -->
 	      				<ul>
 	      					<li>
 	      						<a href="dashboard" title="#{message.general_dashboard}"><i class="fa fa-dashboard"></i> <span class="title">#{message.general_dashboard}</span></a>
@@ -57,16 +57,6 @@
 				</h:panelGroup>
 			</h:panelGroup>
 
-			<!--
-			<h:panelGroup layout="block" class="footer-widget">
-				<h:panelGroup layout="block" class="progress transparent progress-small no-radius no-margin">
-			    	<h:panelGroup layout="block" data-percentage="79%" class="progress-bar progress-bar-success animate-progress-bar" style="width: 79%;"></h:panelGroup>
-			    </h:panelGroup>
-			    <h:panelGroup layout="block" class="pull-right">
-			    	<h:panelGroup layout="block" class="details-status"> <span data-animation-duration="560" data-value="86" class="animate-number">86</span>% </h:panelGroup>
-				<a href="lockscreen.html"><i class="fa fa-power-off"></i></a></h:panelGroup>
-			</h:panelGroup>
-			-->
  			 <!-- END SIDEBAR -->
 		    	
 	</h:panelGroup>
