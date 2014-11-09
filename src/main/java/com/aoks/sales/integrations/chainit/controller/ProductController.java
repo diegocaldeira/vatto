@@ -1,4 +1,4 @@
-package com.aoks.sells.integrations.chainit.controller;
+package com.aoks.sales.integrations.chainit.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,10 +10,10 @@ import javax.inject.Named;
 
 import org.codehaus.jackson.map.ObjectMapper;
 
-import com.aoks.sells.integrations.chainit.controller.bean.ProductBean;
-import com.aoks.sells.integrations.chainit.controller.bean.ProductBeanList;
-import com.aoks.sells.integrations.chainit.model.Product;
-import com.aoks.sells.integrations.chainit.service.ProductManager;
+import com.aoks.sales.integrations.chainit.controller.bean.ProductBean;
+import com.aoks.sales.integrations.chainit.controller.bean.ProductBeanList;
+import com.aoks.sales.integrations.chainit.model.Product;
+import com.aoks.sales.integrations.chainit.service.ProductManager;
 import com.aoks.trading.control.bean.OrderBean;
 import com.aoks.trading.service.OrderManager;
 import com.aoks.utils.category.control.bean.datamodel.ProductDataModel;

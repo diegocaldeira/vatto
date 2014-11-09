@@ -2,7 +2,7 @@ package com.aoks.utils.category.control.bean.datamodel;
 
 import java.util.List;
 
-import com.aoks.sells.integrations.chainit.controller.bean.ProductBean;
+import com.aoks.sales.integrations.chainit.controller.bean.ProductBean;
 import com.aoks.utils.webmvc.GenericDataModel;
 
 /**

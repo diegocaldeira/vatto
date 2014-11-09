@@ -2,9 +2,6 @@ package com.aoks.utils.webmvc;
 
 import java.io.Serializable;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * 
  * @author Diego Pereira
@@ -13,13 +10,11 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class MenuController implements Serializable {
 
-	private static final Logger logger = LoggerFactory.getLogger(MenuController.class);
 	private static final long serialVersionUID = 1L;
 	
 	private String name;
 	
 	public void load(String name){
-		logger.info(" Loading '{}'... ", name);
 		this.name = name;
 	}
 	

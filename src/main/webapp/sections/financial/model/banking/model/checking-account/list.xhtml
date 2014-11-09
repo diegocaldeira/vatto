@@ -17,11 +17,11 @@
 		<p:ajax event="rowSelect" 	listener="#{checkingAccountController.onRowSelect}"   update="@form"/>  
 	    <p:ajax event="rowUnselect" listener="#{checkingAccountController.onRowUnselect}" update="@form"/>
 		
-	 	<p:column filterBy="#{att.bankDescription}"					filterMatchMode="contains" headerText="#{message.model_bank}" 			style="width: 32%;">	<h:outputText value="#{att.bankDescription}"/>									</p:column>
-		<p:column filterBy="#{att.bankUnit} #{att.bankUnitDigit}"	filterMatchMode="contains" headerText="#{message.model_bank_unit}"		style="width: 15%;">	<h:outputText value="#{att.bankUnit} #{att.bankUnitDigit}"/>					</p:column>
-		<p:column filterBy="#{att.number} #{att.digit}"				filterMatchMode="contains" headerText="#{message.model_account_number}" style="width: 20%;">	<h:outputText value="#{att.number} #{att.digit}"/>								</p:column>
-		<p:column filterBy="#{att.startBalance}"					filterMatchMode="contains" headerText="#{message.model_start_balance}"	style="width: 25%;">	<h:outputText value="#{message.watermark_model_money_signal} #{att.startBalance}"/>	</p:column>
-<!-- 		<p:column filterBy="#{att.description}"						filterMatchMode="contains" headerText="#{message.model_description}"	style="width: 30%;">	<h:outputText value="#{att.description}"/>										</p:column> -->
+		<p:column filterBy="#{att.description}"						filterMatchMode="contains" headerText="#{message.model_description}"	style="width: 30%;"> <h:outputText value="#{att.description}"/>											</p:column> 
+	 	<p:column filterBy="#{att.bankDescription}"					filterMatchMode="contains" headerText="#{message.model_bank}" 			style="width: 32%;"> <h:outputText value="#{att.bankDescription}"/>										</p:column>
+		<p:column filterBy="#{att.bankUnit} #{att.bankUnitDigit}"	filterMatchMode="contains" headerText="#{message.model_bank_unit}"		style="width: 15%;"> <h:outputText value="#{att.bankUnit} #{att.bankUnitDigit}"/>						</p:column>
+		<p:column filterBy="#{att.number} #{att.digit}"				filterMatchMode="contains" headerText="#{message.model_account_number}" style="width: 20%;"> <h:outputText value="#{att.number} #{att.digit}"/>									</p:column>
+		<p:column filterBy="#{att.startBalance}"					filterMatchMode="contains" headerText="#{message.model_start_balance}"	style="width: 25%;"> <h:outputText value="#{message.watermark_model_money_signal} #{att.startBalance}"/></p:column>
 	</ui:decorate>
 	
 </ui:composition>

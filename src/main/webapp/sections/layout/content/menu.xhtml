@@ -29,11 +29,11 @@
 	      						<a href="dashboard" title="#{message.general_dashboard}"><i class="fa fa-dashboard"></i> <span class="title">#{message.general_dashboard}</span></a>
 	      					</li>
 	      					<li class="active open">
-	      						<a href="javascript:;" title="#{message.module_financial}"><i class="fa fa-dollar"></i><span class="title">#{message.module_financial}</span></a>
-					        	<ul class="sub-menu" style="overflow: hidden; display: none;">
-					            	<li class=""> 		<a href="financial">	<i class="fa fa-dashboard"></i> 	<span class="title">#{message.general_dashboard}</span></a></li>
-					            	<li class="active"> <a href="banking"> 		<i class="fa fa-credit-card"></i> 	<span class="title">#{message.module_banking_menu}</span></a></li>
-					            	<li class=""> 		<a href="budget">		<i class="fa fa-exchange"></i> 		<span class="title">#{message.module_budget_menu}</span></a></li>
+	      						<a title="#{message.module_financial}"><i class="fa fa-dollar"></i><span class="title">#{message.module_financial}</span></a>
+					        	<ul class="sub-menu">
+					            	<li class=""> <a href="financial">  <i class="fa fa-dashboard"></i> 	<span class="title">#{message.general_dashboard}</span></a></li>
+					            	<li class=""> <a href="banking">	<i class="fa fa-credit-card"></i> 	<span class="title">#{message.module_banking_menu}</span></a></li>
+					            	<li class=""> 	<a href="budget">	<i class="fa fa-exchange"></i> 		<span class="title">#{message.module_budget_menu}</span></a></li>
 					            </ul>
 					        </li>
 					        <li class="">
@@ -44,7 +44,6 @@
 					        </li>
 					         <li class="">
 					         	<a href="profile" title="#{message.module_profile}"><i class="fa fa-cog"></i> <span class="title">#{message.module_profile}</span></a>
-					        	<!-- <h:commandLink value="#{message.module_profile}" actionListener="#{applicationMenuController.loadModule('PROFILE-WRAPPER')}" action="#{userController.clean()}" style="border: 0 !important;"/> -->
 					        </li>
 	      				</ul>
 	      				

@@ -235,6 +235,7 @@ public class FlowItemBean implements GenericBean<FlowItem>, Comparable<FlowItemB
 		model.setCredit(credit);
 		model.setDescription(description);
 		model.setTransfer(transfer);
+		
 		if (origin != null)
 			model.setOrigin(origin.getModel());
 		
@@ -288,14 +289,20 @@ public class FlowItemBean implements GenericBean<FlowItem>, Comparable<FlowItemB
 	
 		if (info != null){
 			
-			info.setMaturityDay(Integer.valueOf(maturityDay));
+			if(maturityDay != null)
+				info.setMaturityDay(Integer.valueOf(maturityDay));
+			
 			info.setOperateSaturday(operateSaturday);
 			info.setOperateSunday(operateSunday);
-			try {
-				info.setPeriodicity(Periodicity.valueOf(periodicity));
-			} catch (Exception e) {}
-			info.setStart(start);
 			
+			try {
+				
+				if(periodicity != null)
+					info.setPeriodicity(Periodicity.valueOf(periodicity));
+			
+			} catch (Exception e) {}
+			
+			info.setStart(start);
 		}
 		
 		return model;

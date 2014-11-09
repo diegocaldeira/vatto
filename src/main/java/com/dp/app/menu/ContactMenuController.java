@@ -2,6 +2,7 @@ package com.dp.app.menu;
 
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 /**
@@ -16,8 +17,10 @@ public class ContactMenuController extends ApplicationMenuController implements 
 
 	private static final long serialVersionUID = 1L;
 
-	public ContactMenuController(){
-		super("CONTACT-WRAPPER", "SIMPLES");
-	} 
+	@PostConstruct
+	public void init(){
+		loadModule("CONTACT-WRAPPER");
+		load("SIMPLES");
+	}
 	
 }

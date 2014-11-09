@@ -2,6 +2,7 @@ package com.dp.app.menu;
 
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -17,8 +18,10 @@ public class BankingMenuController extends ApplicationMenuController implements 
 
 	private static final long serialVersionUID = 1L;
 
-	public BankingMenuController() {
-		super("BANKING-WRAPPER", "BANK-UNIT");
+	@PostConstruct
+	public void init(){
+		loadModule("BANKING-WRAPPER");
+		load("BANK-UNIT");
 	}
-	
+
 }

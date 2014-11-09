@@ -4,9 +4,9 @@
   xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
                       http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
 
-	<url-mapping id="home">
-		<pattern value="/home" />
-		<view-id value="/index.xhtml" />
+	<url-mapping id="dashboard">
+		<pattern value="/dashboard" />
+		<view-id value="index.xhtml" />
 	</url-mapping>
 
 	<url-mapping id="financial">

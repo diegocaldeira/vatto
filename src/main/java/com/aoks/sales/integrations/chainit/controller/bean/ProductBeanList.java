@@ -1,4 +1,4 @@
-package com.aoks.sells.integrations.chainit.controller.bean;
+package com.aoks.sales.integrations.chainit.controller.bean;
 
 import java.util.ArrayList;
 import java.util.List;

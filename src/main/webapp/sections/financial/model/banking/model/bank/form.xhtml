@@ -25,14 +25,29 @@
 				
 							<div class="row form-row">
 								<div class="col-md-6">
-									<p:inputMask id="bank-code" value="#{bankController.bean.code}" mask="9?9999999999999999999" size="20" styleClass="form-control parsley-validated" required="true"/>
-									<p:watermark for="bank-code" value="#{message.watermark_model_bank_code}" />
-									<p:inputText id="bank-name" value="#{bankController.bean.name}" size="200" styleClass="form-control parsley-validated" required="true"/>
-									<p:watermark for="bank-name" value="#{message.watermark_model_bank_name}" />
+									<div class="form-group">
+										<label class="form-label">#{message.model_bank_unit}</label>
+										<div class="controls">
+											<p:inputMask id="bank-code" value="#{bankController.bean.code}" mask="99" size="20" styleClass="form-control parsley-validated" required="true"/>
+										</div>
+										<p:watermark for="bank-code" value="#{message.watermark_model_bank_code}" />
+									</div>
+									<div class="form-group">
+										<label class="form-label">#{message.model_name}</label>
+										<div class="controls">
+											<p:inputText id="bank-name" value="#{bankController.bean.name}" size="200" styleClass="form-control parsley-validated" required="true"/>
+										</div>
+										<p:watermark for="bank-name" value="#{message.watermark_model_bank_name}" />
+									</div>
 								</div>
 								<div class="col-md-6">
-									<p:inputTextarea id="bank-description" value="#{bankController.bean.description}" size="200" styleClass="form-control parsley-validated"/>
-									<p:watermark for="bank-description" value="#{message.watermark_model_bank_observations}" />
+									<div class="form-group">
+										<label class="form-label">#{message.model_description}</label>
+										<div class="controls">
+											<p:inputTextarea id="bank-description" value="#{bankController.bean.description}" size="200" styleClass="form-control parsley-validated"/>
+										</div>
+										<p:watermark for="bank-description" value="#{message.watermark_model_bank_observations}" />
+									</div>
 								</div>
 							</div>
 							

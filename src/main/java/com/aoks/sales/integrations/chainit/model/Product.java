@@ -1,4 +1,4 @@
-package com.aoks.sells.integrations.chainit.model;
+package com.aoks.sales.integrations.chainit.model;
 
 import java.math.BigDecimal;
 
@@ -22,13 +22,13 @@ import com.aoks.utils.webmvc.GenericModel;
  *
  */
 @Entity
-@Table(name="Product", schema="sells")
+@Table(name="Product", schema="sales")
 public class Product implements GenericModel {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue(strategy=GenerationType.TABLE, generator="ProductSequence")
-	@TableGenerator(name="ProductSequence", table="ProductSequence", schema="sells", 
+	@TableGenerator(name="ProductSequence", table="ProductSequence", schema="sales", 
 			pkColumnName="cTable", pkColumnValue="ProductSequence", valueColumnName="cNext", initialValue=1, allocationSize=1)
 	@Column(name="cId")
 	private long id;

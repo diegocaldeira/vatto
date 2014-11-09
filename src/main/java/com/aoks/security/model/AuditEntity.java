@@ -97,7 +97,7 @@ public class AuditEntity {
 	public void setUser(User user) 							{ this.user = user; }
 
 	public Set<User> getUsers() 							{ return users; }
-	public void setUsers(HashSet<User> users) 					{ this.users = users; }
+	public void setUsers(HashSet<User> users) 				{ this.users = users; }
 
 	public Calendar getCreationDate() 						{ return creationDate; }
 	public void setCreationDate(Calendar creationDate)		{ this.creationDate = GregorianCalendar.getInstance(); }

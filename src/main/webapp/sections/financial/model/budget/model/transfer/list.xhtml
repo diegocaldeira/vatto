@@ -8,8 +8,8 @@
       
 	<h:panelGroup layout="block" styleClass="padder clearfix"> <h4 class="m-b m-t"><span class="semi-bold"><i class="icon-th-list"></i><h:outputText value=" #{message.list_title_budget_transfer}"/></span></h4> </h:panelGroup>
 	
-	<f:event listener="#{flowController.loadType('TRANSFER')}" type="preRenderComponent"/>
-	<f:event listener="#{flowController.loadBeansByType('TRANSFER')}" type="preRenderComponent"/>
+	<f:event listener="#{flowController.loadType('TRANSFER')}" 			type="preRenderComponent"/>
+	<f:event listener="#{flowController.loadBeansByType('TRANSFER')}" 	type="preRenderComponent"/>
 	
 	<p:dataTable id="transfer-list" var="att" widgetVar="transfer-List"
 									paginator="true" rows="14" paginatorPosition="bottom" 

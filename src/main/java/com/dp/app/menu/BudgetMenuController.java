@@ -2,6 +2,7 @@ package com.dp.app.menu;
 
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -17,8 +18,9 @@ public class BudgetMenuController extends ApplicationMenuController implements S
 
 	private static final long serialVersionUID = 1L;
 
-	public BudgetMenuController(){
-		super("BUDGET-WRAPPER", "EXPENSE");
+	@PostConstruct
+	public void init(){
+		loadModule("BUDGET-WRAPPER");
+		load("EXPENSE");
 	}
-	
 }

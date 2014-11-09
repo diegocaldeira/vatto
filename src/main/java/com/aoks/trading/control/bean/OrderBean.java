@@ -3,9 +3,9 @@ package com.aoks.trading.control.bean;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
+import com.aoks.sales.integrations.chainit.controller.bean.ProductBean;
+import com.aoks.sales.integrations.chainit.controller.bean.ProductBeanList;
 import com.aoks.security.model.User;
-import com.aoks.sells.integrations.chainit.controller.bean.ProductBean;
-import com.aoks.sells.integrations.chainit.controller.bean.ProductBeanList;
 import com.aoks.trading.model.Order;
 import com.aoks.utils.webmvc.GenericBean;
 import com.aoks.utils.webmvc.GenericFactory;

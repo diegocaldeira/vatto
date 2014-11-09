@@ -1,4 +1,4 @@
-package com.aoks.sells.integrations.chainit.controller.bean;
+package com.aoks.sales.integrations.chainit.controller.bean;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
@@ -6,7 +6,7 @@ import java.text.DecimalFormat;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 
-import com.aoks.sells.integrations.chainit.model.Product;
+import com.aoks.sales.integrations.chainit.model.Product;
 import com.aoks.utils.webmvc.GenericBean;
 import com.aoks.utils.webmvc.GenericFactory;
 
@@ -26,7 +26,7 @@ public class ProductBean implements GenericBean<Product>{
 	@JsonProperty("name")		  		private String name;
 	@JsonProperty("description")  		private String description;
 	@JsonIgnore 				  		private long quantity;
-	@JsonProperty("unitPriceAvg") 		private BigDecimal price = new BigDecimal(0);
+	@JsonProperty("unitPriceAvg") 		private BigDecimal price 	= new BigDecimal(0);
 	@JsonIgnore				 			private BigDecimal discount = new BigDecimal(0);
 	@JsonProperty("unityMeasureType")	private String unityMeasureType;
 	@JsonProperty("unityMeasureValue")	private String unityMeasureValue;

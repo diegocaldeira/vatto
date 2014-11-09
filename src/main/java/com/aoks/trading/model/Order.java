@@ -17,9 +17,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
+import com.aoks.sales.integrations.chainit.model.Product;
 import com.aoks.security.model.AuditEntity;
 import com.aoks.security.model.User;
-import com.aoks.sells.integrations.chainit.model.Product;
 import com.aoks.utils.webmvc.GenericModel;
 
 /**

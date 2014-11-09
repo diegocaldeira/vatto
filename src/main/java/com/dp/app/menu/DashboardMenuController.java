@@ -2,6 +2,7 @@ package com.dp.app.menu;
 
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -17,7 +18,9 @@ public class DashboardMenuController extends ApplicationMenuController implement
 
 	private static final long serialVersionUID = 1L;
 
-	public DashboardMenuController() {
-		super("DASHBOARD-WRAPPER", "DASHBOARD");
+	@PostConstruct
+	public void init(){
+		loadModule("DASHBOARD-WRAPPER");
+		load("DASHBOARD");
 	}
 }

@@ -1,8 +1,8 @@
-package com.aoks.sells.integrations.chainit.service;
+package com.aoks.sales.integrations.chainit.service;
 
 import javax.enterprise.context.RequestScoped;
 
-import com.aoks.sells.integrations.chainit.model.Product;
+import com.aoks.sales.integrations.chainit.model.Product;
 import com.aoks.utils.webmvc.AbstractManager;
 
 /**
