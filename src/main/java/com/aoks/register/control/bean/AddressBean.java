@@ -21,6 +21,7 @@ public class AddressBean implements GenericBean<Address> {
 	private String completion;
 	private String neighborhood;
 	private String number;
+	private String country;
 	private String state;
 	private String street;
 	private String zipCode;
@@ -48,6 +49,7 @@ public class AddressBean implements GenericBean<Address> {
 		this.id = model.getId();
 		this.neighborhood = model.getNeighborhood();
 		this.number = model.getNumber();
+		this.country = model.getCountry();
 		this.state = model.getState();
 		this.street = model.getStreet();
 		this.zipCode = model.getZipCode();
@@ -98,6 +100,14 @@ public class AddressBean implements GenericBean<Address> {
 		this.number = number;
 	}
 	
+	
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
 	
 	public String getState() {
 		return state;

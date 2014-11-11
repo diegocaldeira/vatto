@@ -9,49 +9,86 @@
       
 	<h:panelGroup id="#{form}-address" class="col-md-12 row" rendered="#{addressController.has() and !contactController.has()}"> 
 		
-		<div class="col-md-12">
+		<h:panelGroup layout="block" class="col-md-12">
+		
 			<h4>#{message.address_title_model}</h4>
 	
-			<div class="row form-row">
-				<div class="col-md-6">
-					<p:inputText id="#{form}-address-type" label="#{message.address_type}" value="#{addressController.bean.addressType}" size="30" maxlength="30" styleClass=" form-control parsley-validated" placeholder="#{message.address_type}"/>
-				</div>
-				<div class="col-md-6">
-					<p:inputMask id="#{form}-zipCode" label="#{message.address_zipCode}" value="#{addressController.bean.zipCode}" mask="99999-999" size="30" maxlength="30" styleClass=" form-control parsley-validated" placeholder="#{message.address_zipCode}" />
-				</div>
-			</div>
-				
-			<div class="row form-row">
-				<div class="col-md-6">
-					<p:inputText id="#{form}-street" label="#{message.address_street}" value="#{addressController.bean.street}"  size="70" maxlength="70" styleClass=" form-control parsley-validated" placeholder="#{message.address_street}"/>
-				</div>
-				<div class="col-md-3">
-					<p:inputMask id="#{form}-number" label="#{message.address_number}" value="#{addressController.bean.number}" mask="9?9999999" size="8" maxlength="8" styleClass=" form-control parsley-validated" placeholder="#{message.address_number}"/>
-				</div>
-				<div class="col-md-3">
-					<p:inputText id="#{form}-completion" label="#{message.address_completion}" value="#{addressController.bean.completion}" styleClass=" form-control parsley-validated" size="25" maxlength="25" placeholder="#{message.address_completion}"/>
-				</div>
-			</div>
-				
-			<div class="row form-row">
-				<div class="col-md-6">
-					<p:inputText id="#{form}-neighborhood" label="#{message.address_neighborhood}" value="#{addressController.bean.neighborhood}" styleClass=" form-control parsley-validated" size="60" maxlength="60" placeholder="#{message.address_neighborhood}"/>
-				</div>
-				<div class="col-md-6">
-					<p:inputText id="#{form}-city" label="#{message.address_city}" value="#{addressController.bean.city}" styleClass=" form-control parsley-validated" size="60" maxlength="60" required="true" placeholder="#{message.address_city}"/>
-				</div>
-			</div>
-				
-		</div>
-		
-		<h:panelGroup styleClass="form-group">
-			<h:panelGroup styleClass="col-lg-9 col-lg-offset-3">
-				<p:commandButton value="#{message.action_cancel}" actionListener="#{addressController.clean()}" 	  update="#{form}-address-wrapper" immediate="true" styleClass="btn btn-white"/>
-				<p:commandButton value="#{message.action_add}"    actionListener="#{addressController.addRegister()}" update="#{form}-address-wrapper" process="#{form}-address"  styleClass="btn btn-primary"/>
+			<h:panelGroup layout="block" class="row form-row">
+				<h:panelGroup layout="block" class="col-md-6">
+					<h:panelGroup layout="block" class="input-group transparent">
+						<span class="input-group-addon">#{message.address_type}</span>
+						<p:inputText id="#{form}-address-type" label="#{message.address_type}" value="#{addressController.bean.addressType}" size="30" maxlength="30" styleClass=" form-control parsley-validated"/>
+					</h:panelGroup>
+				</h:panelGroup>
+				<h:panelGroup layout="block" class="col-md-6">
+					<h:panelGroup layout="block" class="input-group transparent">
+						<span class="input-group-addon">#{message.address_zipCode}</span>
+						<p:inputMask id="#{form}-zipCode" label="#{message.address_zipCode}" value="#{addressController.bean.zipCode}" mask="99999-999" size="30" maxlength="30" styleClass=" form-control parsley-validated"/>
+					</h:panelGroup>
+				</h:panelGroup>
 			</h:panelGroup>
+				
+			<h:panelGroup layout="block" class="row form-row">
+				<h:panelGroup layout="block" class="col-md-6">
+					<h:panelGroup layout="block" class="input-group transparent">
+						<span class="input-group-addon">#{message.address_street}</span>
+						<p:inputText id="#{form}-street" label="#{message.address_street}" value="#{addressController.bean.street}"  size="80" maxlength="80" styleClass=" form-control parsley-validated"/>
+					</h:panelGroup>
+				</h:panelGroup>
+				<h:panelGroup layout="block" class="col-md-3">
+					<h:panelGroup layout="block" class="input-group transparent">
+						<span class="input-group-addon">#{message.address_number}</span>
+						<p:inputMask id="#{form}-number" label="#{message.address_number}" value="#{addressController.bean.number}" mask="9?9999999" size="8" maxlength="8" styleClass=" form-control parsley-validated"/>
+					</h:panelGroup>
+				</h:panelGroup>
+				<h:panelGroup layout="block" class="col-md-3">
+					<h:panelGroup layout="block" class="input-group transparent">
+						<span class="input-group-addon">#{message.address_completion}</span>
+						<p:inputText id="#{form}-completion" label="#{message.address_completion}" value="#{addressController.bean.completion}" styleClass=" form-control parsley-validated" size="25" maxlength="25"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</h:panelGroup>
+				
+			<h:panelGroup layout="block" class="row form-row">
+				<h:panelGroup layout="block" class="col-md-6">
+					<h:panelGroup layout="block" class="input-group transparent">
+						<span class="input-group-addon">#{message.address_neighborhood}</span>
+						<p:inputText id="#{form}-neighborhood" label="#{message.address_neighborhood}" value="#{addressController.bean.neighborhood}" styleClass=" form-control parsley-validated" size="60" maxlength="60"/>
+					</h:panelGroup>
+				</h:panelGroup>
+				<h:panelGroup layout="block" class="col-md-6">
+					<h:panelGroup layout="block" class="input-group transparent">
+						<span class="input-group-addon">#{message.address_city}</span>
+						<p:inputText id="#{form}-city" label="#{message.address_city}" value="#{addressController.bean.city}" styleClass=" form-control parsley-validated" size="60" maxlength="60" required="true"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</h:panelGroup>
+			
+			
+			<h:panelGroup layout="block" class="row form-row">
+				<h:panelGroup layout="block" class="col-md-6">
+					<h:panelGroup layout="block" class="input-group transparent">
+						<span class="input-group-addon">#{message.address_state}</span>
+						<p:inputText id="#{form}-state" label="#{message.address_state}" value="#{addressController.bean.state}" styleClass=" form-control parsley-validated" size="60" maxlength="60"/>
+					</h:panelGroup>
+				</h:panelGroup>
+				<h:panelGroup layout="block" class="col-md-6">
+					<h:panelGroup layout="block" class="input-group transparent">
+						<span class="input-group-addon">#{message.address_country}</span>
+						<p:inputText id="#{form}-country" label="#{message.address_country}" value="#{addressController.bean.country}" styleClass=" form-control parsley-validated" size="60" maxlength="60" required="true"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</h:panelGroup>
+				
+		
+			<h:panelGroup layout="block" styleClass="form-actions">
+				<h:panelGroup layout="block" styleClass="col-lg-9 col-lg-offset-4">
+					<p:commandButton value="#{message.action_add}"    actionListener="#{addressController.addRegister()}" update="@form" process="@form"  styleClass="btn btn-primary"/>
+					<p:commandButton value="#{message.action_cancel}" actionListener="#{addressController.clean()}" 	  update="@form" immediate="true" styleClass="btn btn-white"/>
+				</h:panelGroup>
+			</h:panelGroup>
+		
 		</h:panelGroup>
-		
 	</h:panelGroup>
-		
 		
 </ui:composition>

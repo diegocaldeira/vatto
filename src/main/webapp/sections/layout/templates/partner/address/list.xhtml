@@ -7,11 +7,11 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 		
 	<f:event listener="#{addressController.loadBeans(registerBean)}" type="preRenderComponent"/>
-	<p:panel id="#{table}-address-list" header="#{message.address_title_list}" styleClass="form-horizontal col-sm-12 m-t" rendered="#{!addressController.has() and !contactController.has()}">	
+	<p:panel id="#{table}-address-list" header="#{message.address_title_list}" styleClass="form-horizontal col-sm-12" rendered="#{!addressController.has() and !contactController.has()}" style="margin-top: 20px;">	
 		<p:dataTable var="dtt" scrollRows="5" scrollable="true" liveScroll="true" scrollHeight="200" 
 										 selection="#{addressController.bean}" selectionMode="single" 
 										 value="#{addressController.dataModel}" 
-										 emptyMessage="#{message.general_no_results}" styleClass="content-menuBody-datatable">
+										 emptyMessage="#{message.general_no_results}"  styleClass="content-menuBody-datatable" style="min-height: 10%;">
 			
 			<ui:insert/>
 			

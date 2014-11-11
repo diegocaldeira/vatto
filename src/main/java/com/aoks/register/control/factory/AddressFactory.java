@@ -7,6 +7,12 @@ import com.aoks.register.model.Address;
 import com.aoks.utils.webmvc.GenericBean;
 import com.aoks.utils.webmvc.GenericFactory;
 
+/**
+ * 
+ * @author Diego Pereira
+ * @site www.diegopereira.com.br
+ *
+ */
 @RequestScoped
 public class AddressFactory implements GenericFactory<Address> {
 
@@ -25,6 +31,7 @@ public class AddressFactory implements GenericFactory<Address> {
 		model.setCompletion(bean.getCompletion());
 		model.setNeighborhood(bean.getNeighborhood());
 		model.setNumber(bean.getNumber());
+		model.setCountry(bean.getCountry());
 		model.setState(bean.getState());
 		model.setStreet(bean.getStreet());
 		model.setZipCode(bean.getZipCode());

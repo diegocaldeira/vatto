@@ -62,7 +62,13 @@ public class Address implements GenericModel, Serializable {
     private String number;
     
     /**
-     * Contry state or province
+     * Country
+     */
+    @Column(name = "cCountry")
+    private String country;
+    
+    /**
+     * Country state or province
      */
     @Column(name = "cState")
     private String state;
@@ -164,7 +170,15 @@ public class Address implements GenericModel, Serializable {
 	}
     
     
-    public String getState() {
+    public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+
+	public String getState() {
 		return state;
 	}
     public void setState(String state) {

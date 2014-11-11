@@ -13,12 +13,12 @@
 	<!-- / HEADER_TITLE -->
 	
 	<!-- CONTENT_BODY -->
-	<h:panelGroup styleClass="m-t" layout="block" rendered="#{individualPartnerController.has()}" >
+	<h:panelGroup styleClass="m-t" layout="block" rendered="#{individualPartnerController.has()}">
 
 		<ui:decorate template="/sections/layout/templates/partner/model/form.xhtml">
 			<ui:param name="form" 		value="simples" />
 			<ui:param name="controller" value="#{individualPartnerController}" />
-			
+		
 			<ui:define name="address">
 				<h:panelGroup layout="block" id="simples-address-wrapper">
 					<ui:decorate template="/sections/layout/templates/partner/address/list.xhtml">
@@ -36,9 +36,9 @@
 						<ui:param name="addressController"  value="#{individualAddressController}" />
 					</ui:decorate>
 				</h:panelGroup>	
-			</ui:define>
-			
+			</ui:define>	
 		</ui:decorate>
+		
 	</h:panelGroup>
 	<!-- / CONTENT_BODY -->
 							

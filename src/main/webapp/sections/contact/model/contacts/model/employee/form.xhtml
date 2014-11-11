@@ -22,29 +22,37 @@
 			<ui:define name="family">
 				<div class="row form-row">
 					<div class="col-md-6">
-						<p:inputText placeholder="#{message.model_fathername}" label="#{message.model_fathername}" value="#{individualPartnerController.bean.register.fatherName}" size="40" maxlength="80" styleClass="form-control parsley-validated"/>
+						<h:panelGroup layout="block" class="input-group transparent">
+							<span class="input-group-addon">#{message.model_fathername}</span>
+							<p:inputText label="#{message.model_fathername}" value="#{individualPartnerController.bean.register.fatherName}" size="40" maxlength="80" styleClass="form-control parsley-validated"/>
+						</h:panelGroup>
 					</div>
 					<div class="col-md-6">
-						<p:inputText placeholder="#{message.model_mothername}" label="#{message.model_mothername}" value="#{individualPartnerController.bean.register.motherName}" size="40" maxlength="80" styleClass="form-control parsley-validated"/>
+						<h:panelGroup layout="block" class="input-group transparent">
+							<span class="input-group-addon">#{message.model_mothername}</span>
+							<p:inputText label="#{message.model_mothername}" value="#{individualPartnerController.bean.register.motherName}" size="40" maxlength="80" styleClass="form-control parsley-validated"/>
+						</h:panelGroup>
 					</div>
 				</div>
 			</ui:define>
 			
 			<ui:define name="address">
-				<ui:decorate template="/sections/layout/templates/partner/address/list.xhtml">
-					<ui:param name="table" 				value="employee" />
-					<ui:param name="registerBean" 		value="#{individualPartnerController.bean.register}" />
-					<ui:param name="controller" 		value="#{individualPartnerController}" />
-					<ui:param name="addressController"  value="#{individualAddressController}" />
+				<h:panelGroup layout="block" id="employee-address-wrapper">
+					<ui:decorate template="/sections/layout/templates/partner/address/list.xhtml">
+						<ui:param name="table" 				value="employee" />
+						<ui:param name="registerBean" 		value="#{individualPartnerController.bean.register}" />
+						<ui:param name="controller" 		value="#{individualPartnerController}" />
+						<ui:param name="addressController"  value="#{individualAddressController}" />
+						
+						<p:ajax event="rowSelect" 	listener="#{individualAddressController.onRowSelect}"   update="@form"/>  
+				        <p:ajax event="rowUnselect" listener="#{individualAddressController.onRowUnselect}" update="@form"/>
+					</ui:decorate>
 					
-					<p:ajax event="rowSelect" 	listener="#{individualAddressController.onRowSelect}"   update="@form"/>  
-			        <p:ajax event="rowUnselect" listener="#{individualAddressController.onRowUnselect}" update="@form"/>
-				</ui:decorate>
-				
-				<ui:decorate template="/sections/layout/templates/partner/address/form.xhtml">
-					<ui:param name="form" 				value="employee" />
-					<ui:param name="addressController"  value="#{individualAddressController}" />
-				</ui:decorate>
+					<ui:decorate template="/sections/layout/templates/partner/address/form.xhtml">
+						<ui:param name="form" 				value="employee" />
+						<ui:param name="addressController"  value="#{individualAddressController}" />
+					</ui:decorate>
+				</h:panelGroup>
 			</ui:define>
 			
 		</ui:decorate>

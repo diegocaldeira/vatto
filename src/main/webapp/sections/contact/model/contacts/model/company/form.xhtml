@@ -14,59 +14,89 @@
 
 	<!-- CONTENT_BODY -->
 	<h:panelGroup layout="block" rendered="#{companyController.has()}" styleClass="col-md-12">
-		<div class="grid simple"> 
-			<div class="grid-body no-border">
+		<h:panelGroup layout="block" class="grid simple"> 
+			<h:panelGroup layout="block" class="grid-body no-border">
 		
-				<div class="row">
-					<div class="col-md-12">
+				<h:panelGroup layout="block" class="row">
+					<h:panelGroup layout="block" class="col-md-12">
 						<h4>#{message.general_data}</h4>
 						
-						<div class="row form-row">
-							<div class="col-md-6">
-								<p:selectOneMenu value="#{companyController.bean.register.areaActuation}" required="true">  
-						            <f:selectItems value="#{companyController.bean.register.areaActuationList()}" var="areaActuation" itemLabel="#{areaActuation.areaActuation}" itemValue="#{areaActuation}"/>  
-						        </p:selectOneMenu> 
-							</div>
-							<div class="col-md-6">
-								<p:inputText label="#{message.model_company_name}" value="#{companyController.bean.register.companyName}" size="50" maxlength="50" styleClass="form-control parsley-validated" placeholder="#{message.model_company_name}" />
-							</div>
-						</div>
+						<h:panelGroup layout="block" class="row form-row">
+							<h:panelGroup layout="block" class="col-md-6">
+								<h:panelGroup layout="block" class="input-group transparent">
+									<span class="input-group-addon">#{message.model_area_actuation}</span>
+									<p:selectOneMenu value="#{companyController.bean.register.areaActuation}" required="true">  
+							            <f:selectItems value="#{companyController.bean.register.areaActuationList()}" var="areaActuation" itemLabel="#{areaActuation.areaActuation}" itemValue="#{areaActuation}"/>  
+							        </p:selectOneMenu>
+							    </h:panelGroup> 
+							</h:panelGroup>
+							<h:panelGroup layout="block" class="col-md-6">
+								<h:panelGroup layout="block" class="input-group transparent">
+									<span class="input-group-addon">#{message.model_company_name}</span>
+									<p:inputText label="#{message.model_company_name}" value="#{companyController.bean.register.companyName}" size="50" maxlength="50" styleClass="form-control parsley-validated"/>
+								</h:panelGroup>
+							</h:panelGroup>
+						</h:panelGroup>
 						
-						<div class="row form-row">
-							<div class="col-md-6">
-								<p:inputMask value="#{companyController.bean.register.cnpj}" required="true" mask="99.999.999/9999-99" size="20" maxlength="20" styleClass="form-control parsley-validated" placeholder="#{message.model_cnpj}"/>
-							</div>
-							<div class="col-md-6">
-								<p:inputText label="#{message.model_fancy_name}" value="#{companyController.bean.register.fancyName}" size="50" maxlength="50" styleClass="form-control parsley-validated" placeholder="#{message.model_fancy_name}"/>
-							</div>
-						</div>
+						<h:panelGroup layout="block" class="row form-row">
+							<h:panelGroup layout="block" class="col-md-6">
+								<h:panelGroup layout="block" class="input-group transparent">
+									<span class="input-group-addon">#{message.model_cnpj}</span>
+									<p:inputMask value="#{companyController.bean.register.cnpj}" required="true" mask="99.999.999/9999-99" size="20" maxlength="20" styleClass="form-control parsley-validated" />
+								</h:panelGroup>
+							</h:panelGroup>
+							<h:panelGroup layout="block" class="col-md-6">
+								<h:panelGroup layout="block" class="input-group transparent">
+									<span class="input-group-addon">#{message.model_fancy_name}</span>
+									<p:inputText label="#{message.model_fancy_name}" value="#{companyController.bean.register.fancyName}" size="50" maxlength="50" styleClass="form-control parsley-validated"/>
+								</h:panelGroup>
+							</h:panelGroup>
+						</h:panelGroup>
 						
-						<div class="row form-row">
-							<div class="col-md-6">
-								<p:inputText placeholder="#{message.model_inscr_estadual}" label="#{message.model_inscr_estadual}" value="#{companyController.bean.register.inscrEstadual}"  size="11" maxlength="18" styleClass="form-control parsley-validated"/>
-							</div>
-							<div class="col-md-6">
-								<p:inputText placeholder="#{message.model_inscr_municipal}" label="#{message.model_inscr_municipal}" value="#{companyController.bean.register.inscrMunicipal}" size="15" maxlength="20" styleClass="form-control parsley-validated"/>
-							</div>
-						</div>
+						<h:panelGroup layout="block" class="row form-row">
+							<h:panelGroup layout="block" class="col-md-6">
+								<h:panelGroup layout="block" class="input-group transparent">
+									<span class="input-group-addon">#{message.model_inscr_estadual}</span>
+									<p:inputText label="#{message.model_inscr_estadual}" value="#{companyController.bean.register.inscrEstadual}"  size="11" maxlength="18" styleClass="form-control parsley-validated"/>
+								</h:panelGroup>
+							</h:panelGroup>
+							<h:panelGroup layout="block" class="col-md-6">
+								<h:panelGroup layout="block" class="input-group transparent">
+									<span class="input-group-addon">#{message.model_inscr_municipal}</span>
+									<p:inputText label="#{message.model_inscr_municipal}" value="#{companyController.bean.register.inscrMunicipal}" size="15" maxlength="20" styleClass="form-control parsley-validated"/>
+								</h:panelGroup>
+							</h:panelGroup>
+						</h:panelGroup>
 						
-						<div class="row form-row">
-							<div class="col-md-6">
-								<p:inputMask placeholder="#{message.model_phone_number}" value="#{companyController.bean.register.phone.phoneNumber}" required="true" mask="(99) 9999-9999" size="15" maxlength="15" styleClass="form-control parsley-validated"/>
-							</div>
-							<div class="col-md-6">	
-								<p:inputText placeholder="#{message.model_site}" label="#{message.model_site}" value="#{companyController.bean.register.site}" size="50" maxlength="50" styleClass="form-control parsley-validated"/>
-							</div>
-						</div>
+						<h:panelGroup layout="block" class="row form-row">
+							<h:panelGroup layout="block" class="col-md-6">
+								<h:panelGroup layout="block" class="input-group transparent">
+									<span class="input-group-addon">#{message.model_phone_number}</span>
+									<p:inputMask value="#{companyController.bean.register.phone.phoneNumber}" required="true" mask="(99) 9999-9999" size="15" maxlength="15" styleClass="form-control parsley-validated"/>
+								</h:panelGroup>
+							</h:panelGroup>
+							<h:panelGroup layout="block" class="col-md-6">
+								<h:panelGroup layout="block" class="input-group transparent">
+									<span class="input-group-addon">#{message.model_site}</span>	
+									<p:inputText label="#{message.model_site}" value="#{companyController.bean.register.site}" size="50" maxlength="50" styleClass="form-control parsley-validated"/>
+								</h:panelGroup>
+							</h:panelGroup>
+						</h:panelGroup>
 						
-						<div class="row form-row">
-							<div class="col-md-6">
-								<p:inputText placeholder="#{message.model_facebook}" label="#{message.model_facebook}" value="#{companyController.bean.register.facebook}" size="70" styleClass="form-control parsley-validated"/>
-							</div>
-							<div class="col-md-6">	
-								<p:inputText placeholder="#{message.model_twitter}" label="#{message.model_twitter}" value="#{companyController.bean.register.twitter}" size="50" styleClass="form-control parsley-validated"/>
-							</div>
-						</div>
+						<h:panelGroup layout="block" class="row form-row">
+							<h:panelGroup layout="block" class="col-md-6">
+								<h:panelGroup layout="block" class="input-group transparent">
+									<span class="input-group-addon">#{message.model_facebook}</span>
+									<p:inputText label="#{message.model_facebook}" value="#{companyController.bean.register.facebook}" size="70" styleClass="form-control parsley-validated"/>
+								</h:panelGroup>
+							</h:panelGroup>
+							<h:panelGroup layout="block" class="col-md-6">	
+								<h:panelGroup layout="block" class="input-group transparent">
+									<span class="input-group-addon">#{message.model_twitter}</span>
+									<p:inputText label="#{message.model_twitter}" value="#{companyController.bean.register.twitter}" size="50" styleClass="form-control parsley-validated"/>
+								</h:panelGroup>
+							</h:panelGroup>
+						</h:panelGroup>
 						
 						<h:panelGroup layout="block" id="company-address-wrapper">							
 							<ui:decorate template="/sections/layout/templates/partner/address/list.xhtml">
@@ -99,18 +129,18 @@
 							</ui:decorate>
 						</h:panelGroup>
 						
-					</div>
-				</div>
+					</h:panelGroup>
+				</h:panelGroup>
 				
-				<div class="form-actions">
-					<div class="pull-right">
+				<h:panelGroup layout="block" class="form-actions">
+					<h:panelGroup layout="block" class="pull-right">
 						<p:commandButton value="#{message.action_save}"   actionListener="#{companyController.save()}" 	styleClass="btn btn-primary btn-cons" update="@form" action="#{registerController.setCreate(false)}" style="margin-left: 5px;" type="push"/>
 						<p:commandButton value="#{message.action_cancel}" actionListener="#{companyController.clean()}" styleClass="btn btn-white btn-cons"   update="@form" action="#{registerController.setCreate(false)}" style="margin-left: 5px;" immediate="true" />
-					</div>
-			  	</div>
+					</h:panelGroup>
+			  	</h:panelGroup>
 			  	
-			</div>
-		</div>
+			</h:panelGroup>
+		</h:panelGroup>
 	</h:panelGroup>
 	<!-- / CONTENT_BODY -->
 	
