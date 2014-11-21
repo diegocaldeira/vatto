@@ -5,7 +5,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-
+      
 	<f:event listener="#{controller.loadBeansByType(type)}" type="preRenderComponent"/>
 	<p:dataTable id="#{table}-list" var="att" widgetVar="#{table}List"
 									paginator="true" rows="14" paginatorPosition="bottom" 
@@ -27,10 +27,10 @@
 		        <h:commandLink style="margin-left: 15px; padding: 3px 7px; color: red; font-weight: bold;" value="#{message.action_ask_confirmation}" action="#{controller.deleteAll()}" />
 		    </p:overlayPanel> 
 
-<!-- 			<p:commandButton id="{table}-list-export" value="" title="{message.action_export} {message.general_contacts}" ajax="false" styleClass="btn btn-white icon-download-alt" style="margin-left: 10px; float: left;"> -->
-<!-- 				<p:fileDownload value="{controller.export()}" /> -->
-<!-- 			</p:commandButton> -->
-<!-- 			<p:tooltip for="{table}-list-export" value="{message.action_export} {message.general_selected}" showEffect="fade" hideEffect="fade" style="background: white !important;"/>  -->
+ 			<p:commandButton id="#{table}-list-export" ajax="false" value="" title="#{message.action_export} #{message.general_contacts}" styleClass="btn btn-white icon-download-alt" style="margin-left: 10px; float: left;">
+ 				<p:fileDownload value="#{controller.export()}" /> 
+ 			</p:commandButton>
+ 			<p:tooltip for="#{table}-list-export" value="#{message.action_export} #{message.general_selected}" showEffect="fade" hideEffect="fade" style="background: white !important;"/> 
 
 				<p:commandLink id="#{table}-list-add" value="#{message.action_add}" title="#{message.action_add} #{registerType}"
 				style="float: right;" styleClass="btn btn-small btn-success" actionListener="#{controller.create()}" update="@form" action="#{registerController.setCreate(true)}"/>

@@ -8,7 +8,7 @@ package com.aoks.enterprise.model.entities;
  */
 public enum AreaActuationType {
 	
-	TRADE("Comercio"), SERVICES("Servicos"), INDUSTRY("Industria"), RURAL("Rural"), OTHERS("Outros");
+	TRADE("Comércio"), SERVICES("Serviços"), INDUSTRY("Indústria"), RURAL("Rural"), OTHERS("Outros");
 	
 	String areaActuation;
 	

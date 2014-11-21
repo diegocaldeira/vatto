@@ -23,11 +23,21 @@ import com.aoks.register.model.IndividualRegister;
 import com.aoks.register.model.LegalRegister;
 import com.aoks.utils.date.DateUtils;
 
+/**
+ * 
+ * @author Diego Pereira
+ * @site www.diegopereira.com.br
+ *
+ */
 public class ExportContacts {
 	
 	private String contentType;
 
 	public StreamedContent exportIndividualBeans(List<IndividualPartnerBean> individualBeans){
+
+		if(individualBeans.isEmpty())
+			return null;
+			
 		HSSFWorkbook workBook = new HSSFWorkbook();
 		HSSFSheet sheet = workBook.createSheet("Exportados - Contatos Pessoa Fisica");
 		
@@ -36,22 +46,22 @@ public class ExportContacts {
 			fos = new FileOutputStream(new File("\\export.xls"));
 			
 			Locale defaultLocaleHeader = new Locale("pt", "BR");
-			ResourceBundle bundleHeader = ResourceBundle.getBundle("MessageBundle", defaultLocaleHeader);
+			ResourceBundle bundle = ResourceBundle.getBundle("META-INF/MessageBundle", defaultLocaleHeader);
 			
 			HSSFRow rowHeader = sheet.createRow(0);
-			rowHeader.createCell(0).setCellValue(bundleHeader.getString("model_name"));
-			rowHeader.createCell(1).setCellValue(bundleHeader.getString("model_genre"));
-			rowHeader.createCell(2).setCellValue(bundleHeader.getString("model_birth"));
-			rowHeader.createCell(3).setCellValue(bundleHeader.getString("model_cpf"));
-			rowHeader.createCell(4).setCellValue(bundleHeader.getString("model_rg"));
-			rowHeader.createCell(5).setCellValue(bundleHeader.getString("model_marital_status"));
-			rowHeader.createCell(6).setCellValue(bundleHeader.getString("model_naturality"));
-			rowHeader.createCell(7).setCellValue(bundleHeader.getString("model_phone_number"));
-			rowHeader.createCell(8).setCellValue(bundleHeader.getString("model_fathername"));
-			rowHeader.createCell(9).setCellValue(bundleHeader.getString("model_mothername"));
-			rowHeader.createCell(10).setCellValue(bundleHeader.getString("model_email"));
-			rowHeader.createCell(11).setCellValue(bundleHeader.getString("model_facebook"));
-			rowHeader.createCell(12).setCellValue(bundleHeader.getString("model_twitter"));
+			rowHeader.createCell(0).setCellValue(bundle.getString("model_name"));
+			rowHeader.createCell(1).setCellValue(bundle.getString("model_genre"));
+			rowHeader.createCell(2).setCellValue(bundle.getString("model_birth"));
+			rowHeader.createCell(3).setCellValue(bundle.getString("model_cpf"));
+			rowHeader.createCell(4).setCellValue(bundle.getString("model_rg"));
+			rowHeader.createCell(5).setCellValue(bundle.getString("model_marital_status"));
+			rowHeader.createCell(6).setCellValue(bundle.getString("model_naturality"));
+			rowHeader.createCell(7).setCellValue(bundle.getString("model_phone_number"));
+			rowHeader.createCell(8).setCellValue(bundle.getString("model_fathername"));
+			rowHeader.createCell(9).setCellValue(bundle.getString("model_mothername"));
+			rowHeader.createCell(10).setCellValue(bundle.getString("model_email"));
+			rowHeader.createCell(11).setCellValue(bundle.getString("model_facebook"));
+			rowHeader.createCell(12).setCellValue(bundle.getString("model_twitter"));
 			
 			int i = 1;
 			for(IndividualPartnerBean bean : individualBeans){
@@ -59,9 +69,6 @@ public class ExportContacts {
 				
 				IndividualRegisterBean individualRegisterBean = (IndividualRegisterBean) new IndividualRegisterBean().load((IndividualRegister) bean.getModel().getBehavior().getRegister());
 
-				Locale defaultLocale = new Locale("pt", "BR");
-				ResourceBundle bundle = ResourceBundle.getBundle("MessageBundle", defaultLocale);
-				
 				row.createCell(0).setCellValue(individualRegisterBean.getName());
 				
 				String genre = individualRegisterBean.getGenre();
@@ -87,7 +94,7 @@ public class ExportContacts {
 
 			workBook.write(fos);
 			contentType = FacesContext.getCurrentInstance().getExternalContext().getMimeType("\\export.xls");
-			return new DefaultStreamedContent(new FileInputStream("\\export.xls"), contentType, "contatos-exportados");
+			return new DefaultStreamedContent(new FileInputStream("\\export.xls"), contentType, "contatos-exportados.xlsx");
 
 		}catch(Exception ex){
 			ex.printStackTrace();
@@ -104,7 +111,11 @@ public class ExportContacts {
 		return null;
 	}
 	
-	public StreamedContent exportLegalBean(List<LegalPartnerBean> legalBeans){
+	public StreamedContent exportLegalBeans(List<LegalPartnerBean> legalBeans){
+		
+		if(legalBeans.isEmpty())
+			return null;
+		
 		HSSFWorkbook workBook = new HSSFWorkbook();
 		HSSFSheet sheet = workBook.createSheet("Exportados - Contatos Pessoa Juridica");
 		
@@ -113,19 +124,19 @@ public class ExportContacts {
 			fos = new FileOutputStream(new File("\\export.xls"));
 			
 			Locale defaultLocaleHeader = new Locale("pt", "BR");
-			ResourceBundle bundleHeader = ResourceBundle.getBundle("MessageBundle", defaultLocaleHeader);
+			ResourceBundle bundle = ResourceBundle.getBundle("META-INF/MessageBundle", defaultLocaleHeader);
 			
 			HSSFRow rowHeader = sheet.createRow(0);
-			rowHeader.createCell(0).setCellValue(bundleHeader.getString("model_area_actuation"));
-			rowHeader.createCell(1).setCellValue(bundleHeader.getString("model_company_name"));
-			rowHeader.createCell(2).setCellValue(bundleHeader.getString("model_fancy_name"));
-			rowHeader.createCell(3).setCellValue(bundleHeader.getString("model_cnpj"));
-			rowHeader.createCell(4).setCellValue(bundleHeader.getString("model_inscr_estadual"));
-			rowHeader.createCell(5).setCellValue(bundleHeader.getString("model_inscr_municipal"));
-			rowHeader.createCell(9).setCellValue(bundleHeader.getString("model_phone_number"));
-			rowHeader.createCell(6).setCellValue(bundleHeader.getString("model_site"));
-			rowHeader.createCell(7).setCellValue(bundleHeader.getString("model_facebook"));
-			rowHeader.createCell(8).setCellValue(bundleHeader.getString("model_twitter"));
+			rowHeader.createCell(0).setCellValue(bundle.getString("model_area_actuation"));
+			rowHeader.createCell(1).setCellValue(bundle.getString("model_company_name"));
+			rowHeader.createCell(2).setCellValue(bundle.getString("model_fancy_name"));
+			rowHeader.createCell(3).setCellValue(bundle.getString("model_cnpj"));
+			rowHeader.createCell(4).setCellValue(bundle.getString("model_inscr_estadual"));
+			rowHeader.createCell(5).setCellValue(bundle.getString("model_inscr_municipal"));
+			rowHeader.createCell(9).setCellValue(bundle.getString("model_phone_number"));
+			rowHeader.createCell(6).setCellValue(bundle.getString("model_site"));
+			rowHeader.createCell(7).setCellValue(bundle.getString("model_facebook"));
+			rowHeader.createCell(8).setCellValue(bundle.getString("model_twitter"));
 			
 			int i = 1;
 			for(LegalPartnerBean bean : legalBeans){
@@ -149,7 +160,7 @@ public class ExportContacts {
 
 			workBook.write(fos);
 			contentType = FacesContext.getCurrentInstance().getExternalContext().getMimeType("\\export.xls");
-			return new DefaultStreamedContent(new FileInputStream("\\export.xls"), contentType, "contatos-exportados");
+			return new DefaultStreamedContent(new FileInputStream("\\export.xls"), contentType, "contatos-exportados.xlsx");
 		}catch(Exception ex){
 			ex.printStackTrace();
 			System.out.println("Erro ao Exportar arquivo!");

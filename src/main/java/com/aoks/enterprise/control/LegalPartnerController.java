@@ -11,6 +11,7 @@ import javax.inject.Named;
 
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
+import org.primefaces.model.StreamedContent;
 
 import com.aoks.enterprise.control.bean.LegalPartnerBean;
 import com.aoks.enterprise.control.bean.datamodel.LegalPartnerDataModel;
@@ -19,6 +20,7 @@ import com.aoks.enterprise.model.entities.LegalPartner;
 import com.aoks.enterprise.model.entities.PartnerType;
 import com.aoks.enterprise.service.LegalPartnerManager;
 import com.aoks.portalmanager.model.PortalApplication;
+import com.aoks.register.exporter.ExportContacts;
 import com.aoks.utils.webmvc.AbstractController;
 import com.aoks.utils.webmvc.AbstractManager;
 import com.aoks.utils.webmvc.GenericDataModel;
@@ -77,6 +79,10 @@ public class LegalPartnerController extends AbstractController<LegalPartner, Leg
 		} catch (Exception e) {}
 	}
 	
+	public StreamedContent export() {
+		ExportContacts export = new ExportContacts();
+		return export.exportLegalBeans(beans);
+	}
 	
 	public RegisterController getRegisterController()					{ return registerController;}
 

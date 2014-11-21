@@ -119,6 +119,7 @@ public class ContactController extends AbstractController<Contact, ContactBean> 
 	public LegalRegisterBean getRegister() 							{ return register; }
 	public void setRegister(LegalRegisterBean register) 			{ this.register = register; }
 
+	@Override public GenericDataModel<ContactBean> getDataModel() 	{ return dataModel; }
 	@Override public AbstractManager<Contact> getManager() 			{ return manager; }
 	@Override public GenericFactory<Contact> getFactory() 			{ return factory; }
 	@Override public Class<ContactBean> getBeanClazz() 				{ return ContactBean.class; }
@@ -140,9 +141,4 @@ public class ContactController extends AbstractController<Contact, ContactBean> 
     public void onRowUnselect(UnselectEvent event) { clean(); }
 
 
-	@Override
-	public GenericDataModel<ContactBean> getDataModel() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

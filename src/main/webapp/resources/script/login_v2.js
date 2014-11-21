@@ -10,7 +10,7 @@ $(document).ready(function() {
 	$(".lazy").lazyload({
 		effect : "fadeIn"
 	});
-	$('#login-form').validate({
+	$('#frm_login').validate({
 		focusInvalid : false,
 		ignore : "",
 		rules : {

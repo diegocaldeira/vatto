@@ -112,6 +112,7 @@ public class LegalAddressController extends AbstractController<Address, AddressB
 	
 	public LegalRegisterFactory getRegisterFactory() 					{ return registerFactory; 	}
 	
+	@Override public GenericDataModel<AddressBean> getDataModel() 		{ return dataModel; }
 	@Override public AbstractManager<Address> getManager() 				{ return manager; 			}
 	@Override public GenericFactory<Address> getFactory() 				{ return factory; 			}
 	@Override public Class<AddressBean> getBeanClazz()	 				{ return AddressBean.class; }
@@ -133,9 +134,4 @@ public class LegalAddressController extends AbstractController<Address, AddressB
     public void onRowUnselect(UnselectEvent event) { clean(); }
 
 
-	@Override
-	public GenericDataModel<AddressBean> getDataModel() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

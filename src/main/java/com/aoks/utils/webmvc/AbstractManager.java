@@ -49,10 +49,14 @@ public abstract class AbstractManager<T extends GenericModel> implements ModelMa
 				if(model.getAuditEntity().getId() != 0L)
 					model.getAuditEntity().getModifyDates().add(GregorianCalendar.getInstance());
 			
-			if(model.getId() == 0L)
+			if(model.getId() == 0L){
 				model.getAuditEntity().setUser(secureSession.getLoggedBean().getModel());
-			else
-				model.getAuditEntity().getUsers().add(secureSession.getLoggedBean().getModel());
+			}else{
+				if(model.getAuditEntity().getUser() == null)
+					model.getAuditEntity().setUser(secureSession.getLoggedBean().getModel());
+				else
+					model.getAuditEntity().getUsers().add(secureSession.getLoggedBean().getModel());
+			}
 			
 			wrapper.saveOrUpdate(model);
 		}

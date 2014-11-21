@@ -193,59 +193,14 @@
 	
 				</section>
 				<!-- / body -->
-		
+			
+				</div>
 			</div>
-		</div>
-		
-	</h:form>
 			
-	
-	<!-- BEGIN CORE JS FRAMEWORK-->
-    
-	<!-- [if lt IE 9]> -->
-	<!-- <script src="assets/plugins/respond.js"></script> -->
-	<!-- <![endif]-->
-	<h:outputScript library="script" name="plugins/bootstrap/js/bootstrap.min.js"/>
-	<h:outputScript library="script" name="plugins/breakpoints.js"/>
-	<h:outputScript library="script" name="plugins/jquery-unveil/jquery.unveil.min.js"/>
-	<h:outputScript library="script" name="plugins/jquery-block-ui/jqueryblockui.js"/>
-	<h:outputScript library="script" name="plugins/jquery-lazyload/jquery.lazyload.min.js"/>
-	<!-- END CORE JS FRAMEWORK -->
-	
-	<!-- BEGIN PAGE LEVEL JS -->
-	<h:outputScript library="script" name="plugins/jquery-slider/jquery.sidr.min.js"/>
-	<h:outputScript library="script" name="plugins/jquery-slimscroll/jquery.slimscroll.min.js"/>
-	<h:outputScript library="script" name="plugins/webarchScroll.js"/>
-	
-	<h:outputScript library="script" name="plugins/pace/pace.min.js"/>
-	<h:outputScript library="script" name="plugins/jquery-numberAnimate/jquery.animateNumbers.js"/>
-	<h:outputScript library="script" name="plugins/jquery-ricksaw-chart/js/raphael-min.js"/>
-	<h:outputScript library="script" name="plugins/jquery-ricksaw-chart/js/d3.v2.js"/>
-<!-- 	<h:outputScript library="script" name="plugins/jquery-ricksaw-chart/js/rickshaw.min.js"/> -->
-	<h:outputScript library="script" name="plugins/jquery-sparkline/jquery-sparkline.js"/>
-	<h:outputScript library="script" name="plugins/skycons/skycons.js"/>
-	<h:outputScript library="script" name="plugins/owl-carousel/owl.carousel.min.js"/>
-	<h:outputScript library="script" name="plugins/jquery-polymaps/polymaps.min.js"/>
-<!-- 	<h:outputScript library="script" name="plugins/jquery-flot/jquery.flot.js"/> -->
-<!-- 	<h:outputScript library="script" name="plugins/jquery-flot/jquery.flot.resize.min.js"/> -->
-	<h:outputScript library="script" name="plugins/jquery-metrojs/MetroJs.min.js"/>
-	<!-- END PAGE LEVEL PLUGINS -->
-	
-	<!-- BEGIN CORE TEMPLATE JS -->
-	<h:outputScript library="script" name="core.js"/>
-<!-- 	<h:outputScript library="script" name="chat.js"/> -->
-	<h:outputScript library="script" name="demo.js"/>
-<!-- 	<h:outputScript library="script" name="dashboard_v2.js"/> -->
-	
-	<script type="text/javascript">
-	        $(document).ready(function () {
-	            $(".live-tile,.flip-list").liveTile();
-	        });
-	</script>
-	<!-- END CORE TEMPLATE JS -->
-			
+		</h:form>
+				
 	</h:body>
-	
+
 	<h:body class="error-body no-top lazy" data-original="resources/img/login/bg-7.png" rendered="#{not sessionController.isLogged()}" style="background-image: url('resources/img/login/bg-7.png')">
 		
 		<div class="container">
@@ -258,7 +213,7 @@
 					</div>
 					<div class="tiles grey p-t-20 p-b-20 text-black">
 						
-						<h:form id="budget_login" class="animated fadeIn" method="post" action="/app">
+						<h:form id="frm_login" class="animated fadeIn" method="post" action="/app">
 							<div class="row form-row m-l-20 m-r-20 xs-m-l-10 xs-m-r-10">
 								<p:messages severity="warn" />
 								<div class="col-md-5 col-sm-5 ">
@@ -280,7 +235,7 @@
 								</div>
 							</div>
 						</h:form>
-						<h:form id="budget_register" styleClass="animated fadeIn" style="display:none">
+						<h:form id="frm_register" styleClass="animated fadeIn" style="display:none">
 							<f:event type="javax.faces.event.PreRenderComponentEvent" listener="#{userController.create}"/>
 							
 							<h:panelGroup layout="block" rendered="#{userController.has()}">
@@ -319,11 +274,6 @@
 			</div>
 		</div>
 			 
-		<h:outputScript library="script" name="plugins/bootstrap/js/bootstrap.min.js"/>
-		<h:outputScript library="script" name="plugins/pace/pace.min.js"/>
-		<h:outputScript library="script" name="plugins/jquery-lazyload/jquery.lazyload.min.js"/>
-		<h:outputScript library="script" name="login_v2.js"/>
-		<h:outputScript library="script" name="jquery.validate.min.js"/>
 	</h:body>
 	
 </h:html>
