@@ -10,6 +10,7 @@ import javax.inject.Named;
 
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
+import org.primefaces.model.StreamedContent;
 
 import com.aoks.enterprise.control.bean.CompanyBean;
 import com.aoks.enterprise.control.bean.datamodel.CompanyDataModel;
@@ -17,8 +18,8 @@ import com.aoks.enterprise.control.factory.CompanyFactory;
 import com.aoks.enterprise.model.entities.Company;
 import com.aoks.enterprise.service.CompanyManager;
 import com.aoks.portalmanager.model.PortalApplication;
+import com.aoks.register.exporter.ExportContacts;
 import com.aoks.security.control.UserController;
-import com.aoks.security.model.AuditEntity;
 import com.aoks.utils.webmvc.AbstractController;
 import com.aoks.utils.webmvc.AbstractManager;
 import com.aoks.utils.webmvc.GenericDataModel;
@@ -66,6 +67,17 @@ public class CompanyController extends AbstractController<Company, CompanyBean> 
 	}
 
 
+	/**
+	 * Exports contacts to excel
+	 * 
+	 * @return
+	 */
+	public StreamedContent export() {
+		ExportContacts export = new ExportContacts();
+		return export.exportCompanyBeans(beans);
+	}
+	
+	
 	public UserController getUserController() 					  { return userController; }
 	public RegisterController getRegisterController()			  { return registerController; 	}
 	

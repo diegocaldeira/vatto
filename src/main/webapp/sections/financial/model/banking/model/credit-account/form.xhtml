@@ -12,69 +12,84 @@
 	</h:panelGroup>
 	<!-- / HEADER_TITLE -->
 		
+	
 	<!-- CONTENT_BODY -->
 	<h:panelGroup styleClass="m-t" layout="block" rendered="#{creditCardAccountController.has()}" >
 	
-		<div class="col-md-12"> 
-			<div class="grid simple"> 
-				<div class="grid-body no-border">
+		<h:panelGroup layout="block" class="col-md-12"> 
+			<h:panelGroup layout="block" class="grid simple"> 
+				<h:panelGroup layout="block" class="grid-body no-border">
 			
-					<div class="row">
-						<div class="col-md-12">
+					<h:panelGroup layout="block" class="row">
+						<h:panelGroup layout="block" class="col-md-12">
 							<h4>#{message.general_data}</h4>
+							
+							<h:panelGroup layout="block" class="row form-row">
+								<h:panelGroup layout="block" class="col-md-6">
+									<h:panelGroup layout="block" class="input-group transparent">
+										<span class="input-group-addon">#{message.model_name}</span>
+										<p:inputText id="credit-card-observations" value="#{creditCardAccountController.bean.description}" 	size="200" styleClass="form-control parsley-validated"/>
+									</h:panelGroup>
+								</h:panelGroup>
+								<h:panelGroup layout="block" class="col-md-3">
+									<h:panelGroup layout="block" class="input-group transparent">
+										<span class="input-group-addon">#{message.model_date_start}</span>
+										<p:calendar id="credit-card-start" value="#{creditCardAccountController.bean.start}"	converter="#{dateCalendarConverter}" style="width: 90%;"/>
+									</h:panelGroup>
+								</h:panelGroup>
+								<h:panelGroup layout="block" class="col-md-3"></h:panelGroup>
+							</h:panelGroup>
+							
+							<h:panelGroup layout="block" class="row form-row">
+								<h:panelGroup layout="block" class="col-md-6">
+									<h:panelGroup layout="block" class="input-group transparent">
+										<span class="input-group-addon">#{message.model_flag}</span>
+										<p:selectOneMenu value="#{creditCardAccountController.bean.flag}">
+										    <f:selectItem itemLabel=" Selecione a bandeira " itemValue="NONE" /> 
+										    <f:selectItem itemLabel="Visa" itemValue="VISA" />  
+										    <f:selectItem itemLabel="MasterCard" itemValue="MASTERCARD" />  
+										    <f:selectItem itemLabel="American Express" itemValue="AMERICANEXPRESS" />
+										    <f:selectItem itemLabel="Diners Club" itemValue="DINERS" />
+										</p:selectOneMenu>
+									</h:panelGroup>
+								</h:panelGroup>
+								<h:panelGroup layout="block" class="col-md-3">
+									<h:panelGroup layout="block" class="input-group transparent">
+										<span class="input-group-addon">#{message.model_maturity_day}</span>
+										<p:inputMask id="credit-card-maturity-day" value="#{creditCardAccountController.bean.maturityDay}" 	size="2" mask="9?9" styleClass="form-control parsley-validated"/>
+									</h:panelGroup>
+								</h:panelGroup>
+								<h:panelGroup layout="block" class="col-md-3">
+									<h:panelGroup layout="block" class="input-group transparent">
+										<span class="input-group-addon">#{message.model_limit_time}</span>
+										<p:inputMask id="credit-card-limit-time" value="#{creditCardAccountController.bean.calculationTime}" size="2" mask="9?9" styleClass="form-control parsley-validated"/>
+									</h:panelGroup>
+								</h:panelGroup>
+							</h:panelGroup>
+							
+							<h:panelGroup layout="block" class="row form-row">
+								<h:panelGroup layout="block" class="col-md-6">
+									<h:panelGroup layout="block" class="input-group transparent">
+										<span class="input-group-addon">#{message.model_card_number}</span>
+										<p:inputText id="credit-card-number" value="#{creditCardAccountController.bean.cardNumber}"  size="20" styleClass="form-control parsley-validated"/>
+									</h:panelGroup>
+								</h:panelGroup>
+								<h:panelGroup layout="block" class="col-md-6"></h:panelGroup>
+							</h:panelGroup>
+							
+						</h:panelGroup>
+					</h:panelGroup>
+				</h:panelGroup>
 				
-							<div class="row form-row">
-								<div class="col-md-6">
-									<p:selectOneMenu value="#{creditCardAccountController.bean.flag}" style="width: 90%;">
-									    <f:selectItem itemLabel=" Selecione a bandeira " itemValue="NONE" /> 
-									    <f:selectItem itemLabel="Visa" itemValue="VISA" />  
-									    <f:selectItem itemLabel="MasterCard" itemValue="MASTERCARD" />  
-									    <f:selectItem itemLabel="American Express" itemValue="AMERICANEXPRESS" />
-									    <f:selectItem itemLabel="Diners Club" itemValue="DINERS" />
-									</p:selectOneMenu>
-								</div>
-								<div class="col-md-6">
-									<p:calendar id="credit-card-start" value="#{creditCardAccountController.bean.start}"	converter="#{dateCalendarConverter}" style="width: 90%;"/>
-									<p:watermark for="credit-card-start" value="#{message.watermark_model_start}" />
-								</div>
-							</div>
-							
-							<div class="row form-row">
-								<div class="col-md-6">
-									<p:inputMask id="credit-card-number" value="#{creditCardAccountController.bean.cardNumber}"  size="20" mask="9?9999999999999999999" styleClass="form-control parsley-validated"/>
-									<p:watermark for="credit-card-number" value="#{message.watermark_model_bank_credit_card}" />
-								</div>
-								<div class="col-md-3">
-									<p:inputMask id="credit-card-maturity-day" value="#{creditCardAccountController.bean.maturityDay}" 	size="2" mask="9?9" styleClass="form-control parsley-validated"/>
-									<p:watermark for="credit-card-maturity-day" value="#{message.watermark_model_bank_maturity_day}" />
-								</div>
-								<div class="col-md-3">
-									<p:inputMask id="credit-card-limit-time" value="#{creditCardAccountController.bean.calculationTime}" size="2" mask="9?9" styleClass="form-control parsley-validated"/>
-	        						<p:watermark for="credit-card-limit-time" value="#{message.watermark_model_bank_limit_time}" />
-								</div>
-							</div>
-							
-							<div class="row form-row">
-								<div class="col-md-6">
-									<p:inputTextarea id="credit-card-observations" value="#{creditCardAccountController.bean.description}" 	size="200" styleClass="form-control parsley-validated"/>
-									<p:watermark for="credit-card-observations" value="#{message.watermark_model_credit_card_observations}" />
-								</div>
-								<div class="col-md-6">
-								</div>
-							</div>
-
-						</div>
-					</div>
-					
-					<div class="form-actions">
-						<div class="pull-right">
-							<p:commandButton value="#{message.action_save}"   actionListener="#{creditCardAccountController.save()}" 	styleClass="btn btn-primary btn-cons" action="#{registerController.setCreate(false)}" style="margin-left: 5px;" type="push"		 update="@form"/>
-							<p:commandButton value="#{message.action_cancel}" actionListener="#{creditCardAccountController.clean()}" 	styleClass="btn btn-white btn-cons"   action="#{registerController.setCreate(false)}" style="margin-left: 5px;" immediate="true" update="@form"/>
-						</div>
-				  	</div>
-				</div>
-			</div>
-		</div>
+				<h:panelGroup layout="block" class="form-actions">
+					<h:panelGroup layout="block" class="pull-right">
+						<p:commandButton value="#{message.action_save}"   actionListener="#{creditCardAccountController.save()}"  styleClass="btn btn-primary btn-cons" action="#{registerController.setCreate(false)}" style="margin-left: 5px;" type="push"		 update="@form"/>
+						<p:commandButton value="#{message.action_cancel}" actionListener="#{creditCardAccountController.clean()}" styleClass="btn btn-white btn-cons"   action="#{registerController.setCreate(false)}" style="margin-left: 5px;" immediate="true" update="@form"/>
+					</h:panelGroup>
+			  	</h:panelGroup>
+			  	
+			</h:panelGroup>
+		</h:panelGroup>
 		
 	</h:panelGroup>
 	<!-- / CONTENT_BODY -->

@@ -15,6 +15,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
+import com.aoks.enterprise.control.bean.CompanyBean;
 import com.aoks.enterprise.control.bean.IndividualPartnerBean;
 import com.aoks.enterprise.control.bean.LegalPartnerBean;
 import com.aoks.register.control.bean.IndividualRegisterBean;
@@ -140,6 +141,73 @@ public class ExportContacts {
 			
 			int i = 1;
 			for(LegalPartnerBean bean : legalBeans){
+				HSSFRow row = sheet.createRow(i);
+				
+				LegalRegisterBean legalBean = (LegalRegisterBean) new LegalRegisterBean().load((LegalRegister) bean.getModel().getBehavior().getRegister());
+				
+				row.createCell(0).setCellValue(legalBean.getAreaActuation().getAreaActuation());
+				row.createCell(1).setCellValue(legalBean.getCompanyName());
+				row.createCell(2).setCellValue(legalBean.getFancyName());
+				row.createCell(3).setCellValue(legalBean.getCnpj());
+				row.createCell(4).setCellValue(legalBean.getInscrEstadual());
+				row.createCell(5).setCellValue(legalBean.getInscrMunicipal());
+				row.createCell(6).setCellValue(legalBean.getSite());
+				row.createCell(7).setCellValue(legalBean.getFacebook());
+				row.createCell(8).setCellValue(legalBean.getTwitter());
+				row.createCell(9).setCellValue(legalBean.getPhone().getPhoneNumber());
+				
+				i++;
+			}
+
+			workBook.write(fos);
+			contentType = FacesContext.getCurrentInstance().getExternalContext().getMimeType("\\export.xls");
+			return new DefaultStreamedContent(new FileInputStream("\\export.xls"), contentType, "contatos-exportados.xlsx");
+		}catch(Exception ex){
+			ex.printStackTrace();
+			System.out.println("Erro ao Exportar arquivo!");
+		}finally{
+			try{
+				fos.flush();
+				fos.close();
+			}catch(Exception ex){
+				ex.printStackTrace();
+			}
+		}
+		
+		return null;
+	}
+	
+	
+	
+	public StreamedContent exportCompanyBeans(List<CompanyBean> companyBeans){
+		
+		if(companyBeans.isEmpty())
+			return null;
+		
+		HSSFWorkbook workBook = new HSSFWorkbook();
+		HSSFSheet sheet = workBook.createSheet("Exportados - Contatos Empresas");
+		
+		FileOutputStream fos = null;
+		try{
+			fos = new FileOutputStream(new File("\\export.xls"));
+			
+			Locale defaultLocaleHeader = new Locale("pt", "BR");
+			ResourceBundle bundle = ResourceBundle.getBundle("META-INF/MessageBundle", defaultLocaleHeader);
+			
+			HSSFRow rowHeader = sheet.createRow(0);
+			rowHeader.createCell(0).setCellValue(bundle.getString("model_area_actuation"));
+			rowHeader.createCell(1).setCellValue(bundle.getString("model_company_name"));
+			rowHeader.createCell(2).setCellValue(bundle.getString("model_fancy_name"));
+			rowHeader.createCell(3).setCellValue(bundle.getString("model_cnpj"));
+			rowHeader.createCell(4).setCellValue(bundle.getString("model_inscr_estadual"));
+			rowHeader.createCell(5).setCellValue(bundle.getString("model_inscr_municipal"));
+			rowHeader.createCell(9).setCellValue(bundle.getString("model_phone_number"));
+			rowHeader.createCell(6).setCellValue(bundle.getString("model_site"));
+			rowHeader.createCell(7).setCellValue(bundle.getString("model_facebook"));
+			rowHeader.createCell(8).setCellValue(bundle.getString("model_twitter"));
+			
+			int i = 1;
+			for(CompanyBean bean : companyBeans){
 				HSSFRow row = sheet.createRow(i);
 				
 				LegalRegisterBean legalBean = (LegalRegisterBean) new LegalRegisterBean().load((LegalRegister) bean.getModel().getBehavior().getRegister());

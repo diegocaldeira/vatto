@@ -15,54 +15,52 @@
 	<!-- CONTENT_BODY -->
 	<h:panelGroup styleClass="m-t" layout="block" rendered="#{bankController.has()}" >
 	
-		<div class="col-md-12"> 
-			<div class="grid simple"> 
-				<div class="grid-body no-border">
+		<h:panelGroup layout="block" class="col-md-12"> 
+			<h:panelGroup layout="block" class="grid simple"> 
+				<h:panelGroup layout="block" class="grid-body no-border">
 			
-					<div class="row">
-						<div class="col-md-12">
+					<h:panelGroup layout="block" class="row">
+						<h:panelGroup layout="block" class="col-md-12">
 							<h4>#{message.general_data}</h4>
-				
-							<div class="row form-row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<label class="form-label">#{message.model_bank_unit}</label>
-										<div class="controls">
-											<p:inputMask id="bank-code" value="#{bankController.bean.code}" mask="99" size="20" styleClass="form-control parsley-validated" required="true"/>
-										</div>
-										<p:watermark for="bank-code" value="#{message.watermark_model_bank_code}" />
-									</div>
-									<div class="form-group">
-										<label class="form-label">#{message.model_name}</label>
-										<div class="controls">
-											<p:inputText id="bank-name" value="#{bankController.bean.name}" size="200" styleClass="form-control parsley-validated" required="true"/>
-										</div>
-										<p:watermark for="bank-name" value="#{message.watermark_model_bank_name}" />
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<label class="form-label">#{message.model_description}</label>
-										<div class="controls">
-											<p:inputTextarea id="bank-description" value="#{bankController.bean.description}" size="200" styleClass="form-control parsley-validated"/>
-										</div>
-										<p:watermark for="bank-description" value="#{message.watermark_model_bank_observations}" />
-									</div>
-								</div>
-							</div>
 							
-						</div>
-					</div>
-					
-					<div class="form-actions">
-						<div class="pull-right">
-							<p:commandButton value="#{message.action_save}"   actionListener="#{bankController.save()}" 	styleClass="btn btn-primary btn-cons" action="#{registerController.setCreate(false)}" style="margin-left: 5px;" type="push" 	 update="@form"/>
-							<p:commandButton value="#{message.action_cancel}" actionListener="#{bankController.clean()}" 	styleClass="btn btn-white btn-cons"   action="#{registerController.setCreate(false)}" style="margin-left: 5px;" immediate="true" update="@form"/>
-						</div>
-				  	</div>
-				</div>
-			</div>
-		</div>
+							<h:panelGroup layout="block" class="row form-row">
+								<h:panelGroup layout="block" class="col-md-6">
+									<h:panelGroup layout="block" class="input-group transparent">
+										<span class="input-group-addon">#{message.model_bank_unit}</span>
+										<p:inputText id="bank-code" label="#{message.model_bank_unit}" value="#{bankController.bean.code}" size="10" maxlength="10" styleClass="form-control parsley-validated" required="true" />
+									</h:panelGroup>
+								</h:panelGroup>
+								<h:panelGroup layout="block" class="col-md-6">
+									<h:panelGroup layout="block" class="input-group transparent">
+										<span class="input-group-addon">#{message.model_name}</span>
+										<p:inputText id="bank-name" label="#{message.model_name}" value="#{bankController.bean.name}" size="200" maxlength="200" styleClass="form-control parsley-validated"/>
+									</h:panelGroup>
+								</h:panelGroup>
+							</h:panelGroup>
+							
+							<h:panelGroup layout="block" class="row form-row">
+								<h:panelGroup layout="block" class="col-md-6"></h:panelGroup>
+								<h:panelGroup layout="block" class="col-md-6">
+									<h:panelGroup layout="block" class="input-group transparent">
+										<span class="input-group-addon">#{message.model_description}</span>
+										<p:inputTextarea id="bank-description" label="#{message.model_description}" value="#{bankController.bean.description}" size="300" maxlength="300" styleClass="form-control parsley-validated" />
+									</h:panelGroup>
+								</h:panelGroup>
+							</h:panelGroup>
+							
+						</h:panelGroup>
+					</h:panelGroup>
+				</h:panelGroup>
+				
+				<h:panelGroup layout="block" class="form-actions">
+					<h:panelGroup layout="block" class="pull-right">
+						<p:commandButton value="#{message.action_save}"   actionListener="#{bankController.save()}" 	styleClass="btn btn-primary btn-cons" action="#{registerController.setCreate(false)}" style="margin-left: 5px;" type="push" 	 update="@form"/>
+						<p:commandButton value="#{message.action_cancel}" actionListener="#{bankController.clean()}" 	styleClass="btn btn-white btn-cons"   action="#{registerController.setCreate(false)}" style="margin-left: 5px;" immediate="true" update="@form"/>
+					</h:panelGroup>
+			  	</h:panelGroup>
+			  	
+			</h:panelGroup>
+		</h:panelGroup>
 		
 	</h:panelGroup>
 	<!-- / CONTENT_BODY -->

@@ -17,11 +17,10 @@
 			<p:ajax event="rowSelect" 	listener="#{legalPartnerController.onRowSelect}"   update="@form"/>  
 		    <p:ajax event="rowUnselect" listener="#{legalPartnerController.onRowUnselect}" update="@form"/>
 			
-			<p:column filterBy="#{att.register.areaActuation}" 		filterMatchMode="contains" headerText="#{message.model_area_actuation}" style="text-align: left; width: 20%">	<h:outputText value="#{att.register.areaActuation}"/>		</p:column>
-			<p:column filterBy="#{att.register.fancyName}" 			filterMatchMode="contains" headerText="#{message.model_name}"   		style="text-align: left; width: 45%;">	<h:outputText value="#{att.register.fancyName}"/>			</p:column>
-<!-- 	    	<p:column filterBy="#{att.register.cnpj}" 				filterMatchMode="contains" headerText="#{message.model_cnpj}"		  	style="text-align: left;">	<h:outputText value="#{att.register.cnpj}"/>				</p:column> -->
-		    <p:column filterBy="#{att.register.phone.phoneNumber}" 	filterMatchMode="contains" headerText="#{message.model_phone_number}" 	style="text-align: left; width: 20%;">	<h:outputText value="#{att.register.phone.phoneNumber}"/>	</p:column>
-<!-- 		    <p:column filterBy="#{att.register.site}" 				filterMatchMode="contains" headerText="#{message.model_site}" 			style="text-align: left;">	<h:outputText value="#{att.register.site}"/>				</p:column> -->
+			<p:column filterBy="#{att.register.areaActuation.areaActuation}" 	filterMatchMode="contains" headerText="#{message.model_area_actuation}" style="text-align: left; width: 17%;">	<h:outputText value="#{att.register.areaActuation.areaActuation}"/>	</p:column>
+			<p:column filterBy="#{att.register.fancyName}" 						filterMatchMode="contains" headerText="#{message.model_name}"   		style="text-align: left; width: 39%;">	<h:outputText value="#{att.register.fancyName}"/>					</p:column>
+ 	    	<p:column filterBy="#{att.register.cnpj}" 							filterMatchMode="contains" headerText="#{message.model_cnpj}"		  	style="text-align: left; width: 19%;">	<h:outputText value="#{att.register.cnpj}"/>						</p:column>
+		    <p:column filterBy="#{att.register.phone.phoneNumber}" 				filterMatchMode="contains" headerText="#{message.model_phone_number}" 	style="text-align: left; width: 17%;">	<h:outputText value="#{att.register.phone.phoneNumber}"/>			</p:column>
 		</ui:decorate>
 		
 </ui:composition>

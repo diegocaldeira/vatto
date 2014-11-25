@@ -65,8 +65,9 @@ public class BankController extends AbstractController<Bank, BankBean> {
 		List<BankBean> banks = dataModel.getFilteredBeans();
         
 		for (BankBean b : banks) {
-			if (b.getName().startsWith(query))
-				suggestions.add(b);
+			if(b.getName() != null)
+				if (b.getName().startsWith(query))
+					suggestions.add(b);
 		}
           
         return suggestions;  

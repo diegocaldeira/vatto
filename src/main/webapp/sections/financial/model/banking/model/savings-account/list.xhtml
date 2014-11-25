@@ -6,7 +6,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
       
-	<h:panelGroup layout="block" styleClass="padder clearfix"><h4 class="m-b m-t"><span class="semi-bold"><i class="icon-th-list"></i><h:outputText value=" #{message.financial_banking_savings_account_title}"/></span></h4> </h:panelGroup>
+	<h:panelGroup layout="block" styleClass="padder clearfix"><h4 class="m-b m-t"><span class="semi-bold"><i class="icon-th-list"> </i><h:outputText value=" #{message.financial_banking_savings_account_title}"/></span></h4> </h:panelGroup>
 	
 	<ui:decorate template="/sections/layout/templates/partner/model/list.xhtml">
 		<ui:param name="controller" 	value="#{savingsAccountController}" />
@@ -21,7 +21,6 @@
 		<p:column filterBy="#{att.bankUnit} #{att.bankUnitDigit}"	filterMatchMode="contains" headerText="#{message.model_bank_unit}"		style="width: 20%;"> <h:outputText value="#{att.bankUnit} #{att.bankUnitDigit}"/>						</p:column>
 		<p:column filterBy="#{att.number} #{att.digit}"				filterMatchMode="contains" headerText="#{message.model_account_number}"	style="width: 18%;"> <h:outputText value="#{att.number} #{att.digit}"/>									</p:column>
 		<p:column filterBy="#{att.startBalance}"					filterMatchMode="contains" headerText="#{message.model_start_balance}"	style="width: 25%;"> <h:outputText value="#{message.watermark_model_money_signal} #{att.startBalance}"/>	</p:column>
-<!-- 		<p:column filterBy="#{att.description}"						filterMatchMode="contains" headerText="#{message.model_description}"> 		<h:outputText value="#{att.description}"/>											</p:column> -->
 	</ui:decorate>
 	
 </ui:composition>
