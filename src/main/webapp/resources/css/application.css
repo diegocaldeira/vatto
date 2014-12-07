@@ -1,3 +1,9 @@
+
+.ui-datatable .ui-row-editing .ui-cell-editor .ui-cell-editor-input {
+	padding: 3px;
+	display: block;
+}
+
 .row .form-row{
 	margin: 6px 0 6px 0;
 }

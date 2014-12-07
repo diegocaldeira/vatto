@@ -8,6 +8,8 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.event.CellEditEvent;
+import org.primefaces.event.RowEditEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
 
@@ -94,5 +96,30 @@ public class BankController extends AbstractController<Bank, BankBean> {
 	 * @param event
 	 */
     public void onRowUnselect(UnselectEvent event) {  clean();  registerController.setCreate(Boolean.FALSE);}
+    
+    
+    public void onRowEdit(RowEditEvent event) { 
+    	bean = (BankBean) event.getObject();
+    	save();
+    }
+     
+    public void onRowCancel(RowEditEvent event) {
+
+    }
+    
+    public void addRow(){
+    	createBean();
+    	beans.add(bean);
+    }
+     
+    
+    public void onCellEdit(CellEditEvent event) {
+        Object oldValue = event.getOldValue();
+        Object newValue = event.getNewValue();
+         
+        if(newValue != null && !newValue.equals(oldValue)) {
+        	System.out.println("Valores mudaram : " + oldValue + " / " + newValue);
+        }
+    }
 
 }

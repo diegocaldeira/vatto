@@ -8,18 +8,57 @@
       
 	<h:panelGroup layout="block" styleClass="padder clearfix"> <h4 class="m-b m-t"><span class="semi-bold"><i class="icon-th-list"> </i><h:outputText value=" #{message.financial_banking_bank_title}"/></span></h4> </h:panelGroup>
 		
-	<ui:decorate template="/sections/layout/templates/partner/model/list.xhtml">
-		<ui:param name="controller" 	value="#{bankController}" />
-		<ui:param name="table" 			value="bank" />
-		<ui:param name="registerType" 	value="#{message.model_bank}" />
-		<ui:param name="type" 			value="Bank"/>
-		
-		<p:ajax event="rowSelect" 	listener="#{bankController.onRowSelect}"   update="@form"/>  
-	    <p:ajax event="rowUnselect" listener="#{bankController.onRowUnselect}" update="@form"/>
-		
-	 	<p:column filterBy="#{att.code}" 		filterMatchMode="contains" headerText="#{message.model_code}" 		 style="width: 40%;"> <h:outputText value="#{att.code}"/> 		 </p:column>
-		<p:column filterBy="#{att.name}" 		filterMatchMode="contains" headerText="#{message.model_bank}" 		 style="width: 50%;"> <h:outputText value="#{att.name}"/> 		 </p:column>
-		<p:column filterBy="#{att.description}" filterMatchMode="contains" headerText="#{message.model_description}" style="width: 50%;"> <h:outputText value="#{att.description}"/> </p:column>
-	</ui:decorate>
-		
+	<p:dataTable id="bank-list" var="att" value="#{bankController.beans}" editable="true" style="margin-bottom:20px">
+	
+		<f:facet name="header" style="height: 42px !important;">
+			<p:inputText id="globalFilter" onkeyup="PF('bankList').filter()" styleClass="input-sm" style="width: 300px; float: left;"/>  
+			<p:watermark for="globalFilter" value="#{message.general_find_all_fields}" />
+			
+			<p:commandButton id="bank-list-remove" value="" title="#{message.action_remove} #{message.general_selected}" styleClass="btn btn-white icon-trash" style="margin-left: 3%; float: left;"/>
+			<p:tooltip for="bank-list-remove" value="#{message.action_remove} #{message.general_selected}" showEffect="fade" hideEffect="fade" style="background: white !important;"/> 
+			<p:overlayPanel id="bank-list-remove-confirmation" for="bank-list-remove" hideEffect="fade" styleClass="confirmation-style">  
+		        <h:outputText value="#{message.action_remove_all_general_ask}"/>
+		        <h:commandLink style="margin-left: 15px; padding: 3px 7px; color: red; font-weight: bold;" value="#{message.action_ask_confirmation}" action="#{bankController.deleteAll()}" />
+		    </p:overlayPanel> 
+
+ 			<p:commandButton id="bank-list-export" ajax="false" value="" title="#{message.action_export} #{message.general_contacts}" styleClass="btn btn-white icon-download-alt" style="margin-left: 10px; float: left;">
+ 				<p:fileDownload value="#{bankController.export()}" /> 
+ 			</p:commandButton>
+ 			<p:tooltip for="bank-list-export" value="#{message.action_export} #{message.general_selected}" showEffect="fade" hideEffect="fade" style="background: white !important;"/> 
+
+			<p:commandLink id="bank-list-add" value="#{message.action_add}" title="#{message.action_add} #{registerType}"
+				style="float: right;" styleClass="btn btn-small btn-success" actionListener="#{bankController.addRow()}" update="@form" action="#{registerController.setCreate(true)}"/>
+		</f:facet> 
+ 
+       	<p:ajax event="rowEdit" listener="#{bankController.onRowEdit}"/>
+       	<p:ajax event="rowEditCancel" listener="#{bankController.onRowCancel}"/>
+ 
+ 		<p:column filterBy="#{att.code}" filterMatchMode="contains" headerText="#{message.model_code}" style="width: 38%;"> <h:outputText value="#{att.code}"/> 		 
+			<p:cellEditor>
+               	<f:facet name="output"><h:outputText value="#{att.code}" /></f:facet>
+				<f:facet name="input">
+					<p:inputText id="bank-code" label="#{message.model_code}" value="#{att.code}" size="10" maxlength="10" styleClass="form-control parsley-validated" required="true" placeholder="#{message.watermark_model_bank_identifier}"/>
+               </f:facet>
+           </p:cellEditor> 		
+ 		</p:column>
+		<p:column filterBy="#{att.name}" filterMatchMode="contains" headerText="#{message.model_bank}" style="width: 50%;"> <h:outputText value="#{att.name}"/> 		 
+			<p:cellEditor>
+               	<f:facet name="output"><h:outputText value="#{att.name}" /></f:facet>
+				<f:facet name="input">
+					<p:inputText id="bank-name" label="#{message.model_name}" value="#{att.name}" size="200" maxlength="200" styleClass="form-control parsley-validated" placeholder="#{message.watermark_model_bank_name}"/>
+				</f:facet>
+           	</p:cellEditor>
+		</p:column>
+		<p:column filterBy="#{att.description}" filterMatchMode="contains" headerText="#{message.model_description}" style="width: 50%;"> <h:outputText value="#{att.description}"/> 
+			<p:cellEditor>
+            	<f:facet name="output"><h:outputText value="#{att.description}" /></f:facet>
+               	<f:facet name="input">
+               		<p:inputText id="bank-description" label="#{message.model_description}" value="#{att.description}" size="300" maxlength="300" styleClass="form-control parsley-validated" placeholder="#{message.watermark_model_bank_observations}"/>
+               	</f:facet>
+			</p:cellEditor>
+		</p:column>
+ 
+       	<p:column style="width:32px"> <p:rowEditor /> </p:column>
+   </p:dataTable>
+   
 </ui:composition>
