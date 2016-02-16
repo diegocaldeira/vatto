@@ -19,9 +19,9 @@ This README would normally document whatever steps are necessary to get your app
 #!text
  PostgreSQL 9.2 database added.  Please make note of these credentials:
 
-   Root User: adminfcjxuk4
-   Root Password: 1q2lqhiftw8g
-   Database Name: budget
+   Root User: admind1m1syr
+   Root Password: kGlndD1cyXRj
+   Database Name: vatto
 
 Connection URL: postgresql://$OPENSHIFT_POSTGRESQL_DB_HOST:$OPENSHIFT_POSTGRESQL_DB_PORT
 
