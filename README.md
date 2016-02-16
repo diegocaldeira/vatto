@@ -34,11 +34,10 @@ Connection URL: postgresql://$OPENSHIFT_POSTGRESQL_DB_HOST:$OPENSHIFT_POSTGRESQL
 
 Jenkins created successfully.  Please make note of these credentials:
 
- Email: diego_pereira@aol.com
- User: admin
- Password: di3g0#$$)K
+   User: admin
+   Password: PBfPvuXbSnCz
 
- Note:  You can change your password at: https://jenkins-dpcodes.rhcloud.com/me/configure
+Note:  You can change your password at: https://jenkins-dpcodes.rhcloud.com/me/configure
 
 ```
 
